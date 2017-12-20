@@ -6,92 +6,10 @@
 <link rel="stylesheet" href="css/lzs_public.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <script type="text/javascript" src="js/jquery.min.js" ></script>
-<style>
-.lzs_main_LCR{
-	display: table;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    word-wrap: break-word;
-        word-break: break-all;
-     box-sizing: border-box;
-     
-     background-color: red;
-}
-.lzs_main_LCR .lzs_main_LCR-left{
-	display: table-cell;
-    width: 25%;
-    border: 1px solid black;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.lzs_main_LCR .lzs_main_LCR-center{
-	display: table-cell;
-    width: 50%;
-    box-sizing: border-box;
-    background-color: blue;
-    border: 1px solid blueviolet;
-}
-.lzs_main_LCR .lzs_main_LCR-right{
-	display: table-cell;
-    width: 25%;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-@media (max-width: 640px) {
-	.lzs_main_LCR{
-	    display: block;
-}
-.lzs_main_LCR .lzs_main_LCR-left{
-	width: 25vw;
-}
-.lzs_main_LCR .lzs_main_LCR-center{
-	    width: 75vw;
-}
-.lzs_main_LCR .lzs_main_LCR-right{
-	    display: block;
-    width: 100%;
-}
-}
-
-.lzs_main_LR{
-	display: table;
-    width: 100%;
-    
-}
-.lzs_main_LR .lzs_main_LR-left{
-	background-color: #01AAED;
-	display: table-cell;
-    width: 25%;
-}
-.lzs_main_LR .lzs_main_LR-right{
-	display: table-cell;
-    width: 75%;
-        background-color: darkorange;
-}
-</style>
 </head>  
 <body>  
 
-<a href="index2.html">ssss</a>
-<script>
-	$(function(){
-		console.log("widht",$(".left").height())
-		window.onresize = function(){
-			
-		}
-	})
-	
-	function tobutton(){
-		var if_radio=$('input[type=radio][name="radio_select"]:checked').val();
-		if(if_radio==null){
-			alert("请选择一个");
-		}else{
-			console.log('已选了一个',if_radio);
-		}
-		console.log('已选了一个',$('input[type=radio][name=radio_select]:nth-of-type(2)').attr('checked', 'true'));
-		//$("input[type=radio][name=radio_select]").attr("checked",'1');//设置value=2的项目为当前选中项  
-	}
-</script>
+<a href="html的常用/常用布局.html">常用布局</a>
+
 </body>  
 </html> 
