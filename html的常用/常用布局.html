@@ -31,6 +31,7 @@
     box-sizing: border-box;
     background-color: blue;
     border: 1px solid blueviolet;
+    vertical-align: middle;
 }
 .lzs_main_LCR .lzs_main_LCR-right{
 	display: table-cell;
@@ -69,6 +70,9 @@
     width: 75%;
         background-color: darkorange;
 }
+p{
+	margin: 0px;
+}
 </style>
 </head>  
 <body>  
@@ -91,7 +95,7 @@
 		<p>sssssssssssssssssss</p>
 	</div>
 	<div class="lzs_main_LCR-center">
-		sssssssssssssssssssd
+       不用定位的居中
 		<p>sssssssssssss</p>
 	</div>
 	<div class="lzs_main_LCR-right">
@@ -115,41 +119,43 @@
 		<div style="background-color: #007DDB; height: inherit;"></div>
 	</div>
 	<div class="col-lg-6 col-xs-6" style="height: inherit;">
-		<div style="background-color: aquamarine;height: inherit;"></div>
+		<div style="background-color: aquamarine;height: inherit; position: relative;">
+			<h6 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);margin: 0px; padding:0px; background-color: #009E94;">
+				有浮动的居中与，消除bfc的绝对居中，
+			</h6>
+			
+		</div>
 	</div>
 	<div class="col-lg-3 col-xs-3" style="height: inherit;">
 		<div style="background-color: aquamarine;height: inherit;"></div>
 	</div>
 </div>
-<h4>表单</h4>
+
+
+<h4>float的高度自适应与居中</h4>
 <div>
-	<form>
-		<input type="radio" name="radio_select" />
-		<input type="radio" name="radio_select" />
-		<input type="radio" name="radio_select" />
-		<input type="radio" name="radio_select" />
-	</form>
+	<span class="left">
+		ninsssssssssssss
+	</span>
+	<span class="left">
+		ninsssssssssssss
+	</span>
+	<span class="left">
+		ninsssssssssssss
+		sssssssssssssssssssssssssssss
+		<h5>ssss</h5>
+	</span>
+	<div class="" style="clear: both;"></div>
 </div>
-<div class="button" onclick="tobutton()"><button>选择</button></div>
-<a href="index.html"></a>
+
+
+<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
 <script>
 	$(function(){
-		console.log("widht",$(".left").height())
 		window.onresize = function(){
 			
 		}
 	})
-	
-	function tobutton(){
-		var if_radio=$('input[type=radio][name="radio_select"]:checked').val();
-		if(if_radio==null){
-			alert("请选择一个");
-		}else{
-			console.log('已选了一个',if_radio);
-		}
-		console.log('已选了一个',$('input[type=radio][name=radio_select]:nth-of-type(2)').attr('checked', 'true'));
-		//$("input[type=radio][name=radio_select]").attr("checked",'1');//设置value=2的项目为当前选中项  
-	}
 </script>
 </body>  
 </html> 
