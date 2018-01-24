@@ -1,161 +1,165 @@
 <!DOCTYPE html>
-<html>  
-<head> 
-	<meta charset="UTF-8">
-<title>打开word文档</title>   
-<link rel="stylesheet" href="../css/lzs_public.css" />
-<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
-<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
-<style>
-.lzs_main_LCR{
-	display: table;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    word-wrap: break-word;
-        word-break: break-all;
-     box-sizing: border-box;
-     
-     background-color: red;
-}
-.lzs_main_LCR .lzs_main_LCR-left{
-	display: table-cell;
-    width: 25%;
-    border: 1px solid black;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.lzs_main_LCR .lzs_main_LCR-center{
-	display: table-cell;
-    width: 50%;
-    box-sizing: border-box;
-    background-color: blue;
-    border: 1px solid blueviolet;
-    vertical-align: middle;
-}
-.lzs_main_LCR .lzs_main_LCR-right{
-	display: table-cell;
-    width: 25%;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-@media (max-width: 640px) {
-	.lzs_main_LCR{
-	    display: block;
-}
-.lzs_main_LCR .lzs_main_LCR-left{
-	width: 25vw;
-}
-.lzs_main_LCR .lzs_main_LCR-center{
-	    width: 75vw;
-}
-.lzs_main_LCR .lzs_main_LCR-right{
-	    display: block;
-    width: 100%;
-}
-}
+<html>
 
-.lzs_main_LR{
-	display: table;
-    width: 100%;
-    
-}
-.lzs_main_LR .lzs_main_LR-left{
-	background-color: #01AAED;
-	display: table-cell;
-    width: 25%;
-}
-.lzs_main_LR .lzs_main_LR-right{
-	display: table-cell;
-    width: 75%;
-        background-color: darkorange;
-}
-p{
-	margin: 0px;
-}
-</style>
-</head>  
-<body>  
-<h4>左右模式布局</h4>
-<div class="lzs_main_LR">
-	<div class="lzs_main_LR-left"></div>
-	<div class="lzs_main_LR-right">
-		<span>我是小明</span>
-		<p class="ellipsis_line_3">我是你的好朋友，我喜欢ssssssssssssssssssssssss
-		sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-		ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-		sssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-	</div>
-</div>
-<h4>左中右模式布局</h4>
-<div class="lzs_main_LCR">
-	<div class="lzs_main_LCR-left" >
-		sssssssssss
-		<p>sssssssssssss</p>
-		<p>sssssssssssssssssss</p>
-	</div>
-	<div class="lzs_main_LCR-center">
-       不用定位的居中
-		<p>sssssssssssss</p>
-	</div>
-	<div class="lzs_main_LCR-right">
-    	<p>sssssssssssss</p>
-<img src="img/logo.png" width="100%">
-	</div>
-</div>
+	<head>
+		<meta charset="UTF-8">
+		<title>打开word文档</title>
+		<link rel="stylesheet" href="../css/lzs_public.css" />
+		<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
+		<script type="text/javascript" src="../jquery/jquery.min.js"></script>
+		<style>
+			.lzs_main_LCR {
+				display: table;
+				width: 100%;
+				max-width: 100%;
+				overflow: hidden;
+				word-wrap: break-word;
+				word-break: break-all;
+				box-sizing: border-box;
+				background-color: red;
+			}
+			
+			.lzs_main_LCR .lzs_main_LCR-left {
+				display: table-cell;
+				width: 25%;
+				border: 1px solid black;
+				overflow: hidden;
+				box-sizing: border-box;
+			}
+			
+			.lzs_main_LCR .lzs_main_LCR-center {
+				display: table-cell;
+				width: 50%;
+				box-sizing: border-box;
+				background-color: blue;
+				border: 1px solid blueviolet;
+				vertical-align: middle;
+			}
+			
+			.lzs_main_LCR .lzs_main_LCR-right {
+				display: table-cell;
+				width: 25%;
+				box-sizing: border-box;
+				overflow: hidden;
+			}
+			
+			@media (max-width: 640px) {
+				.lzs_main_LCR {
+					display: block;
+				}
+				.lzs_main_LCR .lzs_main_LCR-left {
+					width: 25vw;
+				}
+				.lzs_main_LCR .lzs_main_LCR-center {
+					width: 75vw;
+				}
+				.lzs_main_LCR .lzs_main_LCR-right {
+					display: block;
+					width: 100%;
+				}
+			}
+			
+			.lzs_main_LR {
+				display: table;
+				width: 100%;
+			}
+			
+			.lzs_main_LR .lzs_main_LR-left {
+				background-color: #01AAED;
+				display: table-cell;
+				width: 25%;
+			}
+			
+			.lzs_main_LR .lzs_main_LR-right {
+				display: table-cell;
+				width: 75%;
+				background-color: darkorange;
+			}
+			
+			p {
+				margin: 0px;
+			}
+		</style>
+	</head>
 
-<h4>bootstrap的布局格式的显示-左右模式布局</h4>
-<div class="row" style="height: 100px;">
-	<div class="col-lg-4 col-xs-4" style="height: inherit;">
-		<div style="background-color: #007DDB; height: inherit;"></div>
-	</div>
-	<div class="col-lg-8 col-xs-8" style="height: inherit;">
-		<div style="background-color: aquamarine;height: inherit;"></div>
-	</div>
-</div>
-<h4>bootstrap的布局格式的显示-左中右模式布局</h4>
-<div class="row" style="height: 100px;">
-	<div class="col-lg-3 col-xs-3" style="height: inherit;">
-		<div style="background-color: #007DDB; height: inherit;"></div>
-	</div>
-	<div class="col-lg-6 col-xs-6" style="height: inherit;">
-		<div style="background-color: aquamarine;height: inherit; position: relative;">
-			<h6 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);margin: 0px; padding:0px; background-color: #009E94;">
+	<body>
+		<h4>左右模式布局</h4>
+		<div class="lzs_main_LR">
+			<div class="lzs_main_LR-left"></div>
+			<div class="lzs_main_LR-right">
+				<span>我是小明</span>
+				<p class="ellipsis_line_3">我是你的好朋友，我喜欢ssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssss
+				</p>
+			</div>
+		</div>
+		<h4>左中右模式布局</h4>
+		<div class="lzs_main_LCR">
+			<div class="lzs_main_LCR-left">
+				sssssssssss
+				<p>sssssssssssss</p>
+				<p>sssssssssssssssssss</p>
+			</div>
+			<div class="lzs_main_LCR-center">
+				不用定位的居中
+				<p>sssssssssssss</p>
+			</div>
+			<div class="lzs_main_LCR-right">
+				<p>sssssssssssss</p>
+				<img src="img/logo.png" width="100%">
+			</div>
+		</div>
+
+		<h4>bootstrap的布局格式的显示-左右模式布局</h4>
+		<div class="row" style="height: 100px;">
+			<div class="col-lg-4 col-xs-4" style="height: inherit;">
+				<div style="background-color: #007DDB; height: inherit;"></div>
+			</div>
+			<div class="col-lg-8 col-xs-8" style="height: inherit;">
+				<div style="background-color: aquamarine;height: inherit;"></div>
+			</div>
+		</div>
+		<h4>bootstrap的布局格式的显示-左中右模式布局</h4>
+		<div class="row" style="height: 100px;">
+			<div class="col-lg-3 col-xs-3" style="height: inherit;">
+				<div style="background-color: #007DDB; height: inherit;"></div>
+			</div>
+			<div class="col-lg-6 col-xs-6" style="height: inherit;">
+				<div style="background-color: aquamarine;height: inherit; position: relative;">
+					<h6 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);margin: 0px; padding:0px; background-color: #009E94;">
 				有浮动的居中与，消除bfc的绝对居中，
 			</h6>
-			
+
+				</div>
+			</div>
+			<div class="col-lg-3 col-xs-3" style="height: inherit;">
+				<div style="background-color: aquamarine;height: inherit;"></div>
+			</div>
 		</div>
-	</div>
-	<div class="col-lg-3 col-xs-3" style="height: inherit;">
-		<div style="background-color: aquamarine;height: inherit;"></div>
-	</div>
-</div>
 
-
-<h4>float的高度自适应与居中</h4>
-<div>
-	<span class="left">
+		<h4>float的高度自适应与居中</h4>
+		<div>
+			<span class="left">
 		ninsssssssssssss
 	</span>
-	<span class="left">
+			<span class="left">
 		ninsssssssssssss
 	</span>
-	<span class="left">
+			<span class="left">
 		ninsssssssssssss
 		sssssssssssssssssssssssssssss
 		<h5>ssss</h5>
 	</span>
-	<div class="" style="clear: both;"></div>
-</div>
+			<div class="" style="clear: both;"></div>
+		</div>
 
+		<script type="text/javascript" src="../jquery/jquery.min.js"></script>
+		<script>
+			$(function() {
+				window.onresize = function() {
 
-<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
-<script>
-	$(function(){
-		window.onresize = function(){
-			
-		}
-	})
-</script>
-</body>  
-</html> 
+				}
+			})
+		</script>
+	</body>
+
+</html>

@@ -5,17 +5,11 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构�
 dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
 pre, /* text formatting elements 文本格式元素 */
 fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
-th, td { /* table elements 表格元素 */
-    margin: 0;
-    padding: 0;
-}
+th, td {  margin: 0;   padding: 0;}
 /* 重置文本格式元素 */
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-img{
-	width: 100%;
-	
-}
+img{width: 100%;}
 .background_auto{
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
@@ -149,4 +143,6 @@ text-shadow: 1px 1px 0px #fff;
 	transition:all 1s ease-in-out;
 	-webkit-transition:all 1s ease-in-out;
 	-moz-transition:all 1s ease-in-out;
-	}
+}
+
+/*文字的响应式*/

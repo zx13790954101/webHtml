@@ -20,8 +20,35 @@
 		</div>
         <div class="button" onclick="tobutton()"><button>选择</button></div>
 <a href="index.html"></a>
+
+
+<div>
+	<input type="text" class="input_auto" />
+	
+</div>
+ 文本框：<input id="txtId"  type="text" style="width:25px" />
 <script type="text/javascript" src="../jquery/jquery.min.js" ></script>
 <script>
+	
+	var widthSize = 25;   //文本框长度
+    var size=0;  //文本框字符长度
+    $("#txtId").keyup(function(){  
+            //当前输入的文本比上一次的文本值长度短，就缩减文本框的宽度
+            if(this.value.length<size){
+                size=$("#txtId").val().length;  //获取文本框的字符长度
+                widthSize=parseInt(widthSize-10);   //当前文本宽度-10px
+                this.style.width=widthSize+"px";
+                return "";
+            //否则就增加文本框的宽度
+            }else{
+                size=$("#txtId").val().length;  //获取文本框的字符长度
+                widthSize=parseInt(widthSize+10); //当前文本宽度+10px
+                this.style.width=widthSize+"px";
+                return "";
+            } 
+     });
+        
+        
 	$(function(){
 		window.onresize = function(){
 			

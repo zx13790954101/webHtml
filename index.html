@@ -5,11 +5,34 @@
 <title>打开word文档</title>   
 <link rel="stylesheet" href="css/lzs_public.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="jquery/jquery.min.js" ></script>
 </head>  
 <body>  
 
 <a href="html的常用/常用布局.html">常用布局</a>
+<a href="html的常用/响应式和移动端的配置.html">响应式和移动端的配置</a>
 
+<p class="bind">我现在还没有改变</p>
+<input type="text" value="我是总经理"  class="inputAuto">
+<ul class="bind_ul">
+	<li>
+		1
+	</li>
+	<li>2
+	</li>
+</ul>
+<script>
+	$(function(){
+		
+	   var i=2;
+	   for(var i=0;i<$(".bind_ul li").length;i++){
+	   	console.log("sss")
+	   	$(".bind").html('ssss');
+	   	$(".inputAuto").val("我是总经理2")
+	   }
+	   
+	});
+	
+</script>
 </body>  
 </html> 
