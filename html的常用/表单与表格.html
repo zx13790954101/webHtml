@@ -26,9 +26,18 @@
 	<input type="text" class="input_auto" />
 	
 </div>
+
+<input type="text" class="clearnun" />
  文本框：<input id="txtId"  type="text" style="width:25px" />
-<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
+<script type="text/javascript" src="../plugin/jquery/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/toolkit.js" ></script>
 <script>
+	
+    $(function(){
+		
+		formTool.clearNoNum(".clearnun");
+	})
+	
 	
 	var widthSize = 25;   //文本框长度
     var size=0;  //文本框字符长度
@@ -49,12 +58,7 @@
      });
         
         
-	$(function(){
-		window.onresize = function(){
-			
-		}
-	})
-	
+
 	function tobutton(){
 		//选择的值
 		var if_radio=$('input[type=radio][name="radio_select"]:checked').val();
