@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工作考试计时器</title>
+		<style>
+			body {
+				font-family:"微软雅黑";
+				margin:20px;
+				padding:0;
+				text-align:center;
+			}
+			input {
+				position:relative;
+				left:50%;
+				transform:translateX(-50%);
+				padding:10px 20px;
+				display:block;
+				outline:none;
+				background-color:#FFFFFF;
+				border:1px solid #000000;
+				cursor:pointer;
+				margin-top:15px;
+				font-size:18px;
+				font-family:"微软雅黑";
+				transition:all 0.15s;
+			}
+			input:hover,input:hover {
+				background-color:#333333;
+				color:#FFFFFF;
+			}
+            .m-content{
+            	height: 200px;
+            }
+		</style>
+	</head>
+	<body>
+		<form>
+		<div>
+		    <textarea type="text"  class="m-content" />
+		    </textarea>
+	    </div>
+		<span id="txt">00时00分00秒00</span>
+		<input type="button" value="开始计时">
+		<input type="button" value="结束计时">
+
+		</form>
+		
+		<script type="text/javascript" src="../plugin/jquery/jquery.min.js" ></script>
+		<script>
+			var timer;
+			var count = 0;
+			var clickStart = 0;
+			var aInput = document.getElementsByTagName('input');
+			
+			aInput[0].onclick = function() {
+			    var txt = document.getElementById('txt');
+			    clickStart++;
+			    if (clickStart % 2 == 0) {
+			        clearInterval(timer);
+			        aInput[0].value = '继续计时';
+			        clickStart = 0;
+			    } else {
+			        timer = setInterval(function() {
+			                var h = parseInt(count / 1000 / 60 / 60);
+			                var m = parseInt(count / 1000 / 60) % 60;
+			                var s = parseInt(count / 1000) % 60;
+			                var ms = parseInt(count / 10) % 100;
+			                h = h < 10 ? '0' + h : h;
+			                m = m < 10 ? '0' + m : m;
+			                s = s < 10 ? '0' + s : s;
+			                ms = ms < 10 ? '0' + ms : ms;
+			                txt.innerHTML = h + '时' + m + '分' + s + '秒' + ms;
+			                count += 10;
+			            }
+			            , 10)
+			        aInput[0].value = '暂停计时';
+			    }
+			}
+			aInput[1].onclick = function() {
+			    count = 0;
+			    clickStart = 0;
+			    clearInterval(timer);
+			    txt.innerHTML = '00时00分00秒00';
+			    aInput[0].value = '开始计时'
+			}
+					
+		</script>
+	</body>
+</html>

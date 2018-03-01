@@ -1,0 +1,39 @@
+body{
+    background-color: #fbfbfb;
+}
+.section-content-r{
+    margin-right: 10px;
+}
+.section-content-l{
+    background-color: #23262e;
+}
+.margin-20{
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #777777;
+    border-radius: 5px;
+}
+	.list-item .button-array {
+				bottom: 0px;
+				position: absolute;
+				left: 0px;
+			}
+			
+			.list-item .img-responsive {
+				width: 200px;
+				max-width: 100%;
+			}
+			
+			.list-item-right {
+				background-color: yellow;
+			}
+			
+		
+			
+			.list-item-right {
+				background-color: #23262e;
+				color: #f1ffdd;
+			}
+			
+			.list-item-left {
+			}

@@ -1,38 +1,101 @@
 <!DOCTYPE html>
-<html>  
-<head> 
-	<meta charset="UTF-8">
-<title>打开word文档</title>   
-<link rel="stylesheet" href="css/lzs_public.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script type="text/javascript" src="jquery/jquery.min.js" ></script>
-</head>  
-<body>  
+<html>
 
-<a href="html的常用/常用布局.html">常用布局</a>
-<a href="html的常用/响应式和移动端的配置.html">响应式和移动端的配置</a>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--lzs的iconfont的引入-->
+		<link rel="stylesheet" href="plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="src/linzesen.css" />
+		<!--my`s public的公共css的引入-->
+		<link rel="stylesheet" href="src/public_all.css" />
+	</head>
 
-<p class="bind">我现在还没有改变</p>
-<input type="text" value="我是总经理"  class="inputAuto">
-<ul class="bind_ul">
-	<li>
-		1
-	</li>
-<li>2
-	</li>
-</ul>
-<script>
-	$(function(){
-		
-	   var i=2;
-	   for(var i=0;i<$(".bind_ul li").length;i++){
-	   	console.log("sss")
-	   	$(".bind").html('ssss');
-	   	$(".inputAuto").val("我是总经理2")
-	   }
-	   
-	});
+	<body>
+
+		<section class="flex">
+
+			<div class="section-content-l">
+
+				<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+				  <li class="layui-nav-item layui-nav-itemed">
+				    <a href="javascript:;" >布局</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="javascript:;"  dataSrc="html/flex-box.html"  onclick="publicInit.toIframe(this)">flex布局的实现</a></dd>
+				      <dd><a href="javascript:;"  dataSrc="html/table的布局.html" onclick="publicInit.toIframe(this)">table布局的实现</a></dd>
+				      <dd><a href="javascript:;" dataSrc="html/layui的布局.html" onclick="publicInit.toIframe(this)">layui的布局</a></dd>
+				      <dd><a href="javascript:;" onclick="publicInit.toIframe(this)">常用布局</a></dd>
+				    </dl>
+				  </li>
+				  <li class="layui-nav-item layui-nav-itemed">
+				    <a href="javascript:;" >插件</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="javascript:;"  dataSrc="html/flex-box.html"  onclick="publicInit.toIframe(this)">swiper轮播图</a></dd>
+				
+				    </dl>
+				  </li>
+				  <li class="layui-nav-item"><a href="javascript:;" onclick="publicInit.toIframe(this)">布局</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="section-content-r flex-item  ">
+				<iframe class="iframe_content" src="html/flex-box.html">
+					
+				</iframe>
+
+			</div>
+
+		</section>
+
 	
-</script>
-</body>  
-</html> 
+
+		<!--js的引入-->
+		<script type="text/javascript" src="plugin/jquery/jquery.min.js"></script>
+		<script src="plugin/layui/layui.all.js" charset="utf-8"></script>
+		<!--公共的js的引入-->
+		<script type="text/javascript" src="src/public.js"></script>
+		<script type="text/javascript" src="src/toolkit.js"></script>
+
+		<script>
+			//导航栏的效果
+			layui.use('element', function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+				//监听导航点击
+				element.on('nav(demo)', function(elem) {
+					//console.log(elem)
+					layer.msg(elem.text());
+					console.log("data",elem,elem.dataSrc);
+				});
+			});
+			
+			
+			$(function(){
+				
+				publicInit.windowsResize();
+			});
+			
+			var publicInit={
+				toIframe:function(obj){
+					$(".iframe_content").attr("src",$(obj).attr("dataSrc"));
+				},
+				windowsResize:function(){
+					  var windows_height=$(window).height()-4;
+					   $("section").css({"height":windows_height});
+					   $(window).resize(function(){
+						   	var windows_height=$(window).height();
+						   $("section").css({"height":windows_height});
+					   });
+				}
+				
+			}
+			
+			
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/lzs_public.css" />
+		<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
+		<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
+	</head>
+	<body>
+		<h4>表单</h4>
+		<div>
+			<form>
+				<input type="radio" name="radio_select" />
+				<input type="radio" name="radio_select" />
+				<input type="radio" name="radio_select" />
+				<input type="radio" name="radio_select" />
+				
+			    <p>宽度自动增加的输入框</p>
+				<input id="txtId"  type="text" style="width:200px" />
+				<p>只能输入数字的输入框</p>
+		        <div> <input id="txtId2"  type="text" style="width:200px" /></div>
+			</form>
+		</div>
+        <div class="button" onclick="tobutton()"><button>选择</button></div>
+
+<script type="text/javascript" src="../plugin/jquery/jquery.min.js" ></script>
+<script type="text/javascript" src="../src/toolkit.js" ></script>
+<script>
+	
+    $(function(){
+		
+		formTool.clearNoNum("#txtId2");
+		formTool.autoAddWitch("#txtId");
+	})
+	
+
+
+	function tobutton(){
+		//选择的值
+		var if_radio=$('input[type=radio][name="radio_select"]:checked').val();
+		if(if_radio==null){
+			alert("请选择一个");
+		}else{
+			console.log('已选了一个',if_radio);
+		}
+		console.log('已选了一个',$('input[type=radio][name=radio_select]:nth-of-type(2)').attr('checked', 'true'));
+		//$("input[type=radio][name=radio_select]").attr("checked",'1');//设置value=2的项目为当前选中项  
+	}
+	
+	
+	 //关闭
+    $(".model").on("click", function (event) {
+                
+                if (event.target === this) {
+                    $(".model").css({ "display": "none" });
+                }
+    });
+</script>
+	</body>
+</html>
