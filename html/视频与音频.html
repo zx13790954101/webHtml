@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../src/linzesen.css" />
+		<!-- 设置网站icon图标 -->
+<link rel="shortcut icon" type="image/x-icon" href="https://www.baidu.com/favicon.ico" />
+<!--
+	注意：
+		1、图标文件名必须是favicon.ico
+		2、favicon.ico文件必须放到网站的根目录下
+-->
+		<style>
+			.box{
+				background-color: red;
+				width: 300px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="https://www.baidu.com/favicon.ico" download >下载</a>  
+<!-- 我们还可以指定文件名称，如下写法： -->
+<a href="tupiandizhi.jpg" download="baidu" ></a>
+		<div class="box">ssss
+		<p>ssss</p></div>
+		
+	
+<audio src="http://www.jq22.com/demo/wavesurfer20170110/jq22com.mp3" controls="controls" preload id="music1" hidden></audio>
+<span id="bf" onclick="bf();">播放/暂停</span>
+<span id="bf" onclick="rbf();">重新播放</span>
+
+<div  class="div1"  style="position: flex;  background-color: #000000; width: 100vw;height: 100vh; left: 0px;">
+	
+	<div style="cursor: move; height: 100px; width: 100px; background-color: red; position: absolute; z-index: 9999; zoom: 1;"></div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script>
+	$(function(){
+		
+		$(".div1").onclick(function(event){
+			var evt = event||window.event; 
+			evt.stopPropagation?evt.stopPropagation():(evt.cancelBubble=true);//阻止冒泡 
+			evt.preventDefault();//阻止浏览器默认行为，这样链接就不会跳转 
+			content.log('event',event.target);
+			
+			 if (evt.target === this) {
+			        alert("sssss");
+			  }
+ 
+		});
+		
+	})
+
+
+function rbf(){
+ var audio = document.getElementById('music1'); 
+ audio.currentTime = 0;
+}
+function bf(){
+     var audio = document.getElementById('music1'); 
+	 if(audio!==null){             
+	    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+	     //alert(audio.paused);
+		  if(audio.paused)                     {                 
+		      audio.play();//audio.play();// 这个就是播放  
+		  }else{
+		   audio.pause();// 这个就是暂停
+		  }
+	 } 
+}
+		</script>
+	</body>
+</html>

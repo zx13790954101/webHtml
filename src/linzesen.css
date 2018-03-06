@@ -26,6 +26,9 @@ a:hover {text-decoration: none;}
 img{ width: 100%; }
 
 /*响应式的布局  boostrap的布局方式*/
+.container{
+	margin:0 auto;
+}
 @media (min-width:768px) {
 	.container {
 		width: 750px;
@@ -986,14 +989,23 @@ img{ width: 100%; }
 	display: flex;
 	display: -webkit-flex;
 	display: -ms-flexbox;
-
 	align-items: center;
+	justify-content:  center;
 }
 
 .img-responsive img:first-child {
 	width: 100%;
 	max-width: 100%;
 	height: auto;
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+	display:  table-cell;
+}
+.img-responsive img:hover {
+    -webkit-transition: scale(1.4);
+    -moz-transform: scale(1.4);
+    transform: scale(1.4);
 }
 
 
@@ -1200,6 +1212,7 @@ h3 {
 
 h4 {
 	font-size: 1.5em;
+	line-height: 1.5em;
 }
 
 h5 {
@@ -1278,4 +1291,11 @@ p {
 }
 
 
-
+.table th{
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+.table thead{
+	
+border-bottom: 2px solid #ddd;
+}
