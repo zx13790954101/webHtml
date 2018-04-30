@@ -1,6 +1,8 @@
 function init(){
 	
 }
+
+
 //表单工具箱
 var formTool={
 	//如果是价格的输入框，输入小数onkeyup执行下面函数
@@ -107,19 +109,24 @@ var otherTool={
         evObj.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, true, false, 0, null);
         $a.dispatchEvent(evObj);
     },
+    //顶置的按钮上下的按钮
     scollTop:function(namxbox,nametop,namebuttom){
-       $(window).scroll(function() {
-        if ($(window).scrollTop() >= 300) {
-            $(namxbox).fadeIn(600);
-        } else {
-            $(namxbox).fadeOut(600);
-        }
-	    });
+    	$(namxbox).hide();
+    	$(nametop).css({"cursor":'pointer'});
+    	$(namebuttom).css({"cursor":'pointer'});
+        $(window).scroll(function() {
+		    if ($(window).scrollTop() <= 300) {
+		        $(namxbox).fadeIn(600);
+		    } else {
+		        $(namxbox).fadeOut(600);
+		    }
+	   });
 	    if(nametop!=undefined||nametop!=null){
 		    $(nametop).click(function() {
 		        $("html,body").animate({
 		            scrollTop: 0
 		        }, 500);
+		        $(namxbox).fadeOut(600);
 		    });
 	    }
 	    if(namebuttom!=undefined||namebuttom!=null){

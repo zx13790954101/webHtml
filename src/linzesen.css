@@ -1,37 +1,177 @@
 @charset "utf-8";
-*{ letter-spacing: 1px; padding: 0px; margin: 0px;font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
-li{list-style:none;text-decoration: none;}
+* {
+	letter-spacing: 1px;
+	padding: 0px;
+	margin: 0px;
+	font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+html {
+	font-size: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+	font-family: sans-serif;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+	color: #333;
+}
+
+li {
+	list-style: none;
+	text-decoration: none;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+
 /* 清除内外边距 */
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
-dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
-pre, /* text formatting elements 文本格式元素 */
-fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
-th, td {  margin: 0;   padding: 0;}
-h1, h2, h3, h4, h5, h6{ word-wrap: break-word;word-break:break-all;display: block; vertical-align: middle;}
-span{ display: inline-block; }
-iframe{
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+
+/* structural elements 结构元素 */
+
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+
+/* list elements 列表元素 */
+
+pre,
+
+/* text formatting elements 文本格式元素 */
+
+fieldset,
+lengend,
+button,
+input,
+textarea,
+
+/* form elements 表单元素 */
+
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	word-wrap: break-word;
+	word-break: break-all;
+	display: block;
+	vertical-align: middle;
+}
+
+span {
+	display: inline-block;
+	font-size: 15px;
+	padding-right: 5px;
+}
+
+i {
+	margin: 0px 5px;
+}
+
+iframe {
 	width: 100%;
 	height: 100%;
 }
-/*通过input : -webkit-autofill来进行修改！ 修改chrome记住密码后自动填充表单的黄色背景*/
-input:-webkit-autofill {
-    background-color: #FAFFBD;
-    background-image: none;
-    color: #000;
-}
-textarea{ width: 100%; height: 50px; }
-/* 重置文本格式元素 */
-a { text-decoration: none; }
-a:hover {text-decoration: none;}
-img{ width: 100%; }
 
-/*响应式的布局  boostrap的布局方式*/
-.container{
-	margin:0 auto;
+.iconfont:before {
+	padding-right: 5px;
 }
+
+
+/*通过input : -webkit-autofill来进行修改！ 修改chrome记住密码后自动填充表单的黄色背景*/
+
+input:-webkit-autofill {
+	background-color: #FAFFBD;
+	background-image: none;
+	color: #000;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 1px solid beige;
+}
+
+textarea {
+	width: 100%;
+	height: 50px;
+}
+
+
+/* 重置文本格式元素 */
+
+a {
+	text-decoration: none;
+	font-size: 14px;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	width: 100%;
+}
+
+
+/*标签*/
+
+.pointer {
+	cursor: pointer;
+}
+
+.none{
+	display: none;
+    transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+}
+/*响应式的布局  boostrap的布局方式*/
+
 @media (min-width:768px) {
 	.container {
-		width: 750px;
+		width: 100%;
+		margin: 0 auto;
 	}
 }
 
@@ -43,7 +183,15 @@ img{ width: 100%; }
 
 @media (min-width:1200px) {
 	.container {
-		width: 1170px
+		width: 1140px;
+		margin: 0 auto;
+	}
+}
+
+@media (min-width:1367px) {
+	.container {
+		width: 1200px;
+		margin: 0 auto;
 	}
 }
 
@@ -55,9 +203,8 @@ img{ width: 100%; }
 }
 
 .row {
-	margin-right: -15px;
-	margin-left: -15px;
-	margin: 0px;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .col-lg-1,
@@ -111,7 +258,8 @@ img{ width: 100%; }
 	position: relative;
 	min-height: 1px;
 	padding-right: 15px;
-	padding-left: 15px
+	padding-left: 15px;
+	box-sizing: border-box;
 }
 
 .col-xs-1,
@@ -130,7 +278,7 @@ img{ width: 100%; }
 }
 
 .col-xs-12 {
-	width: 100%
+	width: 100%;
 }
 
 .col-xs-11 {
@@ -166,7 +314,7 @@ img{ width: 100%; }
 }
 
 .col-xs-3 {
-	width: 25%
+	width: 25%;
 }
 
 .col-xs-2 {
@@ -346,7 +494,7 @@ img{ width: 100%; }
 	.col-sm-7,
 	.col-sm-8,
 	.col-sm-9 {
-		float: left
+		float: left;
 	}
 	.col-sm-12 {
 		width: 100%
@@ -854,42 +1002,52 @@ img{ width: 100%; }
 	display: table;
 	content: " "
 }
+
 .clearfix:after,
 .container-fluid:after,
 .container:after,
 .row:after {
 	clear: both
 }
+
+
 /*响应式的布局  boostrap的布局方式*/
 
-
-
-.background_cover{
+.background_cover {
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: -webkit-fill-available;
+	height: inherit;
 }
-.word_wrap{
-	 word-wrap: break-word;
-     word-break: normal;
+
+.word_wrap {
+	word-wrap: break-word;
+	word-break: normal;
 }
-.word_wrap_eg{
-	word-break:break-all;
-}
-.ellipsis {
-	text-overflow: ellipsis;
+
+.word_wrap_eg {
 	word-break: break-all;
-	/*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
-	display: -webkit-box;
-	/*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-	/*用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：*/
+}
+
+.ellipsis {
+	position: relative;
+	-moz-white-space: nowrap;
+	white-space: nowrap;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	/* -moz-binding: url('ellipsis.xml#ellipsis');*/
+	/* word-break: break-all; */
+	/*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
+	/* display: -webkit-box; */
+	/*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+	/* -webkit-box-orient: vertical; */
+	/* -webkit-line-clamp: 1; */
+	/*用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：*/
 }
 
 .ellipsis-line-2 {
+	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: break-all;
 	/*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
@@ -898,16 +1056,15 @@ img{ width: 100%; }
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	/*用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：*/
-	overflow: hidden;
 }
 
 .ellipsis-line-3 {
+	overflow: hidden;
 	word-break: break-all;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	overflow: hidden;
 }
 
 
@@ -970,7 +1127,6 @@ img{ width: 100%; }
 	transition: all 1s ease-in-out;
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
-	
 }
 
 .img-auto {
@@ -983,94 +1139,128 @@ img{ width: 100%; }
 	height: auto;
 }
 
-.img-responsive {
-	max-width: 100%;
+.img-circle {
+	width: 90px;
+	height: 90px;
 	overflow: hidden;
 	display: flex;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	align-items: center;
-	justify-content:  center;
+	justify-content: center;
+	border-radius: 50%;
+	box-sizing: border-box;
 }
 
-.img-responsive img:first-child {
-	width: 100%;
-	max-width: 100%;
-	height: auto;
+.img-circle img:first-child {
+	width: auto;
+	max-width: none;
+	height: 100%;
 	-webkit-transition: all 0.8s ease-in-out;
 	-moz-transition: all 0.8s ease-in-out;
 	transition: all 0.8s ease-in-out;
+	display: table-cell;
+}
+
+.img-responsive {
+	overflow: hidden;
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	align-items: center;
+	justify-content: center;
+}
+
+.img-responsive img:first-child {
+	width: auto;
+	max-width: none;
+	height: 100%;
+	/* 	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
 	display:  table-cell;
+	overflow:  hidden; */
 }
-.img-responsive img:hover {
-    -webkit-transition: scale(1.4);
-    -moz-transform: scale(1.4);
-    transform: scale(1.4);
-}
+
+
+/* .img-responsive img:hover {
+    -webkit-transition: scale(1.1);
+    -moz-transform: scale(1.1);
+    transform: scale(1.1);
+} */
 
 
 /*布局*/
 
 .flex-center {
 	display: flex !important;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
 	-webkit-align-items: center;
 	align-items: center;
-	-ms-flex-align:center;
+	-ms-flex-align: center;
 	vertical-align: middle;
+	-webkit-flex-wrap: wrap;
+	/* Safari 6.1+ */
+	flex-wrap: wrap;
 }
-.flex-end{
+
+.flex-end {
 	display: flex !important;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
 	align-items: center;
 	-webkit-align-items: center;
-	-ms-flex-align:center;
+	-ms-flex-align: center;
 }
+
 .flex {
 	display: flex !important;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
 	/* width: 100%; */
 	zoom: 1;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
-.flex-center-y{
+.flex-center-y {
 	display: flex !important;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
 	justify-content: center;
-	-ms-flex-pack:center;
+	-ms-flex-pack: center;
 }
-.flex-right{
+
+.flex-right {
 	display: flex !important;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
-	
 	justify-content: flex-end;
-	-ms-flex-pack:end;
+	-ms-flex-pack: end;
 }
+
 
 /*列表的ul-li*/
 
 .flex-list {
 	display: flex;
-	display: -webkit-flex  !important;
+	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
-	
 	align-items: center;
 	-webkit-align-items: center;
-	-ms-flex-align:center;
+	-ms-flex-align: center;
 	flex-flow: row wrap;
-	
 }
 
 .flex-item {
 	flex: 1;
-	-ms-flex:1;
+	-ms-flex: 1;
 	-webkit-flex: 1;
-	-webkit-box:1;
+	-webkit-box: 1;
 	-webkit-box-flex: 1;
 }
 
@@ -1090,9 +1280,7 @@ img{ width: 100%; }
 .table-box {
 	display: table;
 	vertical-align: middle;
-	
 }
-
 
 .table-cell {
 	display: table-cell;
@@ -1182,59 +1370,113 @@ img{ width: 100%; }
 
 .block {
 	display: block;
+	width: 100%;
 }
 
 .inline {
 	display: inline;
 }
 
+.inline>* {
+	display: inline;
+}
+
 
 /*文字的响应式*/
+
 html {
 	font-size: 12px;
 }
 
 body {
 	font-size: 12px;
+	font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 h1 {
-	font-size: 3.0em;
+	font-size: 3.0rem;
 }
 
 h2 {
-	font-size: 2.5em;
+	font-size: 2.5rem;
 }
 
 h3 {
-	font-size: 2.0em;
+	font-size: 2.0rem;
+	line-height: 2.4rem;
+	color: inherit;
 }
 
 h4 {
-	font-size: 1.5em;
-	line-height: 1.5em;
+	font-size: 1.4rem;
+	line-height: 1.9rem;
 }
 
 h5 {
-	font-size: 1.20em;
+	font-size: 1.17rem;
+	line-height: 1.7rem;
+	color: inherit;
 }
 
 h6 {
-	font-size: 1.00em;
+	font-size: 1.00rem;
 }
 
 p {
-	line-height: 20px;
+	line-height: 1.6rem;
+}
+
+.h1 {
+	font-size: 3.0rem;
+}
+
+.h2 {
+	font-size: 2.5rem;
+}
+
+.h3 {
+	font-size: 2.0rem;
+	line-height: 2.4rem;
+}
+
+.h4 {
+	font-size: 1.4rem;
+	line-height: 1.9rem;
+}
+
+.h5 {
+	font-size: 1.17rem;
+	line-height: 1.7rem;
+}
+
+.h6 {
+	font-size: 1.00rem;
+}
+
+@media screen and (min-width: 1367px) {
+	html {
+		font-size: 12px;
+	}
+	body {
+		font-size: 13px;
+	}
 }
 
 @media screen and (max-width: 1366px) {
 	html {
-		font-size: 11px;
+		font-size: 12px;
+	}
+	body {
+		font-size: 12px;
 	}
 }
 
 @media screen and (max-width: 992px) {
 	html {
+		font-size: 12spx;
+	}
+	body {
 		font-size: 12px;
 	}
 }
@@ -1243,11 +1485,17 @@ p {
 	html {
 		font-size: 13px;
 	}
+	body {
+		font-size: 11px;
+	}
 }
 
 @media screen and (max-width: 479px) {
 	html {
 		font-size: 14px;
+	}
+	body {
+		font-size: 12px;
 	}
 }
 
@@ -1258,20 +1506,22 @@ p {
 }
 
 .border-left {
-	border-left: 1px solid #76767661;
-	box-shadow: -1px 0px 1px 0.5px #ffffff4d;
+	border-left: 1px solid #eeeeee40;
+	/* box-shadow: -1px -2px 1px 0.5px #ffffff17; */
 }
 
 .border-right {
-	border-right: 1px solid #76767661;
-	box-shadow: 1px 0px 1px 0.5px #ffffff4d;
+	border-right: 1px solid #eeeeee63;
+	/* box-shadow: 1px 0px 1px 0.5px #ffffff4d; */
 }
+
+
 
 .button {
 	background-color: #1E9FFF;
 	border: 1px solid #a2a2a269;
 	border-radius: 5px;
-	padding: 10px 15px;
+	padding: 5px 15px;
 	vertical-align: middle;
 	text-align: center;
 	font-size: 14px;
@@ -1279,23 +1529,395 @@ p {
 	margin: 0px 15px;
 }
 
-.list-group .list-group-item {
-}
+.list-group .list-group-item {}
+
+
 /*子选项的内容的*/
 
 .item-group {}
 
 .item-group>* {
 	display: inline-block;
+	vertical-align: middle;
+}
+
+.table th {
+	text-align: left;
+	border-bottom: 2px solid #ddd;
+}
+
+.table thead {
+	border-bottom: 2px solid #ddd;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.animate table tbody tr:hover {
+	box-shadow: 0px 15px 30px #aaa;
+/* 	background-color: white; */
+	transform: translate3d(0, -5px, 0);
+	-ms-transform: translate3d(0, -5px, 0);
+	-o-tranform: translate3d(0, -5px, 0);
+	-webkit-transform: translate3d(0, -5px, 0);
+	-moz-transform: translate3d(0, -5px, 0);
+	transition: all 0.2s linear 0s;
+	-webkit-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	-ms-transition: all 0.2s linear 0s;
+	-moz-transition: all 0.2s linear 0s;
+	border: 0px;
+}
+.tab-nav{
+	padding: 0px 0px;
+}
+.tab-nav li {
+	display: inline-block;
+	box-sizing: border-box;
+	/* margin-right: 15px; */
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+	margin-right: 15px;
+}
+
+.tab-nav li:last-child {
+		margin-right:0px;
+}
+
+.tab-nav .active>button{
+	
+background-color: #1E9FFF; */
+	
+box-sizing: border-box; */
+	
+/* border: 1px solid #1e9fff; */
+	
+box-sizing: border-box;
+	
+border: 1px solid #1e9fff;
+}
+.tab-nav .active>* {
+	/* box-sizing: border-box; */
+	/* border: 1px solid #1e9fff; */
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+	animation: tab_nav 1s 1;
+	-moz-animation: tab_nav 1s 1;
+	/* Firefox */
+	-webkit-animation: tab_nav 1s 1;
+	/* Safari and Chrome */
+	-o-animation: tab_nav 1s 1;
+	/* Opera */
+	/* background-color: #1E9FFF; */
+	color: white;
+	/* background: -webkit-linear-gradient(#1E9FFF, #40aeff, #90cdfc); */
+	/* Safari 5.1 - 6.0 */
+	/*background: -o-linear-gradient(#1E9FFF, #40aeff, #90cdfc);*/
+	/* Opera 11.1 - 12.0 */
+	/*background: -moz-linear-gradient(#1E9FFF, #40aeff, #90cdfc);*/
+	/* Firefox 3.6 - 15 */
+	/* background: linear-gradient(#1E9FFF, #40aeff, #90cdfc); */
+	/* 标准的语法（必须放在最后） */
+}
+
+@keyframes tab_nav {
+	from {
+		opacity: 0.7;
+		filter: Alpha(opacity=70);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-moz-keyframes tab_nav
+/* Firefox */
+
+{
+	from {
+		opacity: 0.7;
+		filter: Alpha(opacity=70);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-webkit-keyframes tab_nav
+/* Safari 和 Chrome */
+
+{
+	from {
+		opacity: 0.7;
+		filter: Alpha(opacity=70);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-o-keyframes tab_nav
+/* Opera */
+
+{
+	from {
+		opacity: 0.7;
+		filter: Alpha(opacity=70);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+.tab-content>.tab-content-item {
+	display: none;
+}
+.tab-button.active{
+	
+background-color: #1E9FFF;
+	
+color:  white;
+	
+border: 1px solid #1e9fff;
+	
+-webkit-transition: all 0.6s ease-in-out;
+	
+-moz-transition: all 0.6s ease-in-out;
+	
+transition: all 0.6s ease-in-out;
+}
+.tab-content {
+	/* border-top: 1px solid gainsboro; */
+	padding: 10px 0px;
+}
+
+.tab-content .active,.tab-content.active {
+	display: block;
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+}
+
+button {
+	border-radius: 200px;
+	color: #37393a;
+	font-size: 1.17rem;
+	border: solid 1px #dcdcdc;
+	padding: 2px 18px;
+	line-height: 2.2em;
+	background-color: rgba(0, 0, 0, 0);
+	box-sizing: border-box;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+button:hover {
+	border: 1px solid #64aff0;
+	opacity: 0.7;
+	font-size: 1.17rem;
+	filter: alpha(opacity=70);
+	color: #64aff0;
+	box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	-webkit-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	-moz-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	transition: all 0.4s linear 0s;
+	-webkit-transition: all 0.4s linear 0s;
+	-o-transition: all 0.4s linear 0s;
+	-ms-transition: all 0.4s linear 0s;
+	-moz-transition: all 0.4s linear 0s;
+}
+button:active,button:focus {
+	border: 1px solid #32a9f2;
+	font-size: 1.17rem;
+	color: #ffffff;
+	background-color: #32a9f2;
+	transition: all 0.4s linear 0s;
+	-webkit-transition: all 0.4s linear 0s;
+	-o-transition: all 0.4s linear 0s;
+	-ms-transition: all 0.4s linear 0s;
+	-moz-transition: all 0.4s linear 0s;
+}
+
+.button-group {
+	padding: 15px 0px
+}
+
+.button-group>button,
+.button-group span {
+	margin: 5px 15px 5px 0px;
 	vertical-align:  middle;
 }
 
-
-.table th{
-  text-align: left;
-  border-bottom: 2px solid #ddd;
+.button-group>button.active,
+.button-group span.active {
+	background-color: #32a9f2;
+	color: white;
+	border: 1px solid #32a9f2;
 }
-.table thead{
-	
-border-bottom: 2px solid #ddd;
+
+.button-group>button:last-child,
+.button-group span:last-child {
+	margin-right: 0px;
+	vertical-align:  middle;
+}
+
+.dot {
+	display: inline-block;
+	width: 0px;
+	margin-left:  10px;
+	height: 6px;
+	background-color: #32a9f2;
+	border-radius: 50%;
+	margin-right: 8px;
+	vertical-align: middle;
+	line-height: inherit;
+}
+
+.scrollbar {
+	overflow: auto;
+}
+
+
+/*滚动条样式*/
+
+.scrollbar::-webkit-scrollbar {
+	/*滚动条整体样式*/
+	width: 4px;
+	/*高宽分别对应横竖滚动条的尺寸*/
+	height: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+	/*滚动条里面小方块*/
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+	/*滚动条里面轨道*/
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	border-radius: 0;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width:768px) {
+	.col-sm-1,
+	.col-sm-10,
+	.col-sm-11,
+	.col-sm-12,
+	.col-sm-2,
+	.col-sm-3,
+	.col-sm-4,
+	.col-sm-5,
+	.col-sm-6,
+	.col-sm-7,
+	.col-sm-8,
+	.col-sm-9 {
+		float: left;
+		flex: none;
+		-ms-flex: none;
+		-webkit-flex: none;
+		-webkit-box: none;
+		-webkit-box-flex: none;
+	}
+	.col-xs-1,
+	.col-xs-10,
+	.col-xs-11,
+	.col-xs-12,
+	.col-xs-2,
+	.col-xs-3,
+	.col-xs-4,
+	.col-xs-5,
+	.col-xs-6,
+	.col-xs-7,
+	.col-xs-8,
+	.col-xs-9 {
+		float: left;
+		flex: none;
+		-ms-flex: none;
+		-webkit-flex: none;
+		-webkit-box: none;
+		-webkit-box-flex: none;
+		box-sizing: border-box;
+	}
+}
+.tooltip-div{
+    position: absolute;
+    overflow:  hidden;
+    width:  auto;
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    line-break: auto;
+}
+ .tooltip-arrow {
+    display:  inline-block;
+    border-style: solid;
+    border-width: 6px 6px 6px 6px;
+    border-color: transparent transparent transparent  #535353bd;
+}
+.tooltip-inner {
+    width: auto;
+    min-width: 80px;
+    /* max-width: 200px; */
+    padding: 5px 10px;
+    color: #fff;
+    text-align: center;
+    background-color: #535353bd;
+    border-radius: 4px;
+    /* position:  absolute; */
+    z-index: 9999;
+    display:  inline-block;
+}
+.blue{
+	color:#32a9f2;
+	background-color: #32a9f2;
+}
+/* firebox的Hack */
+
+@-moz-document url-prefix() {
+	.ellipsis-line-2 {
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		/*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
+		display: -webkit-box;
+		/*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		/*用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：*/
+		max-height: 50px;
+	}
 }
