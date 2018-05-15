@@ -20,37 +20,79 @@
 			<div class="section-content-l">
 
 				<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
-				  <li class="layui-nav-item layui-nav-itemed">
-				    <a href="javascript:;" >布局</a>
-				    <dl class="layui-nav-child">
-				      <dd><a href="javascript:;"  dataSrc="html/flex-box.html"  onclick="publicInit.toIframe(this)">flex布局的实现</a></dd>
-				      <dd><a href="javascript:;"  dataSrc="html/table的布局.html" onclick="publicInit.toIframe(this)">table布局的实现</a></dd>
-				      <dd><a href="javascript:;" dataSrc="html/layui的布局.html" onclick="publicInit.toIframe(this)">layui的布局</a></dd>
-				      <dd><a href="javascript:;" onclick="publicInit.toIframe(this)">常用布局</a></dd>
-				    </dl>
-				  </li>
-				  <li class="layui-nav-item layui-nav-itemed">
-				    <a href="javascript:;" >插件</a>
-				    <dl class="layui-nav-child">
-				      <dd><a href="javascript:;"  dataSrc="html/flex-box.html"  onclick="publicInit.toIframe(this)">swiper轮播图</a></dd>
-				
-				    </dl>
-				  </li>
-				  <li class="layui-nav-item"><a href="javascript:;" onclick="publicInit.toIframe(this)">布局</a></li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">布局</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:;" dataSrc="html/flex-box.html" onclick="publicInit.toIframe(this)">flex布局的实现</a>
+							</dd>
+							<!--<dd><a href="javascript:;"  dataSrc="html/table的布局.html" onclick="publicInit.toIframe(this)">table布局的实现</a></dd>-->
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui的布局.html" onclick="publicInit.toIframe(this)">layui的布局</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" onclick="publicInit.toIframe(this)">常用布局</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">插件</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:;" dataSrc="html/flex-box.html" onclick="publicInit.toIframe(this)">swiper轮播图</a>
+							</dd>
+
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;" onclick="publicInit.toIframe(this)">布局</a>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">layui布局</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/form.html" onclick="publicInit.toIframe(this)">layui-from</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/login.html" onclick="publicInit.toIframe(this)">layui-login</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/nav.html" onclick="publicInit.toIframe(this)">layui-nav</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/table-form.html" onclick="publicInit.toIframe(this)">layui-tbale-form</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/table.html" onclick="publicInit.toIframe(this)">layui-table</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" dataSrc="html/layui/tab.html" onclick="publicInit.toIframe(this)">layui-tab</a>
+							</dd>
+						</dl>
+
+					</li>
 				</ul>
-			
+
 			</div>
-			
+
 			<div class="section-content-r flex-item  ">
-				<iframe class="iframe_content" src="html/flex-box.html">
+				<!--<div class="layui-header">
+			
+			        <ul class="layui-nav ">
+			          <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+			            <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+			              <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+			            </a>
+			          </li>
+			        </ul>
+				</div>-->
+				<iframe class="iframe_content " src="html/flex-box.html" style="padding: 20px;">
 					
 				</iframe>
 
 			</div>
 
 		</section>
-
-	
 
 		<!--js的引入-->
 		<script type="text/javascript" src="plugin/jquery/jquery.min.js"></script>
@@ -67,33 +109,43 @@
 				//监听导航点击
 				element.on('nav(demo)', function(elem) {
 					//console.log(elem)
-					layer.msg(elem.text());
-					console.log("data",elem,elem.dataSrc);
+					//layer.msg(elem.text());
+					console.log("data", elem, elem.dataSrc);
 				});
 			});
-			
-			
-			$(function(){
-				
+
+			$(function() {
+				//屏幕的初始化
 				publicInit.windowsResize();
+
+				$(".layui-header li").click(function() {
+					if($(this).find("i").hasClass("layui-icon-spread-left")) {
+						$(this).find("i").addClass("layui-icon-spread-right");
+					} else {
+						$(this).find("i").addClass("layui-icon-spread-left");
+					}
+
+				});
 			});
-			
-			var publicInit={
-				toIframe:function(obj){
-					$(".iframe_content").attr("src",$(obj).attr("dataSrc"));
+
+			var publicInit = {
+				toIframe: function(obj) {
+					$(".iframe_content").attr("src", $(obj).attr("dataSrc"));
 				},
-				windowsResize:function(){
-					  var windows_height=$(window).height()-4;
-					   $("section").css({"height":windows_height});
-					   $(window).resize(function(){
-						   	var windows_height=$(window).height();
-						   $("section").css({"height":windows_height});
-					   });
+				windowsResize: function() {
+					var windows_height = $(window).height() - 4;
+					$("section").css({
+						"height": windows_height
+					});
+					$(window).resize(function() {
+						var windows_height = $(window).height();
+						$("section").css({
+							"height": windows_height
+						});
+					});
 				}
-				
+
 			}
-			
-			
 		</script>
 
 	</body>

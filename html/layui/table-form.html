@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../src/linzesen.css" />
+	</head>
+
+	<body>
+		<div class="container">
+
+			<form id="searchFromSearch" action="" class="layui-form layui-form-pane">
+				<div class="layui-form-item flex-center">
+					<div class="layui-inline">
+						<label class="layui-form-label">教师名称</label>
+						<div class="layui-input-inline">
+							<input type="text" id="F_TEACHERNAME" name="F_TEACHERNAME" class="layui-input" />
+						</div>
+						<a class="layui-btn " id="search">
+							<i class="layui-icon">&#xe615;</i> 搜索
+						</a>
+					</div>
+				</div>
+			</form>
+
+			<div class="layui-btn-group  button-group">
+				<button id="addBtn"><i class="layui-icon">&#xe654;</i> 添加</button>
+				<button id="detailBtn">查看</button>
+				<button id="editBtn"><i class="layui-icon">&#xe654;</i>编辑</button>
+				<button id="editPassword">修改密码</button>
+				<button id="recordBtn">申请备案</button>
+				<button id="deleteBtn"><i class="layui-icon">&#x1006;</i>删除</button>
+			</div>
+			<!--表格-->
+			<div class="layuiTable">
+				<table class="layui-hide" id="tableList" lay-filter="tableList"></table>
+			</div>
+			<!--表格-->
+		</div>
+		<div>
+			<script type="text/html" id="StateTpl">
+				<input type="checkbox" name="State" value="{{d.F_LESSONNAME}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="StateFiter" {{ d.PageCount==1 ? 'checked' : '' }}>
+			</script>
+			<!-- table的弹出框 -->
+			<script type="text/html" id="ColToolBtn">
+				<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+				<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				<a class="layui-btn layui-btn-xs" lay-event="password">修改密码</a>
+				<a class="layui-btn layui-btn-xs" lay-event="record">申请备案</a>
+				<a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+			</script>
+
+			<script type="text/html" id="edit-form">
+				<div class="container edit-form">
+					<form class="layui-form  layui-form-pane" action="">
+
+						<div class="layui-form-item  flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">教师姓名</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.username||''}}" name="F_TEACHERNAME" lay-verify="required" class="layui-input" />
+								</div>
+							</div>
+							<div class="layui-inline  flex-item">
+								<label class="layui-form-label">教师性别</label>
+								<div class="layui-input-block">
+									<select name="F_SEX" value="{{d.F_SEX||''}}" initvalue="{{d.F_SEX}}">
+										<option value="">请选择性别</option>
+										<option value="0">男</option>
+										<option value="1">女</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-form-item flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">出生年月</label>
+								<div class="layui-input-block">
+									<input type="text" class="jsontime  layui-input" name="F_BIRTHDAY" id="time-select" placeholder="yyyy-MM-dd">
+								</div>
+							</div>
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">学历</label>
+								<div class="layui-input-block">
+									<select name="F_DEGREE" id="F_DEGREE" value="全日制普通博士" initvalue="全日制普通博士">
+										<option value="">请选择教师学历</option>
+										<option value="全日制普通博士">全日制普通博士</option>
+										<option value="全日制普通硕士(包括学术型硕士和专业硕士)">全日制普通硕士(包括学术型硕士和专业硕士)</option>
+										<option value="非全日制普通硕士(专业硕士)">非全日制普通硕士(专业硕士)</option>
+										<option value="全日制普通第二学士学位">全日制普通第二学士学位</option>
+										<option value="全日制普通本科">全日制普通本科</option>
+										<option value="全日制普通专科(高职)">全日制普通专科(高职)</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">教龄</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHYEAR||''}}" name="F_TEACHYEAR" id="F_TEACHYEAR" class="layui-input" />
+								</div>
+							</div>
+
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">联系电话</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_PHONE||''}}" name="F_PHONE" class="layui-input" lay-verify="phone">
+								</div>
+							</div>
+
+						</div>
+						<div class="layui-form-item flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">任教学科</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHINGSUBJECTS||''}}" name="F_TEACHINGSUBJECTS" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">电子邮件</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHEREMAIL||''}}" name="F_TEACHEREMAIL" class="layui-input" lay-verify="email">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">住址</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHERADDRESS||''}}" lay-verify="address" name="F_TEACHERADDRESS" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">教师职称</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHERTITLE||''}}" name="F_TEACHERTITLE" class="layui-input">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item ">
+							<label class="layui-form-label">获得最高学历院校或机构</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_SCHOOL||''}}" name="F_SCHOOL" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">教学特色</label>
+							<div class="layui-input-block">
+								<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">教学成果</label>
+							<div class="layui-input-block">
+								<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">个人介绍</label>
+							<div class="layui-input-block">
+								<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+							</div>
+						</div>
+
+						<div class="layui-form-item flex">
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">登录账号</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_USERNAME||''}}" name="F_USERNAME" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline flex-item">
+								<label class="layui-form-label">登录密码</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_PASSWORD||''}}" name="F_PASSWORD" class="layui-input">
+								</div>
+							</div>
+						</div>
+
+						<button lay-filter="edit" lay-submit style="display: none;"></button>
+					</form>
+				</div>
+			</script>
+			<script type="text/html" id="Update-form">
+				<div style="margin-top:40px;" class="container">
+					<form class="layui-form " action="">
+
+						<input type="hidden" value="{{d.F_TEACHERID||''}}" name="F_TEACHERID" id="F_TEACHERID" class="layui-input F_TEACHERID" />
+						<input type="hidden" value="{{d.F_USERID||''}}" name="F_USERID" id="F_USERID" class="layui-input F_USERID" />
+						<input type="hidden" value="{{d.F_AUDITSTATUS||''}}" name="F_AUDITSTATUS" id="F_AUDITSTATUS" class="layui-input F_AUDITSTATUS" />
+
+						<div class="layui-form-item flex-center">
+							<div class="layui-inline  flex-item ">
+								<label class="layui-form-label" style="width:auto">教师姓名</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHERNAME||''}}" name="F_TEACHERNAME" lay-verify="required" class="layui-input" readonly="readonly" />
+								</div>
+							</div>
+							<div class="layui-inline  flex-item">
+								<label class="layui-form-label" style="width:auto">教师性别</label>
+								<div class="layui-input-block">
+									<select name="F_SEX" value="{{d.F_SEX||''}}" initvalue="{{d.F_SEX}}" class="layui-select">
+										<option value="">请选择性别</option>
+										<option value="0">男</option>
+										<option value="1">女</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item flex-center">
+							<div class="layui-inline  flex-item ">
+								<label class="layui-form-label" style="width:auto">出生年月</label>
+								<div class="layui-input-block">
+									<input type="text" class="jsontime  layui-input" bindvalue="{{d.F_BIRTHDAY}}" format="yyyy-MM-dd " value="{{d.F_BIRTHDAY||''}}" initvalue="{{d.F_BIRTHDAY||''}}" name="F_BIRTHDAY" id="time-select" placeholder="yyyy-MM-dd" readonly="readonly">
+								</div>
+							</div>
+
+							<div class="layui-inline  flex-item ">
+								<label class="layui-form-label" style="width:auto">联系电话</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_PHONE||''}}" name="F_PHONE" class="layui-input" lay-verify="phone">
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-form-item flex-center">
+							<div class="layui-inline  flex-item ">
+								<label class="layui-form-label" style="width:auto">电子邮件</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHEREMAIL||''}}" name="F_TEACHEREMAIL" class="layui-input" lay-verify="email">
+								</div>
+							</div>
+							<div class="layui-inline  flex-item ">
+								<label class="layui-form-label" style="width:auto">住址</label>
+								<div class="layui-input-block">
+									<input type="text" value="{{d.F_TEACHERADDRESS||''}}" lay-verify="address" name="F_TEACHERADDRESS" class="layui-input">
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width:auto">教学特色</label>
+							<div class="layui-input-block">
+								<textarea class="form-input" value="{{d.F_FEATURES||''}}" id="F_FEATURES" name="F_FEATURES">{{d.F_FEATURES||''}}</textarea>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width:auto">教学成果</label>
+							<div class="layui-input-block">
+								<textarea class="form-input" id="F_RESULTS" name="F_RESULTS">{{d.F_RESULTS||''}}</textarea>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width:auto">个人介绍</label>
+							<div class="layui-input-block">
+								<textarea class="form-input" id="F_INTRODUCE" name="F_INTRODUCE">{{d.F_INTRODUCE||''}}</textarea>
+							</div>
+						</div>
+
+						<button lay-filter="edit" lay-submit style="display: none;"></button>
+					</form>
+				</div>
+			</script>
+			<script type="text/html" id="password-form">
+				<div style="margin-top:40px;" class="container">
+					<form class="layui-form">
+						<input type="hidden" value="{{d.F_USERID||''}}" name="F_USERID" id="F_USERID" class="layui-input F_USERID" />
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width:auto">登录账号</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_USERNAME||''}}" name="F_USERNAME" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width:auto">登录密码</label>
+							<div class="layui-input-block">
+								<input type="text" name="F_PASSWORD" class="layui-input">
+							</div>
+						</div>
+
+						<button lay-filter="edit" lay-submit style="display: none;"></button>
+					</form>
+				</div>
+			</script>
+			<script type="text/html" id="Record-form">
+				<div class="container">
+					<form class="layui-form">
+
+						<input type="hidden" value="{{d.F_TEACHERID||''}}" name="F_TEACHERID" id="F_TEACHERID" class="layui-input F_TEACHERID" />
+						<input type="hidden" value="{{d.F_USERID||''}}" name="F_USERID" id="F_USERID" class="layui-input F_USERID" />
+
+						<div class="layui-form-item ">
+							<label class="layui-form-label">教师姓名</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_TEACHERNAME||''}}" name="F_TEACHERNAME" lay-verify="required" class="layui-input" />
+							</div>
+						</div>
+						<div class="layui-form-item ">
+							<label class="layui-form-label">教师性别</label>
+							<div class="layui-input-block">
+
+								<input type="text" value="{{d.F_SEX||'' ==0?" 男 ":"女 "}}" name="F_SEX" lay-verify="required" class="layui-input" readonly="readonly" />
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">学历</label>
+							<div class="layui-input-block">
+								<select name="F_DEGREE" id="F_DEGREE" value="{{d.F_DEGREE||''}}" initvalue="{{d.F_DEGREE||''}}">
+									<option value="">请选择教师学历</option>
+									<option value="全日制普通博士">全日制普通博士</option>
+									<option value="全日制普通硕士(包括学术型硕士和专业硕士)">全日制普通硕士(包括学术型硕士和专业硕士)</option>
+									<option value="非全日制普通硕士(专业硕士)">非全日制普通硕士(专业硕士)</option>
+									<option value="全日制普通第二学士学位">全日制普通第二学士学位</option>
+									<option value="全日制普通本科">全日制普通本科</option>
+									<option value="全日制普通专科(高职)">全日制普通专科(高职)</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">教龄</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_TEACHYEAR||''}}" name="F_TEACHYEAR" id="F_TEACHYEAR" class="layui-input" />
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">教学范围</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_TEACHINGSUBJECTS||''}}" name="F_TEACHINGSUBJECTS" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">教师职称</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_TEACHERTITLE||''}}" name="F_TEACHERTITLE" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">获得最高学历院校或机构</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_SCHOOL||''}}" name="F_SCHOOL" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">身份证号</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_IDCARD||''}}" name="F_IDCARD" lay-verify="identity" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">教师资格证号</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.F_CERTIFICATEID||''}}" name="F_CERTIFICATEID" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item row">
+							<label class=" col-lg-2 col-xs-3 star-label h5">上传文件 </label>
+							<div class=" flex col-lg-10 col-xs-9 ">
+								<input type="hidden" id="F_FILENAMES" name="F_FILENAMES" class="layui-input" value="{{d.F_FILENAMES||''}}" />
+								<div id="UploadFiles" lay-data="{url: '/SetFile/UploadFile?fileType=2',accept: 'file'}" class="layui-upload-drag  background-color-from col-lg-2 col-xs-3">
+									<i class="iconfont icon-tianjia"></i>
+								</div>
+								<h6 class="col-lg-6 col-xs-6  tip-text"></h6>
+							</div>
+							<div class=" flex col-lg-10 col-xs-9 ">最多上传4个， 限制大小为：60KB， 限制格式为：bmp，png，jpg，jpeg，rar，txt，zip，doc，ppt，xls，pdf，docx，xlsx，rm，rmvb，mpeg1-4，mov，mtv，dat，wmv，avi，3gp，amv，dmv，flv</div>
+
+							<div id="UploadFilesView" class=" flex col-lg-10 col-xs-9 "></div>
+						</div>
+
+						<button lay-filter="edit" lay-submit style="display: none;"></button>
+					</form>
+				</div>
+			</script>
+		</div>
+
+		<input type="text" format="yyyy-MM-dd" initValue="1403058804000" value="c" class="timeFormat" />
+		<input type="text" format="yyyy-MM-dd" initValue="1403058804000" value="1403058804000" class="timeFormat" />
+
+		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
+		<script type="text/javascript " src="../../plugin/layui/layui.all.js " charset="utf-8"></script>
+		<!--公共的js的引入-->
+		<script type="text/javascript " src="../../src/toolkit.js " charset="utf-8"></script>
+		<script type="text/javascript " src="../../plugin/layui-config.js " charset="utf-8"></script>
+		<script>
+			$(function() {
+				otherTool.scollTop(".scroll", ".top", ".bottom");
+				//时间的格式化
+				$('.timeFormat').each(function(index, element) {
+					var that = this;
+					if($(that).attr("format") && $(that).attr("format") != '') {
+						var value = $(that).val();
+						if($(that)[0].localName != 'input') {
+							value = $(that).html();
+						}
+						$(that).val(new Date(parseInt(value)).pattern($(that).attr("format")));
+						$(that).html(new Date(parseInt(value)).pattern($(that).attr("format")));
+					} else {
+						return;
+					}
+				});
+				$('.tooltip').hover(function() {
+					var that = this;
+					console.log("width", $(that).width(), $(that).offset().left)
+					if($(that).attr("tooltip") && $(that).attr("tooltip") != '') {
+						var value = $(that).attr("tooltip");
+						var html2 = '<div class="tooltip-div  flex-center ' + $(that).attr("tooltip-placement") + '  " >\
+					              <div class="tooltip-inner">' + value + '</div><div class="tooltip-arrow" ></div></div>'
+						if($(that).parents().find('.tooltip-div').length > 0) {
+							return;
+						} else {
+							$(that).parents().append(html2);
+
+							$(that).parents().find('.tooltip-div').css({
+								"top": $(that).offset().top + "px",
+								"left": $(that).offset().left - $(that).width() - 50 + "px"
+							})
+						}
+					} else {
+						return;
+					}
+				}, function() {
+					var that = this;
+					$(that).parents().find('.tooltip-div').remove();
+				});
+
+			});
+			/**
+			 * Name:adminApp.js
+			 * Desc:华喜·希安 - 系统用户管理
+			 * Author:Yang Wei · date 2018/2/24
+			 * LICENSE:HX·XA.YangWei
+			 */
+			layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
+				var $ = layui.jquery,
+					com = layui.common,
+					form = layui.form,
+					table = layui.table,
+					upload = layui.upload,
+					laydate = layui.laydate,
+					element = layui.element;
+				var cropbox = {};
+
+				function DateType(data) {
+
+					if(typeof(data) == undefined) {
+						return "";
+					} else if(!data && typeof(data) != "undefined" && data != 0) {
+						return "";
+					} else if(data == null) {
+						return "";
+					} else {
+						return data;
+					}
+				}
+
+				var me = {
+					//初始化入口
+					init: function() {
+						$('#search').on('click', function() {
+							me.getlist();
+						});
+						$('#search').click();
+
+						$('#addBtn').on('click', function() {
+							me.gotoAdd();
+
+						});
+						//查看
+						$('#detailBtn').on('click', function() {
+							var checkStatus = table.checkStatus('tableList');
+							console.log("ddd", checkStatus)
+							me.gotoLook(checkStatus.data[0]);
+
+						});
+						$('#editPassword').on('click', function() {
+							var checkStatus = table.checkStatus('tableList');
+							me.gotoReset(checkStatus.data[0]);
+
+						});
+						$('#recordBtn').on('click', function() {
+							var checkStatus = table.checkStatus('tableList');
+							var status = checkStatus.data[0].F_AUDITSTATUS;
+							if(status == 0 || status == 3 || status == 2) {
+								me.doRecord(checkStatus.data[0], true)
+							} else if(status == 1) {
+								com.oktip("课程备案信息已提交审核，请等待审核结果!");
+							}
+
+						});
+						//删除的
+						$('#deleteBtn').on('click', function() {
+							var checkStatus = table.checkStatus('tableList');
+							layer.confirm('真的删除教师吗', function(index) {
+								/*obj.del();*/
+								me.doDisable(checkStatus.data[0]);
+								layer.close(index);
+							});
+
+						});
+						//编辑
+						$('#editBtn').on('click', function() {
+							var checkStatus = table.checkStatus('tableList');
+							me.gotoUpdate(checkStatus.data[0]);
+						});
+						me.initUploadControlValue();
+
+						//$('#upload_file').click(())
+						//window.location = '/Organization/TeacherTeamAdd/';
+
+					},
+					getFileHostUrl: function() {
+						//获取文件主机域名
+						return window.location.origin;
+					},
+					initUploadControlValue: function() {
+						//获取值初始化到预览控件
+						var F_FILENAMES = $('#F_FILENAMES').val();
+						var itemsArr = '';
+						if(F_FILENAMES != undefined) {
+							itemsArr = F_FILENAMES.split(',');
+						}
+
+						if(itemsArr.length > 0) {
+							for(var i = 0; i < itemsArr.length; i++) {
+
+								var itemArr = itemsArr[i].split('|');
+								if(itemArr.length > 1) {
+
+									me.setValueToViewControl(itemArr[0], itemArr[1], true);
+								}
+							}
+						}
+
+					},
+					setValueToViewControl: function(displayName, displayValue, isInit) {
+						//设置值给预览控件
+
+						var aElement = "<a target='_blank' href='" + me.getFileHostUrl() + displayValue + "'  style='color: red;'>" + displayName + " </a><br />";
+						$('#UploadFilesView').append(aElement);
+
+						if(!isInit) {
+							var F_FILENAMES = $('#F_FILENAMES').val();
+
+							if(F_FILENAMES == '') {
+								F_FILENAMES = (displayName + "|" + displayValue);
+							} else {
+								F_FILENAMES = F_FILENAMES + "," + (displayName + "|" + displayValue);
+							}
+							$('#F_FILENAMES').val(F_FILENAMES);
+						}
+
+					},
+					gotoUpload: function() {
+						///上传图片的方法
+						upload.render({
+							elem: '#UploadFiles',
+							before: function(obj) {
+								layer.load(2);
+							},
+							done: function(res, index, upload) {
+								var a = res;
+								me.setValueToViewControl(res.FileNameOld, res.RelativeFilePath);
+
+								layer.closeAll('loading');
+							}
+						});
+					},
+					//去添加
+					gotoAdd: function() {
+						com.open({
+							type: 1,
+							title: '添加教师',
+							data: {},
+							path: "#edit-form",
+							btn: ['保存', '取消'],
+							shade: false,
+							//offset: ['100px', '30%'],
+							area: ['700px', '70%'],
+							maxmin: true,
+							btnAlign: 'c',
+							yes: function(index) {
+								//触发表单的提交事件
+								$('form.layui-form').find('button[lay-filter=edit]').click();
+							},
+							success: function(layero, index) {
+								layer.full(index);
+								//弹出窗口成功后渲染表单
+								var form = layui.form;
+								layero.find(".UserName").show();
+								layero.find(".PassWord").show();
+								//layero.find("#Birthday").on("click", function () {
+								//    laydate({ elem: this, istime: true, format: 'YYYY-MM-DD' });
+								//})
+								//先保障最大化后初始化上传， 不然按钮定位不准
+								//setTimeout(function () {
+								//    yy_upload.upload($("#HeadImage"), { fileNumLimit: 2, formData: { "stag": 1, "btag": 6, tpsy: false, hasmin: false, wzsy: "" } });
+								//}, 300);
+								laydate.render({
+									elem: '#time-select'
+								});
+								me.gotoupload();
+								form.render();
+								form.on('submit(edit)', function(data) {
+									me.renderControl(layero);
+									me.doAdd(data.field);
+									return false;
+								});
+							}
+						});
+					},
+					//执行添加
+					doAdd: function(json) {
+
+						json.F_PASSWORD = $.md5(json.F_PASSWORD);
+						var lindex = com.load(2);
+						$.ajax({
+							type: "post",
+							url: "/Organization/TeacherTeamAdd",
+							data: json,
+							success: function(json) {
+								com.close(lindex);
+								if(json.Status.Code != 200) {
+									com.notip(json.Status.Remark);
+									return;
+								}
+								layer.closeAll();
+								com.oktip("添加教师成功!");
+								me.getlist();
+							}
+						});
+					},
+					//提交教师备案
+					gotoRecord: function(json) {
+						com.open({
+							type: 1,
+							title: '申请教师备案',
+							data: json,
+							path: "#Record-form",
+							btn: ['提交备案', '取消'],
+							shade: false,
+							area: ['700px', '70%'],
+							maxmin: true,
+							yes: function(index) {
+								//触发表单的提交事件
+								$('form.layui-form').find('button[lay-filter=edit]').click();
+							},
+							success: function(layero, index) {
+								layer.full(index);
+								//弹出窗口成功后渲染表单
+								laydate.render({
+									elem: '#time-select'
+								});
+								form.render();
+								me.gotoUpload();
+
+								form.on('submit(edit)', function(data) {
+									me.renderControl(layero);
+									me.doRecord(data.field, true);
+									console.log("form", layero.find("form").serialize());
+									return false;
+								});
+							}
+						});
+					},
+					//提交教师备案
+					doRecord: function(json, reload) {
+						var lindex = com.load();
+						$.ajax({
+							type: "post",
+							url: "/Organization/AddTeacherRecord",
+							data: json,
+							success: function(data) {
+								com.close(lindex);
+								if(data.Status.Code != 200) {
+									com.notip(data.Status.Remark);
+									return;
+								}
+								com.closeAll();
+								com.oktip("备案提交成功!");
+								if(reload) {
+									me.getlist();
+								}
+							}
+						});
+					},
+					//获取列表
+					getlist: function(prePageIndex) {
+
+						table.render({
+							elem: '#tableList',
+							url: '../../src/demo.json',
+							skin: 'line' //行边框风格
+								,
+							page: {
+								//layout: ['count'] //自定义分页布局
+								layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'] //自定义分页布局
+									,
+								curr: 1 //设定初始在第 5 页
+									,
+								groups: 8 //显示个连续页码
+									,
+								first: false //不显示首页
+									,
+								last: false //不显示尾页
+							},
+							limit: 8,
+							limits: [2, 8, 10, 20, 30, 50, 100],
+							fieldKey: "F_TEACHERID",
+							height: 'full',
+							where: $("#searchFromSearch").serialize(),
+							initSort: {
+								field: "F_CREATEDATE",
+								type: "desc"
+							},
+							cols: [
+								[{
+										field: 'F_LESSONSTARTID',
+										title: '全部',
+										minWidth: 100,
+										checkbox: true,
+										fixed: true
+									},
+
+									{
+										field: 'username',
+										title: '教师姓名',
+										minWidth: 150,
+										align: 'center',
+										unresize: true
+									}, {
+										field: 'F_SEX',
+										title: '性别',
+										minWidth: 70,
+										align: 'center',
+										templet: function(d) {
+											if(d.F_SEX == 0) {
+
+												return "男";
+											} else {
+
+												return "女";
+											}
+										}
+									}, {
+										field: 'F_DEGREE',
+										title: '学历',
+										minWidth: 100,
+										sort: true
+									}, {
+										field: 'F_AUDITSTATUS',
+										title: '备案审核状态',
+										minWidth: 100,
+										sort: true,
+										templet: function(d) {
+											var AUDITSTATUS = DateType(d.F_AUDITSTATUS);
+
+											if(AUDITSTATUS == 0) {
+												return "未备案";
+											} else if(AUDITSTATUS == 1) {
+												//console.log("已发布");
+												return "未审核";
+											} else if(AUDITSTATUS == 2) {
+												//console.log("已发布");
+												return "审核通过";
+											} else if(AUDITSTATUS == 3) {
+												//console.log("已发布");
+												return "未通过";
+											} else {
+												return "未备案";
+											}
+										}
+
+									}, {
+										field: 'F_PHONE',
+										title: '联系电话',
+										sort: true,
+										minWidth: 100
+									}
+
+									//, { fixed: false, width: 350, toolbar: '#ColToolBtn', align: 'center' }
+
+								]
+							],
+							success: function(selector, result) {
+
+							}
+						});
+
+						//监听按钮栏操作
+						table.on('tool(tableList)', function(obj) {
+							var data = obj.data;
+							if(obj.event === 'detail') {
+								console.log(data)
+								//layer.msg('ID：' + data.id + ' 的查看操作');
+								me.gotoLook(data);
+							} else if(obj.event === 'record') {
+								//layer.confirm('真的删除行么', function (index) {
+								//    obj.del();
+								//    layer.close(index);
+								//});
+								var status = data.F_AUDITSTATUS;
+								if(status == 0 || status == 3 || status == 2) {
+									me.gotoRecord(data);
+								} else if(status == 1) {
+									com.oktip("教师备案信息已提交审核，请等待审核结果!");
+								}
+
+							} else if(obj.event === 'edit') {
+								me.gotoUpdate(data);
+							} else if(obj.event === 'password') {
+								me.gotoReset(data);
+							} else if(obj.event === 'delete') {
+								layer.confirm('确定删除教师吗？', function(index) {
+									/*obj.del();*/
+									me.doDisable(data);
+									layer.close(index);
+								});
+
+							}
+						});
+
+					},
+					//准备查看
+					gotoLook: function(json) {
+						com.open({
+							type: 1,
+							title: '查看信息',
+							c: json,
+							path: "#edit-form",
+							btn: ['确定', '取消'],
+							shade: false,
+							area: ['700px', '70%'],
+							maxmin: true,
+							success: function(layero, index) {
+								layer.full(index);
+								setTimeout(function() {
+									layero.find("input[type=text]").attr("readonly", "").addClass("readonly");
+								});
+							}
+						});
+					},
+					//准备修改
+					gotoUpdate: function(json) {
+						com.open({
+							type: 1,
+							title: '教师信息编辑',
+							data: json,
+							path: "#Update-form",
+							btn: ['保存', '取消'],
+							shade: false,
+							area: ['700px', '70%'],
+							maxmin: true,
+							yes: function(index) {
+								//触发表单的提交事件
+								$('form.layui-form').find('button[lay-filter=edit]').click();
+
+							},
+							success: function(layero, index) {
+								layer.full(index);
+								//弹出窗口成功后渲染表单
+								laydate.render({
+									elem: '#time-select'
+								});
+								form.render();
+								form.on('submit(edit)', function(data) {
+									me.renderControl(layero);
+									me.doUpdate(data.field, true);
+									return false;
+								});
+							}
+						});
+					},
+					//执行修改
+					doUpdate: function(json, reload) {
+						var lindex = com.load();
+						$.ajax({
+							type: "post",
+							url: "/Organization/EditTeacherInfo/",
+							data: json,
+							success: function(data) {
+								com.close(lindex);
+								if(data.Status.Code != 200) {
+									com.notip(data.Status.Remark);
+									return;
+								}
+								com.closeAll();
+								com.oktip("修改教师信息成功!");
+								if(reload) {
+									me.getlist();
+								}
+							}
+						});
+					},
+					//教师账号修改
+					gotoReset: function(json) {
+						com.open({
+							type: 1,
+							title: '教师账号修改',
+							data: json,
+							path: "#password-form",
+							btn: ['保存', '取消'],
+							shade: false,
+							area: ['700px', '70%'],
+							maxmin: true,
+							yes: function(index) {
+								//触发表单的提交事件
+								$('form.layui-form').find('button[lay-filter=edit]').click();
+							},
+							success: function(layero, index) {
+								layer.full(index);
+								//弹出窗口成功后渲染表单
+								//laydate.render({
+								//    elem: '#time-select'
+								//});
+								form.render();
+								form.on('submit(edit)', function(data) {
+									me.renderControl(layero);
+									me.doEdit(data.field, true);
+									return false;
+								});
+							}
+						});
+					},
+					//执行修改
+					doEdit: function(json, reload) {
+						//$("  input[name=]")
+						//var dataJson = JSON.parse(json);
+						console.log(json);
+						json.F_PASSWORD = $.md5((json.F_PASSWORD + ''));
+						var lindex = com.load();
+						$.ajax({
+							type: "post",
+							url: "/Organization/EditTeacherAccount/",
+							data: json,
+							success: function(data) {
+								com.close(lindex);
+								if(data.Status.Code != 200) {
+									com.notip(data.Status.Remark);
+									return;
+								}
+								com.closeAll();
+								com.oktip("修改教师信息成功!");
+								if(reload) {
+									me.getlist();
+								}
+							}
+						});
+					},
+					//删除教师
+					doDisable: function(json) {
+
+						$.ajax({
+							type: "post",
+							url: "/Organization/DeleteTeacher",
+							data: json,
+							success: function(json) {
+								if(json.Status.Code != 200) {
+									layer.alert(json.Status.Remark);
+									return;
+								}
+								layer.alert("操作成功!", function() {
+									layer.closeAll();
+									me.getlist();
+								});
+							}
+						});
+
+					},
+					//渲染控件处理
+					renderControl: function(selector) {
+						var idsz = new Array();
+						var namesz = new Array();
+						selector.find(".F_TEACHERID").each(function(i, s) {
+							if($(s).prop("checked")) {
+								idsz.push($(s).val());
+								namesz.push($(s).attr("title"));
+							}
+						});
+						if(idsz.length > 0) {
+							selector.find("#F_TEACHERID").val(idsz.join(","));
+							// selector.find("#F_TEACHERNAME").val(namesz.join(","));
+						} else {
+							selector.find("#F_TEACHERID").val("");
+							// selector.find("#F_TEACHERNAME").val("");
+						}
+					},
+					gotoupload: function() {
+						upload.render({
+							elem: '.UploadFile' //绑定元素  
+								,
+							before: function(obj) {
+								// layer.load(2); //上传loading  
+							},
+							done: function(res, index, upload) {
+								var a = res;
+								$('#F_LESSONPICTURE').val(res.FileNameNew);
+								$('#Photo_View').attr('src', res.Src);
+								//上传完毕回调  
+								//if (res.src != "" && res.src != null) {
+								//    $('#FileName').val(res.name);
+								//    $("#FileUrl").val(res.src);
+								//    获取当前触发上传的元素  
+								//    var items = this.item;
+								//    items.hide();
+								//}
+								//  layer.close(this);
+
+							}
+						});
+
+					}
+				}
+				me.init();
+			});
+		</script>
+	</body>
+
+</html>

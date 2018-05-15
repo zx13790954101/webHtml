@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--lzs的iconfont的引入-->
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../src/linzesen.css" />
+	     <link rel="stylesheet" href="../../src/public_all.css" />
+	     <style>
+		.margin-20 {
+						background-color: #ffffff;
+				margin: 20px 20px;
+				border: ;
+				border: 1px solid #c0c0c0;
+				padding: 20px;
+				border-radius: 0px;
+			}
+			</style>
+	</head>
+
+	<body>
+        
+        
+        <div class="margin-20">
+		    <div class="tab-div1 h5">
+			<ul class="tab-nav ">
+				<li class="active  tab-nav-item">
+					<button class="btn">全部</button>
+				</li >
+				<li class="tab-nav-item">
+					<button class="btn">我的</button></li>
+				<li class="tab-nav-item">
+					<button class="btn">你的</button></li>
+					<li class="tab-nav-item">
+					<button class="btn">他的</button></li>
+						<li class="tab-nav-item">
+					<button class="btn">她的</button></li>
+			</ul>
+
+			<div class="  tab-content">
+				<article class="active tab-content-item">
+					<h2>全部</h2>
+						</article>
+
+				<article class="tab-content-item">
+	                 <h1>我的</h1>
+	                 	</article>
+
+				<article class="tab-content-item"> 
+					<h1>你的</h1>
+				</article>
+               <article class="tab-content-item "> 
+               	  
+               	   	<h3 class="center absolute-center">暂无数据</h3>
+               	   	
+               	 
+ 					
+				</article>
+			</div>
+
+		</div>
+       </div>  
+       	<button class="button" onclick="copyCode(this)">点击复制上面的代码</button>
+      <div class="margin-20">
+       <div class="tab-div2 h5">
+			<ul class="tab-nav   flex-center">
+				<li class="active  tab-nav-item">
+					<button class="btn">全部</button>
+				</li >
+				<li class="tab-nav-item flex-item">
+					<button class="btn">我的</button></li>
+				<li class="tab-nav-item">
+					<button class="btn">更多</button></li>
+			</ul>
+
+			<div class="  tab-content">
+				<article class="active tab-content-item">
+					<h2>全部的内容</h2>
+				</article>
+
+				<article class="tab-content-item">
+	                <h1>ssssssssssss</h1>
+	            </article>
+
+				<article class="tab-content-item"> 
+					<h1>ssssssssssss</h1>
+				</article>
+
+			</div>
+			</div>
+			
+			</div>
+				<button class="button" onclick="copyCode(this)">点击复制上面的代码</button>
+     <div class="margin-20">
+		<div class="tab-div3">
+			<button class="tab-button">点击</button>
+			<div class="tab-content">
+				<h5>
+					我宿舍周杰伦
+				</h5>
+			</div>
+		</div>
+		</div>
+			<button class="button" onclick="copyCode(this)">点击复制上面的代码</button>
+			
+			
+		<div class="margin-20">
+			<div class="button-group  ">
+		        <button class="btn   button-circle ">全部</button>
+		        
+		        <button class="btn  button-circle ">我的</button>
+		  
+		        <button class="btn  button-circle " >你的</button>
+		 
+		        <button class="btn  button-circle " >她的</button>
+            </div>
+			
+		</div>
+		<button class="button" onclick="copyCode(this)">点击复制上面的代码</button>
+		<!--js的引入-->
+		<script type="text/javascript" src="../../plugin/jquery/jquery.min.js"></script>
+		<script src="../../plugin/layui/layui.all.js" charset="utf-8"></script>
+		<script>
+			$(function() {
+
+				tabSlider(".tab-div1" ,function(data){
+					 console.log("data",data.index)
+				});
+				tabSlider(".tab-div2" ,function(data){
+					 console.log("data",data.index)
+				});
+                
+                tabSlider(".tab-div3" ,function(data){
+                	 console.log("data",data.index)
+				},"collapse");
+
+			})
+			
+			function copyCode(obj) {
+				var Url2 = $(obj).prev().html();
+				var oInput = document.createElement('input');
+				oInput.value = Url2;
+				document.body.appendChild(oInput);
+				oInput.select(); // 选择对象
+				document.execCommand("Copy"); // 执行浏览器复制命令
+				oInput.className = 'oInput';
+				oInput.style.display = 'none';
+				alert("复制成功");
+				console.log("ssss", Url2)
+			};
+			//tab的切换
+			function tabSlider(ClassName, callback,type) {
+				//判断名字是否存在
+				var tabDiv=".tab-div ";
+				var tabLi = " .tab-nav li"; //初始化
+				var tbaContent=" .tab-content";
+				if(ClassName) {  tabDiv=ClassName;  }
+				var name = tabDiv+tabLi; 
+				//判断tab的类型
+			    if( type=="collapse" ){
+			    	name=tabDiv+" .tab-button";
+			    	$(tabDiv+tbaContent).addClass("none");
+			    }
+			    console.log(name);
+				$(name).click(function() {
+					var that=this;
+					var index = $(that).index();
+					//2. 让当前li添加active类，并且让其他的li移除active类
+				
+					//3. 让对应下标的div添加selected，并且让其他div移除selected类
+                    var data = {
+							index: index,
+							dom: $(that),
+							tabDiv:tabDiv
+						}
+                    if( type=="collapse" ){
+                        console.log("$(that).hasClass('active')=",name,$(that).hasClass("active"))
+			    	    if( $(that).hasClass("active") ){
+                	     	$(that).removeClass("active");
+                	     	$(tabDiv+tbaContent).removeClass("active");
+                	     	
+	                	}else{
+	                		$(that).addClass("active") ;
+	                		$(tabDiv+tbaContent).addClass("active");
+	                	}
+			    	}else{
+                    	$(that).addClass("active").siblings().removeClass("active");
+                    }
+			    	if( $(tabDiv+" .tab-content .tab-content-item").eq(index).length>0) {
+						$(tabDiv+" .tab-content .tab-content-item").eq(index).addClass("active").siblings().removeClass("active");
+					} else {
+						
+						return data;
+					}
+					
+					//回调函数
+					if(typeof callback === "function") {
+						callback(data);
+					}
+					
+				});
+
+			}
+			
+		</script>
+
+	</body>
+</html>

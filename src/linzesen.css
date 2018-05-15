@@ -10,6 +10,7 @@ html {
 	font-size: 100%;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	box-sizing: border-box;
 }
 
 html,
@@ -30,9 +31,6 @@ li {
 	text-decoration: none;
 }
 
-html {
-	box-sizing: border-box;
-}
 
 *,
 *:before,
@@ -97,8 +95,9 @@ h6 {
 
 span {
 	display: inline-block;
-	font-size: 15px;
-	padding-right: 5px;
+	font-size: 1.17rem;
+	padding-right: 0px;
+	color: black;
 }
 
 i {
@@ -108,6 +107,7 @@ i {
 iframe {
 	width: 100%;
 	height: 100%;
+	border: 0px;
 }
 
 .iconfont:before {
@@ -147,6 +147,7 @@ a {
 
 a:hover {
 	text-decoration: none;
+	color: inherit;
 }
 
 img {
@@ -166,6 +167,7 @@ img {
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
 }
+  input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}
 /*响应式的布局  boostrap的布局方式*/
 
 @media (min-width:768px) {
@@ -1032,17 +1034,17 @@ img {
 .ellipsis {
 	position: relative;
 	-moz-white-space: nowrap;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 	overflow: hidden;
 	text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
 	/* -moz-binding: url('ellipsis.xml#ellipsis');*/
-	/* word-break: break-all; */
+	word-break: break-all;
 	/*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
-	/* display: -webkit-box; */
+	display: -webkit-box;
 	/*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
-	/* -webkit-box-orient: vertical; */
-	/* -webkit-line-clamp: 1; */
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 	/*用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：*/
 }
 
@@ -1368,6 +1370,12 @@ img {
 	width: 100%;
 }
 
+.item-top{
+}
+.item-bottom{
+	
+}
+
 .block {
 	display: block;
 	width: 100%;
@@ -1396,15 +1404,17 @@ body {
 
 h1 {
 	font-size: 3.0rem;
+	line-height: 4.0rem;
 }
 
 h2 {
 	font-size: 2.5rem;
+	line-height: 3.5rem;
 }
 
 h3 {
 	font-size: 2.0rem;
-	line-height: 2.4rem;
+	line-height: initial;
 	color: inherit;
 }
 
@@ -1415,7 +1425,7 @@ h4 {
 
 h5 {
 	font-size: 1.17rem;
-	line-height: 1.7rem;
+	line-height: 1.9rem;
 	color: inherit;
 }
 
@@ -1453,7 +1463,15 @@ p {
 .h6 {
 	font-size: 1.00rem;
 }
-
+.margin-left{
+	margin-left:15px;
+}
+.margin-right{
+	margin-right:15px;
+}
+.margin-15{
+	margin:15px 0px;
+}
 @media screen and (min-width: 1367px) {
 	html {
 		font-size: 12px;
@@ -1474,7 +1492,7 @@ p {
 
 @media screen and (max-width: 992px) {
 	html {
-		font-size: 12spx;
+		font-size: 12px;
 	}
 	body {
 		font-size: 12px;
@@ -1483,7 +1501,7 @@ p {
 
 @media screen and (max-width: 769px) {
 	html {
-		font-size: 13px;
+		font-size: 12px;
 	}
 	body {
 		font-size: 11px;
@@ -1503,6 +1521,7 @@ p {
 	content: "*";
 	color: red;
 	padding: 0px 5px;
+	vertical-align: middle;
 }
 
 .border-left {
@@ -1515,18 +1534,34 @@ p {
 	/* box-shadow: 1px 0px 1px 0.5px #ffffff4d; */
 }
 
-
+.border-null{
+	border: 0px;
+}
 
 .button {
-	background-color: #1E9FFF;
-	border: 1px solid #a2a2a269;
-	border-radius: 5px;
-	padding: 5px 15px;
+	background-color: #1e9fff;
+	border: 1px solid #1e9fff;
+	border-radius: 3px;
+	padding: 10.5px 17px;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 14px;
 	color: white;
 	margin: 0px 15px;
+}
+.button:hover {
+	color: white;
+	box-shadow: 0px 0px 1px 1px rgba(211, 211, 211, 0.8);
+	-webkit-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	-moz-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	box-shadow: 0px 0px 0px 0px rgba(211, 211, 211, 0.8);
+	transition: all 0.4s linear 0s;
+	-webkit-transition: all 0.4s linear 0s;
+	-o-transition: all 0.4s linear 0s;
+	-ms-transition: all 0.4s linear 0s;
+	-moz-transition: all 0.4s linear 0s;
+	border: 1px solid #64aff0;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
 }
 
 .list-group .list-group-item {}
@@ -1543,9 +1578,12 @@ p {
 
 .table th {
 	text-align: left;
+	padding: 6px 0px;
 	border-bottom: 2px solid #ddd;
 }
-
+.table td{
+	padding:6px 0px;
+}
 .table thead {
 	border-bottom: 2px solid #ddd;
 }
@@ -1571,15 +1609,16 @@ table {
 	border: 0px;
 }
 .tab-nav{
-	padding: 0px 0px;
+	padding: 15px 0px 0px 0px;
+	background-color: white;
 }
 .tab-nav li {
 	display: inline-block;
 	box-sizing: border-box;
 	/* margin-right: 15px; */
-	-webkit-transition: all 0.6s ease;
-	-moz-transition: all 0.6s ease;
-	transition: all 0.6s ease;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
 	margin-right: 15px;
 }
 
@@ -1589,7 +1628,7 @@ table {
 
 .tab-nav .active>button{
 	
-background-color: #1E9FFF; */
+background-color: #1e9fff; */
 	
 box-sizing: border-box; */
 	
@@ -1600,27 +1639,22 @@ box-sizing: border-box;
 border: 1px solid #1e9fff;
 }
 .tab-nav .active>* {
-	/* box-sizing: border-box; */
-	/* border: 1px solid #1e9fff; */
 	-webkit-transition: all 0.6s ease;
 	-moz-transition: all 0.6s ease;
 	transition: all 0.6s ease;
-	animation: tab_nav 1s 1;
+/* 	animation: tab_nav 1s 1;
 	-moz-animation: tab_nav 1s 1;
-	/* Firefox */
 	-webkit-animation: tab_nav 1s 1;
-	/* Safari and Chrome */
-	-o-animation: tab_nav 1s 1;
+	-o-animation: tab_nav 1s 1; */
 	/* Opera */
-	/* background-color: #1E9FFF; */
 	color: white;
-	/* background: -webkit-linear-gradient(#1E9FFF, #40aeff, #90cdfc); */
+	
 	/* Safari 5.1 - 6.0 */
 	/*background: -o-linear-gradient(#1E9FFF, #40aeff, #90cdfc);*/
 	/* Opera 11.1 - 12.0 */
 	/*background: -moz-linear-gradient(#1E9FFF, #40aeff, #90cdfc);*/
 	/* Firefox 3.6 - 15 */
-	/* background: linear-gradient(#1E9FFF, #40aeff, #90cdfc); */
+	
 	/* 标准的语法（必须放在最后） */
 }
 
@@ -1686,7 +1720,15 @@ border: 1px solid #1e9fff;
 }
 
 .tab-content>.tab-content-item {
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+	position:  relative;
+	min-height: 200px;
 	display: none;
+	vertical-align:  middle;
+	background-color: #f1f1f1;
+	padding: 10px;
 }
 .tab-button.active{
 	
@@ -1704,50 +1746,132 @@ transition: all 0.6s ease-in-out;
 }
 .tab-content {
 	/* border-top: 1px solid gainsboro; */
-	padding: 10px 0px;
+	padding: 15px 0px;
 }
 
 .tab-content .active,.tab-content.active {
 	display: block;
-	-webkit-transition: all 0.6s ease-in-out;
-	-moz-transition: all 0.6s ease-in-out;
-	transition: all 0.6s ease-in-out;
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+	animation: tab_content 2s 1;
+	-moz-animation: tab_content 2s 1;
+	-webkit-animation: tab_content 2s 1;
+	-o-animation: tab_content 2s 1;
+	background-color: #f1f1f1;
+}
+@keyframes tab_content {
+	from {
+		opacity: 0.4;
+		filter: Alpha(opacity=40);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-moz-keyframes tab_content
+/* Firefox */
+
+{
+		from {
+		opacity: 0.4;
+		filter: Alpha(opacity=40);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-webkit-keyframes tab_content
+/* Safari 和 Chrome */
+
+{
+	from {
+		opacity: 0.4;
+		filter: Alpha(opacity=40);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
+}
+
+@-o-keyframes tab_content
+/* Opera */
+
+{
+		from {
+		opacity: 0.4;
+		filter: Alpha(opacity=40);
+		/* IE8 以及更早的浏览器 */
+	}
+	to {
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		/* IE8 以及更早的浏览器 */
+	}
 }
 
 button {
-	border-radius: 200px;
-	color: #37393a;
-	font-size: 1.17rem;
-	border: solid 1px #dcdcdc;
-	padding: 2px 18px;
-	line-height: 2.2em;
-	background-color: rgba(0, 0, 0, 0);
-	box-sizing: border-box;
-	vertical-align: middle;
-	letter-spacing: 1px;
+	
+color: #37393a;
+	
+font-size: 1.17rem;
+	
+border: solid 1px #dcdcdc;
+	
+padding: 11px 18px;
+	
+line-height: 1.17rem;
+	
+background-color: rgba(0, 0, 0, 0);
+	
+box-sizing: border-box;
+	
+vertical-align: middle;
+	
+letter-spacing: 1px;
+	
+border-radius: 2px;
 }
-
+button.button-circle{
+	border-radius: 200px;
+}
+button.button-square{
+	border-radius: 0px;
+}
+.circle,.circle>button{
+	border-radius: 200px;
+}
+.circle-left{
+	border-top-left-radius: 200px;
+	border-bottom-left-radius: 200px;
+}
+.circle-right{
+	border-top-right-radius: 200px;
+	border-bottom-right-radius: 200px;
+}
+.square,.square>button{
+	border-radius: 0px;
+}
 button:hover {
 	border: 1px solid #64aff0;
 	opacity: 0.7;
-	font-size: 1.17rem;
 	filter: alpha(opacity=70);
-	color: #64aff0;
-	box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
+	color: #1e9fff;
+	box-shadow: 0px 0px 1px 1px rgba(211, 211, 211, 0.8);
 	-webkit-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
 	-moz-box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
-	box-shadow: 0px 0px 5px rgba(211, 211, 211, 0.8);
-	transition: all 0.4s linear 0s;
-	-webkit-transition: all 0.4s linear 0s;
-	-o-transition: all 0.4s linear 0s;
-	-ms-transition: all 0.4s linear 0s;
-	-moz-transition: all 0.4s linear 0s;
-}
-button:active,button:focus {
-	border: 1px solid #32a9f2;
-	font-size: 1.17rem;
-	color: #ffffff;
-	background-color: #32a9f2;
+	box-shadow: 0px 0px 0px 0px rgba(211, 211, 211, 0.8);
 	transition: all 0.4s linear 0s;
 	-webkit-transition: all 0.4s linear 0s;
 	-o-transition: all 0.4s linear 0s;
@@ -1755,18 +1879,29 @@ button:active,button:focus {
 	-moz-transition: all 0.4s linear 0s;
 }
 
+/* button:active,button:focus {
+	border: 1px solid #32a9f2;
+	font-size: 1.17rem;
+	color: white;
+	background-color: #32a9f2;
+	transition: all 0.6s linear 0s;
+	-webkit-transition: all 0.6s linear 0s;
+	-o-transition: all 0.6s linear 0s;
+	-ms-transition: all 0.6s linear 0s;
+	-moz-transition: all 0.6s linear 0s;
+} */
+
 .button-group {
-	padding: 15px 0px
+	padding: 15px 0px;
 }
 
 .button-group>button,
 .button-group span {
-	margin: 5px 15px 5px 0px;
+	margin: 0px 15px 0px 0px;
 	vertical-align:  middle;
 }
 
-.button-group>button.active,
-.button-group span.active {
+.button-group>button.active {
 	background-color: #32a9f2;
 	color: white;
 	border: 1px solid #32a9f2;
@@ -1794,7 +1929,9 @@ button:active,button:focus {
 	overflow: auto;
 }
 
-
+.hidden{
+	overflow:hidden;
+}
 /*滚动条样式*/
 
 .scrollbar::-webkit-scrollbar {
@@ -1860,7 +1997,7 @@ button:active,button:focus {
 	}
 }
 .tooltip-div{
-    position: absolute;
+    position: fixed;
     overflow:  hidden;
     width:  auto;
     display: block;
