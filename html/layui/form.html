@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
-		<link rel="stylesheet" href="../../src/linzesen.css" />
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<style>
 			.margin-20 {
 				background-color: #ffffff;
@@ -22,83 +22,8 @@
 	</head>
 
 	<body>
-		<div class="margin-20">
-			<form class="layui-form " action="">
-				<div class="layui-form-item">
-					<label class="layui-form-label">我的名字</label>
-					<div class="layui-input-block">
-						<input type="text" autocomplete="off" class="layui-input" lay-verify="date" placeholder="我的名字">
-					</div>
-				</div>
+		<div class="margin-20" id="fromdemoView1">
 
-				<div class="layui-form-item  ">
-					<label class="layui-form-label ">个人头像</label>
-					<div class="flex-center flex-item">
-						<div class="col-lg-3 col-xs-3  background-color-from  img-responsive" id="upload-div1" style="width: 140px; height: 140px;">
-							<img src="../../img/null-img.png" class="upload-img1">
-						</div>
-						<h6 class="tip-text flex-item  col-lg-9 col-xs-9">
-				                 尺寸大于130X130，小于500X500文件小于2MJPG/PNG/BMP等格式图片
-			              </h6>
-					</div>
-				</div>
-
-				<div class="layui-form-item">
-					<label class="layui-form-label">单选框</label>
-					<div class="layui-input-block">
-						<input type="radio" name="sex" value="男" title="男" checked="">
-						<input type="radio" name="sex" value="女" title="女">
-						<input type="radio" name="sex" value="禁" title="禁用" disabled="">
-					</div>
-				</div>
-
-				<div class="layui-form-item">
-					<label class="layui-form-label">电话号码</label>
-					<div class="layui-input-inline">
-						<input type="text" name="title" lay-verify="required|phone" autocomplete="off" placeholder="请输入标题" class="layui-input">
-					</div>
-					<div class="layui-form-mid layui-word-aux">请务必填写你的电话号码</div>
-				</div>
-				<div class="layui-form-item">
-
-					<div class="layui-inline">
-						<label class="layui-form-label">日期选择</label>
-						<div class="layui-input-inline">
-							<input type="text" name="date" id="date1" autocomplete="off" class="layui-input" lay-verify="date" placeholder="yyyy-MM-dd">
-						</div>
-					</div>
-					<div class="layui-inline">
-						<label class="layui-form-label">单行选择框</label>
-						<div class="layui-input-block">
-							<select name="interest" lay-filter="aihao">
-								<option value=""></option>
-								<option value="0">写作</option>
-								<option value="1" selected="">阅读</option>
-								<option value="2">游戏</option>
-								<option value="3">音乐</option>
-								<option value="4">旅行</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="layui-form-item layui-form-text">
-					<label class="layui-form-label">文本域</label>
-					<div class="layui-input-block">
-						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">富文本编辑器</label>
-					<div class="layui-input-block">
-						<textarea class="form-input" id="layedit1" name="富文本编辑器"></textarea>
-					</div>
-				</div>
-				<div class="layui-form-item center">
-					<button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
-					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-				</div>
-			</form>
 		</div>
 		<button class="button " onclick="otherTool.copyCode(this)">点击复制上面的代码</button>
 
@@ -171,6 +96,12 @@
 			       </h6>
 					</div>
 				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">富文本编辑器</label>
+					<div class="layui-input-block">
+						<textarea class="form-input" id="layedit1" name="富文本编辑器"></textarea>
+					</div>
+				</div>
 				<div class="layui-form-item center">
 					<button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -179,95 +110,202 @@
 			</form>
 		</div>
 		<button class="button " onclick="otherTool.copyCode(this)">点击复制上面的代码</button>
+        
+        <script id="fromdemo1" type="text/html">
 
+			<form class="layui-form " action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label">我的名字</label>
+					<div class="layui-input-block">
+						<input type="text" autocomplete="off" class="layui-input" lay-verify="required" placeholder="我的名字"
+							 value="{{ d.username||''}}">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">单选框</label>
+					<div class="layui-input-block">
+						<input type="radio" name="sex" value="男" title="男" checked="">
+						<input type="radio" name="sex" value="女" title="女">
+						<input type="radio" name="sex" value="禁" title="禁用" disabled="">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">电话号码</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" onkeyup="value=value.replace(/[^\d]/g,'')" lay-verify="required|phone" autocomplete="off" placeholder="请输入标题" class="layui-input">
+					</div>
+					<div class="layui-form-mid layui-word-aux">请务必填写你的电话号码</div>
+				</div>
+				<div class="layui-form-item">
+
+					<label class="layui-form-label">出生日期选择</label>
+					<div class="layui-input-inline">
+						<input type="text" name="date" id="date1" autocomplete="off" class="layui-input" lay-verify="date" placeholder="yyyy-MM-dd">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">复选框</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="like[write]" title="写作">
+						<input type="checkbox" name="like[read]" title="阅读">
+						<input type="checkbox" name="like[daze]" title="发呆">
+					</div>
+				</div>
+				<div class="layui-form-item  ">
+					<label class="layui-form-label ">城市</label>
+					<div class="layui-input-inline">
+						<select name="interest" lay-filter="aihao">
+							<option value=""></option>
+							<option value="0">写作</option>
+							<option value="1" selected="">阅读</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="interest" lay-filter="aihao">
+							<option value=""></option>
+							<option value="0">写作</option>
+							<option value="1" selected="">阅读</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="interest" lay-filter="aihao">
+							<option value=""></option>
+							<option value="0">写作</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item  ">
+					<label class="layui-form-label ">个人头像</label>
+					<div class="flex-center flex-item">
+						<div class="col-lg-3 col-xs-3  background-color-from  img-responsive" id="upload-div1" style="width: 140px; height: 140px;">
+							<img src="../../img/null-img.png" class="upload-img1">
+						</div>
+						<h6 class="tip-text flex-item  col-lg-9 col-xs-9">
+				                 尺寸大于130X130，小于500X500文件小于2MJPG/PNG/BMP等格式图片
+			              </h6>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否设定</label>
+					<div class="layui-input-block">
+						<input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|不是">
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">文本域</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+
+				<div class="layui-form-item center">
+					<button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</form>
+
+		</script>
 		
 
 		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js"></script>
-		<script src="../../plugin/layui/layui.all.js " charset="utf-8"></script>
-		<script src="../../src/toolkit.js" charset="utf-8"></script>
+		<script src="../../plugin/layui/layui.js " charset="utf-8"></script>
+		<script src="../../plugin/linzesen/linzesen.js" charset="utf-8"></script>
 		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 		<script>
-//			var textWidth = function(text) {
-//				var sensor = $('<pre>' + text + '</pre>').css({
-//					display: 'none'
-//				});
-//				$('body').append(sensor);
-//				var width = sensor.width();
-//				sensor.remove();
-//				return width;
-//			};
-//			$("#input1").unbind('keydown').bind('keydown', function() {
-//				$(this).width(textWidth($(this).val()));
-//			});
 
-			layui.use(['form', 'layedit', 'upload', 'laydate'], function() {
+
+			layui.use(['form', 'layedit', 'upload', 'laydate','laytpl'], function() {
 				var form = layui.form,
 					layer = layui.layer,
 					laydate = layui.laydate,
 					layedit = layui.layedit,
+					laytpl = layui.laytpl,
 					$ = layui.jquery,
 					upload = layui.upload;
-				//普通图片上传
-				var uploadInst = upload.render({
-					elem: '#upload-div1',
-					url: '/upload/',
-					before: function(obj) {
-						//预读本地文件示例，不支持ie8
-						obj.preview(function(index, file, result) {
-							$('.upload-img1').attr('src', result); //图片链接（base64）
+
+				LZS_ajax.get('../../src/demo.json',function(data){
+					 layuifrom.init(data)
+				});
+				
+				var layuifrom={
+					
+					//初始化表单
+					init:function(data){
+					    var getTpl = fromdemo1.innerHTML,
+						view = document.getElementById('fromdemoView1');
+						laytpl(getTpl).render(data.data[0], function(html) {
+							view.innerHTML = html;
+						    layuifrom.tool();
+	                        form.render(); //更新全部
+							
 						});
 					},
-					done: function(res, index, upload) {
-						var a = res;
-						$('#' + fieldName + '').val(res.FileNameNew);
-						$('.upload-img1').attr('src', res.Src);
-						//上传完毕回调  
-
+					tool:function(){
+							//普通图片上传
+							var uploadInst = upload.render({
+								elem: '#upload-div1',
+								url: '/upload/',
+								before: function(obj) {
+									//预读本地文件示例，不支持ie8
+									obj.preview(function(index, file, result) {
+										$('.upload-img1').attr('src', result); //图片链接（base64）
+									});
+								},
+								done: function(res, index, upload) {
+									var a = res;
+									$('#' + fieldName + '').val(res.FileNameNew);
+									$('.upload-img1').attr('src', res.Src);
+									//上传完毕回调  
+		
+								}
+							});
+		
+							//日期
+							laydate.render({
+								elem: '#date'
+							});
+							laydate.render({
+								elem: '#date1'
+							});
+		
+							//创建一个编辑器
+							var editIndex = layedit.build('layedit1'); //建立编辑器
+							//自定义验证规则
+							form.verify({
+								title: function(value) {
+									if(value.length < 5) {
+										return '标题至少得5个字符啊';
+									}
+								},
+								pass: [/(.+){6,12}$/, '密码必须6到12位'],
+								content: function(value) {
+									layedit.sync(editIndex);
+								}
+							});
+		
+							//监听指定开关
+							form.on('switch(switchTest)', function(data) {
+								layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+									offset: '6px'
+								});
+		
+								layer.msg('不开心。。', {
+									icon: 5
+								});
+								layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+							});
+		
+							//监听提交
+							form.on('submit(demo2)', function(data) {
+								layer.alert(JSON.stringify(data.field), {
+									title: '最终的提交信息'
+								})
+								return false;
+							});
 					}
-				});
-
-				//日期
-				laydate.render({
-					elem: '#date'
-				});
-				laydate.render({
-					elem: '#date1'
-				});
-
-				//创建一个编辑器
-				var editIndex = layedit.build('layedit1'); //建立编辑器
-				//自定义验证规则
-				form.verify({
-					title: function(value) {
-						if(value.length < 5) {
-							return '标题至少得5个字符啊';
-						}
-					},
-					pass: [/(.+){6,12}$/, '密码必须6到12位'],
-					content: function(value) {
-						layedit.sync(editIndex);
-					}
-				});
-
-				//监听指定开关
-				//				form.on('switch(switchTest)', function(data) {
-				//					layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
-				//						offset: '6px'
-				//					});
-				//
-				//					layer.msg('不开心。。', {
-				//						icon: 5
-				//					});
-				//					layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-				//				});
-
-				//监听提交
-				form.on('submit(demo2)', function(data) {
-					layer.alert(JSON.stringify(data.field), {
-						title: '最终的提交信息'
-					})
-					return false;
-				});
+			      
+				}
+				
 
 			});
 		</script>
