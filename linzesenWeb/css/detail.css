@@ -1,0 +1,30 @@
+section .banner-wrapper  .big-view{}
+section .banner-wrapper-l{width:420px;}
+.gallery-thumbs.swiper-container{
+    
+margin: 0 25px;
+}
+.gallery-thumbs.swiper-container  .swiper-wrapper{
+}
+.gallery-thumbs .swiper-slide-active{
+
+/* border: 1px solid #090908; */
+
+/* padding: 1px; */
+
+box-sizing: border-box;
+}
+.gallery-thumbs .swiper-wrapper{}
+.gallery-thumbs-box .swiper-button-prev{
+
+left: -5px;
+}
+.gallery-thumbs-box .swiper-button-next{
+    
+right: -5px;
+}
+.gallery-thumbs-box .swiper-slide{padding:  2px;box-sizing:  border-box;}
+.gallery-thumbs-box  .active {
+	padding: 0;
+	border: 1px solid #dcdcdc;
+}

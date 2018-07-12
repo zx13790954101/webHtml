@@ -1,0 +1,186 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>常用焦点图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_719754_zteyssv62c.css" />
+
+		<link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
+		<!--swiper的引用-->
+		<link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
+		<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css" />
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" href="../../css/detail.css" />
+	</head>
+</head>
+<body>
+<style>
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.pc-slide {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.gallery-top .swiper-container {
+	width: 500px;
+	height: 500px;
+}
+
+
+
+.gallery-thumbs .swiper-container {
+	width: 430px;
+	height: 82px;
+	margin-left: 35px;
+}
+
+.gallery-thumbs .swiper-slide {
+
+	cursor:pointer;
+}
+
+.gallery-thumbs .slide6 {
+	width: 82px;
+}
+
+
+
+.gallery-thumbs img {
+	padding: 1px;
+}
+
+.gallery-thumbs .active-nav img {
+	padding: 0;
+	border: 1px solid #F00;
+}
+</style>
+ <div class="pc-slide">
+	<div class="gallery-top">
+		<div class="swiper-container">
+		
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="../../../img/null-img.png" alt=""></a>
+				</div>
+			</div>
+			
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+		</div>
+	</div>
+	<div class="gallery-thumbs   swiper-container">
+		<div class="swiper-button-next" style="background-image: none;">
+						<i class="layui-icon layui-icon-right"></i>
+					</div>
+					<div class="swiper-button-prev" style="background-image: none;">
+						<i class="layui-icon layui-icon-left"></i>
+					</div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide active-nav">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+				<div class="swiper-slide slide6">
+					<img src="../../../img/null-img.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script src="../../../plugin/layui/layui.js" charset="utf-8"></script>
+		<!--	<script type="text/javascript" src="../plugin/linzesen/linzesen.js"></script>-->
+		<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js"></script>
+
+<script>
+var galleryTop = new Swiper('.gallery-top .swiper-container', {
+	slidesPerView: '1',
+	on:{
+		slideChangeTransitionStart: function() {
+		    updateNavPosition()
+	    }
+	}
+})
+
+$('.gallery-top .swiper-button-prev,.gallery-thumbs .swiper-button-prev').on('click', function(e) {
+	e.preventDefault()
+	if (galleryTop.activeIndex == 0) {
+		galleryTop.slideTo(galleryTop.slides.length - 1, 1000);
+		return
+	}
+	galleryTop.slidePrev()
+})
+$('.gallery-top .swiper-button-next,.gallery-thumbs .swiper-button-next').on('click', function(e) {
+	e.preventDefault()
+	if (galleryTop.activeIndex == galleryTop.slides.length - 1) {
+		galleryTop.slideTo(0, 1000);
+		return
+	}
+	galleryTop.slideNext()
+})
+
+var galleryThumbs = new Swiper('.gallery-thumbs .swiper-container', {
+	//visibilityFullFit: true,
+	spaceBetween: 10,
+	slidesPerView: '5',
+	allowTouchMove: false,
+	on:{
+		tap: function() {
+		    galleryTop.slideTo(galleryThumbs.clickedIndex)
+	  }
+	}
+	
+})
+
+function updateNavPosition() {
+		$('.gallery-thumbs .active-nav').removeClass('active-nav')
+		var activeNav = $('.gallery-thumbs .swiper-slide').eq(galleryTop.activeIndex).addClass('active-nav')
+		if (!activeNav.hasClass('swiper-slide-visible')) {
+			if (activeNav.index() > galleryThumbs.activeIndex) {
+				var thumbsPerNav = Math.floor(galleryThumbs.width / activeNav.width()) - 1
+				galleryThumbs.slideTo(activeNav.index() - thumbsPerNav)
+			} else {
+				galleryThumbs.slideTo(activeNav.index())
+			}
+		}
+	}
+</script>
+</body>
+</html>

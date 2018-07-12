@@ -34,7 +34,7 @@ body {
 
 .login-box {
 	background-color: white;
-	width: 380px;
+	max-width: 380px;
 	margin: 0 auto;
 	padding: 25px 25px;
 	border-radius: 12px;

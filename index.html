@@ -17,10 +17,17 @@
 	</head>
 
 	<body>
+	<button class="button">
+         <!--<a href="taobao://www.taobao.com">跳转淘宝</a>-->
+     <a href="https://t.asczwa.com/taobao?backurl=http://www.taobao.com">test</a>
+	</button>
+	<button class="button  copytaobao" data-clipboard-action="copy" data-clipboard-target="#target" id="copy_btn">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
+	</button>
+	<span id="target">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
+</span>  
+	<section class="flex">
 
-		<section class="flex">
-
-			<div class="section-content-l">
+			<div class="section-content-l col-xs-0">
 
 				<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
 					<li class="layui-nav-item layui-nav-itemed">
@@ -103,8 +110,21 @@
         <script>window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')</script>
 
 		<script src="plugin/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="plugin/linzesen/linzesen.js" ></script>
+<!--粘贴-->
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>     
+
+
 
 		<script>
+			 $(document).ready(function(){         
+        var clipboard = new Clipboard('#copy_btn');      
+        clipboard.on('success', function(e) {      
+            alert("复制成功",1500);      
+            e.clearSelection();      
+            console.log(e.clearSelection);      
+        });      
+    });      
 			//导航栏的效果
 			layui.use('element', function() {
 				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块

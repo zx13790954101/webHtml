@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_719754_zteyssv62c.css" />
+		<!--swiper的引用-->
+		<link rel="stylesheet" href="../../plugin/swiper/swiper.min.css" />
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="../css/cart.css" />
+	</head>
+
+	<body>
+		<nav>
+
+		</nav>
+		<header class="flex container">
+			<div class="header-logo">
+				<div class="img-r">
+					<img lay-src="//img.alicdn.com/tfs/TB1MaLKRXXXXXaWXFXXXXXXXXXX-480-260.png">
+				</div>
+			</div>
+			<form class="flex-center search-form">
+				<div class="box-searchInput">
+					<input type="text" />
+				</div>
+				<button class="button">
+               		搜索
+               	</button>
+			</form>
+		</header>
+
+		<section class="cart-main">
+			<div class="cart-header">
+				<ul class="order_lists  row  flex-center h5">
+					<li class="list_chk  col-lg-1 col-xs-12">
+						<!--所有商品全选-->
+						<div class="check-box flex-center ">
+							<input type="checkbox" id="all" class="whole_check">
+							<label for="all" class="check-btn"></label>
+							<h5>全选</h5>
+						</div>
+					</li>
+					<li class="list_con  col-lg-4  col-xs-0">商品信息</li>
+					<li class="list_info col-lg-2 col-xs-0">商品参数</li>
+					<li class="list_price col-lg-1 col-xs-0">单价</li>
+					<li class="list_amount col-lg-2 col-xs-0">数量</li>
+					<li class="list_sum  col-lg-1 col-xs-0">金额</li>
+					<li class="list_op  col-lg-1 col-xs-0">操作</li>
+				</ul>
+			</div>
+
+			<div class="cartBox">
+				<div class="shop-title flex-center">
+					<div class="check-box">
+						<!--店铺全选-->
+						<input type="checkbox" id="shop_a" class="shopChoice">
+						<label for="shop_a" class="shop check-btn"></label>
+					</div>
+					<div class="shop_name">
+						店铺：
+						<a href="javascript:;">搜猎人艺术生活</a>
+					</div>
+				</div>
+				<div class="shop-content">
+					<ul class="order-lists row">
+						<li class="list_chk col-lg-1 col-xs-1">
+							<div class="check-box">
+								<input type="checkbox" id="checkbox_2" class="son_check">
+								<label for="checkbox_2" class="check-btn"></label>
+							</div>
+						</li>
+						<li class="list_con  col-lg-4  flex   col-xs-7">
+							<div class="list_img">
+								<a href="javascript:;">
+									<div class="img-r" style="width: 100px;height:100px;">
+										<img src="../../img/null-img.png" alt="">
+									</div>
+								</a>
+							</div>
+							<div class="list_text">
+								<a href="javascript:;" class="ellipsis-line-2">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a>
+							</div>
+						</li>
+						<li class="list_info col-lg-2 col-xs-0 ">
+							<p>规格：默认</p>
+							<p>尺寸：16*16*3(cm)</p>
+						</li>
+						<li class="list_price col-lg-1 col-xs-0">
+							<p class="price">￥980</p>
+						</li>
+						<li class="list_amount col-lg-2 col-xs-4">
+							<div class="amount_box  flex-center">
+								<a href="javascript:;" class="reduce reSty">-</a>
+								<input type="text" value="1" class="sum">
+								<a href="javascript:;" class="plus">+</a>
+							</div>
+						</li>
+						<li class="list_sum col-lg-1  col-xs-0">
+							<p class="sum_price">￥980</p>
+						</li>
+						<li class="list_op col-lg-1 col-xs-0">
+							<p class="del">
+								<a href="javascript:;" class="delBtn">移除商品</a>
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!--底部-->
+			<div class="bar-wrapper">
+				<div class="bar-right flex-right">
+					<div class="piece  flex-center">已选商品<strong class="piece_num">0</strong>件</div>
+					<div class="totalMoney flex-center">共计: <strong class="total_text">0.00</strong></div>
+					<div class="calBtn ">
+						<button class="h3">
+						<a href="javascript:;">
+							结算</a>
+					    </button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="model_bg"></section>
+		<section class="my_model">
+			<p class="title">删除宝贝<span class="closeModel">X</span></p>
+			<p>您确认要删除该宝贝吗？</p>
+			<div class="opBtn">
+				<a href="javascript:;" class="dialog-sure">确定</a>
+				<a href="javascript:;" class="dialog-close">关闭</a>
+			</div>
+		</section>
+
+		<footer>
+
+			<div class="footer-site flex">
+				<div class="f-left flex-center">
+					<dl>
+						<dt>
+		    				<a href="#">帮助中心</a></dt>
+						<dd>
+							<a href="#">账号管理</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+		    			    <a href="#">服务支持</a></dt>
+						<dd>
+							<a href="#">售后服务</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="f-right">
+					<h3>
+						400-800-7087
+					</h3>
+				</div>
+			</div>
+
+			<div class="footer-info"></div>
+		</footer>
+
+		<!--手机端的底部的tab-->
+		<header class="lzs-header-moblie center  pos-f-bottom col-mb">
+			<div class="tab flex-center">
+				<div class="flex-item">
+					<a href="#">
+						<i class="iconfont icon-shouye"></i>
+						<h5>首页</h5>
+					</a>
+				</div>
+				<div class="flex-item active">
+					<a href="#">
+						<i class="iconfont icon-03"></i>
+						<h5>购物车</h5>
+					</a>
+				</div>
+				<div class="flex-item">
+					<a href="#">
+						<i class="iconfont icon-icon03"></i>
+						<h5>个人中心</h5>
+					</a>
+				</div>
+				<div class="flex-item">
+					<a href="#">
+						<i class="iconfont icon-gengduo"></i>
+						<h5>更多</h5>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script src="../../plugin/layui/layui.js" charset="utf-8"></script>
+		<!--	<script type="text/javascript" src="../plugin/linzesen/linzesen.js"></script>-->
+		<script type="text/javascript" src="../../plugin/swiper/swiper.min.js"></script>
+		<script type="text/javascript" src="shopCart.js"></script>
+		<script>
+			//图片的懒加载
+			layui.use('flow', function() {
+				var flow = layui.flow;
+				//当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+				flow.lazyimg();
+				//按屏加载图片
+			});
+		</script>
+	</body>
+
+</html>

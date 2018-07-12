@@ -52,28 +52,7 @@ var LZS_form= {
 }
 //时间工具箱
 var LZS_time = {
-	//停止冒泡行为
-	stopBubble: function(e) {
-		//如果提供了事件对象，则这是一个非IE浏览器 
-		if(e && e.stopPropagation)
-			//因此它支持W3C的stopPropagation()方法 
-			e.stopPropagation();
-		else
-			//否则，我们需要使用IE的方式来取消事件冒泡 
-			window.event.cancelBubble = true;
-	},
-
-	//阻止浏览器的默认行为 
-	stopDefault: function(e) {
-		//阻止默认浏览器动作(W3C) 
-		if(e && e.preventDefault)
-			e.preventDefault();
-		//IE中阻止函数器默认动作的方式 
-		else
-			window.event.returnValue = false;
-		return false;
-	},
-
+	
 	//时间的格式
 	fromDate: function(date) {
 
@@ -133,9 +112,48 @@ var LZS_time = {
 }
 //工具箱
 var LZS_tool = {
+	//停止冒泡行为
+	stopBubble: function(e) {
+		//如果提供了事件对象，则这是一个非IE浏览器 
+		if(e && e.stopPropagation)
+			//因此它支持W3C的stopPropagation()方法 
+			e.stopPropagation();
+		else{
+				//否则，我们需要使用IE的方式来取消事件冒泡 
+			window.event.cancelBubble = true;
+		}
+		
+	},
+
+	//阻止浏览器的默认行为 
+	stopDefault: function(e) {
+		//阻止默认浏览器动作(W3C) 
+		if(e && e.preventDefault)
+			e.preventDefault();
+		//IE中阻止函数器默认动作的方式 
+		else{
+		    window.event.returnValue = false;
+		}
+		
+		return false;
+	},
+
 	//复制代码
 	copyCode: function(obj) {
 		var Url2 = $(obj).prev().html();
+		var oInput = document.createElement('input');
+		oInput.value = Url2;
+		document.body.appendChild(oInput);
+		oInput.select(); // 选择对象
+		document.execCommand("Copy"); // 执行浏览器复制命令
+		oInput.className = 'oInput';
+		oInput.style.display = 'none';
+		alert("复制成功");
+		console.log("ssss", Url2)
+	},
+	//复制代码
+	copyTaoBao: function(obj) {
+		var Url2 = $(obj).html();
 		var oInput = document.createElement('input');
 		oInput.value = Url2;
 		document.body.appendChild(oInput);

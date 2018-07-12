@@ -41,7 +41,6 @@ layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
 					me.getlist();
 				});
 				$('#search').click();
-
 				//单选的按钮
 				table.on('checkbox(tableList)', function(obj) {
 					var checkStatus = table.checkStatus('tableList');
@@ -50,8 +49,13 @@ layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
 						layer.msg('请只选择一条数据');
 					}
 				});
-
-				//添加
+                me.buttonGroup();
+				me.initUploadControlValue();
+			},
+			//表格增删改查的点击按钮
+			//add=增加，look=查看，edit=编辑，delect=删除
+			buttonGroup:function(add,look,edit,delect){
+								//添加
 				$('#addBtn').on('click', function() {
 					me.gotoAdd();
 					laydate.render({
@@ -83,7 +87,8 @@ layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
 					}
 
 				});
-				$('#editPassword').on('click', function() {
+			
+			    $('#editPassword').on('click', function() {
 
 					var checkStatus = table.checkStatus('tableList');
 					if(checkStatus.data.length > 1) {
@@ -93,7 +98,8 @@ layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
 					}
 
 				});
-				$('#recordBtn').on('click', function() {
+			    
+			    $('#recordBtn').on('click', function() {
 					var checkStatus = table.checkStatus('tableList');
 
 					if(checkStatus.data.length > 1) {
@@ -159,29 +165,8 @@ layui.use(['upload', 'table', 'common', 'element', 'laydate'], function() {
 					}
 
 				});
-				//编辑
-				$('#editBtn').on('click', function() {
-
-					var checkStatus = table.checkStatus('tableList');
-
-					if(checkStatus.data.length > 1) {
-						layer.msg('请只选择一条数据');
-					} else {
-						if(checkStatus.data[0].F_AUDITSTATUS == 1 || checkStatus.data[0].F_AUDITSTATUS == 5) {
-							layer.msg("教育局审核中，不允许修改")
-							return;
-						}
-						me.gotoUpdate(checkStatus.data[0]);
-					}
-				});
-
-				me.initUploadControlValue();
-
-				//$('#upload_file').click(())
-				//window.location = '/Organization/TeacherTeamAdd/';
 
 			},
-			
 			getFileHostUrl: function() {
 				//获取文件主机域名
 				return window.location.origin;

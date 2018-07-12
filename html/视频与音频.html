@@ -35,7 +35,7 @@
 	
 	<div style="cursor: move; height: 100px; width: 100px; background-color: red; position: absolute; z-index: 9999; zoom: 1;"></div>
 </div>
-<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="../plugin/jquery/jquery.min.js" ></script>
 <script>
 	$(function(){
 		
@@ -44,7 +44,6 @@
 			evt.stopPropagation?evt.stopPropagation():(evt.cancelBubble=true);//阻止冒泡 
 			evt.preventDefault();//阻止浏览器默认行为，这样链接就不会跳转 
 			content.log('event',event.target);
-			
 			 if (evt.target === this) {
 			        alert("sssss");
 			  }

@@ -1,0 +1,41 @@
+.back-color{
+	background-color: #f1f1f1;
+}
+header{
+	
+}
+header .header-logo{
+	
+}
+header .header-logo  .img-r{
+max-width: 130px;
+}
+section .banner-wrapper .img-r{height:440px;background-color: #dfdfdf;}
+section.add-module .content .left-img .img-r{
+
+width: 350px;
+
+height: 420px;
+}
+section.add-module .content .right-list .img-r{
+	
+}
+.section-1 .warp .img-r{
+	height: 150px;
+	background-color: #dfdfdf;
+}
+.banner-ad .img-r{
+	height:120px;
+}
+@media (max-width: 768px){
+	section.add-module .content .left-img .img-r{
+		
+width: 100%;
+	}
+	section .banner-wrapper .img-r{
+		height: 250px;
+	}
+	.section-1 .warp .img-r{
+		height:70px;
+	}
+}
