@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="linzesen.css" />
+	</head>
+
+	<body>
+		<div class="flex-c" style="height: 6vh;">
+			<img src="u1079.png"  style="width: 20px; margin-left: 3%;"/>
+
+			<input type="text"  class="flex-item"  style="margin:5px 10% ; height: 30px;"/>
+			<img src="u1078.png"  style="width: 20px;margin-right: 3%;"/>
+		</div>
+		
+		<div style="height: 86vh;position: relative;">
+			<div class=" position-a-bottom" style=" width: 30px;z-index: 999;
+    bottom: 2%;
+    left: 3%;">
+				<div class="" style="background-color: white; padding: 5px; width: 30px; margin-bottom: 10px;">
+				<img id="u1117_img" class="img" src="u1117.svg" style="width: 20px;z-index: 9999;">
+		    	</div>
+		    		<div class="" style="background-color: white; padding: 5px;width: 30px;">
+				<img id="u1117_img" class="img" src="u1117.svg" style="width: 20px;z-index: 9999;">
+		    	</div>
+			</div>
+			
+			<div style="width:100%;height: 86vh;border:#ccc solid 1px;" id="dituContent"></div>
+	<div class="position-a-bottom" style="    right: 3%;
+    left: inherit;
+    width: 30px;
+    bottom: 2%;">
+					<div class="" style="background-color: white; padding: 5px;width: 30px; margin-bottom: 10px;">
+				<img id="u1117_img" class="img" src="u1117.svg" style="width: 20px;z-index: 9999;">
+		    	</div>
+		    		<div class="" style="background-color: white; padding: 5px;width: 30px; ">
+				<img id="u1117_img" class="img" src="u1117.svg" style="width: 20px;z-index: 9999;">
+		    	</div>
+			</div>
+		</div>
+		
+	      <div class="flex-c" style="position: relative; height: 8vh;" >
+			<div class="position-a-center" style="    top: 0%;
+    background-color: white;
+    border-radius: 100%;">
+				<img  src="u1086.svg"  style="width: 43px; border-radius:100% ; border: 1px solid black; padding: 5px; " />
+			</div>
+			<div class="flex-c flex-item">
+				<span class="flex-item center">
+				<img  src="u1076.png"  style="width: 20px;"/>
+				<h5>首页</h5>
+				</span>
+				<span class="flex-item center">
+				<img src="u1126.png" style="width: 20px;"/>
+				  <h5>
+				  	功能
+				  </h5>
+				</spans>
+			</div>
+		</div>
+		
+		<script src="../../plugin/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=UCXTKdp9dpdTdvimMx11ZFqpQPagGAp9"></script>
+		<script>
+		
+				var map = new BMap.Map("dituContent");    // 创建Map实例
+				map.centerAndZoom("广东省东莞市", 13);  // 初始化地图,设置中心点坐标和地图级别
+				//添加地图类型控件
+			  
+				map.setCurrentCity("广东省东莞市");          // 设置地图显示的城市 此项是必须设置的
+				map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+				
+		
+			
+  
+		</script>
+	</body>
+</html>

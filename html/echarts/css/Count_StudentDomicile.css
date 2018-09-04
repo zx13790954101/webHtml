@@ -1,0 +1,287 @@
+﻿html,
+body,
+div,
+img,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    font-family: "微软雅黑", HELVETICA;
+    margin: 0 auto;
+    padding: 0;
+    background: #FFF;
+    font-size: 12px;
+    color: #333;
+}
+div,
+form,
+ul,
+ol,
+li,
+span,
+p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+img,
+a img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    margin: 0;
+}
+
+table,
+td,
+input {
+    font-size: 12px;
+    padding: 0;
+}
+/* 默认链接颜色 */
+a {
+    outline-style: none;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #c00;
+        text-decoration: none;
+    }
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/*body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+.top {
+    width:100%;
+    height:38px;
+    box-sizing:border-box;
+    /*border-bottom:1px solid #999;*/
+    /*padding-top:8px;*/
+}
+.top_year {
+    width:106px;
+    height:100%;
+}
+.year {
+    width:88px;
+    height:36px;
+    float:left;
+}
+.top_year span.iconfont {
+    display:inline-block;
+    width:15px;
+    height:100%;
+    line-height:38px;
+    float:left;
+    color:#49a3f4;
+    margin-left:3px;
+}
+.layui-form-select .layui-input {
+    border:none;
+}
+.layui-input, .layui-select, .layui-textarea {
+    height:36px;
+}
+.line {
+    width:2px;
+    height:29px;
+    background-color:#f2e7eb;
+    float:left;
+    margin-top:4px;
+}
+.layui-tab-title .layui-this::after {
+height:40px;
+}
+.layui-tab-title {
+margin-top:5px;
+}
+/*layui导航样式——开始*/
+.layui-breadcrumb span[lay-separator] {
+    margin-left:0px;
+}
+.layui-breadcrumb > * {
+    line-height:38px;
+    margin-left:7px;
+    font-weight:normal
+}
+.layui-breadcrumb a {
+    padding:2px 8px;
+    cursor:pointer;
+}
+    .layui-breadcrumb a b.iconfont {
+        margin-right:10px;
+        color:#bfbfbf;
+    }
+.layui-breadcrumb a:hover {
+    background-color:#5ccedb;
+    color:#fff!important;
+}
+.layui-breadcrumb a:hover b{
+    color:#fff;
+}
+    .layui-breadcrumb a.active {
+        background-color:#5ccedb;
+        color:#fff!important;
+    }
+.layui-breadcrumb a.active b{
+    color:#fff;
+}
+/*layui导航样式——结束*/
+/*layui-tab选项卡切换——开始*/
+.layui-tab {
+    margin:0px;
+    margin-left:8px;
+    margin-right:8px;
+}
+.layui-tab-title li {
+    color:#337ac7;
+}
+/*layui-tab选项卡切换——结束*/
+.city {
+    width:100%;
+    margin-top:15px;
+}
+.city:after {
+        content: '';
+        clear: both;
+        height: 0;
+        display: block;
+    }
+.cityContent,.Area {
+    width:100%;
+}
+.Area {
+    margin-top:10px;
+}
+.cityContent:after,.Area:after {
+        content: '';
+        clear: both;
+        height: 0;
+        display: block;
+    }
+.cityContent li,.Area li{
+    margin-right:7px;
+    padding:2px 4px;
+    float:left;
+    cursor:pointer;
+    font-size:14px;
+    color:#505961;
+}
+    .Area li {
+        font-size:13px;
+    }
+    .cityContent li.active ,.Area li.active{
+        background-color:#60c0dd;
+        color:#fff;
+    }
+.formdata {
+    width:100%;
+}
+.formdata:after {
+        content: '';
+        clear: both;
+        height: 0;
+        display: block;
+    }
+.formdataContent {
+    width:61%;
+    height:366px;
+    float:left;
+}
+.formdatatitle {
+    width:100%;
+    height:40px;
+    font-size:16px;
+    text-align:center;
+    margin-top:20px;
+}
+.formdataContent_form {
+    width:100%;
+    height:530px;
+}
+.formdatabie {   
+    position: relative;
+    width: 39%;
+    float:left;
+    padding: 20px 5px 5px 5px;
+}
+.formbie {
+    height:600px;
+}
+.formdatabar {
+    position: relative;
+    width: 100%;
+    float:left;
+    padding: 20px 5px 5px 5px;
+}
+.formdatabarContent {
+    height:400px;
+}
+.formdatabartitle {
+    font-weight:bold;
+    font-size:17px;
+    color:#000;
+    margin-top:20px;
+    text-align:center;
+}
+.education {
+    height:100%;
+}
+
+
+
+
+
+
+
+
+

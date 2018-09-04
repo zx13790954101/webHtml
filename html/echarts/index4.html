@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+    <title>转学迁移监测</title>
+    <style>
+        .transferschool_right{
+              width: 300px;
+    background-color: #404a59;
+    padding: 5px 20px 20px 0px;
+position:absolute;
+right:0;
+        }
+        .transferschool_tab{
+                background-color: #3a353c;
+    color: white;
+    height: 100%;
+        overflow: hidden;
+        }
+        .layui-tab-title li {
+    padding: 7px 12px;
+    text-align: center;
+    cursor: pointer;
+        background-color: #2b66a7;
+}
+        .layui-tab-brief>.layui-tab-title .layui-this {
+    color: #ffffff;
+    background-color: #4aa6fc;
+}
+
+        .layui-tab-brief[overflow]>.layui-tab-title .layui-this:after {
+    top: -1px;
+    border: 0px;
+}
+
+        .layui-tab[overflow]>.layui-tab-title {
+    overflow: hidden;
+    border: 0px;
+
+    background-color: #348ed9;
+}
+        .layui-tab-title {
+            border: 0px;
+    background-color: #2b66a7;
+    height: 36px;
+        }
+        .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
+    border: 0px;
+}
+           #transferschool_right li span{
+               padding-right: 8px;
+    color: white;
+        }
+          #transferschool_right li  .num {
+           background-color: #4aa6fc;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin: 5px 0px;
+    line-height: 15px;
+    margin-right: 10px;
+    letter-spacing: 0px;
+    /* margin-bottom: 8px; */
+        }   #transferschool_right1 li span{
+               padding-right: 8px;
+    color: white;
+        }
+          #transferschool_right1 li  .num {
+           background-color: #4aa6fc;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin: 5px 0px;
+    line-height: 15px;
+    margin-right: 10px;
+    letter-spacing: 0px;
+    /* margin-bottom: 8px; */
+        }
+        #transferschool_right2 li span{
+               padding-right: 8px;
+    color: white;
+        }
+          #transferschool_right2 li  .num {
+           background-color: #4aa6fc;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin: 5px 0px;
+    line-height: 15px;
+    margin-right: 10px;
+    letter-spacing: 0px;
+    /* margin-bottom: 8px; */
+        }
+          .layui-tab-content{
+              overflow:auto;
+              height:85vh
+          }
+
+          body{
+              background-color: #404a59;
+          }
+
+    </style>
+</head>
+<body style="height: 100%; margin: 0" class="flex">
+    <div id="container" style="height: 100%;padding-right:300px;"  class="flex-item"></div>
+   
+     <div class="transferschool_right"  >
+
+            <div class="layui-tab layui-tab-brief transferschool_tab" lay-filter="transferschool_tab">
+                <ul class="layui-tab-title ">
+                    <li class="layui-this "><h5>市内转入</h5></li>
+                    <li class=""><h5>市内转出</h5></li>
+                    <li class=""><h5>净转入</h5></li>
+                </ul>
+                <div class="layui-tab-content">
+
+                    <div class="layui-tab-item layui-show">
+                      <ul id="transferschool_right">
+                          <li class="flex-center">
+                              <span class="num">1</span>
+                              <span class="cityName">东莞市</span>
+                              <span class="number">76人</span>
+                              <span class="percent">4.1%</span>
+                          </li>
+                      </ul>
+
+                    </div>
+                    <div class="layui-tab-item"  >
+                        <ul id="transferschool_right1">
+                            <li class="flex-center">
+                                <span class="num">1</span>
+                                <span class="cityName">东莞市</span>
+                                <span class="number">76人</span>
+                                <span class="percent">4.1%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layui-tab-item">
+                        <ul id="transferschool_right2">
+                            <li class="flex-center">
+                                <span class="num">1</span>
+                                <span class="cityName">东莞市</span>
+                                <span class="number">76人</span>
+                                <span class="percent">4.1%</span>
+                            </li>
+                        </ul>
+                    </div>
+             
+                 </div>
+            </div>
+
+
+
+        </div>
+
+    <script src="echarts/echarts.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="../../plugin/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/StreetJsonData.js"></script>
+    <script src="js/Count_TransferSchool.js"></script>
+
+
+
+
+</body>
+</html>

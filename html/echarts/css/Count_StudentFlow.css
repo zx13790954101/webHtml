@@ -1,0 +1,123 @@
+﻿.layui-tab {
+    margin-top:20px;
+}
+.formdataContentRural {
+    width:100%;
+    /*min-height:200px;
+    max-height:380px;*/
+}
+table tr th {
+    background-color:#00a0e8;color:#fff;text-align:center;vertical-align: middle!important;
+}
+table tr td {
+    text-align:center;vertical-align: middle!important;
+}
+.formdataContent_form_Rural {
+    width:100%;
+    min-height:200px;
+    max-height:500px;
+}
+.Ruralbar {
+    width:100%;
+    height:400px;
+}
+.Ruralbarcontent {
+    /*width:100%;*/
+    height:400px;
+}
+/*教师队伍*/
+.all {
+    width:100%;
+    margin-top:6px;
+}
+.all:after {
+        content: '';
+        clear: both;
+        height: 0;
+        display: block;
+    }
+.teamtop {
+    width:98%;
+    height:450px;
+    margin:0 auto;
+}
+.teamtopleft {
+    width:68%;
+    height:100%;
+    margin-right:15px;
+    float:left;
+    border-right:1px solid #999;
+}
+.teamtopright {
+    width:30%;
+    float:left;
+    height:100%;
+}
+.teamtoprightone {
+    width:48%;
+    height:100%;
+    float:left;
+    border:1px solid #e2dddd;
+}
+.teamtoprighttwo {
+    width:48%;
+    height:100%;
+    border:1px solid #e2dddd;
+    float:right;
+}
+.teamtoprightonetop,.teamtoprightonebottom {
+    width:100%;
+    height:50%;
+}
+.gender {
+    height:100%;
+}
+.types {
+    height:100%;
+}
+.teammiddle {
+    width:98%;
+    height:400px;
+    margin:0 auto;
+}
+.primary,.secondary,.high {
+    width:32%;
+    height:100%;
+    float:left;
+    border:1px solid #e2dddd
+}
+.primarypie ,.secondarypie,.highpie{
+    height:100%;
+}
+.schoolline{
+    width:2%;
+    height:100%;
+    float:left;
+}
+.teamtotal {
+    width:100%;
+    height:400px;
+}
+.teachertotal {
+    height:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

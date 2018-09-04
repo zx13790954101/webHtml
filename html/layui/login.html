@@ -1,156 +1,231 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title></title>
+		<title>layui登录界面</title>
 		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
-		<link rel="stylesheet" href="../../src/public_all.css" />
-		<style>
-			
-			.margin-20 {
-    background-color: #f1f1f1;
-    margin: 0px;
-    border:;
-    border: 0px solid #c0c0c0;
-    padding: 20px;
-    border-radius: 0px;
-    width:  100vw;
-}
-			
-		</style>
 	</head>
+
 	<body>
-<div class="margin-20">
-	<section class="login-box">
-			<form class="layui-form  login-view" action="">
-				<h3 class="center margin-15">登录界面</h3>
-				<div class="layui-form-item  login_state">
-					<select id="usertype" class="layui-select" lay-verify="required" lay-verify="required">
-						<option value="">请选择您的用户类型</option>
-						<option value="2">学生</option>
-						<option value="1">家长</option>
-						<option value="0">教师</option>
-						<option value="3">机构管理员</option>
-					</select>
-				</div>
-				<div class="layui-form-item">
-					<input type=" text " id="username "  lay-verify="required|pass" placeholder="请输入您的用户名 " autocomplete="off " class="layui-input ">
-				</div>
-				<div class="layui-form-item">
-					<input type="password" id="password"  lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
-				</div>
-				<div class="layui-form-item  flex-center" id="div_verifycode">
-					<input type="text" id="ValidateCode"  lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input  flex-item">
-					
-					<button class="button">看不清</button>
-					<div class="img-responsive flex-item block">
-						<img id="login_verifycode" src="../../plugin/layui/css/modules/layer/default/loading-0.gif"  alt="加载">
+
+		<section class="full-box">
+			<div class="login-box">
+				<form class="layui-form  login-view " action="">
+					<h3 class="center margin-15">登录界面</h3>
+					<div class="layui-form-item">
+						<input type="text"  lay-verify="required" placeholder="请输入您的用户名 " autocomplete="off " class="layui-input username" >
 					</div>
-				</div>
-				<div class="layui-form-item">
-					<input type="checkbox" id="autologin" title="自动登录" lay-skin="primary" checked="checked">
-				</div>
-				<button class="layui-btn layui-btn-fluid login_button" id="btnlogin" onclick="funbtLogin();"
-					 value="登录" lay-submit lay-filter="formDemo">
+					<div class="layui-form-item">
+						<input type="password" id="password" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input" name='password'>
+					</div>
+					<button class="layui-btn layui-btn-fluid login_button" id="login-btn" value="登录"  lay-submit  lay-filter="formLogin">
 					 登录
-			    </button>		 
-			
-
-			</form>
-			<form class="layui-form register-view" action="" style="display: none;">
-				<h3 class="center">注册界面</h3>
-				<div class="layui-form-item ">
-					<select id="r_usertype" name="F_USERTYPE" lay-filter="aihao" lay-verify="required">
-						<option value="">请选择您的用户类型</option>
-						<option value="2">学生</option>
-						<option value="1">家长</option>
-					</select>
-				</div>
-				<div class="layui-form-item">
-					<input id="R_F_PHONE" type="text" name="F_PHONE" required lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
-					<div class="flex-center">
-						<input id="SMSCODE" type="text" name="SMSCODE" required lay-verify="required" placeholder="请输入手机验证码" autocomplete="off" class="layui-input flex-item">
-						<div class="layui-btn layui-btn-fluid get_code" id="register_getcode">获取验证码</div>
+			        </button>
+					<div class="btn-group flex-r h5">
+						<span class="forget-password  btn">忘记密码</span>
+						<span class="register btn">免费注册</span>
 					</div>
-               	</div>
-				<div class="layui-form-item">
-				    <input id=" password-register " type="password " name="F_PASSWORD " required lay-verify="required " 
+				</form>
+				<form class="layui-form register-view  none "  action="" >
+					<h3 class="center margin-15">注册界面</h3>
+					<div class="layui-form-item ">
+						<select id="r_usertype" name="F_USERTYPE" lay-filter="aihao" lay-verify="required|selecttype">
+							<option value="">请选择您的用户类型</option>
+							<option value="1">买家</option>
+							<option value="2">商家</option>
+						</select>
+					</div>
+					<div class="layui-form-item">
+						<input id="R_F_PHONE" type="text" name="F_PHONE" required lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+
+					</div>
+					<div class="layui-form-item">
+						<div class="flex-c">
+							<input id="SMSCODE" type="text" name="SMSCODE" required lay-verify="required" placeholder="请输入手机验证码" autocomplete="off" class="layui-input flex-item">
+							<div class="layui-btn layui-btn-fluid get_code flex-item" id="register_getcode">获取验证码</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+				    <input id=" password-register " type="text" name="username" required lay-verify="required " 
 				    	placeholder="密码由6-20位字母，数字和符号组合 " autocomplete="off " class="layui-input ">
-				</div> 
-			     <div class="layui-form-item">
-			     	<input id="password-register-confirm" type="password" name="Confirm_F_PASSWORD" 
+				    </div> 
+					<div class="layui-form-item">
+			     	<input id="password-register-confirm" type="password" name="password" 
 			     		    required lay-verify="required" placeholder="请再次输入上面的密码" autocomplete="off" class="layui-input">
-				</div>
-				<button id="btn_register" class="layui-btn layui-btn-fluid new_login_button" lay-submit lay-filter="formSubmit">立即注册</button>
+				    </div>
+					<div id="btn_register" class="layui-btn layui-btn-fluid new_login_button"  lay-submit lay-filter="formRegister">立即注册</div>
+					<div class="btn-group flex-r h5">
+						<span class="back btn">返回登录</span>
+					</div>
+				</form>
+                <form class="layui-form  find-view none " action="">
+					<h3 class="center margin-15">找回密码</h3>
+					<div class="layui-form-item">
+						<input id="R_F_PHONE" type="text" name="F_PHONE" required lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
 
-			
+					</div>
+					<div class="layui-form-item">
+						<div class="flex-c">
+							<input id="find-SMSCODE" type="text" name="SMSCODE" required lay-verify="required" placeholder="请输入手机验证码" autocomplete="off" class="layui-input flex-item">
+							<div class="layui-btn layui-btn-fluid get_code flex-item" id="register_getcode">获取验证码</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+				    <input id=" password-find " type="text" name="username" required lay-verify="required " 
+				    	placeholder="密码由6-20位字母，数字和符号组合 " autocomplete="off " class="layui-input ">
+				    </div> 
+					<div class="layui-form-item">
+			     	<input id="password-find-confirm" type="password" name="password" 
+			     		    required lay-verify="required" placeholder="请再次输入上面的密码" autocomplete="off" class="layui-input">
+				    </div>
+				    <button class="layui-btn layui-btn-fluid login_button" id="login-btn" value="保存"  lay-submit  lay-filter="formFind">
+					保存
+			        </button>
+					<div class="btn-group flex-r h5">
+						<span class="back btn">返回登录</span>
+					</div>
+				</form>
+				
+			</div>
+		</section>
 
-			</form>
-		    <div class="button-group flex-right h5">
-					<span class="forget-password">忘记密码</span>
-					<span class="register">免费注册</span>
-		    </div>
-	
-    </section>
-    
-    </div>
-	
-
-		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js"></script>
-		<script src="../../plugin/layui/layui.all.js " charset="utf-8 " charset="UTF-8"></script>
-		<script type="text/javascript " src="../../src/toolkit.js "></script>
-		<script type="text/javascript " src="../../src/layui-config.js " charset="UTF-8"></script>
-
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script type="text/javascript" src="../../plugin/layui/layui.js" charset="utf-8"></script>
 		<script>
 			layui.use('form', function() {
 				var form = layui.form;
+				var $ = layui.jquery;
+
+				var me = {
+					//初始化数据
+					init: function() {
+
+					},
+                    reload:function(){
+                    	
+                    }
+				}
+                $(".login-box .btn-group span").click(function(e){
+                
+                	
+                	  switch($(this).html())
+                	  {
+                	  	case "免费注册":
+							
+							$(".login-view").addClass("none").removeClass("active");
+							
+							$(".register-view").addClass("active").removeClass("none");
+							 
+							return false;
+                        break; 
+                        case "返回登录":
+                            var thisView=".find-view";
+	                        if($(".find-view").is(":hidden")){
+	                        	thisView=".register-view";
+	                        }
+						    $(thisView).addClass("none").removeClass("active");
+							
+							$(".login-view").addClass("active").removeClass("none");
+							
+							return false;
+                        break; 
+                        case "忘记密码":
+							
+							 $(".login-view").addClass("none").removeClass("active");
+							
+							 $(".find-view").addClass("active").removeClass("none");
+							
+							return false;
+                        break; 
+                	  }
+                });
+                
+
 				form.verify({
 					username: function(value, item) { //value：表单的值、item：表单的DOM对象
-							if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
-								return '用户名不能有特殊字符';
-							}
-							if(/(^\_)|(\__)|(\_+$)/.test(value)) {
-								return '用户名首尾不能出现下划线\'_\'';
-							}
-							if(/^\d+\d+\d$/.test(value)) {
-								return '用户名不能全为数字';
-							}
-					
-					}	,
+						//							if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+						//								return '用户名不能有特殊字符';
+						//							}
+						//							if(/(^\_)|(\__)|(\_+$)/.test(value)) {
+						//								return '用户名首尾不能出现下划线\'_\'';
+						//							}
+						//							if(/^\d+\d+\d$/.test(value)) {
+						//								return '用户名不能全为数字';
+						//							}
+
+					},
 					pass: [
 						/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'
-					]
+					],
+					selecttype: function(value, item) { //value：表单的值、item：表单的DOM对象
+						if(item.selectedIndex == 0) {
+							return value;
+						}
+					}
 				});
-				//监听提交
-				form.on('submit(formDemo)', function(data) {
-
+				//监听登录提交
+				form.on('submit(formLogin)', function(data) {
+					var data = {
+						account: data.field.username,
+						password: data.field.password,
+						//verification_code: 123456
+					};
+					$.ajax({
+						type: "post",
+						url: 'http://localhost:8081/fastadmin/public/api/User/login',
+						dataType: "json",
+						data: data,
+						success: function(data) {
+							$("#login-btn").html("");
+							layer.msg("登录成功")
+							return false;
+						},
+						error: function(data) {
+							console.log("请求失败", data);
+							return false;
+						}
+					});
 					return false;
 				});
+				//监听注册提交
+				form.on('submit(formRegister)', function(data) {
+				    debugger;
+					var data = {
+						username: data.field.username,
+						password: data.field.password,
+						email:'123@qq.com',
+						mobile:'12345678901'
+						//verification_code: 123456
+					};
+
+					$.ajax({
+						type: "post",
+						url: 'http://localhost:8081/fastadmin/public/api/User/register',
+						dataType: "json",
+						data: data,
+						success: function(data) {
+							$("#login-btn").html("");
+							layer.msg("登录成功")
+							return false;
+						},
+						error: function(data) {
+							console.log("请求失败", data);
+							return false;
+						}
+					});
+					return false;
+				});
+			
 			});
-
-			$(function() {
-
-				$(".register").click(function() {
-					$(".login-view").css({
-						"display": "none"
-					});
-					$(".register-view").css({
-						"display": "block"
-					});
-				});
-
-				$(".new-login").click(function() {
-					$(".login-view").css({
-						"display": "block"
-					});
-					$(".register-view").css({
-						"display": "none"
-					});
-				});
-			})
 		</script>
 		</script>
 	</body>

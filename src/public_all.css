@@ -14,7 +14,7 @@ body {
 	left: 0px;
 }
 
-.list-item .img-responsive {
+.list-item .img-r {
 	width: auto;
 	height: 150px;
 	max-width: 100%;
@@ -30,17 +30,32 @@ body {
 	padding: 10px 15px;
 }
 
-.list-item-left {}
+.list-item-left {
+}
 
 .login-box {
 	background-color: white;
-	max-width: 380px;
+	max-width: 360px;
+	min-height: 360px;
+	width: 100%;
 	margin: 0 auto;
-	padding: 25px 25px;
-	border-radius: 12px;
-	box-shadow: 0px 0px 3px 1px #8b8b8b52;
+	padding: 15px 25px;
+	border-radius: 7px;
+	border: 1px solid #f9f9f9;
+	box-shadow: 1px 1px 5px 1px #5b5b5b52;
+	box-sizing:  border-box;
+	overflow:  hidden;
 }
 
+
+.login-box  .layui-form{
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+	position: relative;
+}
+.login-box  .layui-form.active{
+}
 .content-group {}
 
 .content-group-item {}

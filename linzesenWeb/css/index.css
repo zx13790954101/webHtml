@@ -41,3 +41,14 @@
 }
 .sidebar-r-item{
 }
+
+.section-news  .banner-wrapper {
+	margin-bottom: 20px;
+}
+.section-news  .banner-wrapper  .img-r{
+	max-height: 320px;
+}
+.section-news  .news-array .item-r .img-r{
+	width: 160px;
+	height:  120;
+} 

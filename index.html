@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> <!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <!-- 优先使用 IE 最新版本和 Chrome -->    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="不超过150个字符" /> <!-- 页面描述 -->
-        <meta name="keywords" content=""/> <!-- 页面关键词 -->
-        <meta name="author" content="name, email@gmail.com" /> <!-- 网页作者 -->
-        <meta name="robots" content="index,follow" /> <!-- 搜索引擎抓取 -->
-        <title></title>
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
 		<link rel="stylesheet" href="plugin/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="plugin/linzesen/linzesen.css" />
 		<!--my`s public的公共css的引入-->
@@ -17,15 +23,18 @@
 	</head>
 
 	<body>
-	<button class="button">
+
+		<div style="display: none;">
+			<button class="button">
          <!--<a href="taobao://www.taobao.com">跳转淘宝</a>-->
      <a href="https://t.asczwa.com/taobao?backurl=http://www.taobao.com">test</a>
 	</button>
-	<button class="button  copytaobao" data-clipboard-action="copy" data-clipboard-target="#target" id="copy_btn">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
+			<button class="button  copytaobao" data-clipboard-action="copy" data-clipboard-target="#target" id="copy_btn">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
 	</button>
-	<span id="target">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
-</span>  
-	<section class="flex">
+			<span id="target">【18SS TNF紫标H/S Big Rugby Shirt宽条纹短袖POLO衫 3色 日本代购】，復·制这段描述€FjWu0yN2kxc€后到淘♂寳♀
+</span>
+		</div>
+		<section class="flex">
 
 			<div class="section-content-l col-xs-0">
 
@@ -105,26 +114,26 @@
 		</section>
 
 		<!--js的引入-->
-		 <!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
-	    <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')</script>
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
 
 		<script src="plugin/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="plugin/linzesen/linzesen.js" ></script>
-<!--粘贴-->
-<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>     
-
-
+		<script type="text/javascript" src="plugin/linzesen/linzesen.js"></script>
+		<!--粘贴-->
+		<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
 
 		<script>
-			 $(document).ready(function(){         
-        var clipboard = new Clipboard('#copy_btn');      
-        clipboard.on('success', function(e) {      
-            alert("复制成功",1500);      
-            e.clearSelection();      
-            console.log(e.clearSelection);      
-        });      
-    });      
+			$(document).ready(function() {
+				var clipboard = new Clipboard('#copy_btn');
+				clipboard.on('success', function(e) {
+					alert("复制成功", 1500);
+					e.clearSelection();
+					console.log(e.clearSelection);
+				});
+			});
 			//导航栏的效果
 			layui.use('element', function() {
 				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -156,7 +165,7 @@
 					$(".iframe_content").attr("src", $(obj).attr("dataSrc"));
 				},
 				windowsResize: function() {
-					var windows_height = $(window).height() - 4;
+					var windows_height = $(window).height();
 					$("section").css({
 						"height": windows_height
 					});

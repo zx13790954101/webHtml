@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>教师队伍</title>
+    <link href="../../plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../../plugin/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Count_StudentDomicile.css" rel="stylesheet" />
+    <link href="css/Count_StudentFlow.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_690248_p7ug2cm1ha935wmi.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="all">
+        <div class="teamtop">
+            <div class="teamtopleft" style="border-right:0px;margin-bottom:30px;margin-right:20px" >
+                <!--  map -->
+                <div style="position:relative">
+                    <div id="container" style="float:right;width:80%;height:460px;"></div>
+                        <div id="reg_table" style="height:300px;position: absolute;left:0;top:30px;">
+                        <div style='font-size:16px;font-weight:bold;margin-bottom:10px'><span class="cityname" style='font-size:16px'>东莞市</span>教师情况概览</div>
+                        <table id="regCustomer" class="regCustomer" style="width:100%" >
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="teamtopright">
+                <div class="teamtoprightone">
+                    <div class="teamtoprightonetop">
+                        <div class="gender" id="gender"></div>
+                    </div>
+                    <div class="teamtoprightonebottom">
+                        <div class="types" id="types"></div>
+                    </div>
+                </div>
+                <div class="teamtoprighttwo">
+                    <div class="education" id="education"></div>
+                </div>
+            </div>
+        </div>
+        <div class="teammiddle" >
+            <div class="primary">
+                <div class="primarypie" id="primarypie"></div>
+            </div>
+            <div class="schoolline"></div>
+            <div class="secondary">
+                <div class="secondarypie" id="secondarypie"></div>
+            </div>
+            <div class="schoolline"></div>
+            <div class="high">
+                <div class="highpie" id="highpie"></div>
+            </div>
+        </div>
+        <div class="teamtotal"  style="margin-top:50px;" >
+            <div class="teachertotal" id="teachertotal" style="margin-top:0px" ></div>
+        </div>
+        <div class="teamtotal"  style="margin-top:30px;display:none" >
+            <div class="teachertotal" id="age"></div>
+        </div>
+    </div>
+    <script src="../../plugin/jquery/jquery.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="js/nice.js"></script>
+    <script src="echarts/echarts.js"></script>
+    <script src="echarts/macarons.js"></script>
+    
+      <script src="js/Count_EducationGlance.js"></script>
+      
+    <script src="js/StreetJsonData.js"></script>
+    <script type="text/javascript">
+        var alltotal;
+        var alltotal1;
+        var me = {
+            //初始化入口
+            init: function () {
+                me.form();
+                me.getdata();
+
+                me.getData2(function () {
+                var newData = CacheData.Data;//初始化32个镇街的数据
+                var totalData = CacheData.Total;//初始化总的数据
+
+                //32个镇街的数据进行封装
+                var mapArr = new Array();
+                var pieArr = new Array();
+                var seriesData = new Array();
+                var mapData = new Array();
+                var bar1 = new Array();
+                var bar1Num = new Array();
+                var totalList;
+                var gender;
+                var types;
+                var education;
+                var primarypie;
+                var secondarypie;
+                var high;
+                var alltotal2;
+                var alltotal3;
+                //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+                $.each(newData, function (i, value) {
+                    //封装每个图表需要的data
+                    totalList = [{ name: '教职工数', value: newData[i].TEACHOFFNUM }, { name: '专任教师数', value: newData[i].SPECIALTEACHNUM }, { name: '女教师', value: newData[i].GIRLTEACHNUM }, { name: '博士毕业', value: newData[i].BOSHIGRADUATION }, { name: '硕士毕业', value: newData[i].SHUOSHIGRADUATION }, { name: '本科毕业', value: newData[i].BENKEGRADUATION }, { name: '专科毕业', value: newData[i].ZHUANKEGRADUATION }, { name: '高中毕业', value: newData[i].GAOZHONGRADUATION }, { name: '初中毕业', value: newData[i].CHUZHONGRADUATION }];
+                    gender = [{ value: newData[i].BOYTEACHNUM, name: '男' }, { value: newData[i].GIRLTEACHNUM, name: '女' }] //性别
+                    types = [{ value: newData[i].SPECIALTEACHNUM, name: '专任教师' }, { value: newData[i].OTHERTEACHNUM, name: '其他教师' }]//类型
+                    //学历
+                    education = [
+                            { value: newData[i].CHUZHONGRADUATION, name: '初中学历' },
+                            { value: newData[i].GAOZHONGRADUATION, name: '高中学历' },
+                            { value: newData[i].ZHUANKEGRADUATION, name: '专科学历' },
+                            { value: newData[i].BENKEGRADUATION, name: '本科学历' },
+                            { value: newData[i].SHUOSHIGRADUATION, name: '硕士学历' },
+                            { value: newData[i].BOSHIGRADUATION, name: '博士学历' },
+                    ]
+                    //小学职称占比
+                    primarypie = [
+                            { value: newData[i].GRADESCHOOL_GAOJI, name: '小学高级' },
+                            { value: newData[i].GRADESCHOOL_YIJI, name: '小学一级' },
+                            { value: newData[i].GRADESCHOOL_ERJI, name: '小学二级' },
+                            { value: newData[i].GRADESCHOOL_SANJI, name: '小学三级' },
+                    ]
+                    //中学职称占比
+                    secondarypie = [
+                            { value: newData[i].MIDDLESCHOOL_GAOJI, name: '中学高级' },
+                            { value: newData[i].MIDDLESCHOOL_YIJI, name: '中学一级' },
+                            { value: newData[i].MIDDLESCHOOL_ERJI, name: '中学二级' },
+                            { value: newData[i].MIDDLESCHOOL_SANJI, name: '中学三级' },
+                    ]
+                    //中职职称占比
+                    high = [
+                            { value: newData[i].MIDOFFSCHOOL_GAOJIJS, name: '高级讲师' },
+                            { value: newData[i].MIDOFFSCHOOL_JIANGSHI, name: '讲师' },
+                            { value: newData[i].MIDOFFSCHOOL_ZHULIJS, name: '助理讲师' },
+                            { value: newData[i].MIDOFFSCHOOL_JIAOYUAN, name: '教员' },
+                    ]
+                    alltotal2 = [newData[i].OLD20_STARTBOY, newData[i].OLD20_25BOY, newData[i].OLD25_30BOY, newData[i].OLD30_35BOY, newData[i].OLD35_40BOY, newData[i].OLD40_45BOY, newData[i].OLD45_50BOY, newData[i].OLD50_55BOY, newData[i].OLD55_60BOY, newData[i].OLD60_65BOY, newData[i].OLD65_ENDBOY]
+                    alltotal3 = [newData[i].OLD20_STARTGIRY, newData[i].OLD20_25GIRY, newData[i].OLD25_30GIRY, newData[i].OLD30_35GIRY, newData[i].OLD35_40GIRY, newData[i].OLD40_45GIRY, newData[i].OLD45_50GIRY, newData[i].OLD50_55GIRY, newData[i].OLD55_60GIRY, newData[i].OLD60_65GIRY, newData[i].OLD65_ENDGIRY]
+                    mapArr = {
+                        name: StreetJsonCom.getJsonInfo(newData[i].STID).name,
+                        value: newData[i].TEACHOFFNUM,
+                        sum: totalList,
+                        gender: gender,
+                        types: types,
+                        education: education,
+                        primarypie: primarypie,
+                        secondarypie: secondarypie,
+                        high: high,
+                        alltotal: alltotal,
+                        alltotal1: alltotal1,
+                        alltotal2: alltotal2,
+                        alltotal3: alltotal3
+                    };
+                    bar1.push(newData[i].STNAME);
+                    bar1Num.push(newData[i].ALLSCHOOLNUM)
+                    mapData.push(mapArr);
+                });
+                console.log(mapData)
+                //总的数据
+                var mapArrTotal = new Array();
+                var mapDataTotal = new Array();
+                var totalList2 = [{ name: '教职工数', value: totalData.TEACHOFFNUM }, { name: '专任教师数', value: totalData.SPECIALTEACHNUM }, { name: '女教师', value: totalData.GIRLTEACHNUM }, { name: '博士毕业', value: totalData.BOSHIGRADUATION }, { name: '硕士毕业', value: totalData.SHUOSHIGRADUATION }, { name: '本科毕业', value: totalData.BENKEGRADUATION }, { name: '专科毕业', value: totalData.ZHUANKEGRADUATION }, { name: '高中毕业', value: totalData.GAOZHONGRADUATION }, { name: '初中毕业', value: totalData.CHUZHONGRADUATION }];
+                mapArrTotal = {
+                    sum:totalList2
+                };
+                mapDataTotal.push(mapArrTotal);
+
+
+                //2、初始化上左边地图
+                me.initMap(mapData,mapDataTotal);
+            });
+            },
+            form: function () {
+                layui.use(['form', 'element'], function () {
+                    var element = layui.element;
+                });
+            },
+            //获取数据
+            getData2: function (callback)
+            {
+                $.ajax({
+                    type: "get",
+                    url: "127.0.0.1:8020/webHtml/html/echarts/js/Count_TeacherTeam_getlist.json",
+                    dataType:"json",
+                    success: function (json) {
+                        //layer.close(lindex);
+                        if (json.code != 200) {
+                            //layer.alert(json.info);
+                            return;
+                        }
+                        CacheData = json.data;
+                        callback();
+                    }
+                });
+            },
+            //加载地图
+            initMap: function (mapData,mapDataTotal)
+            {
+                me.getMap(mapData);
+                //初始化调用第一个加载总数列表数据
+                var firstData={data:mapDataTotal[0]};
+                me.tableHtml('regCustomer',firstData,'one');
+            },
+            //获取地图经纬度组装成东莞镇街图形
+            getMap: function (mapData) {
+                $.get('127.0.0.1:8020/webHtml/html/echarts/js/dongguan.json?v='+Math.random(), function (geoJson) {
+                    var myChart = myChart = echarts.init(document.getElementById('container'));
+                    echarts.registerMap('dongguan', geoJson);
+                    myChart.setOption(option = {
+                        title: {
+                            //text: '教育概览',
+                            x:'center',
+                            y:'top'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: '{b}' //<br/>{c}
+                        },
+                        visualMap: {
+                            min: 0,
+                            max: me.getVisualMapMaxNum(),
+                            x: 'right',
+                            y: 'bottom',
+                            text: ['高', '低'],
+                            realtime: false,
+                            calculable: true,
+                            inRange: {
+                                color: ['lightskyblue', 'yellow', 'orangered']
+                            }
+                        },
+                        series: [
+                            {
+                                name: '东莞市',
+                                type: 'map',
+                                zoom:1.1,
+                                mapType: 'dongguan', // 自定义扩展图表类型
+                                itemStyle:{
+                                    normal:{
+                                        label:{
+                                            show:true,
+                                            textStyle:{
+                                                color: "#000"
+                                            }
+                                        }
+                                    },
+                                    emphasis:{label:{show:true}}
+                                },
+                                mapLocation : {
+                                },
+                                itemStyle:{
+                                    normal:{label:{show:true}}, //地图上是否显示镇街名称
+                                    emphasis:{label:{show:true},color:'#00FFFF'}
+                                },
+                                data:mapData,
+                            }
+                        ]
+                    }),
+                    //绑定地图上的点击事件
+                    myChart.on('click', function (result) {
+                        me.tableHtml('regCustomer',result,'click',result.data.name);
+                    });
+                });
+            },
+            //获取最大数
+            getVisualMapMaxNum: function () {
+                var max = 0;
+                $.each(CacheData.Data, function (i, json) {
+                    if (parseInt(json.TEACHOFFNUM) >= max) {
+                        max = json.TEACHOFFNUM;
+                    }
+                });
+                return max + 10;
+            },
+            //点击每个镇街加载学校的数据
+            tableHtml:function(id,data,event,bigtitle){
+                var data = data.data;
+                var sum = data.sum;
+                var len = sum.length;
+                var tbody = $('#'+id).find("tbody");
+                $("#reg_table").find(".cityname").html(bigtitle);
+                tbody.html('');
+                if(len > 0){
+                    for(var i = 0;i < len;i++){
+                        var row = sum[i];
+                        var name = row.name;
+                        var value = row.value;
+                        if (value == null) {
+                            value =  ''
+                        }
+                        var html = $(
+                                "<tr>" +
+                                "<td style='width:150px;background-color:#F0F0F0;color:#333;padding:8px 10px;border-bottom:1px solid #fff;'  >" + name + "</td>" +
+                                "<td style='width:80px;background-color:#87CEFA;color:#fff;padding:8px 10px;border-bottom:1px solid #fff;'>" + value + "</td>" +
+                                "</tr>"
+                        );
+                        tbody.append(html);
+                    }
+                }
+                console.log('点击', data);
+                if (!(event == 'one')) {
+                    me.gender(data.gender);
+                    me.types(data.types)
+                    me.education(data.education);
+                    me.primarypie(data.primarypie);
+                    me.secondarypie(data.secondarypie);
+                    me.high(data.high);
+                    me.teachertotal(data.alltotal, data.alltotal1);
+                    me.age(data.alltotal2, data.alltotal3)
+                }
+            },
+            getdata: function () {
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:8020/webHtml/html/echarts/js/Count_TeacherTeam_getlist.json",
+                    dataType: "json",
+                    success: function (res) {
+                        console.log('初始数据',res)
+                        me.gender([{ value: res.data.Total.BOYTEACHNUM, name: '男' }, { value: res.data.Total.GIRLTEACHNUM, name: '女' }]);
+                        me.types([{ value: res.data.Total.SPECIALTEACHNUM, name: '专任教师' }, { value: res.data.Total.OTHERTEACHNUM, name: '其他教师' }])
+                        me.education([
+                            { value: res.data.Total.CHUZHONGRADUATION, name: '初中学历' },
+                            { value: res.data.Total.GAOZHONGRADUATION, name: '高中学历' },
+                            { value: res.data.Total.ZHUANKEGRADUATION, name: '专科学历' },
+                            { value: res.data.Total.BENKEGRADUATION, name: '本科学历' },
+                            { value: res.data.Total.SHUOSHIGRADUATION, name: '硕士学历' },
+                            { value: res.data.Total.BOSHIGRADUATION, name: '博士学历' },
+                        ]);
+                        me.primarypie([
+                            { value: res.data.Total.GRADESCHOOL_GAOJI, name: '小学高级' },
+                            { value: res.data.Total.GRADESCHOOL_YIJI, name: '小学一级' },
+                            { value: res.data.Total.GRADESCHOOL_ERJI, name: '小学二级' },
+                            { value: res.data.Total.GRADESCHOOL_SANJI, name: '小学三级' },
+                        ]);
+                        me.secondarypie([
+                            { value: res.data.Total.MIDDLESCHOOL_GAOJI, name: '中学高级' },
+                            { value: res.data.Total.MIDDLESCHOOL_YIJI, name: '中学一级' },
+                            { value: res.data.Total.MIDDLESCHOOL_ERJI, name: '中学二级' },
+                            { value: res.data.Total.MIDDLESCHOOL_SANJI, name: '中学三级' },
+                        ]);
+                        me.high([
+                                { value: res.data.Total.MIDOFFSCHOOL_GAOJIJS, name: '高级讲师' },
+                                { value: res.data.Total.MIDOFFSCHOOL_JIANGSHI, name: '讲师' },
+                                { value: res.data.Total.MIDOFFSCHOOL_ZHULIJS, name: '助理讲师' },
+                                { value: res.data.Total.MIDOFFSCHOOL_JIAOYUAN, name: '教员' },
+                        ])
+                        var len = res.data.Data.length;
+                        var arr = [],arr1=[];
+                        for (var i = 0; i < len; i++) {
+                            arr.push(res.data.Data[i].STNAME);
+                            arr1.push(res.data.Data[i].TEACHOFFNUM);
+                        }
+                        me.teachertotal(arr, arr1);
+                        alltotal = arr;
+                        alltotal1 = arr1;
+                        var arr3 = [], arr4 = [];
+                        arr3 = [res.data.Total.OLD20_STARTBOY, res.data.Total.OLD20_25BOY, res.data.Total.OLD25_30BOY, res.data.Total.OLD30_35BOY, res.data.Total.OLD35_40BOY, res.data.Total.OLD40_45BOY, res.data.Total.OLD45_50BOY, res.data.Total.OLD50_55BOY, res.data.Total.OLD55_60BOY, res.data.Total.OLD60_65BOY, res.data.Total.OLD65_ENDBOY]
+                        arr4 = [res.data.Total.OLD20_STARTGIRY, res.data.Total.OLD20_25GIRY, res.data.Total.OLD25_30GIRY, res.data.Total.OLD30_35GIRY, res.data.Total.OLD35_40GIRY, res.data.Total.OLD40_45GIRY, res.data.Total.OLD45_50GIRY, res.data.Total.OLD50_55GIRY, res.data.Total.OLD55_60GIRY, res.data.Total.OLD60_65GIRY, res.data.Total.OLD65_ENDGIRY]
+                        me.age(arr3,arr4)
+                    }
+                });
+            },
+            gender: function (arr) {
+                console.log(arr)
+                //教师性别比例
+                var pieChart = echarts.init(document.getElementById('gender'));
+                var pieoption = {
+                    title: {
+                        text: '教师性别占比',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    legend: {
+                        x: 'right',
+                        bottom: 10,
+                        data: ['男', '女'],
+                        textStyle: {
+                            fontSize: 10,
+                        }
+                    },
+                    series: [
+                        {
+                            name: '教师性别占比',
+                            type: 'pie',
+                            radius: ['50%', '70%'],
+                            center: ['51%', '45%'],
+                            avoidLabelOverlap: false,
+                            color: ['#ff7f50', '#87cefa'],
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: '16',
+                                        fontWeight: ''
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data: arr
+                        }
+                    ]
+                };
+                pieChart.setOption(pieoption);
+                window.onresize = function (e) {
+                    pieChart.resize(e);
+                }
+            },
+            //教师类型
+            types: function (arr) {
+                var typeChart = echarts.init(document.getElementById('types'));
+                var typeoption = {
+                    title: {
+                        text: '教师类型占比',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        left: 'right',
+                        bottom: 10,
+                        data: ['专任教师', '其他']
+                    },
+                    series: [
+                        {
+                            name: '教师类型比例',
+                            type: 'pie',
+                            radius: '65%',
+                            center: ['50%', '55%'],
+                            color: ['#528b8b', '#cd2626'],
+                            data:arr,
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                },
+                                normal: {
+                                    label: {
+                                        show: false
+                                    },
+                                    labelLine: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                };
+                typeChart.setOption(typeoption);
+                window.onresize = function (e) {
+                    typeChart.resize(e);
+                }
+            },
+            //教师学历比例
+            education: function (arr) {
+                var educationChart = echarts.init(document.getElementById('education'));
+                var educationoption = {
+                    title: {
+                        text: '教师学历占比',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        left: 'right',
+                        bottom: 10,
+                        data: ['初中学历', '高中学历', '专科学历', '本科学历', '硕士学历', '博士学历']
+                    },
+                    series: [
+                        {
+                            name: '教师学历占比',
+                            type: 'pie',
+                            radius: '70%',
+                            center: ['50%', '45%'],
+                            color: ['#26c0c0', '#f0805a', '#f4e001', '#c6e579'],
+                            data: arr,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false,
+                                    },
+                                    //labelLine: {
+                                    //    show: true,
+                                    //    length: 0.001
+                                    //}
+                                }
+                            },
+                        }
+                    ]
+                };
+                educationChart.setOption(educationoption);
+                window.onresize = function (e) {
+                    educationChart.resize(e);
+                }
+            },
+            //小学教师职称占比
+            primarypie: function (arr) {
+                var primaryChart = echarts.init(document.getElementById('primarypie'));
+                var primaryoption = {
+                    title: {
+                        text: '小学教师职称占比',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        left: 'right',
+                        bottom: 10,
+                        data: ['小学高级', '小学一级', '小学二级', '小学三级']
+                    },
+                    series: [
+                        {
+                            name: '小学教师职称占比',
+                            type: 'pie',
+                            radius: '50%',
+                            center: ['50%', '55%'],
+                            color: ['#b5c334', '#c1232b', '#fcce10', '#c6e579'],
+                            data: arr,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false,
+                                    },
+                                    labelLine: {
+                                        show: false,
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                };
+                primaryChart.setOption(primaryoption);
+                window.onresize = function (e) {
+                    primaryChart.resize(e);
+                }
+            },
+            //中学教师职称占比
+            secondarypie: function (arr) {
+                var secondaryChart = echarts.init(document.getElementById('secondarypie'));
+                var secondaryoption = {
+                    title: {
+                        text: '中学教师职称占比',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        left: 'right',
+                        bottom: 10,
+                        data: ['中学高级', '中学一级', '中学二级', '中学三级']
+                    },
+                    series: [
+                        {
+                            name: '中学教师职称占比',
+                            type: 'pie',
+                            radius: '50%',
+                            center: ['50%', '55%'],
+                            color: ['#b5c334', '#c1232b', '#fcce10', '#c6e579'],
+                            data: arr,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false,
+                                    },
+                                    labelLine: {
+                                        show: false,
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                };
+                secondaryChart.setOption(secondaryoption);
+                window.onresize = function (e) {
+                    secondaryChart.resize(e);
+                }
+            },
+            //中职教师职称占比
+            high: function (arr) {
+                var highChart = echarts.init(document.getElementById('highpie'));
+                var highoption = {
+                    title: {
+                        text: '中职教师职称占比',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        left: 'right',
+                        bottom: 10,
+                        data: ['高级讲师', '讲师', '助理讲师', '教员']
+                    },
+                    series: [
+                        {
+                            name: '中职教师职称占比',
+                            type: 'pie',
+                            radius: '50%',
+                            center: ['50%', '55%'],
+                            color: ['#b5c334', '#c1232b', '#fcce10', '#c6e579'],
+                            data: arr,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false,
+                                    },
+                                    labelLine: {
+                                        show: false,
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                };
+                highChart.setOption(highoption);
+                window.onresize = function (e) {
+                    highChart.resize(e);
+                }
+            },
+            //各地区教师总数
+            teachertotal: function (arr,arr1) {
+                var teachertotalChart = echarts.init(document.getElementById('teachertotal'));
+                var teachertotaloption = {
+                    title: {
+                        text: '各地区教师总数',
+                        x: 'center'
+                    },
+                    color: ['#3398DB'],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: arr,
+                            axisLabel: {
+                                interval: 0,
+                                formatter: function (value) {
+                                    return value.split("").join("\n");
+                                }
+                            }
+                            //axisTick: {
+                            //    alignWithLabel: true
+                            //},
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            barMaxWidth: 25,//最大宽度
+                            type: 'bar',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            data: arr1
+                        }
+                    ]
+                };
+                teachertotalChart.setOption(teachertotaloption);
+                window.onresize = function (e) {
+                    teachertotalChart.resize(e);
+                }
+            },
+            //东莞市教师年龄段分布
+            age: function (arr3,arr4) {
+                var ageChart = echarts.init(document.getElementById('age'));
+
+                var ageoption = {
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['男', '女']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['20岁以下', '20-25岁', '25-30岁', '30-35岁', '35-40岁', '40-45岁', '45-50岁', '50-55岁', '55-60岁', '60-65岁', '65岁以上']
+                    },
+                    yAxis: {
+                        type: 'value',
+                        boundaryGap: [0, 0.01]
+                    },
+                    series: [
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#ff7f50'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '男',
+                            type: 'bar',
+                            data: arr3
+                        },
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#87cefa'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '女',
+                            type: 'bar',
+                            data: arr4
+                        }
+                    ]
+                };
+                ageChart.setOption(ageoption);
+                window.onresize = function (e) {
+                    ageChart.resize(e);
+                }
+            }
+        }
+      
+      
+        me.init();
+    </script>
+</body>
+</html>

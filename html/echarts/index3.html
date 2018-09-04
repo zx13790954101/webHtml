@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生户籍分布</title>
+    <link href="../../plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../../plugin/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Count_StudentDomicile.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_690248_p7ug2cm1ha935wmi.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="layui-tab" lay-filter="test1">
+        <ul class="layui-tab-title">
+            <li data="1" class="layui-this">户口所在地</li>
+            <li data="2">就读所在地</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="city">
+                    <ul class="cityContent">
+                    </ul>
+                </div>
+                @*<ul class="Area">
+                    <li class="active">广州市</li>
+                    <li>深圳市</li>
+                    <li>珠海市</li>
+                    <li>汕头市</li>
+                    <li>佛山市</li>
+                    <li>韶关市</li>
+                    <li>河源市</li>
+                    <li>梅州市</li>
+                    <li>惠州市</li>
+                    <li>汕尾市</li>
+                    <li>东莞市</li>
+                    <li>中山市</li>
+                    <li>江门市</li>
+                    <li>阳江市</li>
+                    <li>湛江市</li>
+                    <li>茂名市</li>
+                    <li>肇庆市</li>
+                    <li>清远市</li>
+                    <li>潮州市</li>
+                    <li>揭阳市</li>
+                    <li>云浮市</li>
+                </ul>*@
+                <div class="formdata">
+                    <div class="formdataContent">
+                        <div class="formdatatitle">广州市户籍学生在全省就读情况</div>
+                        <table class="table table-bordered" style="margin-bottom:0px">
+                            <tr>
+                                <th width="13%" style="color:#000000;text-align:center">镇街名称</th>
+                                <th width="13%" style="color:#000;text-align:center">合计</th>
+                                <th width="12%" style="color:#000;text-align:center">其中：女</th>
+                                <th width="13" style="color:#000;text-align:center">学前</th>
+                                <th width="12%" style="color:#000;text-align:center">小学</th>
+                                <th width="13%" style="color:#000;text-align:center">初中</th>
+                                <th width="12%" style="color:#000;text-align:center">高中</th>
+                                <th width="12%" style="color:#000;text-align:center">中职</th>
+                            </tr>
+                        </table>
+                        <div class="formdataContent_form" id="content">
+                            <table class="table table-bordered" style="margin-bottom:0px">
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                                <tr>
+                                    <td width="13%" style="color:#798cf3;text-align:right">广东直属</td>
+                                    <td width="13%" style="color:#787876;text-align:right">452</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13" style="color:#787876;text-align:right">32</td>
+                                    <td width="12%" style="color:#787876;text-align:right">32</td>
+                                    <td width="13%" style="color:#787876;text-align:right">45</td>
+                                    <td width="12%" style="color:#787876;text-align:right">76</td>
+                                    <td width="12%" style="color:#787876;text-align:right">1</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="formdatabie">
+                        <div class="formbie" id="piecontainer"></div>
+                    </div>
+                    <div class="formdatabar">
+                        <div class="formdatatitle"></div>
+                        <div class="formdatabarContent" id="barcontainer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../../plugin/jquery/jquery.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="js/nice.js"></script>
+    <script src="echarts/echarts.js"></script>    
+    <script src="js/StreetJsonData.js"></script>
+    <script type="text/javascript">
+
+        var me = {
+            //初始化入口 `
+            init: function () {
+                var str = '';
+                var StreetJsonDatalen = StreetJsonData.length;
+                for (var i = 0; i < StreetJsonDatalen; i++) {
+                    if (i == 0) {
+                        str += '<li class="active" data="' + StreetJsonData[i].idcode + '">' + StreetJsonData[i].name + '</li>'
+                    } else {
+                        str += '<li data="' + StreetJsonData[i].idcode + '">' + StreetJsonData[i].name + '</li>'
+                    }
+                }
+                $('.cityContent').html(str);
+                me.filter();
+                $('.formdatatitle').html(StreetJsonData[0].name + '在全市各镇街的就读情况')
+                me.form();
+                me.nice();
+                me.getdata(1, StreetJsonData[0].idcode);
+                //me.Offsitebarcontent();
+            },
+            form: function () {
+                layui.use(['form', 'element'], function () {
+                    var element = layui.element;
+                    element.on('tab(test1)', function (data) {
+                        $('.cityContent li').eq(0).addClass('active').siblings().removeClass('active')
+                        me.getdata(data.index + 1, StreetJsonData[0].idcode);
+                    });
+                });
+            },
+            nice: function () {
+                $('#content').niceScroll({
+                    cursorcolor: "#ccc",//#CC0071 光标颜色
+                    cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                    touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                    cursorwidth: "5px", //像素光标的宽度
+                    cursorborder: "0", // 	游标边框css定义
+                    cursorborderradius: "5px",//以像素为光标边界半径
+                    autohidemode: false //是否隐藏滚动条
+                });
+            },
+            //筛选
+            filter: function () {
+                $('.cityContent').on('click', 'li', function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                    var buy = $('.layui-tab-title .layui-this').attr('data');
+                    var stid = $(this).attr('data');
+                    $('.formdatatitle').html($(this).html() + '在全市各镇街的就读情况');
+                    me.getdata(buy, stid);
+                })
+            },
+            getdata: function (bustype, stid) {
+                console.log(bustype, stid)
+                //数据
+                //bustype  1户口所在地 2就读所在地';
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:8020/webHtml/html/echarts/js/Count_StudentDomicile_GetList.json?BUSTYPE=1&STID=441918",
+                    dataType: "json",
+                    success: function (res) {
+                        console.log(res)
+                        var len = res.data.Data.length;
+                        var str = '';
+                        var arr = [],arr1 = [],arr2=[];
+                        for (var i = 0; i < len; i++) {
+                            str +='<tr>\
+                                    <td width="13%" style="color:#798cf3;text-align:right">' + res.data.Data[i].STNAME + '</td>\
+                                    <td width="13%" style="color:#787876;text-align:right">' + res.data.Data[i].TOTALNUM + '</td>\
+                                    <td width="12%" style="color:#787876;text-align:right">' + res.data.Data[i].GIRLNUM + '</td>\
+                                    <td width="13" style="color:#787876;text-align:right">' + res.data.Data[i].XUEQIANNUM + '</td>\
+                                    <td width="12%" style="color:#787876;text-align:right">' + res.data.Data[i].XIAOXUENUM + '</td>\
+                                    <td width="13%" style="color:#787876;text-align:right">' + res.data.Data[i].CHUZHONGNUM + '</td>\
+                                    <td width="12%" style="color:#787876;text-align:right">' + res.data.Data[i].GAOZHONGNUM + '</td>\
+                                    <td width="12%" style="color:#787876;text-align:right">' + res.data.Data[i].ZHONGZHINUM + '</td>\
+                                </tr>'
+                            arr.push(res.data.Data[i].STNAME);
+                            arr1.push({ value: res.data.Data[i].TOTALNUM, name: res.data.Data[i].STNAME })
+                            arr2.push(res.data.Data[i].TOTALNUM)
+                        }
+                        $('.formdataContent_form table').html(str);
+                        console.log(arr)
+                        console.log(arr1)
+                        var pieoption = { one: arr, two: arr1,three:arr2 };
+                        me.Offsitebarcontent(pieoption);
+                    }
+                });
+            },
+            Offsitebarcontent: function (pieoptionshu) {
+                // 基于准备好的dom，初始化echarts实例
+                var pieChart = echarts.init(document.getElementById('piecontainer'));
+                // 指定图表的配置项和数据
+                var pieoption = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        bottom: 'bottom',
+                        data: pieoptionshu.one
+                    },
+                    series: [
+                        {
+                            name: '城镇比例',
+                            type: 'pie',
+                            radius: '70%',
+                            center: ['51%', '42%'],
+                            data: pieoptionshu.two,
+                            labelLine: {
+                                show: true,
+                                length: 0.001
+                            },
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                pieChart.setOption(pieoption);
+
+                // 基于准备好的dom，初始化echarts实例
+                var lineChart = echarts.init(document.getElementById('barcontainer'));
+                // 指定图表的配置项和数据
+                var lineoption = {
+                    color: ['#3398DB'],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: pieoptionshu.one,
+                            //axisTick: {
+                            //    alignWithLabel: true
+                            //}
+                            axisLabel: {
+                                interval: 0,
+                                formatter: function (value) {
+                                    return value.split("").join("\n");
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            barMaxWidth: 25,//最大宽度
+                            name: '直接访问',
+                            type: 'bar',
+                            barWidth: '60%',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            data: pieoptionshu.three
+                        }
+                    ]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                lineChart.setOption(lineoption);
+                window.onresize = function (e) {
+                    pieChart.resize(e);
+                    lineChart.resize(e);
+                }
+            }
+        }
+        me.init();
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

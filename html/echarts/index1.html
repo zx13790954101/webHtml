@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>教育概况</title>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_690248_lis1x8u8r6nwxw29.css"/>
+<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+<link href="css/Count_EducationGlance.css" rel="stylesheet" />
+	</head>
+	<body>
+
+<div  style="overflow:auto">
+
+    <section class="section_header">
+
+        <div class="row">
+            <div class="col-xs-9  section_header_left">
+                <!-- 教育概览 map -->
+                <div>
+                    <div id="container" style="float:right;width:80%;height:500px;"></div>
+                        <div id="reg_table" style="height:300px;position: absolute;left:0;top:30px;">
+                        <div style='font-size:16px;font-weight:bold;margin-bottom:10px'><span class="cityname" style='font-size:16px'>东莞市</span>教育数据概览</div>
+                        <table id="regCustomer" class="regCustomer"  style="width:100%" >
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 教育概览 map end-->
+            </div>
+            <div class="col-xs-3  section_header_right">
+
+                <div class="layui-tab layui-tab-brief" lay-filter="section_header_right" style="margin:0px 8px;">
+                    <ul class="layui-tab-title row" style="margin-left:5px;height:auto;">
+                        <li class="layui-this  col-xs-6"><h5>学校类型比例</h5></li>
+                        <li class="col-xs-6"><h5>男女学生比例</h5></li>
+                        <li class="col-xs-6"><h5>民办学校学生占比</h5></li>
+                    </ul>
+                    <div class="layui-tab-content" style="margin-top:50px">
+                        <div class="layui-tab-item layui-show">
+                            <!-- 饼图1-->
+                            <div id="pie1" style="width: 100%;height:250px;"></div>
+                        </div>
+                        <div class="layui-tab-item" style="padding-left:0px;padding-right:0px;">
+                            <!-- 饼图2-->
+                            <div id="pie2" style="width: 100%;height:250px;"></div>
+                            <input type="hidden" id="pieId2" value="false"/>
+                        </div>
+                        <div class="layui-tab-item" style="padding-left:0px;padding-right:0px;">
+                            <!-- 饼图3-->
+                            <div id="pie3" style="width: 100%;height:250px;"></div>
+                            <input type="hidden" id="pieId3" value="false"/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section_bottom">
+
+        <div class="layui-tab" lay-filter="section_bottom">
+            <ul class="layui-tab-title">
+                <li class="layui-this">学校总数</li>
+                <li>公办学校总数</li>
+                <li>民办学校总数</li>
+                <li>学生总数</li>
+                <li>民办学校学生总数</li>
+                <li>女生总数</li>
+            </ul>
+            <div class="layui-tab-content" style="padding-top:20px">
+                <div class="layui-tab-item layui-show">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!-- 学校总数-->
+                            <div id="bar1" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie1" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!-- 公办学校总数-->
+                            <div id="bar2" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie2" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!--民办学校总数 -->
+                            <div id="bar3" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie3" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!--学生总数 -->
+                            <div id="bar4" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie4" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!--民办学校学生总数 -->
+                            <div id="bar5" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie5" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <!-- 女生总数 -->
+                            <div id="bar6" style="width: 100%;height:400px;"></div>
+                        </div>
+                        <div class="col-xs-4">
+                            <!-- 饼图-->
+                            <div id="schoolPie6" style="width: 100%;height:450px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+</div>
+
+
+    <script src="../../plugin/jquery/jquery.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="js/nice.js"></script>
+    <script src="echarts/echarts.js"></script>
+    <script src="echarts/macarons.js"></script>
+    <script src="js/StreetJsonData.js"></script>
+    <!-- <script src="~/Areas/Hx_DGLargeData_Analysis/Views_Js/Count_EducationHot.js"></script> -->
+
+    <script src="js/Count_EducationGlance.js"></script>
+
+<script>
+    layui.use(['form', 'element'], function () {
+        var $ = layui.jquery
+        , element = layui.element//Tab的切换功能，切换事件监听等，需要依赖element模块
+        , form = layui.form
+        , layer = layui.layer;
+        //监听导航点击
+
+        //监听指定开关
+        //form.on('switch(switchTest)', function (data) {
+            //layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+               //offset: '6px'
+            //});
+            //layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        // });
+        //element.on('nav(navtab)', function (elem) {
+            //console.log(elem)
+           // layer.msg(elem.text());
+       //});
+
+        //element.on('tab(section_header_right)', function (elem) {
+            //console.log("section_header_right", elem);
+        //});
+        //顶部的tab
+        //element.on('tab(section_bottom)', function (elem) {
+            //console.log("section_bottom", elem);
+        //});
+
+    });
+</script>
+
+	</body>
+</html>

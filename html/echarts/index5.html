@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生流动情况</title>
+    <link href="../../plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../../plugin/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Count_StudentDomicile.css" rel="stylesheet" />
+    <link href="css/Count_StudentFlow.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_690248_p7ug2cm1ha935wmi.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="layui-tab" lay-filter="test1">
+        <ul class="layui-tab-title">
+            <li>转学流动</li>
+            <li class="layui-this">农村向城市流动</li>
+            <li>异地就读流动</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item">
+                <div class="formdataContentRural">
+                    <table class="table table-bordered" id="Transfer" style="margin-bottom:0px">
+                        <tbody>
+                            <tr>
+                                <th rowspan="4">镇街名称</th>
+                                <th colspan="10">区域间转学</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">跨市</th>
+                                <th colspan="8" style="background-color:#00a0e8;color:#fff;text-align:center">市内</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">转入</th>
+                                <th rowspan="2">转出</th>
+                                <th colspan="3">转入</th>
+                                <th colspan="3">转出</th>
+                            </tr>
+                            <tr>
+                                <th>小计</th>
+                                <th>镇内转学</th>
+                                <th>跨镇转学</th>
+                                <th>小计</th>
+                                <th>镇内转学</th>
+                                <th>跨镇转学</th>
+                            </tr>
+                        <tbody class="tbody">
+                            <tr>
+                                <td>广东直属</td>
+                                <td>21</td>
+                                <td>21</td>
+                                <td>21</td>
+                                <td>78</td>
+                                <td>90</td>
+                                <td>456</td>
+                                <td>7</td>
+                                <td>678</td>
+                                <td>76</td>
+                                <td>56</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                   
+                </div>
+                <div class="Ruralbar">
+                    <div class="formdatabartitle">全市跨市转入转出情况</div>
+                    <div class="Ruralbarcontent" id="Ruraltransferbar">
+
+                    </div>
+                </div>
+                <div class="Ruralbar">
+                    <div class="formdatabartitle">全市市内转入转出情况</div>
+                    <div class="Ruralbarcontent" id="Offsitetransferbar">
+
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item layui-show">
+                <div class="formdataContentRural">
+                    <table class="table table-bordered" id="Ruraltable" style="margin-bottom:0px">
+                        <tr>
+                            <th rowspan="2">镇街名称</th>
+                            <th rowspan="2">学生总数</th>
+                            <th rowspan="2">本镇街内城区学校就读</th>
+                            <th colspan="3">地城区学校就读</th>
+                        </tr>
+                        <tr>
+                            <th style="background-color:#00a0e8;color:#fff;text-align:center">合计</th>
+                            <th style="background-color:#00a0e8;color:#fff;text-align:center">本市其他镇街</th>
+                            <th style="background-color:#00a0e8;color:#fff;text-align:center">跨市</th>
+                        </tr>
+                        <tbody class="tbody">
+                            <tr>
+                                <td width="11.6393443%">1</td>
+                                <td width="11.6393443%">211</td>
+                                <td width="26.4754098%">2121</td>
+                                <td width="12.4180328%">2131</td>
+                                <td width="12.4180328%">76761</td>
+                                <td width="12.4180328%">7661</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+                </div>
+                <div class="Ruralbar">
+                    <div class="formdatabartitle">各镇街农村学生在本镇街城市学校就读情况</div>
+                    <div class="Ruralbarcontent" id="Ruralbarcontent">
+
+                    </div>
+                </div>
+                <div class="Ruralbar">
+                    <div class="formdatabartitle">各镇街农村学生流向异地城市学校就读情况</div>
+                    <div class="Ruralbarcontent" id="Offsitebarcontent">
+
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="formdataContentRural">
+                    <table class="table table-bordered" id="Offsite" style="margin-bottom:0px">
+                        <tbody>
+                            <tr>
+                                <th rowspan="3">镇街名称</th>
+                                <th rowspan="3">学生总数</th>
+                                <th colspan="6">区域间转学</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">异地就读学生数</th>
+                                <th rowspan="2">异地就读学生比例</th>
+                                <th colspan="2">跨市就读情况</th>
+                                <th colspan="2">市内跨镇就读情况</th>
+                            </tr>
+                            <tr>
+                                <th>人数</th>
+                                <th>比例</th>
+                                <th>人数</th>
+                                <th>比例</th>
+                            </tr>
+                        <tbody class="tbody">
+                            <tr>
+                                <td>广东直属</td>
+                                <td>21</td>
+                                <td>21</td>
+                                <td>21</td>
+                                <td>78</td>
+                                <td>90</td>
+                                <td>456</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+                </div>
+                <div class="Ruralbar">
+                    <div class="formdatabartitle">各镇街学生异地就读情况</div>
+                    <div class="Ruralbarcontent" id="Offsitemobilitybar">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../plugin/jquery/jquery.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="js/nice.js"></script>
+    <script src="echarts/echarts.js"></script>
+    <script type="text/javascript">
+        var me = {
+            //初始化入口
+            init: function () {
+                me.form();
+                me.nice();
+                me.getdata();
+                //me.Offsitebarcontent();
+            },
+            form: function () {
+                layui.use(['form', 'element'], function () {
+                    var element = layui.element;
+                    element.on('tab(test1)', function (data) {
+                        if (data.index == 0) {
+                            $.ajax({
+                                type: "GET",
+                                url: "/Hx_DGLargeData_Analysis/Count_StudentFlow/GetList_ZHUANXUE",
+                                dataType: "json",
+                                success: function (res) {
+                                    console.log(res)
+                                    var str = '', arr = [], arr1 = [], arr2 = [],arr3=[],arr4=[];
+                                    var len = res.data.Data.length;
+                                    for (var i = 0; i < len; i++) {
+                                        str += '<tr>\
+                                                    <td>' + res.data.Data[i].STNAME + '</td>\
+                                                    <td>' + res.data.Data[i].DIFINTONUM+ '</td>\
+                                                    <td>' + res.data.Data[i].DIFOUTNUM + '</td>\
+                                                    <td>' + res.data.Data[i].LOCTOTALNUM_INTO + '</td>\
+                                                    <td>' + res.data.Data[i].LOCDIFZXNUM_INTO + '</td>\
+                                                    <td>' + res.data.Data[i].LOCZNZXNUM_INTO + '</td>\
+                                                    <td>' + res.data.Data[i].LOCTOTALNUM_OUT + '</td>\
+                                                    <td>' + res.data.Data[i].LOCDIFZXNUM_OUT + '</td>\
+                                                    <td>' + res.data.Data[i].LOCZNZXNUM_OUT + '</td>\
+                                                </tr>'
+                                        arr.push(res.data.Data[i].STNAME);
+                                        arr1.push(res.data.Data[i].DIFINTONUM);
+                                        arr2.push(res.data.Data[i].DIFOUTNUM)
+                                        arr3.push(res.data.Data[i].LOCTOTALNUM_INTO)
+                                        arr4.push(res.data.Data[i].LOCTOTALNUM_OUT)
+                                    }
+                                    $('#Transfer .tbody').html(str);
+                                    me.Ruraltransferbar(arr,arr1,arr2,arr3,arr4);
+                                }
+                            });
+                            return;
+                        }
+                        if (data.index == 2) {
+                            $.ajax({
+                                type: "GET",
+                                url: "/Hx_DGLargeData_Analysis/Count_StudentFlow/GetList_DIFPLACE",
+                                dataType: "json",
+                                success: function (res) {
+                                    console.log(res)
+                                    var str = '', arr = [], arr1 = [];
+                                    var len = res.data.Data.length;
+                                    for (var i = 0; i < len; i++) {
+                                        str += '<tr>\
+                                                    <td>' + res.data.Data[i].STNAME + '</td>\
+                                                    <td>' + res.data.Data[i].TOTALNUM + '</td>\
+                                                    <td>' + res.data.Data[i].DIFNUM + '</td>\
+                                                    <td>' + res.data.Data[i].DIFNUMRATE + '</td>\
+                                                    <td>' + res.data.Data[i].DIFCITYNUM + '</td>\
+                                                    <td>' + res.data.Data[i].DIFCITYNUMRATE + '</td>\
+                                                    <td>' + res.data.Data[i].LOCCITYDIFNUM + '</td>\
+                                                    <td>' + res.data.Data[i].LOCCITYDIFNUMRATE + '</td>\
+                                                </tr>'
+                                        arr.push(res.data.Data[i].STNAME);
+                                        arr1.push(res.data.Data[i].DIFNUM);
+                                    }
+                                    $('#Offsite .tbody').html(str);
+                                    me.Offsitemobility(arr, arr1);
+                                }
+                            });
+                            return;
+                        }
+                    });
+                });
+            },
+            nice: function () {
+                $('#content').niceScroll({
+                    cursorcolor: "#ccc",//#CC0071 光标颜色
+                    cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                    touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                    cursorwidth: "5px", //像素光标的宽度
+                    cursorborder: "0", // 	游标边框css定义
+                    cursorborderradius: "5px",//以像素为光标边界半径
+                    autohidemode: false //是否隐藏滚动条
+                });
+            },
+            getdata: function () {
+                //农村向城市流动
+                $.ajax({
+                    type: "GET",
+                    url: "js/Count_StudentFlow_GetList_NCTOCS.json",
+                    dataType: "json",
+                    success: function (res) {
+                        console.log(res)
+                        var str = '',arr=[],arr1=[],arr2=[];
+                        var len = res.data.Data.length;
+                        for (var i = 0; i < len; i++) {
+                            str+='<tr>\
+                                <td width="11.6393443%">' + res.data.Data[i].STNAME + '</td>\
+                                <td width="11.6393443%">' + res.data.Data[i].STUDENTNUM + '</td>\
+                                <td width="26.4754098%">' + res.data.Data[i].LOCALNUM + '</td>\
+                                <td width="12.4180328%">' + res.data.Data[i].DIFTOTALNUM + '</td>\
+                                <td width="12.4180328%">' + res.data.Data[i].DIFLOCALOTHERNUM + '</td>\
+                                <td width="12.4180328%">' + res.data.Data[i].DIFCROSSNUM + '</td>\
+                            </tr>'
+                            arr.push(res.data.Data[i].STNAME);
+                            arr1.push(res.data.Data[i].LOCALNUM);
+                            arr2.push(res.data.Data[i].DIFTOTALNUM)
+                        }
+                        $('#Ruraltable .tbody').html(str);
+                        me.Offsitebarcontent(arr,arr1,arr2)
+                    }
+                });
+            },
+            Offsitebarcontent: function (arr,arr1,arr2) {
+                //农村向城市流动(向本地区流动)
+                var pieChart = echarts.init(document.getElementById('Offsitebarcontent'));
+                var pieoption = {
+                    //color: ['#3398DB'],
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: arr,
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLabel: {
+                                interval: 0,
+                                formatter: function (value) {
+                                    return value.split("").join("\n");
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            barMaxWidth: 25,//最大宽度
+                            type: 'bar',
+                            itemStyle: {
+                                //通常情况下：
+                                normal: {
+                                    //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                                    color: function (params) {
+                                        var colorList = ['#edbec1', '#b5c334', '#fcce10', '#e87c25', '#27727b', '#fe8463', '#9bca63'];
+                                        return colorList[params.dataIndex];
+                                    }
+                                },
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            data:arr1,
+                        }
+                    ]
+                };
+                pieChart.setOption(pieoption);
+                //农村向城市流动(向异地城市流动)
+                var lineChart = echarts.init(document.getElementById('Ruralbarcontent'));
+                var lineoption = {
+                    //color: ['#3398DB'],
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: arr,
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLabel: {
+                                interval: 0,
+                                formatter: function (value) {
+                                    return value.split("").join("\n");
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            barMaxWidth: 25,//最大宽度
+                            type: 'bar',
+                            itemStyle: {
+                                //通常情况下：
+                                normal: {
+                                    //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                                    color: function (params) {
+                                        var colorList = ['#edbec1', '#b5c334', '#fcce10', '#e87c25', '#27727b', '#fe8463', '#9bca63'];
+                                        return colorList[params.dataIndex];
+                                    }
+                                },
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            data: arr2
+                        }
+                    ]
+                };
+                lineChart.setOption(lineoption);
+                //转学流动(quansh)
+                window.onresize = function (e) {
+                    pieChart.resize(e);
+                    lineChart.resize(e);
+                }
+            },
+            //转学流动
+            Ruraltransferbar: function (arr,arr1,arr2,arr3,arr4) {
+                //农村向城市流动(向本地区流动)
+                var pieChart = echarts.init(document.getElementById('Ruraltransferbar'));
+                var pieoption = {
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['跨市转入', '跨市转出']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: arr,
+                        axisLabel: {
+                            interval: 0,
+                            formatter: function (value) {
+                                return value.split("").join("\n");
+                            }
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        boundaryGap: [0, 0.01]
+                    },
+                    series: [
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#ff7f50'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '跨市转入',
+                            type: 'bar',
+                            data: arr1
+                        },
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#87cefa'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '跨市转出',
+                            type: 'bar',
+                            data: arr2
+                        }
+                    ]
+                };
+
+                pieChart.setOption(pieoption);
+                //农村向城市流动(向异地城市流动)
+                var lineChart = echarts.init(document.getElementById('Offsitetransferbar'));
+                var lineoption = {
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['市内转出', '市内转入']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: arr,
+                        axisLabel: {
+                            interval: 0,
+                            formatter: function (value) {
+                                return value.split("").join("\n");
+                            }
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        boundaryGap: [0, 0.01]
+                    },
+                    series: [
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#ff7f50'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '市内转入',
+                            type: 'bar',
+                            data: arr3
+                        },
+                        {
+                            barMaxWidth: 20,//最大宽度
+                            itemStyle: {
+                                normal: {
+                                    color: '#00fa9a'
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            name: '市内转出',
+                            type: 'bar',
+                            data: arr4
+                        }
+                    ]
+                };
+                lineChart.setOption(lineoption);
+                //转学流动(quansh)
+                window.onresize = function (e) {
+                    pieChart.resize(e);
+                    lineChart.resize(e);
+                }
+            },
+            //异地就读流动
+            Offsitemobility: function (arr,arr1) {
+                //农村向城市流动(向本地区流动)
+                var pieChart = echarts.init(document.getElementById('Offsitemobilitybar'));
+                var pieoption = {
+                    //color: ['#3398DB'],
+                    title: {
+                        subtext: '单位:人'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: arr,
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLabel: {
+                                interval: 0,
+                                formatter: function (value) {
+                                    return value.split("").join("\n");
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            barMaxWidth: 25,//最大宽度
+                            name: '各镇街学生异地就读情况',
+                            type: 'bar',
+                            barWidth: '60%',
+                            itemStyle: {
+                                //通常情况下：
+                                normal: {
+                                    //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                                    color: function (params) {
+                                        var colorList = ['#edbec1', '#b5c334', '#fcce10', '#e87c25', '#27727b', '#fe8463', '#9bca63'];
+                                        return colorList[params.dataIndex];
+                                    }
+                                },
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            data: arr1
+                        }
+                    ]
+                };
+
+                pieChart.setOption(pieoption);
+                window.onresize = function (e) {
+                    pieChart.resize(e);
+                }
+            },
+        }
+        me.init();
+    </script>
+</body>
+
+</html>

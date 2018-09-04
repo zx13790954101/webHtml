@@ -26,16 +26,14 @@
 
 	</head>
 	<body>
-		<nav>
 
-		</nav>
 		<header class="flex container">
 			<div class="header-logo">
 				<div class="img-r">
 					<img lay-src="//img.alicdn.com/tfs/TB1MaLKRXXXXXaWXFXXXXXXXXXX-480-260.png">
 				</div>
 			</div>
-			<form class="flex-center search-form">
+			<form class="flex-c search-form">
 				<div class="box-searchInput">
 					<input type="text" />
 				</div>
@@ -43,17 +41,45 @@
 			</form>
 		
 		</header>
+		
+		
+		<nav>
+			<div class="lzs-nav  h5 ">
+
+				<ul class="nav-ul table-box container">
+					<li class="active">
+						<a href="">资讯</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">商城</a>
+					</li>
+					<li class="">
+						<a href="">讨论区</a>
+					</li>
+					<li class="">
+						<a href="">资源下载</a>
+					</li>
+					<li class="">
+						<a href="">关于我们</a>
+					</li>
+				</ul>
+                <div class="nav-ul-moblie none">
+                	<span class="">Jason</span>
+                	<span class="right"  ><i class="layui-icon moblie-button" >&#xe668;</i></span>
+                </div>
+			</div>
+		</nav>
 		<!--第一个的section-->
 		<section class="section-1 container">
-			<div class="banner-wrapper flex row">
+			<div class="banner-wrapper flex ">
 				<!--侧边栏-->
 				<div class="sidebar  col-lg-3  col-xs-0 flex">
 					<div class="sidebar-l" >
 						<ul>
-				    		<li><a href="#" class="flex-center">
+				    		<li><a href="#" class="flex-c">
 				    				<i class="iconfont icon-icon03"></i><h5>电脑</h5>
 				    		</a></li>
-				    		<li><a href="#" class="flex-center">
+				    		<li><a href="#" class="flex-c">
 				    				<i class="iconfont icon-icon03"></i><h5>电脑</h5>
 				    		</a></li>
 			    	    </ul>
@@ -61,16 +87,16 @@
 			    	<div class="sidebar-r flex-item">
 			    		<div class="sidebar-r-box">
 			    			<dl class="sidebar-r-item dl-array">
-			    				<dt><a href="#" class="flex-center">衣服</a></dt>
-			    				<dd class="flex-center"><a href="#" class="flex-center">短裤</a>
-			    					<a href="#" class="flex-center">短裤</a>
-			    					<a href="#" class="flex-center">短裤</a>
-			    					<a href="#" class="flex-center">短裤</a>
+			    				<dt><a href="#" class="flex-c">衣服</a></dt>
+			    				<dd class="flex-c"><a href="#" class="flex-c">短裤</a>
+			    					<a href="#" class="flex-c">短裤</a>
+			    					<a href="#" class="flex-c">短裤</a>
+			    					<a href="#" class="flex-c">短裤</a>
 			    				</dd>
 			    			</dl>
 			    			<dl class="sidebar-r-item dl-array">
-			    				<dt><a href="#" class="flex-center">电器</a></dt>
-			    				<dd class="flex-center"><a href="#" class="flex-center">空调</a></dd>
+			    				<dt><a href="#" class="flex-c">电器</a></dt>
+			    				<dd class="flex-c"><a href="#" class="flex-c">空调</a></dd>
 			    			</dl>
 			    		</div>
 			    	</div>
@@ -117,7 +143,7 @@
 			</div>
 		
 		    <div class="warp ">
-				<ul class="flex-list row">
+				<ul class="row">
 					<li class=" col-lg-3 col-xs-3">
 						<a href="#">
 							<div class="img-r"><img lay-src="../img/null-img.png"></div>
@@ -418,9 +444,20 @@
 					},
 					simulateTouch: true, //禁止鼠标模拟
 					navigation: {
-						nextEl: '.swiper-button-next',
+						nextEl: '.swiper-buttoan-next',
 						prevEl: '.swiper-button-prev',
+						hideOnClick: true,
 					},
+					//滑到最后一个隐藏前进按钮
+				    on: {
+				      slideChangeTransitionEnd: function(){
+				      if(this.isEnd){
+				        this.navigation.$nextEl.css('display','none');
+				      }else{
+				        this.navigation.$nextEl.css('display','block');  
+				      }
+				    },
+				  },
 				});
 
 			}

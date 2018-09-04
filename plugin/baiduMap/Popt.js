@@ -149,9 +149,13 @@ var Iput = {
            
             if ($("#searchResultPanel").length) {
 
-                map.centerAndZoom(valAddress, 15);
-
-                BaiduMap.searchMap();
+                if (valAddress=="广东省东莞市全市") {
+                    map.centerAndZoom("广东省东莞市", 11);
+                    BaiduMap.searchMap();
+                }else{
+                	map.centerAndZoom(valAddress, 15);
+                    BaiduMap.searchMap();
+                }
 
             } else {
                 if (localStorage.getItem("address")) {

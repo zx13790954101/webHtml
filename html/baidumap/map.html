@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		<!--my`s public的公共css的引入-->
+		<link rel="stylesheet" href="../../src/public_all.css" />
+		<link rel="stylesheet" href="./map.css" />
+	</head>
+
+	<body>
+
+		<section class="map-section container">
+			<input type="text" id="select-city" class="select-city h5  pointer ellipsis">
+
+			<div class="Map iframe-box">
+				<div class="Map-main" style="overflow:hidden; position:relative;">
+					<div class="search-box">
+						<div class="flex-center top " id="r-result">
+							<input type="text" class="map-search flex-item" id="suggestId" />
+							<i class="iconfont icon-shanchudelete30  mapDelect" onclick="BaiduMap.mapDelect()"></i>
+							<button class="map-search-button  cursor" onclick="BaiduMap.searchMap(false)"><i class="iconfont icon-sousuo"></i></button>
+						</div>
+						<ul class="map-search-ul scrollbar" style="max-height:55vh; overflow:auto"></ul>
+						<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:100%;height:250px; overflow:auto; display:none;"></div>
+					</div>
+
+					<form class="layui-form  baidu-select">
+						<div class="layui-input-block">
+							<input type="text" id="select-city2" readonly class="select-city h5  pointer ellipsis" style="padding-left:10px; color: #757575; font-size: 12px; padding-left: 10px;border: 1px solid #e6e6e6; margin-right:15px;width: 150px;padding-left:10px;background-color:white;margin-top:1px;height:38px;" />
+						</div>
+						<div class="layui-input-block">
+							<select name="city" lay-filter="optionbaidu" lay-search="">
+								<option value="">选择课程类别</option>
+								@{ if (Scopelist.Count > 0) { foreach (var item in Scopelist) {
+								<option value="@item.F_SCOPENAME">@item.F_SCOPENAME</option>
+
+								} } }
+
+							</select>
+						</div>
+
+					</form>
+					<!--百度地图容器-->
+					<div style="width:100%;height:100%;border:#ccc solid 1px;" id="dituContent"></div>
+					<div class="arrow_top_bottom" data-toggle="tooltip" data-placement="top" title="点击可放大或缩小">
+						<i class="iconfont icon-arrows-4-7-copy"></i>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+
+		</footer>
+
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script type="text/javascript" src="../../plugin/layui/layui.js" charset="utf-8"></script>
+		<!--公共的js的引入-->
+		<script type="text/javascript" src="../../plugin/linzesen/linzesen.js"></script>
+
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=UCXTKdp9dpdTdvimMx11ZFqpQPagGAp9"></script>
+		<script type="text/javascript" src="../../plugin/baiduMap/Popt.js"></script>
+		<script type="text/javascript" src="../../plugin/baiduMap/cityJson.js"></script>
+		<script type="text/javascript" src="../../plugin/baiduMap/citySet.js"></script>
+		<script type="text/javascript" src="../../plugin/baiduMap/BaiduMap_init.js"></script>
+		<script>
+			$(function() {
+				BaiduMap.loadJScript(); //异步加载地图s
+				$("#select-city").click(function(e) {
+					SelCity(this, e);
+				})
+			});
+			layui.use('form', function() {
+				var form = layui.form;
+				form.on('select(optionbaidu)', function(data) {
+
+					if(data.value) {
+						BaiduMap.searchMap(0, data.value);
+					}
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

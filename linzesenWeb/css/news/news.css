@@ -1,0 +1,27 @@
+.section-news  .banner-wrapper {
+	margin-bottom: 20px;
+}
+.section-news  .swiper-header-img{
+	max-height: 320px;
+}
+.section-news  .news-array-img{
+	width: 46px;
+	height: 46px;
+	margin-right: 15px;
+} 
+
+.section-news  .auther-img,.section-news .hotspot-img{width:  46px;height: 46px;
+}
+
+.section-news  .ul-array .content{padding: 0px 10px;
+}
+.section-news  .edit-info .btn-group{
+	
+}
+.section-news  .edit-info .btn-group button{
+    margin: 0px;
+    border: 0px;
+}
+.section-news  .edit-info .layui-inline{}
+.layer-img-preview{}
+.layer-img-preview img{}

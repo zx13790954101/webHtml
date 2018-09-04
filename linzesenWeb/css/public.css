@@ -10,7 +10,7 @@ header .header-logo{
 header .header-logo  .img-r{
 max-width: 130px;
 }
-section .banner-wrapper .img-r{height:440px;background-color: #dfdfdf;}
+section .banner-wrapper .img-r{height: 440px;background-color: #dfdfdf;}
 section.add-module .content .left-img .img-r{
 
 width: 350px;
@@ -38,4 +38,33 @@ width: 100%;
 	.section-1 .warp .img-r{
 		height:70px;
 	}
+}
+header .header-r .layui-nav{
+	    background-color: rgba(0,-0,0,0);
+	    padding:  0px;
+	    border-radius: 0px;
+}
+header .header-r .layui-nav .layui-nav-item{
+	height:  auto;
+	line-height:  initial;
+}
+header .header-r .layui-nav-bar{
+    height: 0px;
+}
+header .header-r .layui-nav-child{
+	top:35px
+}
+header .header-r .search-form button{
+	border: 0px;
+	right: 0px;
+	left: inherit;
+	-webkit-transform: translate(0%,-50%);
+	transform: translate(0%,-50%);
+}
+header .header-r .search-form  input{
+	border-right: 0px;
+}
+.news-array .btn-group button{
+    border: 0px;
+    color: #808080;
 }
