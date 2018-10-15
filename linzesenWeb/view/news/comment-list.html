@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title>linkben的资讯</title>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_719754_4nglc9mm06f.css" />
+		<!--swiper的引用-->
+		<link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
+		<link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
+		<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css" />
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" href="../../css/news/news.css" />
+	</head>
+
+	<body style="    background-color: #f6f6f6;">
+
+		<section class="section-news container ">
+
+			<div class="news-box">
+				<ul class="news-array">
+					<li>
+						<div class="list-item">
+							<div class="flex ">
+								<div class="item-l ">
+									<div class="img-c news-array-img"> <img src="../../../img/hua.png"> </div>
+								</div>
+								<div class="flex-item   item-r ">
+									<h4 class="title">我是题目 </h4>
+									<div class="flex-c  item-bottom  group">
+										<span class="flex-item auther">作者：林泽森</span>
+										<span class="time">今天（2018年8月14日）</span>
+
+									</div>
+									<h5 class="ellipsis-line-3 content">	你的</h5>
+
+									<div class="layer-photos-demo  layer-img-preview row  flex-c">
+										<div class="img-r">
+											<img layer-pid="图片id，可以不写" src="../../../img/ln.png" src="缩略图" alt="图片名">
+										</div>
+										<div class="img-r">
+											<img layer-pid="图片id，可以不写" src="../../../img/lb2.png" src="缩略图" alt="图片名">
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<div class="list-item-action flex-c btn-group">
+								<button class="flex-c-y flex-item"><i class="iconfont icon-yanjing"></i>预览人数</button><span class="line-bar"></span>
+								<button class="flex-c-y flex-item"><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></button><span class="line-bar"></span>
+								<button class="flex-c-y flex-item"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></button><span class="line-bar"></span>
+								<button class="flex-c-y flex-item"><i class="iconfont icon-shoucang1"></i><span>收藏</span></button><span class="line-bar"></span>
+								<button class="flex-c-y flex-item"><i class="iconfont icon-msnui-share-big"></i><span>分享</span></button>
+								<!--<button class="flex-c"><i class="iconfont icon-gengduo"></i><span>更多</span></button>-->
+							</div>
+							<div class="list-item-extend ">
+
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</section>
+
+		<!--评论的列表模板-->
+		<script id="commentlistpanel" type="text/html">
+			<div class="flex">
+				<div class="img-r  news-array-img"><img src="../../../img/hua.png"></div>
+				<form class="layui-form flex-item " action="">
+					<div class="layui-form-item layui-form-text flex">
+						<textarea placeholder="请输入内容" class="layui-textarea edit-text"></textarea>
+					</div>
+					<div class=" flex-c flie-select" id="add-edittext-flie">
+						<span class="emoji pointer"><i class="iconfont icon-biaoqing" style="color: #ffac1a;"></i><label>表情</label></span>
+						<span class="photo pointer " id="multifile"><i class="iconfont icon-tupian" style="color: #8cc413;"></i><label>图片</label></span>
+						<span class="flex-item"></span><button class="submit" lay-filter="edit-info">发布</button>
+					</div>
+				</form>
+			</div>
+			<div class="layui-tab commentlistpanel">
+				<ul class="layui-tab-title">
+					<li class="layui-this">按热度</li>
+					<li>按时间</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+							<ul>
+								<li  class="list-item">
+									<div class="flex ">
+										<div class="item-l ">
+											<div class="img-c news-array-img"> <img src="../../../img/hua.png"> </div>
+										</div>
+										<div class="flex-item   item-r ">
+											<div class="flex-c">
+												<h4 class="title">我是题目 :</h4>
+										
+											     <h5 class="ellipsis-line-3 ">你的</h5>
+											</div>
+								
+                                            <div class="flex-c  item-bottom  group list-item-action">
+												<span class="time flex-item">今天（2018年8月14日）</span>
+												<button class="flex-c-y"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></button>
+												<button class="flex-c-y "><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></button>
+									        	
+									        </div>
+									        
+									        <div class="flex-item   item-r commentlistpanel-reply2 ">
+												<div class="flex-c">
+													<h4 class="title">我是题目 :</h4>
+												     <h5 class="ellipsis-line-3 ">你的</h5>
+												</div>
+	                                            <div class="flex-c  item-bottom  group list-item-action">
+													<span class="time flex-item">今天（2018年8月14日）</span>
+													<button class="flex-c-y"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></button>
+													<button class="flex-c-y "><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></button>									        	
+										       </div>
+										       <div class="reply-more-content flex-c">
+										       	    <a href="#">一共1200条回复</a>
+										       </div>
+										   </div>
+									       
+									       
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h5 class="center">
+								<a href="#">查看更多</a>
+							</h5>
+					</div>
+					<div class="layui-tab-item">内容2</div>
+				</div>
+			</div>
+		</script>
+
+		<!--js的引入-->
+		<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script src="../../../plugin/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../plugin/linzesen/linzesen.js"></script>
+		<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js"></script>
+
+		<script>
+			layui.use(['element', 'form', 'upload', 'laytpl'], function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				var form = layui.form;
+				var upload = layui.upload;
+				var laytpl = layui.laytpl;
+				layer.photos({
+					photos: '.layer-img-preview',
+					anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+				});
+				//监听导航点击
+				element.on('nav(demo)', function(elem) {
+					//console.log(elem)
+					layer.msg(elem.text());
+				});
+
+				$(" .news-box .list-item-action button.flex-item").click(function(e) {
+
+					var index = $(this).find("span").html();
+					debugger;
+					if(index == "评论") {
+						if($(".news-box .list-item-extend").find("div") == undefined) {
+							return false;
+						}
+
+						//第三步：渲染模版
+						var data = {
+							title :"Layui常用模块 "
+						}
+						var getTpl = $("#commentlistpanel").html();
+						var view = $(".news-box .list-item-extend")
+						$(".news-box .list-item-extend").html(getTpl);
+						laytpl(getTpl).render(data, function(html) {
+							view.innerHTML = html;
+						});
+
+						return false;
+					}
+
+				});
+
+				$("#add-edittext-flie span").click(function(e) {
+					var index = $(this).index();
+					var that = this;
+					var mainView = '';
+					if(index == 1) {
+
+						mainView = '<div class="layui-upload">' +
+							'<button type="button" class="layui-btn" id="multifileButton">多图片上传</button> ' +
+							'<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：' +
+							' <div class="layui-upload-list" id="multifileList"></div>' +
+							'</blockquote>' +
+							'</div>'
+						lzs_dialog.locate(that, mainView, function() {
+							//多图片上传
+							upload.render({
+								elem: '#multifileButton',
+								url: '/upload/',
+								multiple: true,
+								before: function(obj) {
+									//预读本地文件示例，不支持ie8
+									obj.preview(function(index, file, result) {
+										$('#multifileList').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+									});
+								},
+								done: function(res) {
+									//上传完毕
+								}
+							});
+
+						});
+
+					} else if(index == 2) {
+						lzs_dialog.locate(that);
+					} else if(index == 3) {
+						lzs_dialog.locate(that);
+					}
+				});
+				//监听提交
+				form.on('submit(edit-info)', function(data) {
+					layer.alert(JSON.stringify(data.field), {
+						title: '最终的提交信息'
+					})
+					return false;
+				});
+				return false;
+			});
+
+			initEditInfo();
+			//初始化提问编辑器
+			function initEditInfo() {
+				initEmotion();
+			}
+			//初始化表情包
+			function initEmotion() {
+				//初始化表情包的css和js
+				lzs_flieload.downLoadCss("../../../plugin/emotion/jquery.sinaEmotion.css");
+				lzs_flieload.downLoadJs("../../../plugin/emotion/jquery.sinaEmotion.js", function() {
+					$('.emoji').SinaEmotion($('.edit-text'));
+
+				});
+
+			}
+		</script>
+
+	</body>
+
+</html>

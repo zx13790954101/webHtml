@@ -17,17 +17,16 @@
 		<meta name="robots" content="index,follow" />
 		<!-- 搜索引擎抓取 -->
 		<title>linkben的资讯</title>
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_719754_1ybqm6bxng1i.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_719754_ic3eapb8t6.css" />
 		<!--swiper的引用-->
 		<link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
 		<link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
 		<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css" />
 		<link rel="stylesheet" href="../../css/public.css" />
 		<link rel="stylesheet" href="../../css/news/news.css" />
-
 	</head>
 
-	<body>
+	<body style="    background-color: #f2f2f2;">
 
 		<nav class="flex container">
 
@@ -54,14 +53,13 @@
 					</li>
 				</ul>
 				<div class="header-r">
-
 					<ul class="layui-nav">
 						<li class="layui-nav-item">
 							<form class="flex-c search-form">
 								<div class="box-searchInput">
 									<input type="text" />
 								</div>
-								<button class="button position-a-center">搜索	</button>
+								<button class="button position-a-center"><i class="iconfont icon-sousuokuang "></i>	</button>
 							</form>
 						</li>
 						<li class="layui-nav-item">
@@ -97,24 +95,20 @@
 						<div class="swiper-container swiper-header">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<a href="">
-										<div class="position-r">
-											<div class="img-r  swiper-header-img">
-												<img src="../../../img/null-img.png" />
-											</div>
-											<h5 class="center text position-a-center">第一个</h5>
+									<div class="position-r">
+										<div class="img-r  swiper-header-img">
+											<img src="../../../img/lb3.png" />
 										</div>
-									</a>
+										<a href="" class="center text position-a-center">第一个</a>
+									</div>
 								</div>
 								<div class="swiper-slide">
-									<a href="">
-										<div class="position-r">
-											<div class="img-r  swiper-header-img">
-												<img src="../../../img/null-img.png" />
-											</div>
-											<h5 class="center text position-a-bottom">第一个</h5>
+									<div class="position-r">
+										<div class="img-r  swiper-header-img">
+											<img src="../../../img/hua.png" />
 										</div>
-									</a>
+										<a href="" class="center text position-a-bottom">第一个</a>
+									</div>
 								</div>
 							</div>
 							<!-- Add Pagination -->
@@ -129,39 +123,73 @@
 						</div>
 
 					</div>
+
+					<div class="news-select-type flex-c">
+
+						<ul class="layui-nav flex-item" lay-filter="news-select-type">
+							<li class="layui-nav-item layui-this">
+								<a href="">全部</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">说说</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">文章</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">话题</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">音乐</a>
+							</li>
+						</ul>
+						<form class="flex-c search-form layui-form" action="">
+							<div class="box-searchInput">
+								<input type="text" />
+							</div>
+							<button class="button position-a-center">
+								<i class="iconfont icon-sousuokuang "></i>
+							</button>
+						</form>
+					</div>
 					<div class="news-box">
 						<ul class="news-array">
 							<li>
 								<div class="list-item">
 									<div class="flex ">
 										<div class="item-l ">
-											<div class="img-c news-array-img"> <img src="../../../img/null-img.png"> </div>
+											<div class="img-c news-array-img"> <img src="../../../img/hua.png"> </div>
 										</div>
 										<div class="flex-item   item-r ">
 											<h4 class="title">我是题目 </h4>
 											<div class="flex-c  item-bottom  group">
 												<span class="flex-item auther">作者：林泽森</span>
 												<span class="time">今天（2018年8月14日）</span>
-
 											</div>
 											<h5 class="ellipsis-line-3 content">	你的</h5>
-										
-											<div class="layer-photos-demo  layer-img-preview row">
-											  <img class="col-lg-3" layer-pid="图片id，可以不写" src="../../../img/null-img.png" src="缩略图" alt="图片名">
-											 <img class="col-lg-3" layer-pid="图片id，可以不写" src="../../../img/null-img.png" src="缩略图" alt="图片名">
+
+											<div class="layer-photos-demo  layer-img-preview row  flex-c">
+												<div class="img-r">
+													<img layer-pid="图片id，可以不写" src="../../../img/ln.png" src="缩略图" alt="图片名">
+												</div>
+												<div class="img-r">
+													<img layer-pid="图片id，可以不写" src="../../../img/lb2.png" src="缩略图" alt="图片名">
+												</div>
 											</div>
-											
-											
+
 										</div>
 
 									</div>
-									<div class="black flex-c btn-group">
-										<button class="flex-c"><i class="iconfont icon-yanjing"></i>预览人数</button>
-										<button class="flex-c"><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></button>
-										<button class="flex-c"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></button>
-										<button class="flex-c"><i class="iconfont icon-shoucang1"></i><span>收藏</span></button>
-										<button class="flex-c"><i class="iconfont icon-msnui-share-big"></i><span>分享</span></button>
+									<div class="list-item-action flex-c btn-group">
+										<!--<button class="flex-c-y flex-item"><i class="iconfont icon-yanjing"></i>预览人数</button><span class="line-bar"></span>-->
+										<button class="flex-c-y flex-item Checked"><i class="iconfont icon-shoucang2 "></i><span>点赞</span></button><span class="line-bar"></span>
+										<button class="flex-c-y flex-item"><i class="iconfont icon-shoucang3 "></i><span>收藏</span></button><span class="line-bar"></span>
+										<button class="flex-c-y flex-item"><i class="iconfont icon-pinglun"></i><span>评论</span></button><span class="line-bar"></span>
+										<button class="flex-c-y flex-item"><i class="iconfont icon-msnui-share-big"></i><span>分享</span></button>
 										<!--<button class="flex-c"><i class="iconfont icon-gengduo"></i><span>更多</span></button>-->
+									</div>
+									<div class="list-item-extend ">
+
 									</div>
 								</div>
 							</li>
@@ -171,38 +199,49 @@
 
 				<div class="news-r col-lg-4">
 					<div class="edit-info">
-
-						<div class="btn-group ">
-							<button class="emoji">表情</button>
-							<button class="photo">图片</button>
-							<button class="video">视频</button>
-							<button class="topic">话题</button>
+						<div class="edit-type btn-group flex-c">
+							<button class="active flex-item">说说</button>
+							<button class="flex-item">提问</button>
+							<button class="flex-item">写文章</button>
+							<button class="flex-item">话题</button>
 						</div>
+
 						<form class="layui-form " action="">
+							<div class="layui-form-item flex-c">
+								<h3 class="edit-title1 flex-item">有什么新鲜事想告诉大家?</h3>
+								<h6 class="font-num">输入<span>0</span>字</h6>
+								<input type="hidden" value="0" name="row[filestype]" lay-verify="" class="layui-input" />
+							</div>
 							<div class="layui-form-item layui-form-text">
-
-								<textarea placeholder="请输入内容" class="layui-textarea edit-text"></textarea>
-
+								<textarea placeholder="请输入内容" name="row[content]" class="layui-textarea edit-text"></textarea>
+							</div>
+							<div class="btn-group flex-c flie-select" id="add-edittext-flie">
+								<span class="emoji pointer flex-item"><i class="iconfont icon-biaoqing" style="color: #ffac1a;"></i><label>表情</label></span>
+								<span class="photo pointer flex-item" id="multifile"><i class="iconfont icon-tupian" style="color: #8cc413;"></i><label>图片</label></span>
+								<span class="music pointer flex-item"><i class="iconfont icon-yinle" style="color: #c67ec2;"></i><label>音乐</label></span>
+								<span class="topic pointer  flex-item"><i class="iconfont icon-huati" style="color: #5a8ce6;"></i><label>话题</label></span>
 							</div>
 							<div class="layui-form-item flex-c">
-								<div class="layui-inline">
-									<select name="interest" lay-filter="aihao">
-										<option value=""></option>
-										<option value="0">写作</option>
-										<option value="1" selected="">阅读</option>
-										<option value="2">游戏</option>
-										<option value="3">音乐</option>
-										<option value="4">旅行</option>
+								<div class="layui-inline flex-item">
+									<select name="" lay-filter="aihao">
+										<option value="0" selected="">说说</option>
+										<option value="1">文章</option>
+										<option value="2">音乐</option>
+										<option value="3">图片</option>
 									</select>
 								</div>
 								<div class="layui-inline flex-item">
-									<button class="">发布</button>
+									<button class="submit" lay-submit="" lay-filter="edit-info1">发布</button>
 								</div>
 							</div>
-
 						</form>
 
 					</div>
+
+					<div class="">
+
+					</div>
+
 					<div class="hotspot  margin-20">
 						<div class="flex-c">
 							<span class="span-mark"></span>
@@ -215,13 +254,17 @@
 									<div class="img-c hotspot-img">
 										<img src="../../../img/null-img.png" />
 									</div>
-									<div class="content">
-										<h5 class="auther">linzesen  </h5>
-										<h6 class="time">17分钟前 </h6>
-									</div>
-								</div>
-								<div class=" ellipsis-line-3">
-									我是林泽森
+									<a class="content  flex-c">
+										<h5 class="block ellipsis-line-2s">
+                            我是林泽森
+                        </h5>
+										<span class="flex-c block">
+                            <h6 class="auther flex-item">linzesen </h6>
+                            <h6 class="time">17分钟前 </h6>
+                        </span>
+
+									</a>
+
 								</div>
 							</li>
 						</ul>
@@ -248,15 +291,15 @@
 												<span>122人喜欢</span>
 											</div>
 										</div>
-										<h4 class="attention">+关注</h4>
+										<h5 class="attention">+关注</h5>
 									</div>
 								</a>
 							</li>
 						</ul>
-						<button class="block">查看全部</button>
 
 					</div>
 				</div>
+
 			</div>
 		</section>
 
@@ -264,92 +307,177 @@
 		<footer>
 
 			<div class="footer-site flex  container">
-				<div class="f-left flex-center">
-					<dl>
+				<div class="f-left flex  flex-item">
+					<dl class="flex-item">
 						<dt>
-		    				<a href="#">帮助中心</a></dt>
+		    				<a href="#" class="h4">帮助中心</a></dt>
 						<dd>
-							<a href="#">账号管理</a>
+							<a href="#">关于我们</a>
+						</dd>
+						<dd>
+							<a href="#">技术经济方案分享</a>
+						</dd>
+						<dd>
+							<a href="#">外包项目合作方案</a>
+						</dd>
+
+					</dl>
+					<dl class="flex-item">
+						<dt>
+		    			    <a href="#" class="h4">关注我们</a></dt>
+						<dd>
+							<a href="#">新浪微博</a>
+						</dd>
+						<dd>
+							<a href="#">微信公众号</a>
+						</dd>
+						<dd>
+							<a href="#">知乎平台</a>
 						</dd>
 					</dl>
-					<dl>
+					<dl class="flex-item">
 						<dt>
-		    			    <a href="#">服务支持</a></dt>
+		    			    <a href="#" class="h4">社交媒体</a></dt>
 						<dd>
-							<a href="#">售后服务</a>
+							邮箱 :
+							<a href="#">
+								805650999@qq.com
+							</a>
+						</dd>
+						<dd>联系微信号：
+							<a href="#">
+								lin_805650999
+							</a>
+						</dd>
+						<dd>合作电话：
+							<a href="#">
+								13790954101
+							</a>
 						</dd>
 					</dl>
+					<dl class="flex-item">
+						<dt>
+		    			    <a href="#" class="h4">官方微信公众号</a></dt>
+						<dd>
+							<a href="#">
+								<div class="img-r wechat-code">
+									<img src="../../../img/qrcode_wecaht.jpg" />
+								</div>
+							</a>
+						</dd>
+					</dl>
+					<dl class="flex-item">
+						<dt>
+		    			    <a href="#" class="h4">官方微信小程序</a></dt>
+						<dd>
+							<a href="#">
+								<div class="img-r wechat-code">
+									<img src="../../../img/qrcode_wecaht.jpg" />
+								</div>
+							</a>
+						</dd>
+					</dl>
+
 				</div>
-				<div class="f-right">
-					<h3>
-						400-800-7087
-					</h3>
+				<div class="f-right white">
 				</div>
+
 			</div>
 
-			<div class="footer-info  container">
-
+			<div class="footer-info   center white margin-20">
+				<p>© 2010- 2018 · All Rights Reserved ·
+					<a href="http://www.linkben.com">连接基本</a>
+				</p>
+				<p> 粤ICP备15117005号-1 版权所有 © 广州连接基本信息科技有限公司</p>
 			</div>
 
 		</footer>
 
+		<!--评论的列表模板-->
+		<script id="commentlistpanel" type="text/html">
+			<div class="flex">
+				<div class="img-c  news-array-img"><img src="../../../img/hua.png"></div>
+				<form class="layui-form flex-item " action="">
+					<div class="layui-form-item layui-form-text flex">
+						<textarea placeholder="请输入内容" class="layui-textarea edit-text"></textarea>
+					</div>
+					<div class=" flex-c flie-select" id="add-edittext-flie">
+						<span class="emoji pointer margin-right"><i class="iconfont icon-biaoqing" style="color: #ffac1a;"></i><label>表情</label></span>
+						<span class="photo pointer " id="multifile"><i class="iconfont icon-tupian" style="color: #8cc413;"></i><label>图片</label></span>
+						<span class="flex-item"></span><button class="submit" lay-submit="" lay-filter="edit-info">发布</button>
+					</div>
+				</form>
+			</div>
+			<div class="layui-tab commentlistpanel">
+				<ul class="layui-tab-title">
+					<li class="layui-this">按热度</li>
+					<li>按时间</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+						<ul>
+							<li class="list-item">
+								<div class="flex ">
+									<div class="item-l ">
+										<div class="img-c news-array-img"> <img src="../../../img/hua.png"> </div>
+									</div>
+									<div class="flex-item   item-r ">
+										<div class="flex-c">
+											<h5 class="title">我是题目 :</h5>
+
+											<h5 class="ellipsis-line-3 ">你的</h5>
+										</div>
+
+										<div class="flex-c  item-bottom  group list-item-action">
+											<span class="time flex-item">今天（2018年8月14日）</span>
+											<span class="flex-c-y"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></span>
+											<span class="line-bar"></span>
+											<span class="flex-c-y "><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></span>
+
+										</div>
+
+										<div class="flex-item   item-r commentlistpanel-reply2 ">
+											<div class="flex-c">
+												<h5 class="title">我是题目 :</h5>
+												<h5 class="ellipsis-line-3 ">你的</h5>
+											</div>
+											<div class="flex-c  item-bottom  group list-item-action">
+												<span class="time flex-item">今天（2018年8月14日）</span>
+												<span class="flex-c-y"><i class="iconfont icon-pinglun-tianchong"></i><span>评论</span></span>
+												<span class="line-bar"></span>
+												<span class="flex-c-y "><i class="iconfont icon-buoumaotubiao16"></i><span>点赞</span></span>
+											</div>
+											<div class="reply-more-content flex-c">
+												<a href="#">一共1200条回复</a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</li>
+						</ul>
+						<h5 class="center">
+								<a href="#">查看更多</a>
+							</h5>
+					</div>
+					<div class="layui-tab-item">内容2</div>
+				</div>
+			</div>
+		</script>
+		<!--评论的列表模板-->
+		<script id="login-panel" type="text/html">
+			<iframe src="../login.html"></iframe>
+		</script>
 		<!--js的引入-->
 		<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
 		<script>
-			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
 		</script>
 		<script src="../../../plugin/layui/layui.js" charset="utf-8"></script>
-		<!--	<script type="text/javascript" src="../plugin/linzesen/linzesen.js"></script>-->
+		<script type="text/javascript" src="../../../plugin/linzesen/linzesen.js"></script>
 		<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js"></script>
-		<script>
-			swiperload();
+		<script type="text/javascript" src="../../css/news/news.js"></script>
 
-			function swiperload() {
-				var swiper = new Swiper('.swiper-header', {
-					slidesPerView: 1,
-					//  slidesPerColumn: 2, //显示两行
-					//spaceBetween: 20,//
-					//			      slidesPerGroup: 5,
-					//			      loop: true,
-					//			      loopFillGroupWithBlank: true,
-					pagination: {
-						el: '.swiper-pagination',
-						//	clickable: true,
-					},
-					simulateTouch: true, //禁止鼠标模拟
-					navigation: {
-						nextEl: '.swiper-buttoan-next',
-						prevEl: '.swiper-button-prev',
-						hideOnClick: true,
-					},
-					//滑到最后一个隐藏前进按钮
-					on: {
-						slideChangeTransitionEnd: function() {
-							if(this.isEnd) {
-								this.navigation.$nextEl.css('display', 'none');
-							} else {
-								this.navigation.$nextEl.css('display', 'block');
-							}
-						},
-					},
-				});
-
-			}
-
-			layui.use(['element', 'form'], function() {
-				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-				var form = layui.form;
-				layer.photos({
-				  photos: '.layer-img-preview'
-				  ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
-				}); 
-				//监听导航点击
-				element.on('nav(demo)', function(elem) {
-					//console.log(elem)
-					layer.msg(elem.text());
-				});
-			});
-		</script>
 	</body>
 
 </html>

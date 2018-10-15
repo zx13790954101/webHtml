@@ -45,8 +45,10 @@ header .header-r .layui-nav{
 	    border-radius: 0px;
 }
 header .header-r .layui-nav .layui-nav-item{
-	height:  auto;
-	line-height:  initial;
+	
+height:  auto;
+	
+line-height:  initial;
 }
 header .header-r .layui-nav-bar{
     height: 0px;
@@ -54,17 +56,34 @@ header .header-r .layui-nav-bar{
 header .header-r .layui-nav-child{
 	top:35px
 }
-header .header-r .search-form button{
+.search-form button{
 	border: 0px;
 	right: 0px;
 	left: inherit;
 	-webkit-transform: translate(0%,-50%);
 	transform: translate(0%,-50%);
+	padding: 0px;
+	/* width: 50px; */
+	min-width: 40px;
+	color: #cccccc;
 }
-header .header-r .search-form  input{
-	border-right: 0px;
+.search-form  input{border-radius: 5px;}
+.search-form{
+    position: relative;
 }
 .news-array .btn-group button{
     border: 0px;
     color: #808080;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+.wechat-code{
+	
+height: 123px;
+	
+width: 123px;
+}
+.footer-site .f-right{
+	margin-left: 25px;
 }

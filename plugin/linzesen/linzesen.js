@@ -1,7 +1,6 @@
-function init() {
-}
+function init() {}
 //表单工具箱
-var LZS_form= {
+var lzs_form = {
 	//如果是价格的输入框，输入小数onkeyup执行下面函数
 	//obj 等于对象的$(obj)==obj,clearNoNum( $(obj) )
 	clearNoNum: function(obj) {
@@ -51,8 +50,8 @@ var LZS_form= {
 	}
 }
 //时间工具箱
-var LZS_time = {
-	
+var lzs_time = {
+
 	//时间的格式
 	fromDate: function(date) {
 
@@ -111,18 +110,18 @@ var LZS_time = {
 
 }
 //工具箱
-var LZS_tool = {
+var lzs_tool = {
 	//停止冒泡行为
 	stopBubble: function(e) {
 		//如果提供了事件对象，则这是一个非IE浏览器 
 		if(e && e.stopPropagation)
 			//因此它支持W3C的stopPropagation()方法 
 			e.stopPropagation();
-		else{
-				//否则，我们需要使用IE的方式来取消事件冒泡 
+		else {
+			//否则，我们需要使用IE的方式来取消事件冒泡 
 			window.event.cancelBubble = true;
 		}
-		
+
 	},
 
 	//阻止浏览器的默认行为 
@@ -131,10 +130,10 @@ var LZS_tool = {
 		if(e && e.preventDefault)
 			e.preventDefault();
 		//IE中阻止函数器默认动作的方式 
-		else{
-		    window.event.returnValue = false;
+		else {
+			window.event.returnValue = false;
 		}
-		
+
 		return false;
 	},
 
@@ -211,65 +210,67 @@ var LZS_tool = {
 	}
 }
 //布局工作，tab 
-var LZS_layout = {
+var lzs_layout = {
 	//tab切换
-	tabSlider:function(ClassName, callback,type) {
-		        
-		        this.ClassName=ClassName;
-		        this.callback=callback;
-				//判断名字是否存在
-				var tabDiv=".tab-div";
-				var tabLi = ".tab-nav"; //初始化
-				var tbaContent=".tab-content";
-				if(ClassName) {  tabDiv=ClassName;  }
-				var name = $(tabDiv).children(tabLi).children(" li"); 
-				//判断tab的类型
-			    if( type=="collapse" ){
-			    	name=$(tabDiv).children(".tab-button");
-			    	$(tabDiv).children(tbaContent).addClass("none");
-			    }
-				name.click(function(event) {
-					event.stopPropagation();
-					var that=this;
-					var index = $(that).index();
-					//2. 让当前li添加active类，并且让其他的li移除active类
-					//3. 让对应下标的div添加selected，并且让其他div移除selected类
-                    var data = {
-							index: index,
-							dom: $(that),
-							tabDiv:tabDiv
-						}
-                    if( type=="collapse" ){
-			    	    if( $(that).hasClass("active") ){
-                	     	$(that).removeClass("active");
-                	     	$(tabDiv).children(tbaContent).removeClass("active");
-	                	}else{
-	                		$(that).addClass("active") ;
-	                		$(tabDiv).children(tbaContent).addClass("active");
-	                	}
-			    	}else{
-                    	$(that).addClass("active").siblings().removeClass("active");
-                    }
-			    	
-			    	if( $(tabDiv).children('.tab-content').children(".tab-content-item").eq(index).length>0) {
-						$(tabDiv).children('.tab-content').children(".tab-content-item").eq(index).addClass("active").siblings().removeClass("active");
-					    console.log(tabDiv);
-			    	} else {
-						return data;
-					}
-					//回调函数
-					if(typeof callback === "function") {
-						callback(data);
-					}
-					
-				});
+	tabSlider: function(ClassName, callback, type) {
+
+		this.ClassName = ClassName;
+		this.callback = callback;
+		//判断名字是否存在
+		var tabDiv = ".tab-div";
+		var tabLi = ".tab-nav"; //初始化
+		var tbaContent = ".tab-content";
+		if(ClassName) {
+			tabDiv = ClassName;
+		}
+		var name = $(tabDiv).children(tabLi).children(" li");
+		//判断tab的类型
+		if(type == "collapse") {
+			name = $(tabDiv).children(".tab-button");
+			$(tabDiv).children(tbaContent).addClass("none");
+		}
+		name.click(function(event) {
+			event.stopPropagation();
+			var that = this;
+			var index = $(that).index();
+			//2. 让当前li添加active类，并且让其他的li移除active类
+			//3. 让对应下标的div添加selected，并且让其他div移除selected类
+			var data = {
+				index: index,
+				dom: $(that),
+				tabDiv: tabDiv
+			}
+			if(type == "collapse") {
+				if($(that).hasClass("active")) {
+					$(that).removeClass("active");
+					$(tabDiv).children(tbaContent).removeClass("active");
+				} else {
+					$(that).addClass("active");
+					$(tabDiv).children(tbaContent).addClass("active");
+				}
+			} else {
+				$(that).addClass("active").siblings().removeClass("active");
+			}
+
+			if($(tabDiv).children('.tab-content').children(".tab-content-item").eq(index).length > 0) {
+				$(tabDiv).children('.tab-content').children(".tab-content-item").eq(index).addClass("active").siblings().removeClass("active");
+				console.log(tabDiv);
+			} else {
+				return data;
+			}
+			//回调函数
+			if(typeof callback === "function") {
+				callback(data);
+			}
+
+		});
 
 	},
 
 }
 
 //多媒体工具类
-var LZS_media = {}
+var lzs_media = {}
 //时间的处理
 Date.prototype.pattern = function(fmt) {
 	var o = {
@@ -305,9 +306,9 @@ Date.prototype.pattern = function(fmt) {
 	return fmt;
 }
 //ajax
-var LZS_ajax = {
+var lzs_ajax = {
 	//post的获取方法
-	post: function(murl, callback,mdata) {
+	post: function(murl, callback, mdata) {
 		$.ajax({
 			type: "post",
 			url: murl,
@@ -315,10 +316,10 @@ var LZS_ajax = {
 			data: mdata,
 			//  timeout: 20000,
 			success: function(data) {
-					if(typeof callback === "function"||callback) {
-						callback(data);
-			    }
-			    return Jdata;
+				if(typeof callback === "function" || callback) {
+					callback(data);
+				}
+				return Jdata;
 			},
 			error: function(data) {
 				console.log("请求失败", data);
@@ -327,9 +328,9 @@ var LZS_ajax = {
 	},
 
 	//get的获取方法
-	get: function(murl,callback, mdata) {
-		if(mdata){
-			
+	get: function(murl, callback, mdata) {
+		if(mdata) {
+
 		}
 		$.ajax({
 			type: "get",
@@ -338,10 +339,10 @@ var LZS_ajax = {
 			data: mdata,
 			//  timeout: 20000,
 			success: function(data) {
-				if(typeof callback === "function"||callback) {
-						callback(data);
-			   }
-			    return data;
+				if(typeof callback === "function" || callback) {
+					callback(data);
+				}
+				return data;
 			},
 			error: function(data) {
 				console.log("请求失败", data);
@@ -353,3 +354,101 @@ var LZS_ajax = {
 //tab切换的原型连的继承
 //LZS_layout.tabSlider().prototype.ClassName='.tab-div';
 //https://www.cnblogs.com/wdlhao/p/5743770.html
+//文件加载
+var lzs_flieload = {
+	downLoadJs:function(url,callback) {
+	   setTimeout(function() {
+			var elem = document.createElement("script");
+			elem.src = url;
+			document.body.appendChild(elem);
+			if(elem.readyState){   //IE
+	　　　　　　          elem.onreadystatechange=function(){
+		　　　　　　　　if(elem.readyState=='complete'||elem.readyState=='loaded'){
+		　　　　　　　　　　elem.onreadystatechange=null;
+		　　　　　　　　　　callback();
+		　　　　　　　　}
+		　　　　　　}
+		　　　　}else{    //非IE
+		　　　　　　elem.onload=function(){callback();}
+		　　　　}
+		}, 2000);
+	},
+	downLoadCss:function(url) {
+	 	setTimeout(function() {
+			var elem = document.createElement("link");
+			elem.rel = "stylesheet";
+			elem.type = "text/css";
+			elem.href = url;
+			document.body.appendChild(elem);
+	    }, 2000);
+
+	}
+}
+//弹出框的初始化
+var lzs_dialog={
+	default:function(popView){
+		var view="<div class='lzs-dialog layui-anim'   data-anim='layui-anim-scaleSpring'>"+
+		"<div class='dialog-header'><div class='back'>关闭</div></div>"+
+		"<div class='dialog-info'>"+popView+"</div></div>";
+		$(this).after(view)
+		var backButton=$(this).parent().children(".lzs-dialog").children(".back");
+		var removeView=$(this).parent().children(".lzs-dialog");
+		//关闭的按钮
+		backButton.click(function(e){
+			e.stopPropagation();  
+			$(".lzs-dialog").hide(500); 
+			removeView.remove();
+		});
+		$(document).click(function(e){  
+			var popup = $(".lzs-dialog");  
+	        //判断事件对象不是弹窗对象  并且  弹窗对象不包含事件对象  
+	        if (!popup.is(e.target) && popup.has(e.target).length == 0) {  
+	            //则隐藏弹窗  
+	            popup.hide(500);  
+	
+	         } 
+        }); 
+	},
+	locate:function(that,popView,callback){
+		 
+		var view="<div id='lzs-dialog' class='lzs-dialog layui-anim'   data-anim='layui-anim-scaleSpring'>"+
+		"<div class='dialog-box'><div class='dialog-bor'></div></div><div class='dialog-header'><span class='back text-right'>关闭</span></div>"+
+		"<div class='dialog-info'>"+popView+"</div></div>";
+		$(that).parent().after(view);
+		
+		$(document).click(function(e){  
+			var popup = $(".lzs-dialog");  
+	        //判断事件对象不是弹窗对象  并且  弹窗对象不包含事件对象  
+	        if (!popup.is(e.target) && popup.has(e.target).length == 0) {  
+	            //则隐藏弹窗  
+	            popup.hide();  
+	            popup.remove();
+	         } 
+        });
+        var index=parseInt( $(that).index()  );
+        setTimeout(function(){
+        	
+        	$(that).parent().after(view);
+            $("#lzs-dialog").show();
+            $(".dialog-box").css({"left":$(that).width()*index+12});
+          
+            setTimeout(function(){
+            	if(typeof callback === "function" || callback) {
+					callback();
+		         }
+              },100)
+            
+        },100)
+        
+		var removeView=$("#lzs-dialog");
+		var backButton=$("#lzs-dialog").children(".back");
+		//关闭的按钮
+		backButton.click(function(e){
+			e.stopPropagation();  
+			$(".lzs-dialog").hide(); 
+			removeView.remove();
+		});
+     	
+	}
+	
+}

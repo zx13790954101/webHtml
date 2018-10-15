@@ -146,7 +146,7 @@ layui.use(['form', 'element'], function () {
         {
             $.ajax({
                 type: "get",
-                url: "http://127.0.0.1:8020/webHtml/html/echarts/js/Count_EducationGlance_getlist.json",
+                url: "/webHtml/html/echarts/js/Count_EducationGlance_getlist.json",
                 dataType:"json",
                 success: function (json) {
                     //layer.close(lindex);
