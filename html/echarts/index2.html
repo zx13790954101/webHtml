@@ -205,7 +205,7 @@
             },
             //获取地图经纬度组装成东莞镇街图形
             getMap: function (mapData) {
-                $.get('127.0.0.1:8020/webHtml/html/echarts/js/dongguan.json?v='+Math.random(), function (geoJson) {
+                $.get('/webHtml/html/echarts/js/dongguan.json?v='+Math.random(), function (geoJson) {
                     var myChart = myChart = echarts.init(document.getElementById('container'));
                     echarts.registerMap('dongguan', geoJson);
                     myChart.setOption(option = {
@@ -313,7 +313,7 @@
             getdata: function () {
                 $.ajax({
                     type: "GET",
-                    url: "http://127.0.0.1:8020/webHtml/html/echarts/js/Count_TeacherTeam_getlist.json",
+                    url: "/webHtml/html/echarts/js/Count_TeacherTeam_getlist.json",
                     dataType: "json",
                     success: function (res) {
                         console.log('初始数据',res)
