@@ -348,7 +348,17 @@ var lzs_ajax = {
 				console.log("请求失败", data);
 			}
 		});
-	}
+	},
+	 //获取 url 后的参数值
+    getUrl:function(para){
+        var paraArr = location.search.substring(1).split('&');
+        for(var i = 0;i < paraArr.length;i++){
+            if(para == paraArr[i].split('=')[0]){
+                return paraArr[i].split('=')[1];
+            }
+        }
+        return '';
+    },
 }
 
 //tab切换的原型连的继承
