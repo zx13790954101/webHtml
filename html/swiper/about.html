@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		<link rel="stylesheet" href="../../plugin/swiper/swiper.min.css" />
+		<link rel="stylesheet" href="../../plugin/swiper/animate.min.css" />
+	    <link rel="stylesheet" href="about.css" />
+
+	</head>
+
+	<body>
+
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!-------------slide1----------------->
+				<section class="swiper-slide swiper-slide1">
+
+					<img src="upload/bonus_01.png" class="ani resize" style="width:320px;height:43px;left:0px;top:30px;z-index:3;" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+					<img src="upload/bonus_02.jpg" class="ani resize" style="width:320px;height:27px;left:0px;top:75px;z-index:3;" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="1.5s">
+					<img src="upload/001.png" class="ani resize" style="width:320px;height:188px;left:0;top:140px;z-index:2;" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="0.5s" swiper-animate-delay="2s">
+					<img src="upload/002.png" class="ani resize" style="width:320px;height:188px;left:0px;top:140px;z-index:1;" swiper-animate-effect="bounceInDown" swiper-animate-duration="1.5s" swiper-animate-delay="2.5s">
+					<img src="upload/003.png" class="ani resize" style="width:320px;height:112px;left:0px;top:320px;z-index:1;" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="4s">
+
+				</section>
+				<!---------------slide2-------------->
+				<section class="swiper-slide swiper-slide2">
+					<img src="upload/004.png" class="ani resize" style="width:320px;height:64px;left:0px;top:10px;z-index:5; " swiper-animate-effect="bounce" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+					<img src="upload/005.png" class="ani resize" style="width:320px;height:42px;left:0px;top:100px;z-index:4;" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<img src="upload/006.png" class="ani resize" style="width:320px;height:264px;left:0px;top:160px;z-index:3;" swiper-animate-effect="zoomInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1s">
+
+				</section>
+				<!----------------slide3-------------->
+				<section class="swiper-slide swiper-slide3">
+
+					<img src="upload/007.png" class="ani resize" style="width:320px;height:66px;left:0px;top:30px;z-index:5; " swiper-animate-effect="bounce" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+					<img src="upload/008.png" class="ani resize" style="width:320px;height:192px;left:0px;top:220px;z-index:4;" swiper-animate-effect="bounceInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="1s">
+					<img src="upload/009.png" class="ani resize" style="width:320px;height:77px;left:0px;top:110px;z-index:3;" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<img src="upload/010.png" class="ani resize" style="width:320px;height:192px;left:0px;top:220px;z-index:2;" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="1.5s">
+
+				</section>
+				<!-------------slide4----------------->
+				<section class="swiper-slide swiper-slide4">
+					<img src="upload/001.jpg" class="ani resize" style="width:320px;height:46px;left:0;top:20px;z-index:2;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+					<img src="upload/002.jpg" class="ani resize" style="width:320px;height:327px;left:0px;top:100px;z-index:1;" swiper-animate-effect="zoomInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+
+				</section>
+
+			</div>
+
+			<img src="images/arrow.png" style="width:20px;height:15px; top:460px; left:150px;" id="array" class="resize">
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script type="text/javascript" src="../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../plugin/swiper/swiper.animate.min.js" charset="utf-8"></script>
+		<script>
+			scaleW = window.innerWidth / 320;
+			scaleH = window.innerHeight / 480;
+			var resizes = document.querySelectorAll('.resize');
+			for(var j = 0; j < resizes.length; j++) {
+				resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
+				resizes[j].style.height = parseInt(resizes[j].style.height) * scaleH + 'px';
+				resizes[j].style.top = parseInt(resizes[j].style.top) * scaleH + 'px';
+				resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
+			}
+
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'vertical',
+				pagination: '.swiper-pagination',
+				//virtualTranslate : true,
+				mousewheelControl: true,
+				onInit: function(swiper) {
+					swiperAnimateCache(swiper);
+					swiperAnimate(swiper);
+				},
+				onSlideChangeEnd: function(swiper) {
+					swiperAnimate(swiper);
+				},
+				onTransitionEnd: function(swiper) {
+					swiperAnimate(swiper);
+				},
+
+				watchSlidesProgress: true,
+
+				onProgress: function(swiper) {
+					for(var i = 0; i < swiper.slides.length; i++) {
+						var slide = swiper.slides[i];
+						var progress = slide.progress;
+						var translate = progress * swiper.height / 4;
+						scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
+						var opacity = 1 - Math.min(Math.abs(progress / 2), 0.5);
+						slide.style.opacity = opacity;
+						es = slide.style;
+						es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + translate + 'px,-' + translate + 'px) scaleY(' + scale + ')';
+
+					}
+				},
+
+				onSetTransition: function(swiper, speed) {
+					for(var i = 0; i < swiper.slides.length; i++) {
+						es = swiper.slides[i].style;
+						es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+
+					}
+				},
+
+			})
+		</script>
+
+	</body>
+
+</html>
