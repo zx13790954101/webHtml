@@ -23,12 +23,18 @@
 		<link rel="stylesheet" href="../../src/public_all.css" />
 		<!--swiper的引用-->
 		<link rel="stylesheet" href="../../plugin/swiper/swiper.min.css" />
+		<style>
+			.swiper-img{
+				width:100%;
+				height:80vh
+			}
+			</style>
 	</head>
 
 	<body>
-		<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+	<!-- 	<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
 			<button data-method="notice" class="layui-btn">示范一个公告层</button>
-		</div>
+		</div> -->
 
 		<!--广告的-->
 		<div class="ad-dialog">
@@ -38,30 +44,28 @@
 
 		</div>
 
-		<script type="text/html" id="loop-swiper">
-			<div class="loop-swiper">
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 							<a href="/Company/Index/@(item.F_SCHOOLID)">
-								<div class="img-r">
-									<img lay-src="../../img/null-img.png" />
+								<div class="img-r  swiper-img">
+									<img src="../../img/hua.png" />
 								</div>
 								<h5 class="center text">第一个</h5>
 							</a>
 						</div>
 						<div class="swiper-slide">
 							<a href="/Company/Index/@(item.F_SCHOOLID)">
-								<div class="img-responsive">
-									<img lay-src="../../img/null-img.png" />
+								<div class="img-r  swiper-img">
+									<img src="../../img/lb3.png" />
 								</div>
 								<h5 class="center text">第2个</h5>
 							</a>
 						</div>
 						<div class="swiper-slide">
 							<a href="/Company/Index/@(item.F_SCHOOLID)">
-								<div class="img-responsive">
-									<img lay-src="../../img/null-img.png" />
+								<div class="img-r  swiper-img">
+									<img src="../../img/ln.png" />
 								</div>
 								<h5 class="center text">第3个</h5>
 							</a>
@@ -70,9 +74,7 @@
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 				</div>
-			</div>
 
-		</script>
 
 		<!--js的引入-->
 		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
@@ -88,10 +90,31 @@
 		<script type="text/javascript" src="../../plugin/swiper/swiper.min.js"></script>
 
 		<script>
+			var swiper = new Swiper('.swiper-container', {
+				slidesPerView: 1,
+				//  slidesPerColumn: 2, //显示两行
+				spaceBetween: 20,
+				//			      slidesPerGroup: 5,
+				//			      loop: true,
+				//			      loopFillGroupWithBlank: true,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+				simulateTouch: true, //禁止鼠标模拟
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+			});
+			
+			
 			layui.use(['layer', 'laytpl'], function() { //独立版的layer无需执行这一]
 				var $ = layui.jquery,
 					layer = layui.layer; //独立版的layer无需执行这一句
 				var laytpl = layui.laytpl;
+				active.swiperload();
+
 				//触发事件
 				var active = {
 					notice: function() {

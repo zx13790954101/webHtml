@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<!--my`s public的公共css的引入-->
 		<link rel="stylesheet" href="../../src/public_all.css" />
-		<link rel="stylesheet" href="./map.css" />
+		<link rel="stylesheet" href="../../plugin/baiduMap/map.css" />
 	</head>
 
 	<body>
@@ -82,7 +82,17 @@
 
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=UCXTKdp9dpdTdvimMx11ZFqpQPagGAp9"></script>
 		<script type="text/javascript" src="../../plugin/baiduMap/Popt.js"></script>
+		
 		<script type="text/javascript" src="../../plugin/baiduMap/cityJson.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var url="https://apis.map.qq.com/ws/district/v1/list?key=DCGBZ-LDKWI-P7ZGM-5JBZT-HVHXQ-OZF6N";
+				$.post(url,function(data){
+					console.log("data",data);
+				});
+			});
+			
+		</script>
 		<script type="text/javascript" src="../../plugin/baiduMap/citySet.js"></script>
 		<script type="text/javascript" src="../../plugin/baiduMap/BaiduMap_init.js"></script>
 		<script>

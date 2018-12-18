@@ -176,36 +176,28 @@ var lzs_tool = {
 	},
 	//顶置的按钮上下的按钮
 	scollTop: function(namxbox, nametop, namebuttom, height) {
-		$(namxbox).hide();
-		$(nametop).css({
-			"cursor": 'pointer'
-		});
-		$(namebuttom).css({
-			"cursor": 'pointer'
-		});
+		var html="<div class='scroll-top  flex-c' style='border-rudis:4px;width:40px;height:40px;display:none;box-shadow: 0 1px 3px rgba(26,26,26,.1);position:fixed;background-color: white;padding:10px;bottom:2%;right:2%;color:#fff;cursor:pointer;'><span class='top'>top</span></div>";
+	
 		$(window).scroll(function() {
-			if($(window).scrollTop() <= 300) {
-				$(namxbox).fadeIn(600);
+			if($('.scroll-top').html() === undefined){
+				$('body').append(html);
+			}
+	
+			if($(window).scrollTop() >= 1) {
+				$('.scroll-top').fadeIn(200);
+
+				if($('.scroll-top') != undefined || $('.scroll-top') != null) {
+					$('.scroll-top').click(function() {
+						$("html,body").animate({
+							scrollTop: 0
+						}, 100);
+						$('.scroll-top').fadeOut(200);
+					});
+				}
 			} else {
-				$(namxbox).fadeOut(600);
+				$('.scroll-top').fadeOut(200);
 			}
 		});
-		if(nametop != undefined || nametop != null) {
-			$(nametop).click(function() {
-				$("html,body").animate({
-					scrollTop: 0
-				}, 500);
-				$(namxbox).fadeOut(600);
-			});
-		}
-		if(namebuttom != undefined || namebuttom != null) {
-			$(namebuttom).click(function() {
-				$("html,body").animate({
-					scrollTop: $(document).height()
-				}, 500);
-			});
-
-		}
 
 	}
 }
