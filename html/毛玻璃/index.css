@@ -1,0 +1,61 @@
+.header-box{
+	
+}
+.wrap{
+	
+}
+
+section
+{
+	
+}
+section .left{
+	
+}
+section .right{
+	
+	
+}
+.frostedglass{
+  width: 100%;
+  height: 100px;
+  font-size:16px;
+  /*计算值为 height - width*top*2*/
+  line-height: 70px;
+  z-index:1;
+  position:relative;
+  overflow: hidden;
+  text-align:center;
+  background: hsl(20,40%,90%) fixed;
+  /* background-image:linear-gradient(90deg,#fb3 11px,transparent 0),
+  linear-gradient(90deg,#ab4 23px,transparent 0),
+  linear-gradient(90deg,#655 41px,transparent 0); */
+  background-color: #6b5787;
+  background-size: 41px 100%,61px 100%,83px 100%;
+}
+.frostedglass-inner:before{
+  content:'';
+  position:absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  filter:blur(5px);
+  /* background: hsla(0, 0%, 41%, 0.41); */
+  /* background-image:linear-gradient(90deg,#fb3 11px,transparent 0),
+  linear-gradient(90deg,#ab4 23px,transparent 0),
+  linear-gradient(90deg,#655 41px,transparent 0); */
+  background: linear-gradient(#4f4765,#5d5c67);
+  /* background-size: 41px 100%,61px 100%,83px 100%; */
+  z-index:-1;
+}
+.frostedglass-inner{
+  position:absolute;
+  /* top: 10%; */
+  /* right: 15%; */
+  /* left: 10%; */
+  width: 100%;
+  height: 100%;
+  /* bottom: 15%; */
+  background:hsla(0,0%,100%,.3);
+}
