@@ -9,7 +9,7 @@ var BaiduMap = {
     //地图的名字
     initStratAddress:"",
     loadJScript: function (name) {
-        
+        debugger
         window.onload =function(){
             var script = document.createElement("script");
             script.type = "text/javascript";
@@ -243,7 +243,7 @@ var BaiduMap = {
             Name: $(".search-box .map-search").val()
         }
         $.ajax({
-            url: "/Company/GetAllSchoolAddress",
+            url: "./GetAllSchoolAddress.json",
             type: "post",
             dataType: "json",
             data: datapoint,
@@ -344,7 +344,7 @@ var BaiduMap = {
         }
         //debugger;
         $.ajax({
-            url: "/Company/GetAllSchoolAddress",
+            url: "./GetAllSchoolAddress.json",
             type: "post",
             data: datapoint,
             dataType: "json",

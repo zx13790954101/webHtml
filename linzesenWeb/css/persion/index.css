@@ -15,7 +15,7 @@
     height: auto;
     box-shadow: 0px 5px 10px #bbbbbb;
     border-radius: 0px;
-    background-color: #fafafc;
+    /* background-color: #fafafc; */
     padding: 20px;
 }
 .section-persion .persion-l .layui-bg-cyan{

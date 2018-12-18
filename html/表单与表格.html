@@ -3,9 +3,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="../css/lzs_public.css" />
-		<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
-		<script type="text/javascript" src="../jquery/jquery.min.js" ></script>
 	</head>
 	<body>
 		<h4>表单</h4>
@@ -25,13 +22,39 @@
         <div class="button" onclick="tobutton()"><button>选择</button></div>
 
 <script type="text/javascript" src="../plugin/jquery/jquery.min.js" ></script>
-<script type="text/javascript" src="../src/toolkit.js" ></script>
 <script>
+	function test1(){
+       for (var i = 1; i <= 5; i++) {
+		console.log(i);
+		  setTimeout( function timer() {
+		
+		      console.log(i);
+		
+		  }, 1000 );
+		
+		}
+		
+ 	}
+	 function functionFunction(str) {
+        var f = function(a) {
+        	  var b = [str];
+	          b.push(a);
+	          var c=function(g){
+		          b.push(g);
+		          return b[1]+b[0]+b[2];
+	          }
+         return c;
+        }
+        return f;
+      }
+	 
 	
     $(function(){
+    	  console.log(functionFunction(1)(2)(3));//Hello, world
+		test1();
 		
-		formTool.clearNoNum("#txtId2");
-		formTool.autoAddWitch("#txtId");
+//		formTool.clearNoNum("#txtId2");
+//		formTool.autoAddWitch("#txtId");
 	})
 	
 

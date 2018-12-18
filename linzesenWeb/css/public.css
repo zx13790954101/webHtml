@@ -1,3 +1,6 @@
+body{
+ background-color: #f2f2f2;
+}
 .back-color{
 	background-color: #f1f1f1;
 }
@@ -86,4 +89,101 @@ width: 123px;
 }
 .footer-site .f-right{
 	margin-left: 25px;
+}
+.comment-reply>form{
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 10px;
+}
+.commentlistpanel {
+	/* border-top: 1px solid #d9d9d9; */
+	margin: 10px 0px;
+	-webkit-transition: all .3s linear 0s;
+	-moz-transition: all .3s linear 0s;
+	-o-transition: all .3s linear 0s;
+	transition: all .3s linear 0s;
+	-ms-transition: all .1s linear 0s;
+	/* border-bottom: 1px solid #d9d9d9; */
+}
+
+ .commentlistpanel .layui-tab-title {
+	height: 30px;
+}
+
+  .commentlistpanel .layui-tab-title li {
+	line-height: 30px;
+}
+
+ .commentlistpanel .layui-this {
+	/* border-right: 1px solid #d9d9d9; */
+	font-weight: 600;
+	border-bottom: 4px solid #ffb437;
+	color: #363a3d;
+}
+
+ .commentlistpanel .layui-this:after {
+	border: 0px;
+}
+
+ .commentlistpanel .list-item {
+	/* background-color: #f8f6f2; */
+	box-shadow: 0 1px 3px rgba(26, 26, 26, 0);
+	border: 0px;
+	padding: 0px;
+}
+ .commentlistpanel .list-item>div:nth-child(2){
+ 	
+border-bottom: 2px solid #f2f2f2;
+ }
+ .commentlistpanel .list-item .list-item-action{
+    padding-top: 3px;
+    padding-bottom: 15px;
+}
+ .commentlistpanel .list-item .list-item-action i{
+ 	margin-right: 3px;
+ 	}
+ .commentlistpanel .list-item-action>span:nth-of-type(2){
+ 	
+margin-right: 15px;
+ }
+.reply-more-content a {
+	padding: 7px 0px;
+	width: 100%;
+	color: #217dad;
+	margin-top: 8px;
+}
+
+ .commentlistpanel-reply2 {
+	margin-top: 20px;
+	background-color: #ffffff;
+	padding-top: 10px;
+	margin: 10px 0px;
+	border-right: 0px;
+	border-left: 0px;
+}
+ .commentlistpanel .line-bar {
+	margin: 0px 10px !important;
+	height: 18px;
+}
+
+.hotspot {
+	background-color: white;
+	padding: 10px 15px;
+}
+.recommend-auther {
+	background-color: white;
+	padding: 10px 15px;
+}
+ .auther-img, .hotspot-img {
+	width: 40px;
+	height: 40px;
+}
+
+.recommend-auther .ul-array .content {
+	padding: 0px 15px;
+}
+.hotspot .ul-array .content {
+	padding: 0px 15px;
+}
+.channel-img{
+	
 }

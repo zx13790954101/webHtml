@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*.ttlsa.com">
+		<link rel="stylesheet" href="js/linzesen/linzesen.css" />
+
+	</head>
+	<body>
+		<div class="car-box">
+			<p>火车正晚点的查询</p>
+			<div class="flex-c">
+				<input type="text" name="" id="" class="content car-name" placeholder="车站的名字" />
+			</div>
+			<div class="flex-c">
+				<input type="text" name="" id="" class="content car-number" placeholder="车的号码" />
+			</div>
+
+			<button type="button" onclick="queryCarMsg()">查询</button>
+		</div>
+
+		<script src="js/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		   <script src="js/shotgun.js.charsets.js"></script>
+    <script src="js/unicode2gb2312.js"></script>
+    <script src="js/shotgun.js.uri.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			//查询火车的信息
+			function queryCarMsg() {
+				debugger;
+
+				var car_name = $(".car-name").val();
+				var car_number = $(".car-number").val();
+				var d = new Date();
+				var n = d.getFullYear();
+				var m = d.getMonth();
+				var r = d.getDate();
+				var htmlDate = n + "-" + m + '-' + r;
+				var czEn = encode_uri(car_name).replace(/%/g, '-');
+				//var czEn = encodeGb2313(car_name).replace(/%/g, '-');
+				
+				var html_url = 'https://dynamic.12306.cn/mapping/kfxt/zwdcx/LCZWD/cx.jsp?' +
+					'cz=' + car_name +
+					'&cc=' + car_number +
+					'&cxlx=0' +
+					'&rq=' + htmlDate +
+					'&czEn=' + czEn ;
+					
+									$.ajax({ 
+									    type : "post", 
+									     async:false, 
+									    url :html_url, 
+									    dataType : "jsonp",//jsonp数据类型 
+									    jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数 
+									    success : function(data){ 
+									        console.log(data);
+									    }, 
+									    error:function(data){ 
+									        console.log(data);
+									    } 
+									}); 
+					}
+
+			
+
+			//utf8
+			function encode_uri(car_name) {
+				return encodeURI(car_name)
+			}
+			var cfg = {
+				"srcType": 0,
+				"dcOption": 1,
+				"encode": 2
+			};
+
+			function encodeGb2313(car_name) {
+				var data = car_name
+				if (data.length == "") {
+					return " ";
+				}
+				if (data.length > 2) {
+					var s = "gb2313";
+					var f = cfg.dcOption | (cfg.encode << 4);
+					var hash = (true ? "e," : "d,");
+					hash += s + "," + f + "," + encodeURIComponent(data);
+					try {
+						location.hash = hash;
+					} catch (e) {
+						location.hash = "";
+					}
+				}
+
+				return encode(data);
+			}
+
+			function encode(data) {
+			
+				var iSplit = (cfg.dcOption & 1) == 1;
+				var iSort = (cfg.dcOption & 2) == 2;
+
+				var ar = data.split(iSplit ? "\n" : "&");
+				if (iSort)
+					ar.sort();
+				var rlt = [];
+				for (var i = 0; i < ar.length; i++) {
+					var v = ar[i].replace(/^ {1,}/, "");
+					if (v == "")
+						continue;
+					var x = v.indexOf("=");
+					if (x == -1) {
+						rlt.push(strEncode(ar[i]));
+						continue;
+					}
+					rlt.push(strEncode(ar[i].substring(0, x)) + "=" + strEncode(ar[i].substring(x + 1)));
+				}
+
+				return rlt.join("&");
+			}
+			 function strEncode(str) {
+            var bin;
+            switch (parseInt(cfg.encode)) {
+                case 0: bin = Shotgun.Js.Charsets.toUtf8Bytes(str); break;
+                case 1: bin = Shotgun.Js.Charsets.toUnicodeBytes(str); break;
+                case 2: bin = Shotgun.Js.Charsets.toGB2312Bytes(str); break;
+                default:
+                    alert("未知方式：" + cfg.encode);
+                    return;
+            }
+            return urlEncode(bin);
+
+        }
+		 function urlEncode(bin) {
+            return Shotgun.Js.Uri.encode(bin);
+        }
+		</script>
+
+	</body>
+</html>

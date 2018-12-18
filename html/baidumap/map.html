@@ -48,11 +48,7 @@
 						<div class="layui-input-block">
 							<select name="city" lay-filter="optionbaidu" lay-search="">
 								<option value="">选择课程类别</option>
-								@{ if (Scopelist.Count > 0) { foreach (var item in Scopelist) {
 								<option value="@item.F_SCOPENAME">@item.F_SCOPENAME</option>
-
-								} } }
-
 							</select>
 						</div>
 
