@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN">
+			
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		<!--my`s public的公共css的引入-->
+		<link rel="stylesheet" href="../../src/public_all.css" />
+	</head>
+
+	<body>
+
+		<section>
+			
+			<!--<iframe src="http://www.aigei.com/bgremover/" style="height: 100vh;">
+				
+			</iframe>-->
+			<form action="http://upload.qiniu.com/">
+					<input type="file" accept="" />
+					
+					<input type="submit" />
+			</form>
+		
+		</section>
+
+		<footer>
+
+		</footer>
+ 
+
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script type="text/javascript" src="../../plugin/layui/layui.js" charset="utf-8"></script>
+		<!--公共的js的引入-->
+		<script type="text/javascript" src="../../plugin/linzesen/linzesen.js"></script>
+		<script>
+			responsiveView();
+			//响应式的布局设置
+			function  responsiveView(){
+				//监听屏幕变化
+				$(window).resize(function () {
+			
+				});	
+				if($(window).width()<=768){
+					
+					$(".lzs-nav.nav-header-mobile .moblie-button").click(function(e){
+					 	var that=this;
+					  	LZS_tool.stopBubble(e);
+					  	LZS_tool.stopDefault(e);
+					  	$(".lzs-nav.nav-header-mobile .nav-ul").animate({
+									height: 'toggle'
+					    });
+					});
+					
+				}else{
+					
+				}
+				
+			}
+		    $(".lzs-nav li").click(function(e){
+			  	var that=this;
+			  	LZS_tool.stopBubble(e);
+			  	LZS_tool.stopDefault(e);
+			  	$(that).addClass("active").siblings().removeClass("active");
+			  
+		    });
+		    
+		    
+			layui.use('element', function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				//监听导航点击
+				if($(".nav-header").hasClass("nav-header-mobile")) {
+					var titleMobile = $(".nav-header-mobile").children(".layui-nav").children(".layui-nav-item").find("a").html();
+					var htmlView = '<div class="layui-nav nav-mobile clear-float">' +
+						'<span class="left"><h3>' + titleMobile + '</h3></span><span class="right"  >' +
+						'<i class="layui-icon" >&#xe668;</i></span></div>';
+					$(".nav-header-mobile").append(htmlView);
+					$(".nav-header-mobile").children(".nav-mobile").find("i").click(function() {
+						var that=$(this).parent().parent().parent().find("ul");
+						that.animate({height: 'toggle'});
+					});
+				}
+
+			});
+
+			layui.use(['element', 'layer'], function() {
+				var element = layui.element;
+				var layer = layui.layer;
+
+				//监听折叠
+				element.on('collapse(test)', function(data) {
+					layer.msg('展开状态：' + data.show);
+				});
+			});
+
+			//图片的懒加载
+			layui.use('flow', function() {
+				var flow = layui.flow;
+				//当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+				flow.lazyimg();
+				  //按屏加载图片
+			  flow.lazyimg({
+			    elem: '#LAY_demo3 img'
+			    ,scrollElem: '#LAY_demo3' //一般不用设置，此处只是演示需要。
+			  });
+			});
+		</script>
+
+	</body>
+
+</html>

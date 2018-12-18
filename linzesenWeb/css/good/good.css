@@ -1,0 +1,50 @@
+.good-item-img{
+	
+height: 180px;
+}
+.goods-list .list-item{
+    padding: 0px;
+    padding-bottom: 0px;
+}
+.goods-list .item-content{
+    padding: 20px;
+}
+.goods-list .item-content .price{color: #F40;}
+.goods-list .item-content .price span{color: #F40;margin-right: 5px;font-size: 1.67rem;font-weight: 600;}
+.news-select-type {
+	padding: 0px 15px;
+	margin-bottom: 20px;
+	background-color: white;
+	box-shadow: -1px 0 0 rgba(0, 0, 0, 0.04), 0 -1px 0 rgba(0, 0, 0, 0.04), 1px 0 0 rgba(0, 0, 0, 0.04);
+	border-radius: 3px;
+	/* box-shadow: 0 1px 3px rgba(26, 26, 26, .1); */
+}
+
+.news-select-type .layui-nav {
+	padding: 2px 0px;
+	background-color: white;
+}
+
+.news-select-type .layui-nav li {
+	line-height: 40px;
+}
+
+.news-select-type .layui-nav a {
+	color: #333;
+}
+.tabs-mark-group{
+border: 1px solid #e4ecf3;
+-webkit-border-radius: 4px;
+-webkit-background-clip: padding-box;
+-moz-border-radius: 4px;
+-moz-background-clip: padding;
+border-radius: 4px;
+background-clip: padding-box;
+margin-bottom: 30px;
+background-color: #fff;
+padding: 10px;
+}
+.tabs-mark-group .line {
+    border-bottom: 1px dashed #e4ecf3;
+    padding: 10px;
+}

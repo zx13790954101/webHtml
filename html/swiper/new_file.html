@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 优先使用 IE 最新版本和 Chrome -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="不超过150个字符" />
+		<!-- 页面描述 -->
+		<meta name="keywords" content="" />
+		<!-- 页面关键词 -->
+		<meta name="author" content="name, email@gmail.com" />
+		<!-- 网页作者 -->
+		<meta name="robots" content="index,follow" />
+		<!-- 搜索引擎抓取 -->
+		<title></title>
+		<link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		<!--my`s public的公共css的引入-->
+		<link rel="stylesheet" href="../../src/public_all.css" />
+		<!--swiper的引用-->
+		<link rel="stylesheet" href="../../plugin/swiper/swiper.min.css" />
+		<style>
+			.slide - dialog {}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/html" id="dialog-model" >
+			<div class="slide-dialog">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="/Company/Index/@(item.F_SCHOOLID)">
+								<div class="img-responsive">
+									<img lay-src="../../img/null-img.png" />
+								</div>
+								<h5 class="center text">第一个</h5>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="/Company/Index/@(item.F_SCHOOLID)">
+								<div class="img-responsive">
+									<img lay-src="../../img/null-img.png" />
+								</div>
+								<h5 class="center text">第一个</h5>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="/Company/Index/@(item.F_SCHOOLID)">
+								<div class="img-responsive">
+									<img lay-src="../../img/null-img.png" />
+								</div>
+								<h5 class="center text">第一个</h5>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="/Company/Index/@(item.F_SCHOOLID)">
+								<div class="img-responsive">
+									<img lay-src="../../img/null-img.png" />
+								</div>
+								<h5 class="center text">第一个</h5>
+							</a>
+						</div>
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next" style="background-image: none;">
+						<i class="layui-icon layui-icon-right"></i>
+					</div>
+					<div class="swiper-button-prev" style="background-image: none;">
+						<i class="layui-icon layui-icon-left"></i>
+					</div>
+				</div>
+				</div>
+		</script>
+		<footer>
+
+		</footer>
+
+		<!--js的引入-->
+		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../plugin/jquery/jquery.min.js"  >\x3C/script>')
+		</script>
+		<script type="text/javascript" src="../../plugin/layui/layui.js" charset="utf-8"></script>
+		<!--公共的js的引入-->
+		<script type="text/javascript" src="../../plugin/linzesen/linzesen.js"></script>
+		<!--swiper的引用-->
+		<script type="text/javascript" src="../../plugin/swiper/swiper.min.js"></script>
+		<script>
+			function swiperload() {
+				var swiper = new Swiper('.swiper-container', {
+					slidesPerView: 1,
+					//  slidesPerColumn: 2, //显示两行
+					// spaceBetween: 20,
+					//			      slidesPerGroup: 5,
+					//			      loop: true,
+					//			      loopFillGroupWithBlank: true,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+					},
+					simulateTouch: true, //禁止鼠标模拟
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
+				});
+
+
+			}
+
+			responsiveView();
+			//响应式的布局设置
+			function responsiveView() {
+				//监听屏幕变化
+				$(window).resize(function() {});
+				if($(window).width() <= 768) {} else {
+
+				}
+			}
+
+			layui.use(['layer', 'laydate','flow'], function() { //独立版的layer无需执行这一句
+				var $ = layui.jquery,
+					layer = layui.layer,
+					laydate = layui.laydate,
+				     flow = layui.flow;
+
+				//触发事件
+				var active = {
+					notice: function() {
+						//示范一个公告层
+						layer.open({
+							type: 1,
+							title: false,
+							closeBtn: true,
+							area:['60%','60%'],
+							shade: 0.8,
+							btnAlign: 'c',
+							moveType: 1 ,
+							path: "#dialog-model",
+							content: $("#dialog-model").html(),
+							success: function(layero,index) {
+								console.log(index)
+								swiperload();
+									//当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+				               flow.lazyimg();
+							},    
+						});
+					}
+				};
+
+				active.notice();
+
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<!--my`s public的公共css的引入-->
 		<link rel="stylesheet" href="../../src/public_all.css" />
-		<link rel="stylesheet" href="./map.css" />
+		<link rel="stylesheet" href="../../plugin/baiduMap/map.css" />
 	</head>
 
 	<body>
@@ -48,11 +48,7 @@
 						<div class="layui-input-block">
 							<select name="city" lay-filter="optionbaidu" lay-search="">
 								<option value="">选择课程类别</option>
-								@{ if (Scopelist.Count > 0) { foreach (var item in Scopelist) {
 								<option value="@item.F_SCOPENAME">@item.F_SCOPENAME</option>
-
-								} } }
-
 							</select>
 						</div>
 
