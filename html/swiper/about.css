@@ -17,6 +17,7 @@ body {
     height: 480px;*/
 	/* width: 100%; */
 	height: 100%;
+	padding: 0px;
 	background: rgba(0,0,0,0);
 }
 
@@ -27,6 +28,7 @@ body {
 	background-size: 100% 100%;
 	background-color: wheat;
 	background: linear-gradient(to left,#FFEB3B 0,#19c3ff 100%);
+	overflow: hidden;
 }
 
 img {
@@ -168,6 +170,7 @@ img {
 	margin: 2% 3%;
 	background: hsla(0,0%,100%,.2);
 	/* filter: blur(3px); */
+	overflow: hidden;
 }
 
 .content  .cityImg2{
