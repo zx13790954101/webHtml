@@ -35,6 +35,7 @@ width: 10%;
 	background-color: black;
 	background-image: linear-gradient(62deg, rgb(142, 197, 252) 0%, #3F51B5 100%);
 	overflow: hidden;
+	color: white;
 }
 
 img {
@@ -232,10 +233,22 @@ img {
 
 .sidebar-box{
    position: fixed;
-   right: 2%;
-   bottom: 5%;
+   right: 0%;
+   bottom: 50%;
    z-index: 9;
    text-align: center;
+   -moz-border-radius: 10px 0 0 10px;
+   -webkit-border-radius: 10px 0 0 10px;
+   border-radius: 1rem 0 0 1rem;
+   -webkit-transition: all .3s ease-in-out 0s;
+   -moz-transition: all .3s ease-in-out 0s;
+   -ms-transition: all .3s ease-in-out 0s;
+   -o-transition: all .3s ease-in-out 0s;
+   transition: all .3s ease-in-out 0s;
+   overflow: hidden;
+   background-color: rgba(0, 0, 0, 0.25);
+   padding: 0.9rem  0rem;
+   transform: translatey(50%);
 }
 .sidebar-box li:hover{}
 .sidebar-box li{
@@ -244,10 +257,7 @@ img {
     text-align: center;
     margin: 0 auto;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.35);
     padding: 0.5rem;
-    border-radius: 50%;
-    margin: 0.7rem 0rem;
     color: rgba(255,255,255,0.5);
 }
 .sidebar-box i{
@@ -447,6 +457,19 @@ transition: all .4s cubic-bezier(.4,0,.2,1);
 	transform: translate(-50%,-50%);
 }
 .product .product-img{
-	height: 20rem;
-	width: auto;
+	
+height: 20rem;
+	
+width: auto;
+}
+.link-me .content{
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.link-me from .lzs-item{
+	margin:1rem 0rem;
 }

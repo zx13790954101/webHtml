@@ -16,7 +16,7 @@ iframe{width:100%;height: 99.2%;border:0;}
 .iconfont:before{padding-right: 0px;}
 input:-webkit-autofill{background-color:#FAFFBD;background-image:none;color:#000}
 input[type=checkbox],input[type=radio]{border:1px solid beige}
-textarea{width:100%;height:50px;resize: none;box-shadow: 0px 0px 2px 1px #bdbdbd inset;}
+textarea{color: inherit;width:100%;height: 5rem;resize: none;background-color: inherit;border: 0px solid #ccc;box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15) inset;padding: 10px 10px;box-sizing: border-box;border-radius: 2px;}
 footer{
     overflow: hidden;
     position: relative;
@@ -424,7 +424,7 @@ margin-bottom: 0px;
 .nav-header-mobile .layui-bg-blue{display:block}
 .lzs-nav{color: white;/* background: linear-gradient(to left,#3b9eff 0,#19c3ff 100%); */background-color: #ffffff96;box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.1);/* border-top: 2px solid  #43b3f3; */z-index: 9;box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1), 0 0px rgba(0,0,0,0.1);}
 
-.lzs-nav li{font-family: "Times New Roman",Georgia,Serif;margin: 0px;display: inline-block;letter-spacing: 1px;min-width: 90px;box-sizing:  border-box;text-align:  center;transition: all .3s;-webkit-transition: all .3s;height: 50px;line-height: 50px;-moz-transition: all .4s linear 0s;-o-transition: all .4s linear 0s;-ms-transition: all .4s linear 0s;transition: all .4s linear 0s;}
+.lzs-nav li{/* font-family: "Times New Roman",Georgia,Serif; */margin: 0px;display: inline-block;letter-spacing: 1px;min-width: 90px;box-sizing:  border-box;text-align:  center;transition: all .3s;-webkit-transition: all .3s;height: 50px;line-height: 50px;-moz-transition: all .4s linear 0s;-o-transition: all .4s linear 0s;-ms-transition: all .4s linear 0s;transition: all .4s linear 0s;}
 .lzs-nav li:hover{
     color:#fff;
 }
@@ -521,7 +521,7 @@ html{font-size: 10px;}
 .border-right{border-right:1px solid #eee63}
 .border-null{border:0}
 .btn-bule{box-sizing:border-box;margin:0 15px;padding: 7.5px 17px;border:1px solid #48c0ff;border-radius:3px;background-color:#48c0ff;color:#fff;vertical-align:middle;text-align:center;letter-spacing:1px;font-size:1.17rem;}
-button:hover{border: 1px solid #33a9f2;box-shadow:0 0 1px 1px rgba(211,211,211,.8);box-shadow: 0 0 0px 0px rgba(255, 255, 255) inset;color: #ff6549 !important;opacity:.7;-webkit-transition: all .3s linear 0s;-moz-transition: all .3s linear 0s;-o-transition: all .3s linear 0s;transition: all .3s linear 0s;-ms-transition: all .1s linear 0s;filter:alpha(opacity=70);}
+button:hover{border: 1px solid #33a9f2;box-shadow: 0 0 0px 0px rgba(255, 255, 255) inset;color: #33a9f2 !important;opacity:.7;-webkit-transition: all .3s linear 0s;-moz-transition: all .3s linear 0s;-o-transition: all .3s linear 0s;transition: all .3s linear 0s;-ms-transition: all .1s linear 0s;filter:alpha(opacity=70);}
 .item-group>*{display:inline-block;vertical-align:middle}
 .table th{padding:6px 0;border-bottom:2px solid #ddd;text-align:left}
 .table td{padding:6px 0}
@@ -561,7 +561,7 @@ to{opacity:1;filter:Alpha(opacity=100)}
 to{opacity:1;filter:Alpha(opacity=100)}
 }
 .flex-c .title{ font-weight:600;}
-button{display: flex;justify-content: center;align-items: center;box-sizing:border-box;padding: 0px 1.5rem;line-height: 36px;height: 36px;border: solid 0px #dcdcdc;background-color:rgba(0,0,0,0);color:#37393a;vertical-align:middle;letter-spacing:1px;font-size:1.17rem;min-width: 60px;width: auto;border-radius: 0.6rem;text-align: center;}
+button{display: flex;justify-content: center;align-items: center;box-sizing:border-box;padding: 0px 1.5rem;line-height: 36px;height: 36px;border: solid 0px #dcdcdc;background-color: rgba(255,255,255,1);color:#37393a;vertical-align:middle;letter-spacing:1px;font-size:1.17rem;min-width: 60px;width: auto;border-radius: 0.6rem;text-align: center;}
 .btn{box-sizing:border-box;padding: 0px 8px;line-height: 32px;height: 36px;border: solid 1px #f2f2f2;background-color:rgba(0,0,0,0);color:#37393a;vertical-align:middle;letter-spacing:1px;font-size:1.17rem;min-width: 60px;width: auto;border-radius: 0px;cursor:  pointer;}
 .circle{border-radius:50%}
 .square{border-radius:0}
