@@ -19,6 +19,47 @@ body {
 	height: 100%;
 	padding: 0px;
 	background: rgba(0,0,0,0);
+	z-index: 9;
+}
+
+.head-swiper .swiper-button-next:hover,.head-swiper .swiper-button-prev:hover{
+	opacity: 1;
+}
+.head-swiper .swiper-button-next,.head-swiper .swiper-button-prev{
+
+border: 1px solid white;
+
+border-radius: 50%;
+
+height: 28px;
+
+width: 28px;
+
+top: 80%;
+
+right: 8rem;
+
+margin-top: 0px;
+
+line-height: 28px;
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+left: inherit;
+
+opacity: 0.6;
+
+z-index: 999;
+}
+.head-swiper .swiper-button-next{
+    right: 5rem;
+}
+.head-swiper .swiper-button-next i,.head-swiper .swiper-button-prev i{
+	
 }
 .mainSwiper>.swiper-pagination{
 	
@@ -41,7 +82,15 @@ width: 10%;
 img {
 	display: block;
 }
-
+.swiper1-content2{
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    display: flex;
+    background: linear-gradient(to right, rgba(23,9,49,.6) 0%,rgba(30,95,116,.6) 100%);
+    justify-content: center;
+    align-items: center;
+}
 .swiper-pagination-bullet {
 	width: 8px;
 	height: 8px;
@@ -130,7 +179,9 @@ img {
 	height: auto;
 	/* Center slide text vertically */
 }
-
+.mainSwiper .swiper2{
+    background-image: linear-gradient(62deg, rgb(0, 0, 0) 0%, #767676 100%) !important;
+}
 .mainSwiper .mainImg {
 	-webkit-animation-duration: 0.5s;
 	animation-duration: 0.5s;
@@ -226,11 +277,16 @@ img {
 	box-shadow: 0px 0px 0px;
 	font-size: 1.8rem;
 	font-weight: 600;
-	margin-top: 2%;
-	padding-right: 3%;
+	margin-top: 0%;
 	font-family: "Times New Roman",Georgia,Serif;
+	z-index: 999;
+	padding-left: 2rem;
+	opacity: 0.8;
 }
-
+.lzs-nav .head{
+	
+font-size: 2.4rem;
+}
 .sidebar-box{
    position: fixed;
    right: 0%;
@@ -246,19 +302,20 @@ img {
    -o-transition: all .3s ease-in-out 0s;
    transition: all .3s ease-in-out 0s;
    overflow: hidden;
-   background-color: rgba(0, 0, 0, 0.25);
-   padding: 0.9rem  0rem;
+   background-color: rgba(0, 0, 0, 0.22);
+   padding: 1rem  0rem;
    transform: translatey(50%);
 }
 .sidebar-box li:hover{}
 .sidebar-box li{
-    width: 4rem;
-    height: 4rem;
+    width: 3.4rem;
+    height: auto;
     text-align: center;
     margin: 0 auto;
     justify-content: center;
-    padding: 0.5rem;
-    color: rgba(255,255,255,0.5);
+    padding: 0.5rem 0.3rem;
+    color: rgba(255,255,255,0.7);
+    box-sizing: border-box;
 }
 .sidebar-box i{
     font-size: 2.5rem;
@@ -328,7 +385,7 @@ img {
 	    left: 0px;
 	    z-index: -1;
 	    opacity: 8;
-	    background-color: rgba(3, 169, 244, 0.59);
+	    background-color: rgba(103, 58, 183, 0.25);
 	    transition: all .9s cubic-bezier(.4,0,.2,1);
 }
 .biz-box .item:hover {
@@ -366,6 +423,7 @@ margin-top: 1rem;
 	
 transition: all .9s cubic-bezier(.4,0,.2,1);
 }
+.swiper1-content3{}
 .swiper1-head-img{
 	 animation-name: float;
     -webkit-animation-name: float;
@@ -470,6 +528,32 @@ width: auto;
     padding: 2rem;
     border-radius: 10px;
 }
+.link-me .contact li{
+    margin: 1rem 0rem;
+}
+.link-me .contact .head{
+    margin-top: 0rem;
+}
 .link-me from .lzs-item{
 	margin:1rem 0rem;
+}
+.swiper1-content{
+	
+z-index: 99;
+}
+.swiper1-content>.title{
+    font-size: 3.5rem;
+}
+.swiper1-content .content-c{
+	
+margin: 1.5rem 0rem;
+}
+.swiper1-img1{
+    width: 100%;
+}
+。head-swiper .content-c li .name{}
+.content-c li{
+	  /* background: linear-gradient(to right, #ffffff, #CDDC39); */
+	  /* -webkit-background-clip: text; */
+	  /* color: transparent; */
 }
