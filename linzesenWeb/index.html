@@ -429,6 +429,22 @@
 		<!--	<script type="text/javascript" src="../plugin/linzesen/linzesen.js"></script>-->
 		<script type="text/javascript" src="../plugin/swiper/swiper.min.js"></script>
 		<script>
+			var page=0
+			   var d=new Date();
+                                  var month=d.getMonth() + 1;
+                                  if(month<10){
+                                    month="0"+month;
+                                  }
+                                  var year=d.getFullYear();
+                                  var day=d.getDate()+page-1;
+                                  if(day<10){
+                                    day="0"+day
+                                  }
+                                  var datatime=year+""+month+""+day;
+			
+			$.get("https://news-at.zhihu.com/api/4/news/before/"+datatime,function(data){
+    console.log("data",data);
+});
 			swiperload();
 			function swiperload() {
 				var swiper = new Swiper('.swiper-container', {

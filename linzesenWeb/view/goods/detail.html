@@ -28,22 +28,7 @@
 	</head>
 
 	<body>
-		<nav>
-
-		</nav>
-		<header class="flex container">
-			<div class="header-logo">
-				<div class="img-r">
-					<img lay-src="//img.alicdn.com/tfs/TB1MaLKRXXXXXaWXFXXXXXXXXXX-480-260.png">
-				</div>
-			</div>
-			<form class="flex-center search-form">
-				<div class="box-searchInput">
-					<input type="text" />
-				</div>
-				<button class="button">搜索	</button>
-			</form>
-		</header>
+		
 		<!--第一个的section-->
 		<section class="section-1 container  flex">
 			<div class="banner-wrapper-l">
@@ -140,7 +125,7 @@
 				</div>
 			</div>
 		</section>
-        <!--商品的介绍-->
+		<!--商品的介绍-->
 		<section class="section-2 container">
 			<div class="tab-proinfo-main h5">
 				<ul class="tab-nav ">
@@ -210,38 +195,7 @@
 
 			</div>
 		</section>
-		<!--页脚-->
-		<footer>
-
-			<div class="footer-site flex  container">
-				<div class="footer-l flex-center row flex-item">
-					<dl class="col-lg-3">
-						<dt>
-		    				<a href="#">帮助中心</a></dt>
-						<dd>
-							<a href="#">账号管理</a>
-						</dd>
-					</dl>
-					<dl class="col-lg-3">
-						<dt>
-		    			    <a href="#">服务支持</a></dt>
-						<dd>
-							<a href="#">售后服务</a>
-						</dd>
-					</dl>
-				</div>
-				<div class="footer-r">
-					<h3>
-						400-800-7087
-					</h3>
-				</div>
-			</div>
-
-			<div class="footer-info  container">
-
-			</div>
-
-		</footer>
+		
 
 		<!--js的引入-->
 		<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
@@ -249,23 +203,23 @@
 			window.jQuery || document.write('<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
 		</script>
 		<script src="../../../plugin/layui/layui.js" charset="utf-8"></script>
-	<script type="text/javascript" src="../../../plugin/linzesen/linzesen.js"></script>
+		<script type="text/javascript" src="../../../plugin/linzesen/linzesen.js"></script>
 		<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js"></script>
 		<script>
 			//y页面初始化
-			function ViewInit(){
-				
+			function ViewInit() {
+
 			}
-			
-			LZS_layout.tabSlider(".tab-proinfo-main", function(data) {
-				console.log("data", data.index)
-			});
+			//			
+			//			LZS_layout.tabSlider(".tab-proinfo-main", function(data) {
+			//				console.log("data", data.index)
+			//			});
 
 			SwiperInit();
-			var galleryTop,galleryThumbs;
+			var galleryTop, galleryThumbs;
 			//swiper的初始化
 			function SwiperInit() {
-				 galleryTop = new Swiper('.gallery-top', {
+				galleryTop = new Swiper('.gallery-top', {
 					//   autoplay:true,
 					slidesPerView: 1,
 					//				autoplay: {
