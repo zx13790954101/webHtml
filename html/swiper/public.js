@@ -7,7 +7,17 @@ var active = {
 					$(".loader").hide();
 				}
 			}
+			active.tabNav();
 	    },
+	    tabNav:function(){
+	    	$(".product .tba-nav li").click(function(){
+	    		var index=$(this).index();
+	    			$(".product .tba-nav li").removeClass("active");
+	    		$(".product .tba-nav li").eq(index).addClass("active");
+	    		$(".product .tba-content li").removeClass("active");
+	    		$(".product .tba-content li").eq(index).addClass("active");
+	    	});
+	    }
 	}
 	active.init();
 
@@ -65,10 +75,11 @@ var active = {
 
 	})
 	setTimeout(function() {
+
 	
 		var caseSwiper = new Swiper('.caseSwiper', {
 			lazyLoading : true,  //启动延迟加载
-			slidesPerView: 3,
+			slidesPerView: 1,
 			slidesPerColumn: 1,
 			spaceBetween: 30,
 			pagination: {
@@ -76,6 +87,8 @@ var active = {
 				clickable: true,
 			},
 		});
+		
+		
 		var aboutSwiper = new Swiper('.about-swiper', {
 			slidesPerView: 1,
 			　　lazyLoading : true,  //启动延迟加载
