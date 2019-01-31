@@ -24,8 +24,7 @@
 	</head>
 
 	<body>
-		<h1>ssssss</h1>
-		 <nav>
+		<nav>
 			<div class="lzs-nav  h5">
 
 				<ul class="nav-ul table-box">
@@ -51,14 +50,14 @@
 						<a href="">社区</a>
 					</li>
 				</ul>
-                <div class="nav-ul-moblie none">
-                	<span class="">Jason</span>
-                	<span class="right"  ><i class="layui-icon moblie-button" >&#xe668;</i></span>
-                </div>
+				<div class="nav-ul-moblie none">
+					<span class="">Jason</span>
+					<span class="right"><i class="layui-icon moblie-button" >&#xe668;</i></span>
+				</div>
 			</div>
 		</nav>
 		<!--nav-->
-		
+
 		<!--<nav>
 			<div class="nav-header nav-header-mobile">
 
@@ -115,7 +114,7 @@
 		</section>
 
 		<section class="container">
-			<div class="layui-collapse"  lay-accordion="" lay-filter="test">
+			<div class="layui-collapse" lay-accordion="" lay-filter="test">
 				<div class="layui-colla-item">
 					<h2 class="layui-colla-title">为什么JS社区大量采用未发布或者未广泛支持的语言特性？</h2>
 					<div class="layui-colla-content layui-show">
@@ -177,14 +176,11 @@
 					</div>
 				</li>
 			</ul>
-    	</section>
-
-
+		</section>
 
 		<footer>
 
 		</footer>
- 
 
 		<!--js的引入-->
 		<!-- jquery的cdn的地址 ： https://www.staticfile.org/  -->
@@ -198,36 +194,35 @@
 		<script>
 			responsiveView();
 			//响应式的布局设置
-			function  responsiveView(){
+			function responsiveView() {
 				//监听屏幕变化
-				$(window).resize(function () {
-			
-				});	
-				if($(window).width()<=768){
-					
-					$(".lzs-nav.nav-header-mobile .moblie-button").click(function(e){
-					 	var that=this;
-					  	LZS_tool.stopBubble(e);
-					  	LZS_tool.stopDefault(e);
-					  	$(".lzs-nav.nav-header-mobile .nav-ul").animate({
-									height: 'toggle'
-					    });
+				$(window).resize(function() {
+
+				});
+				if($(window).width() <= 768) {
+
+					$(".lzs-nav.nav-header-mobile .moblie-button").click(function(e) {
+						var that = this;
+						LZS_tool.stopBubble(e);
+						LZS_tool.stopDefault(e);
+						$(".lzs-nav.nav-header-mobile .nav-ul").animate({
+							height: 'toggle'
+						});
 					});
-					
-				}else{
-					
+
+				} else {
+
 				}
-				
+
 			}
-		    $(".lzs-nav li").click(function(e){
-			  	var that=this;
-			  	LZS_tool.stopBubble(e);
-			  	LZS_tool.stopDefault(e);
-			  	$(that).addClass("active").siblings().removeClass("active");
-			  
-		    });
-		    
-		    
+			$(".lzs-nav li").click(function(e) {
+				var that = this;
+				LZS_tool.stopBubble(e);
+				LZS_tool.stopDefault(e);
+				$(that).addClass("active").siblings().removeClass("active");
+
+			});
+
 			layui.use('element', function() {
 				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 				//监听导航点击
@@ -238,8 +233,10 @@
 						'<i class="layui-icon" >&#xe668;</i></span></div>';
 					$(".nav-header-mobile").append(htmlView);
 					$(".nav-header-mobile").children(".nav-mobile").find("i").click(function() {
-						var that=$(this).parent().parent().parent().find("ul");
-						that.animate({height: 'toggle'});
+						var that = $(this).parent().parent().parent().find("ul");
+						that.animate({
+							height: 'toggle'
+						});
 					});
 				}
 
@@ -260,15 +257,15 @@
 				var flow = layui.flow;
 				//当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
 				flow.lazyimg();
-				  //按屏加载图片
-			  flow.lazyimg({
-			    elem: '#LAY_demo3 img'
-			    ,scrollElem: '#LAY_demo3' //一般不用设置，此处只是演示需要。
-			  });
+				//按屏加载图片
+				flow.lazyimg({
+					elem: '#LAY_demo3 img',
+					scrollElem: '#LAY_demo3' //一般不用设置，此处只是演示需要。
+				});
 			});
-			
-			$(function(){
-				 lzs_tool.scollTop();
+
+			$(function() {
+				lzs_tool.scollTop();
 			});
 		</script>
 
