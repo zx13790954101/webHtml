@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>可调整尺寸小部件（Resizable Widget）演示</title>
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <style>
+  #resizable {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+}	</style>
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+</head>
+<body>
+ 
+<div id="resizable"></div>
+ 
+<script>
+	$( "#resizable" ).draggable();
+$( "#resizable" ).resizable();
+</script>
+ 
+</body>
+</html>

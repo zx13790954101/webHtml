@@ -233,8 +233,18 @@ var HandlerBus = function () {
 }();
 
 var EVENT = ['touchstart', 'touchmove', 'touchend', 'drag', 'dragstart', 'dragend', 'pinch', 'pinchstart', 'pinchend', 'rotate', 'rotatestart', 'rotatend', 'singlePinchstart', 'singlePinch', 'singlePinchend', 'singleRotate', 'singleRotatestart', 'singleRotatend'];
-
+const screenWidth=document.documentElement.clientWidth;
+var typescreen=false;
+if(screenWidth>=688){
+	typescreen=true;
+}
 var ORIGINEVENT = ['touchstart', 'touchmove', 'touchend', 'touchcancel'];
+var ORIGINEVENT_WINDOWS = ['mousedown', 'mousemove', 'mouseup', 'mouseover'];
+
+if(screenWidth>=588){
+	ORIGINEVENT=ORIGINEVENT_WINDOWS;
+}
+
 
 function MTouch() {
     var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -284,18 +294,33 @@ MTouch.prototype._bind = function () {
     var _this2 = this;
 
     ORIGINEVENT.forEach(function (evName) {
-        var fn = evName == 'touchcancel' ? 'end' : evName.replace('touch', '');
-        // 需要存下 bind(this) 后的函数指向，用于 destroy;
-        _this2['_' + fn + '_bind'] = _this2['_' + fn].bind(_this2);
-        _this2.el.addEventListener(evName, _this2['_' + fn + '_bind'], false);
+		
+		if(screenWidth>=588){
+			 var fn = evName ;
+			  // 需要存下 bind(this) 后的函数指向，用于 destroy;
+		//	 _this2['_' + fn + '_bind'] = _this2['_' + fn].bind(_this2);
+			 _this2.el.addEventListener(evName, _this2['_' + fn + '_bind'], false);
+		}else{
+			 var fn = evName == 'touchcancel' ? 'end' : evName.replace('touch', '');
+			  // 需要存下 bind(this) 后的函数指向，用于 destroy;
+			 _this2['_' + fn + '_bind'] = _this2['_' + fn].bind(_this2);
+			 _this2.el.addEventListener(evName, _this2['_' + fn + '_bind'], false);
+		}
+       
     });
 };
 MTouch.prototype.destroy = function () {
     var _this3 = this;
 
     ORIGINEVENT.forEach(function (evName) {
-        var fn = evName == 'touchcancel' ? 'end' : evName.replace('touch', '');
-        _this3.el.removeEventListener(evName, _this3['_' + fn + '_bind'], false);
+		if(screenWidth>=588){
+			 var fn = evName;
+			_this3.el.removeEventListener(evName, _this3['_' + fn + '_bind'], false);
+		}else{
+			 var fn = evName == 'touchcancel' ? 'end' : evName.replace('touch', '');
+			_this3.el.removeEventListener(evName, _this3['_' + fn + '_bind'], false);
+		}
+      
     });
 };
 MTouch.prototype._start = function (e) {

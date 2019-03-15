@@ -3,25 +3,35 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title></title>
 		<style>
-			*{
+			* {
 				margin: 0px;
 				padding: 0px;
 			}
+
 			.div1 {
-				width: 100px;
-				height: 100px;
+				width: 200px;
+				height: 200px;
 				background-color: red;
 				position: absolute;
-	
-			
+				top: 50%;
+				left: 50%;
+				margin-top: -100px;
+				margin-left: -100px;
+
+
 			}
-			
+
 			.div2 {
 				width: 100%;
-				height: 400px;
+				height: 800px;
+				overflow: hidden;
 				background-color: black;
+				position: relative;
+
 			}
 		</style>
 	</head>
@@ -29,7 +39,7 @@
 	<body>
 
 		<div class="div2">
-			<div class="div1 active">
+			<div class="div1 active el ">
 
 			</div>
 		</div>
@@ -37,86 +47,99 @@
 		<script src="../../plugin/jquery/jquery.min.js"></script>
 		<script src="new_file2.js"></script>
 		<script>
+			$(function() {
+				// drag;
+
+				extendMtouch()
+
+			});
+
+
 			window.requestAnimFrame = function() {
 				return window.requestAnimationFrame || window.webkitRequestAnimationFrame || function(callback) {
 					window.setTimeout(callback, 1000 / 60);
 				};
 			}();
-			$(function() {
-				// drag;
-				var dragTrans = {
-					x: 0,
-					y: 0,
-					scale: 1,
-					rotate: 0
-				};
-				var $drag = $('.div1');
-				var $drags= $('.div1');
-				var freeze = false;
-				var wrap = document.querySelector('.div2');
-				wrap=document.querySelector("body");
-				var wrapRect = wrap.getBoundingClientRect();
-				var elRect = $drag[0].getBoundingClientRect();
-				let mt = new MTouch(".div1");
-				// bind the drag eventï¼›
+			//³õÊ¼»¯·½·¨
+			function extendMtouch(){
+					var dragTrans = {
+						x: 0,
+						y: 0,
+						scale: 1,
+						rotate: 0
+					};
+					var $drag = $('.div1');
+					var $drags = $('.div1');
+					var freeze = false;
+					var wrap = document.querySelector('.div2');
+					wrap = document.querySelector("body");
+					var wrapRect = wrap.getBoundingClientRect();
+					var elRect = $drag[0].getBoundingClientRect();
+					let mt = new MTouch(".div1");
+					// bind the drag eventï¼
+					$drag.html('<div class="mtouch-singleButton" data-singlebutton="true"></div>');
 
-                mt.switch('.div1', true);
-                
-                
-				mt.on('drag', function(ev) {
-					if(!freeze) {
-						dragTrans.x += ev.delta.deltaX;
-						dragTrans.y += ev.delta.deltaY;
-						set($drag, limit(wrap, $drag[0], dragTrans));
-					}
-				});
 
-			
-				mt.on('pinch singlePinch', function(ev) {
-					if(!freeze) {
-						dragTrans.scale *= ev.delta.scale;
-						set($drag, dragTrans);
-					}
-				});
-				mt.on('rotate singleRotate', function(ev) {
-					if(!freeze) {
-						dragTrans.rotate += ev.delta.rotate;
-						set($drag, dragTrans);
-					}
-				});
-	            function set($el, transform) {
-					window.requestAnimFrame(function() {
-						$el.css('transform', 'translate3d(' + transform.x + 'px,' + transform.y +
-							'px,0px) rotate(' + transform.rotate + 'deg) scale(' + transform.scale + ')');
+					mt.switch('.div1', true);
+
+
+					mt.on('drag', function(ev) {
+						if (!freeze) {
+							dragTrans.x += ev.delta.deltaX;
+							dragTrans.y += ev.delta.deltaY;
+							set($drag, limit(wrap, $drag[0], dragTrans));
+						}
 					});
-				}
-				function limit(wrap, el, trans) {
-					var bounce = 40;
-					var minX = -el.offsetLeft - bounce;
-					var maxX = wrapRect.width - el.offsetLeft - elRect.width + bounce;
-					var minY = -el.offsetTop - bounce;
-					var maxY = wrapRect.height - el.offsetTop - elRect.height + bounce;
-					trans.x = trans.x < minX ? minX : trans.x;
-					trans.x = trans.x > maxX ? maxX : trans.x;
-					trans.y = trans.y < minY ? minY : trans.y;
-					trans.y = trans.y > maxY ? maxY : trans.y;
-					return trans;
-				}
-				 $drags.on('click', function (e) {
-				        freeze = false;
-				        $drags.removeClass('active');
-				        $(this).addClass('active');
-				        dragTrans = _.getPos(this);
-				        $drag = $(this);
-				        mt.switch(this);
-				        e.stopPropagation();
-				    });
-				    $(wrap).on('click', function () {
-				        $drags.removeClass('active');
-				        mt.switch(null);
-				        freeze = true;
-				    });
-			});
+
+
+					mt.on('pinch singlePinch', function(ev) {
+						if (!freeze) {
+							dragTrans.scale *= ev.delta.scale;
+							set($drag, dragTrans);
+						}
+					});
+					mt.on('rotate singleRotate', function(ev) {
+						if (!freeze) {
+							dragTrans.rotate += ev.delta.rotate;
+							set($drag, dragTrans);
+						}
+					});
+
+					$drags.on('click', function(e) {
+						freeze = false;
+						$drags.removeClass('active');
+						$(this).addClass('active');
+						dragTrans = _.getPos(this);
+						$drag = $(this);
+						mt.switch(this);
+						e.stopPropagation();
+					});
+					$(wrap).on('click', function() {
+						$drags.removeClass('active');
+						mt.switch(null);
+						freeze = true;
+					});
+
+					function set($el, transform) {
+						window.requestAnimFrame(function() {
+							$el.css('transform', 'translate3d(' + transform.x + 'px,' + transform.y +
+								'px,0px) rotate(' + transform.rotate + 'deg) scale(' + transform.scale + ')');
+						});
+					}
+
+					function limit(wrap, el, trans) {
+						var bounce = 40;
+						var minX = -el.offsetLeft - bounce;
+						var maxX = wrapRect.width - el.offsetLeft - elRect.width + bounce;
+						var minY = -el.offsetTop - bounce;
+						var maxY = wrapRect.height - el.offsetTop - elRect.height + bounce;
+						trans.x = trans.x < minX ? minX : trans.x;
+						trans.x = trans.x > maxX ? maxX : trans.x;
+						trans.y = trans.y < minY ? minY : trans.y;
+						trans.y = trans.y > maxY ? maxY : trans.y;
+						return trans;
+					}
+			}
 		</script>
 	</body>
 

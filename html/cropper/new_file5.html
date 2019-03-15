@@ -4,149 +4,171 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style>
-			
-			.div1{
+			.div1 {
 				width: 100px;
 				height: 100px;
 				background-color: red;
 				position: relative;
 			}
-			
-			*{
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  font-family: 'Helvetica', Arial;
-}
-#wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 
-#output {
-  background-color: #3B3B3B;
-  width: 100%;
-  display: block;
-  min-height: 30px;
-  padding: 10px;
-  font-size: 0.8em;
-  color: white;
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100vh;
+				font-family: 'Helvetica', Arial;
+			}
+
+			#wrapper {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+
+			#output {
+				background-color: #3B3B3B;
+				width: 100%;
+				display: block;
+				min-height: 30px;
+				padding: 10px;
+				font-size: 0.8em;
+				color: white;
+			}
+
+			#rotate-container {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+				color: white;
+				cursor: pointer;
+			}
+
+			#rotatable {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: #fff;
+				width: 200px;
+				height: 200px;
+				font-size: 2rem;
+				background: linear-gradient(to left, #f46b45, #eea849);
+				/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+			}
+#interaction:active{
+			position: absolute;
+		top: -60%;
+	/* 	margin-top: 200px; */
+		height: 200%;
+		width: 200%;
+		z-index: 1000;
 }
-
-#rotate-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  color: white;
-  cursor: pointer;
-}
-
-#rotatable {
-  display: flex;  
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  background-color: #fff;
-  width: 200px;
-  height: 200px;
-  font-size: 2rem;
-background: linear-gradient(to left, #f46b45 , #eea849); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-#interaction {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  z-index: 1000;
-}
-
+			#interaction {
+				position: absolute;
+				top: -40%;
+			/* 	margin-top: 200px; */
+				height: 50%;
+				width: 100%;
+				z-index: 1000;
+			}
+			.dian{
+				  width: 30px;
+					height: 30px;
+					background-color: red;
+					border-radius: 50%;
+					position: absolute;
+					top: -20%;
+			}
 		</style>
 	</head>
 	<body>
-		
+
 		<div id="wrapper">
-  <div id="rotate-container">
-    <div id="rotatable">
-      <div style="text-align:center;">Rotate me <br> <span style="font-size:0.5em">(1 or 2-Fingers)</span><br><i class="fa fa-undo" aria-hidden="true"></i></div>
+			<div id="rotate-container">
+				<div id="rotatable">
+					<span class="dian"></span>
+					<div style="text-align:center;">Rotate me <br> <span style="font-size:0.5em">(1 or 2-Fingers)</span><br><i class="fa fa-undo"
+						 aria-hidden="true"></i></div>
+						 <div id="interaction" style=""></div>
+				</div>
+					
+			</div>
+<!-- 			<div id="output">> Interaction meta will output here.</div> -->
+		</div>
 
-    </div>
-  </div>
-  <div id="output">> Interaction meta will output here.</div>
-</div>
 
+	<!-- 	<div id="interaction" style=""></div> -->
 
-<div id="interaction" style=""></div>
-		
 		<script src="../../plugin/jquery/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.js"></script>
 		<script>
-			$(function(){
-				var currentAngle = 15;
-//Using a layer on top of the entire page for "fat-finger" detection on mobile devices.
-document.getElementById('rotatable').style.transform = 'rotate(15deg)';
+			$(function() {
+				var currentAngle = 1;//旋转的度数
+				//Using a layer on top of the entire page for "fat-finger" detection on mobile devices.
+				document.getElementById('rotatable').style.transform = 'rotate(0deg)';
 
-var target = document.getElementById('interaction');
-var region = new ZingTouch.Region(target);
+				var target = document.getElementById('interaction');
+				var region = new ZingTouch.Region(target);
 
-region.bind(target, 'rotate', function(e) {
-  var rotatable = document.getElementById('rotatable');
-  currentAngle += e.detail.distanceFromLast;
-  rotatable.style.transform = 'rotate(' + currentAngle + 'deg)';
+				region.bind(target, 'rotate', function(e) {
+					var rotatable = document.getElementById('rotatable');
+					currentAngle += e.detail.distanceFromLast;
+					rotatable.style.transform = 'rotate(' + currentAngle + 'deg)';
 
-  setOutput([
-    ['Gesture', 'Rotate'],
-    ['angle', Math.floor(e.detail.angle) + "°"],
-    ['distanceFromOrigin', Math.floor(e.detail.distanceFromOrigin) + "°"],
-    ['distanceFromLast', Math.floor(e.detail.distanceFromLast) + "°"]
-  ]);
+					setOutput([
+						['Gesture', 'Rotate'],
+						['angle', Math.floor(e.detail.angle) + "°"],
+						['distanceFromOrigin', Math.floor(e.detail.distanceFromOrigin) + "°"],
+						['distanceFromLast', Math.floor(e.detail.distanceFromLast) + "°"]
+					]);
 
-});
+				});
 
-function setOutput(data) {
-  var outputStr = "> ";
-  for (var i = 0; i < data.length; i++) {
-    outputStr += data[i][0] + ": " + data[i][1] + ((i === data.length - 1) ? '' : ' , ');
-  }
-  var output = document.getElementById('output');
-  output.innerHTML = outputStr;
-}
+				function setOutput(data) {
+					var outputStr = "> ";
+					for (var i = 0; i < data.length; i++) {
+						outputStr += data[i][0] + ": " + data[i][1] + ((i === data.length - 1) ? '' : ' , ');
+					}
+					var output = document.getElementById('output');
+					output.innerHTML = outputStr;
+				}
 			})
-			
-			
-			
-			function  panmove(event){
-            //得到 向量1
-            var x1 = (beginPointX - bgCenterX);
-            var y1 = (beginPointY - bgCenterY);
 
-            //得到 向量2
-            var x2 = (event.center.x - bgCenterX);
-            var y2 = (event.center.y - bgCenterY);
 
-            //计算cos =(x1x2+y1y2)/[√(x1²+y1²)*√(x2²+y2²)]
-            var cos =( x1 * x2 + y1 * y2) /( Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2)) );
-            
-            var radina = Math.acos(cos);
-            console.log(radina);
 
-            // 角度
-            var angle =  180 / (Math.PI / radina);
+			function panmove(event) {
+				//得到 向量1
+				var x1 = (beginPointX - bgCenterX);
+				var y1 = (beginPointY - bgCenterY);
 
-            //如果在中线左边 就需要加 180度
-            if(event.center.x <150){
-                angle = 180 + (180 - angle);
-            }
-            this.styleObject.transform =  'rotate(' + angle + 'deg)';            
-        }
+				//得到 向量2
+				var x2 = (event.center.x - bgCenterX);
+				var y2 = (event.center.y - bgCenterY);
+
+				//计算cos =(x1x2+y1y2)/[√(x1²+y1²)*√(x2²+y2²)]
+				var cos = (x1 * x2 + y1 * y2) / (Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2) + Math.pow(
+					y2, 2)));
+
+				var radina = Math.acos(cos);
+				console.log(radina);
+
+				// 角度
+				var angle = 180 / (Math.PI / radina);
+
+				//如果在中线左边 就需要加 180度
+				if (event.center.x < 150) {
+					angle = 180 + (180 - angle);
+				}
+				this.styleObject.transform = 'rotate(' + angle + 'deg)';
+			}
 		</script>
 	</body>
 </html>
