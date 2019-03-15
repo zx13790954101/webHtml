@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			.div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: relative;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			
+		</div>
+
+
+		
+		<script src="../../plugin/jquery/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.js"></script>
+	<script src="touch.js"></script>  
+	<script>
+			var beginPointX=0;
+			var beginPointY=0;
+				var bgCenterX=0;
+			var bgCenterY=0;
+			
+			$(function(){
+                touch.on(".div1","touchstart",function(ev){
+                	console.log("ss",ev)
+                	panmove(ev)
+                });
+			})
+			
+			
+			
+			function  panmove(event){
+            //得到 向量1
+            var x1 = (beginPointX - bgCenterX);
+            var y1 = (beginPointY - bgCenterY);
+
+            //得到 向量2
+            var x2 = (event.x - bgCenterX);
+            var y2 = (event.y - bgCenterY);
+
+            //计算cos =(x1x2+y1y2)/[√(x1²+y1²)*√(x2²+y2²)]
+            var cos =( x1 * x2 + y1 * y2) /( Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2)) );
+            
+            var radina = Math.acos(cos);
+            console.log(radina);
+
+            // 角度
+            var angle =  180 / (Math.PI / radina);
+
+            //如果在中线左边 就需要加 180度
+            if(event.clientX <150){
+                angle = 180 + (180 - angle);
+            }
+            this.styleObject.transform =  'rotate(' + angle + 'deg)';    
+           
+        }
+		</script>
+	</body>
+</html>

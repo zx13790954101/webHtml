@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		
+		
+		<style>
+				*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0%;
+}
+.container .page{
+    height: 100%;
+    position: relative;
+}
+.container .page0{
+    background-color: blue;
+}
+.container .page1{
+    background-color: pink;
+}
+.container .page2{
+    background-color: yellow;
+}
+.container .page3{
+    background-color: green;
+}
+.container .page4{
+    background-color: tomato;
+}
+.xiangxiatishi{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    -webkit-transform:translateX(-50%);
+    -webkit-animation:dong 1s linear 0s infinite alternate;
+}
+ 
+@-webkit-keyframes dong{
+    from{
+        bottom:20px;
+    }
+    to{
+        bottom: 60px;
+    }
+}
+		</style>
+	</head>
+　　
+<body onmousewheel="return false;">
+    <div class="container">
+        <div class="page page0 cur"><h1>你好，我是0号屏幕</h1>
+        </div>
+ 
+        <div class="page page1">
+            <h1>你好，我是1号屏幕</h1>
+            <!-- <img class="no1" src="img/1.png" />
+            <img class="no2" src="img/2.png" /> -->
+        </div>
+        <div class="page page2"><h1>你好，我是2号屏幕</h1></div>
+        <div class="page page3"><h1>你好，我是3号屏幕</h1></div>
+        <div class="page page4"><h1>你好，我是4号屏幕</h1></div>
+    </div>
+ 
+    <img  class="xiangxiatishi" src="img/prompt.png" alt="向下来一下~"/>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script> 
+<script>
+	
+$(document).ready(
+            function() {
+                var nowpage = 0;
+                //给最大的盒子增加事件监听
+                $(".container").swipe(
+                    {
+                        swipe:function(event, direction, distance, duration, fingerCount) {
+                             if(direction == "up"){
+                                nowpage = nowpage + 1;
+                             }else if(direction == "down"){
+                                nowpage = nowpage - 1;
+                             }
+ 
+                             if(nowpage > 4){
+                                nowpage = 4;
+                             }
+ 
+                             if(nowpage < 0){
+                                nowpage = 0;
+                             }
+ 
+                            $(".container").animate({"top":nowpage * -100 + "%"},400);
+ 
+                            $(".page").eq(nowpage).addClass("cur").siblings().removeClass("cur");
+                        }
+                    }
+                );
+            }
+        );
+</script>
+
+        
+        
+        
+	</body>
+</html>
