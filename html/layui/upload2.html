@@ -1,0 +1,87 @@
+
+<html>
+<head>
+ 
+<title></title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta name="robots" content="noindex, nofollow">
+  
+  
+   <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+   <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+ 
+<title>七牛云存储 | 上传凭证</title>
+ 
+ 
+<script type="text/javascript">
+	//改函数要求浏览器必须要支持html5
+	function jsJustUpload(f, token, key) {
+		var Qiniu_UploadUrl = "http://up.qiniu.com";
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', Qiniu_UploadUrl, true);
+		var formData= new FormData();
+		if (key !== null && key !== undefined){
+			formData.append('key', key);
+		}
+		formData.append('token', token);
+		formData.append('file', f);
+		xhr.onreadystatechange = function(response) {
+			if (xhr.readyState == 4 && xhr.status == 200&& xhr.responseText != "") {
+				var blkRet = JSON.parse(xhr.responseText);
+				$("#dialog").html("复制连接直接访问_:http://oleco2u3s.bkt.clouddn.com/" + blkRet.key).dialog();
+			} else if (xhr.status != 200 && xhr.responseText) {
+				concole.log("服务传输异常!!");
+			}
+		};
+		xhr.send(formData);
+	}
+	function test() {
+		var f = $("#file")[0].files[0];
+		var token =$("#token").val();
+		var key = $("#key").val();
+		jsJustUpload(f, token, key);
+	}
+	
+</script>
+ 
+</head>
+ 
+<body>
+	<form action="">
+		<ul>
+			<li>
+			token:<input id="token" name="token" class="ipt" value="1o90vmY9OmRcueIeIeFBID6q2uy8peFiFBxpnM78:rdalpapK8yThJayH3FakQwqQbp8=:eyJzY29wZSI6InRlc3QiLCJkZWFkbGluZSI6MTYwNTA2NDI3MX0=">
+			</li>
+			<li>
+				key:<input id="key" name="key"	class="ipt" value="">
+			</li>
+			<li>
+				照片:<input id="file" name="file"	class="ipt" type="file">
+			</li>
+			<li>
+				<input id="btn_upload" type="button" value="提交" onclick="test();">
+			</li>
+		</ul>
+	</form>
+	<div id="dialog" title="上传成功"></div>
+	
+	
+	<script>
+		$(function(){
+			var time=(new Date).getTime();
+			$("#key").val(time);
+			
+		});
+		
+		
+	</script>
+</body>
+</html>

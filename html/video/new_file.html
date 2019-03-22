@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Video.js 7.0</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="video-js.min.css" rel="stylesheet">
+<style>
+body {
+	background-color: #191919
+}
+.m {
+	width: 100%;
+	min-height: 400px;
+	height:auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	position:relative;
+}
+.video-js .vjs-play-progress:before{
+	display:none;
+}
+.video-js .vjs-progress-holder{
+	height:4px;
+}
+.video-js .vjs-play-progress{
+	height:4px;
+background:rgba(255,102,140,1);
+}
+#my-video{
+	width:100%;
+	object-fit: fill;
+}
+.video-js .vjs-control-bar{
+	    background-color: rgba(43,51,63,0);
+}
+.video-js .vjs-fullscreen-control{
+	display:none;
+}
+.video-js .vjs-volume-panel{
+		    margin-top: -72px;
+	position: absolute;
+	right: 20px;
+}
+.video-js .vjs-fullscreen-control{
+	display:none;
+}
+.video-js .vjs-time-control{
+	    margin-top: -36px;
+    position: absolute;
+    right: 20px;
+}
+
+.vjs-big-play-button{
+	top:50% !important;
+	left:50%  !important;
+transform: translate(-50%,-50%);
+}
+.video-js .vjs-progress-control .vjs-progress-holder{
+	margin:0px 0px;
+}
+.video-js .vjs-play-control{
+
+}
+.vjs-paused.vjs-button>.vjs-icon-placeholder:before{
+	    font-size: 5.8em;
+ }   
+ .video-js .vjs-playing {
+	 display:none;
+ }
+.video-js .vjs-paused {
+   position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%,-250px);
+}
+.video-js .vjs-control-bar{
+	height:auto
+}
+</style>
+</head>
+<body>
+<div class="m">
+<video id="my-video" class="video-js"   controls preload="auto"  poster="hua.png" data-setup="{}">
+<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+<source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+<source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+<p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+</video>
+<script src="video.min.js"></script>
+<script src="http://vjs.zencdn.net/5.19/lang/zh-CN.js"></script>
+<script type="text/javascript">
+			var myPlayer = videojs('my-video');
+			videojs("my-video").ready(function(){
+				var myPlayer = this;
+				myPlayer.play();
+			});
+			  
+		</script>
+</div>
+</body>
+</html>
