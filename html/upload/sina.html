@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+			<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+	</head>
+	<body>
+		 <img src="" class="main_img">
+		 <input type="file" name="img" id="file_sm" value="上传图片" />
+		 <button type="button"  class="upload_sm">上传 </button>
+		  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var urlData = "";
+				$("#file_sm").change(function(el){
+					const files = el.target.files[0]
+					
+					// 新建一个FileReader
+					const reader = new FileReader()
+					// 读取文件 
+					reader.readAsDataURL(files, "UTF-8")
+					// 读取完文件之后会回来这里
+					reader.onload = function(e) {
+						// 读取文件内容
+						const fileString = e.target.result
+						// 接下来可对文件内容进行处理
+						console.log(files);
+						urlData = fileString;
+					}
+				});
+				
+			   $(".upload_sm").click(function() {
+				   
+					$.post("https://sm.ms/api/upload", {
+							smfile: urlData,
+						},
+						function(data, status) {
+							console.log(data);
+						});
+				});
+				
+			});
+		</script>
+	</body>
+</html>

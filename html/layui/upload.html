@@ -30,7 +30,7 @@
 			<button type="button" class="layui-btn" id="test9">开始上传</button>
 		</div>
 
-		<!-- <form>
+		<form>
   <input name="key" type="hidden" value="<resource_key>">
   <input name="x:<custom_name>" type="hidden" value="<custom_value>">
   <input name="token" type="hidden" value="<upload_token>">
@@ -38,7 +38,7 @@
   <input name="accept" type="hidden" />
   <input name="file" type="file"  class="fileUpload"/>
 </form>
- <input type="submit" value="上传文件"   class="submit"/> -->
+ <input type="submit" value="上传文件"   class="submit"/>
 
 
 		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
@@ -61,19 +61,16 @@
 					// 读取完文件之后会回来这里
 					reader.onload = function(e) {
 						// 读取文件内容
-						debugger;
 						const fileString = e.target.result
 						// 接下来可对文件内容进行处理
-						console.log(fileString);
+						console.log(files);
 						urlData = fileString;
 					}
 				});
 
 				$(".submit").click(function() {
 					$.post("https://sm.ms/api/upload", {
-							smfile: urlData,
-							ssl: true,
-							format: "json"
+							img: urlData,
 						},
 						function(data, status) {
 							console.log(data);
@@ -87,7 +84,8 @@
 				//选完文件后不自动上传
 				upload.render({
 					elem: '#test8',
-					url: '/upload/',
+					url: 'https://upload.otar.im/api/upload/sina',
+					field:"img",
 					auto: false
 						//,multiple: true
 						,
