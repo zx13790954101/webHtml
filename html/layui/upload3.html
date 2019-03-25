@@ -3,17 +3,79 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+	<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+	<style type="text/css">
+		
+	</style>
 	</head>
 	<body>
 		
-		<form enctype="multipart/form-data">
-<input name="file" type="file" id="file"/>
+<form enctype="multipart/form-data">
+	<div class="lzs-item margin-20">
+		<input name="file" type="file" id="multiple"  multiple="multiple"/>
+		<ul class="mult-img row flex-c">
+		</ul>
+	</div>
+	<div class="lzs-item">
+		<input name="file" type="file" id="file"/>
+	</div>
+
 </form>
 
 <div id="res"></div>
 <script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
 <script>
-$(':input').change(function(){
+var imgarray=[];	
+$("#multiple").change(function(el){
+	 var f=this.files;
+	 var html="";
+	 imgarray=this.files;
+	for(var i=0;i<this.files.length;i++){
+		
+		var formData=new FormData();
+		formData.append('smfile',this.files[i]);
+		var srcSm=uploadSm(formData);
+		 console.log("sss",srcSm);
+		// 新建一个FileReader
+		const reader = new FileReader();
+		
+		// 读取文件 
+		reader.readAsDataURL(this.files[i], "UTF-8");
+		// 读取完文件之后会回来这里
+		reader.onload = function(e) {
+			// 读取文件内容
+			const fileString = e.target.result
+			// 接下来可对文件内容进行处理
+			html='<li class="col-lg-3"><div class="img-w"><img src='+fileString+'></div></li>';
+			$(".mult-img").append(html);
+		}
+	}
+	
+
+});
+
+//上传到sm的地址
+function uploadSm(formData){
+	    $.ajax({
+	        url: 'https://sm.ms/api/upload',
+	        type: 'POST',
+	        success: function(data){
+	           // $('#res').html(JSON.stringify(data.data.url));
+	            return JSON.stringify(data.data.url);
+	            console.log(data,JSON.stringify(data.data.url));
+	        },
+	        error: function(data){
+	            console.log(data);
+	        },
+	        data:formData,
+	        cache: false,
+	        contentType: false,
+	        processData: false
+	        
+	    });
+}
+	
+$('#file').change(function(){
     var f=this.files[0];
     var formData=new FormData();
     formData.append('smfile',f);
