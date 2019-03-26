@@ -6,7 +6,7 @@
     <title>htmltopic</title>
    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
     <style>
-        * {
+        * {         
             margin: 0;
         }
  
@@ -42,7 +42,7 @@
     <div class="test">
     	<img src="../../img/hua.png" />测试</div>
 <a class="down" href="" download="downImg">下载</a>
-
+<script src="../drag/jquery-1.11.0.min.js"></script>
 <script>
     //直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
     //html2canvas(document.querySelector('div')).then(function(canvas) {
@@ -73,6 +73,11 @@
         //document.body.appendChild(canvas);
         //canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
         document.querySelector(".down").setAttribute('href', canvas.toDataURL());
+		var image2= new Image();
+		image2.src=canvas.toDataURL()
+		console.log("file",$(image2))
+		
+		
     });
 </script>
  
