@@ -43,13 +43,17 @@
 			.mult-img {
 				margin: 15px;
 			}
+			.phone-box{
+			
+			}
 			.ui-sortable{
 				width: 100%;
     padding: 5px;
     list-style-type: none;
-    background-color: #d9d9d9;
-	max-height: 70vh;
-    overflow-y: auto;
+	    background-color: #d9d9d9;
+	height: auto;
+	overflow-y: auto;
+
 			}
 .ui-sortable li{
 	border: 0px;
@@ -88,7 +92,7 @@
 				<ul class="mult-img row flex-c">
 				</ul>
 				
-				<h2 onclick="createDom()" class="button">上传到sm的服务</h2>
+				<h2 onclick="createDom()" class="button">上传到sm的服务器</h2>
 			</div>
 			
 			
@@ -127,13 +131,14 @@
 				$(".multiple").change(function(el) {
 					var f = this.files;
 					var html = "";
-
+                   
 					for (var i = 0; i < this.files.length; i++) {
-
-//						var formData = new FormData();
+                        
+						var formData = new FormData();
 						
-// 						formData.append('smfile', this.files[i]);
-// 						var srcSm = uploadSm(formData);
+//  						formData.append('smfile', this.files[i]);
+//  						var srcSm = uploadSm(formData);
+// 						 console.log("aa",formData, this.files[i])
 
 	                    // 新建一个FileReader
 						const reader = new FileReader();
@@ -200,13 +205,40 @@
 						   tainTest:true,
 						   useCORS:true
 						 }).then(function(canvas) {
+							 
+							 	var codeimg=canvas.toDataURL()
+	
+								// 		var URL = URL || webkitURL;
+								// 		var blob = URL.createObjectURL(codeimg);
+
+							    // 构造新File对象
+							
+// 						     	var image2= new Image();
+// 		                        image2.src=canvas.toDataURL();
+// 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
+// 								console.log("data",aafile,codeimg)
+                                var aafile=dataURLtoFile(codeimg,"test.png")
+								var formData = new FormData();				
+								formData.append('smfile', aafile);
+						
+								var  smdata=uploadSm(formData);
+								
+							
 						//document.body.appendChild(canvas);
 						//canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
 					//	document.querySelector(".down").setAttribute('href', canvas.toDataURL());
 					
 					});
 				}
-
+					//转换为照片
+					function dataURLtoFile(dataurl, filename) {
+					var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+						bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+					while(n--){
+						u8arr[n] = bstr.charCodeAt(n);
+					}
+					return new File([u8arr], filename, {type:mime});
+				}
 				//上传到sm的地址
 				function uploadSm(formData, callback) {
 					var backData = '';
@@ -219,7 +251,6 @@
 
 
 							backData = data.data.url;
-							console.log("backData", backData);
 							backData.replace(/\"/g, "");
 							imgarray.push(backData)
 
