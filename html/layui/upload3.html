@@ -13,7 +13,7 @@
 <div id="res"></div>
 <script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
 <script>
-$(':input').change(function(){
+$('#file').change(function(){
     var f=this.files[0];
     var formData=new FormData();
     formData.append('smfile',f);

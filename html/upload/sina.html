@@ -3,12 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-			<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+			<link rel="stylesheet" href="http://linkben.com/assets/plugin/linzesen/linzesen.css" />
 	</head>
 	<body>
+		<div class="margin-20">
+			
+	
 		 <img src="" class="main_img">
 		 <input type="file" name="img" id="file_sm" value="上传图片" />
 		 <button type="button"  class="upload_sm">上传 </button>
+		 	</div>
 		  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
@@ -37,6 +41,7 @@
 						},
 						function(data, status) {
 							console.log(data);
+							$(".main_img").attr("src",data);
 						});
 				});
 				
