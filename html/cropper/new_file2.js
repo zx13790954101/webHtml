@@ -298,7 +298,7 @@ MTouch.prototype._bind = function () {
 		if(screenWidth>=588){
 			 var fn = evName ;
 			  // 需要存下 bind(this) 后的函数指向，用于 destroy;
-		//	 _this2['_' + fn + '_bind'] = _this2['_' + fn].bind(_this2);
+			 _this2['_' + fn + '_bind'] = _this2['_' + fn].bind(_this2);
 			 _this2.el.addEventListener(evName, _this2['_' + fn + '_bind'], false);
 		}else{
 			 var fn = evName == 'touchcancel' ? 'end' : evName.replace('touch', '');
