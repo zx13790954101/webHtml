@@ -48,7 +48,7 @@
 			}
 			.ui-sortable{
 				width: 100%;
-   
+
     list-style-type: none;
 	    background-color: #d9d9d9;
 	height: auto;
@@ -148,13 +148,14 @@
 						reader.onload = function(e) {
 							// 读取文件内容
 							const srcSm = e.target.result;
+					
+							var image=new Image();
+							image.src=srcSm;
 							html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
-								srcSm + '></div></li>';
+							srcSm + '></div></li>';
 							$(".mult-img").append(html);
 							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' +srcSm + '></div></li>';
 							$(".phone-box-ul").append(html2);
-							var image2= new Image();
-						    image2.src=srcSm;
 						}
 					
 						
@@ -187,8 +188,7 @@
 					//});
 					//创建一个新的canvas
 					var canvas2 = document.createElement("canvas");
-					let
-					_canvas = document.querySelector('.phone-box-ul');
+					var _canvas = document.querySelector('.phone-box-ul');
 					var w = parseInt(window.getComputedStyle(_canvas).width);
 					var h = parseInt(window.getComputedStyle(_canvas).height);
 					//将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
@@ -201,8 +201,12 @@
 					//  context.translate(0,0);
 					var context = canvas2.getContext("2d");
 					context.scale(2, 2);
+					
+					
+					
 					html2canvas(document.querySelector('.phone-box-ul'), 
 						{ 
+							//  canvas: context, //自定义 canvas
 						   allowTanit:true,
 						   tainTest:true,
 						   useCORS:true
@@ -298,3 +302,4 @@
 			</script>
 	</body>
 </html>
+
