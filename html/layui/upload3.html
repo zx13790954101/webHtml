@@ -48,12 +48,11 @@
 			}
 			.ui-sortable{
 				width: 100%;
-    padding: 5px;
-    list-style-type: none;
-	    background-color: #d9d9d9;
-	height: auto;
-	overflow-y: auto;
-
+				padding: 5px;
+				list-style-type: none;
+				background-color: #d9d9d9;
+				height: auto;
+				overflow-y: auto;
 			}
 .ui-sortable li{
 	border: 0px;
@@ -83,42 +82,12 @@
 	<body>
 
 		
-		<form enctype="multipart/form-data">
-<input name="file" type="file" id="file"/>
-</form>
 			<div class="lzs-item margin-20">
 				<div class="input-file  margin-20">
 					<input name="file" type="file" class="multiple" multiple="multiple" />
 					<span class="name white">+ 上传文件</span>
 				</div>
 
-<div id="res"></div>
-<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
-<script>
-$(':input').change(function(){
-    var f=this.files[0];
-    var formData=new FormData();
-    formData.append('smfile',f);
-    
-    $.ajax({
-        url: 'https://sm.ms/api/upload',
-        type: 'POST',
-        success: function(data){
-            console.log(data);
-            $('#res').html(JSON.stringify(data.data.url));
-            console.log(data);
-        },
-        error: function(data){
-            console.log(data);
-        },
-        
-        data:formData,
-        cache: false,
-        contentType: false,
-        processData: false
-        
-    });
-});
 				<ul class="mult-img row flex-c">
 				</ul>
 				
@@ -129,7 +98,8 @@ $(':input').change(function(){
 			<div class="analog-box row">
 				
 				<div class="phone-box col-lg-8">
-					<ul class="phone-box-ul">
+					<ul class="phone-box-ul" id="smreturn">
+						 
 					</ul>	
 				</div>	
 				<div class="pc-box col-lg-8">
@@ -140,7 +110,7 @@ $(':input').change(function(){
 				
 			</div>
 				
-			
+			<a href="" class="down"></a>
 			
 			<div class="lzs-item margin-20">
 				<div class="input-file">
@@ -149,7 +119,6 @@ $(':input').change(function(){
 				</div>
 			</div>
 
-</script>
 
 			<div id="res"></div>
 			
@@ -184,6 +153,9 @@ $(':input').change(function(){
 							$(".mult-img").append(html);
 							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' +srcSm + '></div></li>';
 							$(".phone-box-ul").append(html2);
+							var image=new Image();
+							image.src=srcSm;
+							
 						}
 					
 						
@@ -210,32 +182,29 @@ $(':input').change(function(){
                     					
 				}
                 function createDom(){
-					//直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
-					//html2canvas(document.querySelector('div')).then(function(canvas) {
-					//    document.body.appendChild(canvas);
-					//});
-					//创建一个新的canvas
-					var canvas2 = document.createElement("canvas");
-					let
-					_canvas = document.querySelector('.phone-box-ul');
-					var w = parseInt(window.getComputedStyle(_canvas).width);
-					var h = parseInt(window.getComputedStyle(_canvas).height);
-					//将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
-					canvas2.width = w * 2;
-					canvas2.height = h * 2;
-					canvas2.style.width = w + "px";
-					canvas2.style.height = h + "px";
-					//可以按照自己的需求，对context的参数修改,translate指的是偏移量
-					//  var context = canvas.getContext("2d");
-					//  context.translate(0,0);
-					var context = canvas2.getContext("2d");
-					context.scale(2, 2);
-					html2canvas(document.querySelector('.phone-box-ul'), 
-						{ 
-						   allowTanit:true,
-						   tainTest:true,
-						   useCORS:true
-						 }).then(function(canvas) {
+                	
+					
+					var cntElem  = $('#smreturn')[0];
+					var shareContent = cntElem;//需要截图的包裹的（原生的）DOM 对象
+				    var width = shareContent.offsetWidth; //获取dom 宽度
+				    var height = shareContent.offsetHeight; //获取dom 高度
+				    var canvas = document.createElement("canvas"); //创建一个canvas节点
+				    var scale = 2; //定义任意放大倍数 支持小数
+				    canvas.width = width * scale; //定义canvas 宽度 * 缩放
+				    canvas.height = height * scale; //定义canvas高度 *缩放
+				    canvas.getContext("2d").scale(scale, scale); //获取context,设置scale 
+				    var opts = {
+				        scale: scale, // 添加的scale 参数
+				        canvas: canvas, //自定义 canvas
+				        // logging: true, //日志开关，便于查看html2canvas的内部执行流程
+				        width: width, //dom 原始宽度
+				        height: height,
+				        allowTanit:true,
+						tainTest:true,
+				        useCORS: true // 【重要】开启跨域配置
+				    };
+			
+					html2canvas(shareContent,opts).then(function(canvas) {
 							 
 							 	var codeimg=canvas.toDataURL()
 	
@@ -255,14 +224,14 @@ $(':input').change(function(){
 								var  smdata=uploadSm(formData);
 								
 							
-						//document.body.appendChild(canvas);
+						document.body.appendChild(canvas);
 						//canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
-					//	document.querySelector(".down").setAttribute('href', canvas.toDataURL());
+						document.querySelector(".down").setAttribute('href', canvas.toDataURL());
 					
 					});
 				}
 					//转换为照片
-					function dataURLtoFile(dataurl, filename) {
+				function dataURLtoFile(dataurl, filename) {
 					var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
 						bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
 					while(n--){
