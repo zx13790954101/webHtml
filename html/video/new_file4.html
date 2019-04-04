@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<style>
+			
+			#testVideo{
+				display:none
+			}
+		</style>
+	</head>
+	<body>
+		<div class="videoBox">
+			<i class="fa fa-play-circle-o"></i>
+			① 给video标签增加属性，使浏览器调用h5原生video
+ <video id="testVideo"  src="123.mp4" x5-video-player-type='h5' x5-video-player-fullscreen='true'>
+<canvas id="testCanvas"></canvas>
+		</div>
+
+		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
+		<script>
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+			if (isAndroid) {
+				$("#video").hide();
+				$("i.fa").show();
+			} else {
+				$("i.fa").hide();
+				$("#canvas").hide();
+			}
+
+
+			var videoanimate;
+			canvas = document.getElementById('canvas');
+			context = canvas.getContext('2d');
+			context.fillStyle = '#fff';
+			context.fillRect(0, 0, canvas.width, canvas.height); //绘制1920*1080像素的已填充矩形。
+			var img = new Image(); //新建一个图片，模仿video里面的poster属性。
+			img.src = "video.png";
+			context.drawImage(img, 0, 0, canvas.width, canvas.height); //将图片绘制进canvas。
+			function animate() { //渲染方法。
+				if (video.paused) { //判断视频是否暂停，如果暂停显示控件。
+					$(".video i.fa").show();
+				}
+				context.drawImage(video, 0, 0, canvas.width, canvas.height); //将视频当中的一帧绘制到canvas当中。
+				videoanimate = requestAnimationFrame(animate); //每秒60帧渲染页面。关于此方法具体解释请自行百度。
+
+			}
+
+
+			$("#canvas,i.fa").click(function() {
+				if (isAndroid) {
+					animate(); //在这里调用。
+					if (!video.paused) { //判断视频时候暂停。
+						video.pause();
+					} else {
+						video.play();
+						$(".video i.fa").hide();
+					}
+				}
+			})
+		</script>
+
+
+
+	</body>
+</html>

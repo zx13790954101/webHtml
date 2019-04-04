@@ -93,16 +93,18 @@
 				</ul>
 				
 				<h2 onclick="createDom()" class="button">上传到sm的服务器</h2>
+				<img id="img3">
 			</div>
 			
 			
 			<div class="analog-box row">
 				
-				<div class="phone-box col-lg-8">
+				<div class="phone-box col-lg-12">
 					<ul class="phone-box-ul">
+						<button class="ht">button</button>
 					</ul>	
 				</div>	
-				<div class="pc-box col-lg-8">
+				<div class="pc-box col-lg-0">
 					
 					
 				</div>	
@@ -151,11 +153,15 @@
 					
 							var image=new Image();
 							image.src=srcSm;
-							html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
-							srcSm + '></div></li>';
-							$(".mult-img").append(html);
-							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' +srcSm + '></div></li>';
-							$(".phone-box-ul").append(html2);
+							image.onload=function(){
+										html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
+								srcSm + '></div></li>';
+								$(".mult-img").append(html);
+								var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' +srcSm + '></div></li>';
+								$(".phone-box-ul").append(html2);
+								
+							}
+					
 						}
 					
 						
@@ -176,12 +182,37 @@
 					imgarray.splice(index, index + 1);
 
 				}
-
+	
+	function downLoadJs(url,callback) {
+	   setTimeout(function() {
+			var elem = document.createElement("script");
+			elem.src = url;
+			document.body.appendChild(elem);
+			if(elem.readyState){   //IE
+	　　　　　　          elem.onreadystatechange=function(){
+		　　　　　　　　if(elem.readyState=='complete'||elem.readyState=='loaded'){
+		　　　　　　　　　　elem.onreadystatechange=null;
+		　　　　　　　　　　callback();
+		　　　　　　　　}
+		　　　　　　}
+		　　　　}else{    //非IE
+		　　　　　　elem.onload=function(){callback();}
+		　　　　}
+		}, 2000);
+	}
 
 				function upload1(){
                     					
 				}
                 function createDom(){
+					
+					downLoadJs("https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js",function(){
+						
+						
+						
+				
+					
+					
 					//直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
 					//html2canvas(document.querySelector('div')).then(function(canvas) {
 					//    document.body.appendChild(canvas);
@@ -208,12 +239,12 @@
 						{ 
 							//  canvas: context, //自定义 canvas
 						   allowTanit:true,
-						   tainTest:true,
+						   tainTest:true, 
 						   useCORS:true
 						 }).then(function(canvas) {
 							 
 							 	var codeimg=canvas.toDataURL()
-	
+	                            $("#img3").attr("src",codeimg);
 								// 		var URL = URL || webkitURL;
 								// 		var blob = URL.createObjectURL(codeimg);
 
@@ -223,11 +254,14 @@
 // 		                        image2.src=canvas.toDataURL();
 // 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
 // 								console.log("data",aafile,codeimg)
-                                var aafile=dataURLtoFile(codeimg,"test.png")
-								var formData = new FormData();				
-								formData.append('smfile', aafile);
-						
-								var  smdata=uploadSm(formData);
+
+
+
+//                                 var aafile=dataURLtoFile(codeimg,"test.png")
+// 								var formData = new FormData();				
+// 								formData.append('smfile', aafile);
+// 						
+// 								var  smdata=uploadSm(formData);
 								
 							
 						//document.body.appendChild(canvas);
@@ -235,6 +269,9 @@
 					//	document.querySelector(".down").setAttribute('href', canvas.toDataURL());
 					
 					});
+			
+				})
+			
 				}
 					//转换为照片
 					function dataURLtoFile(dataurl, filename) {
