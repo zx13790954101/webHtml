@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		 <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<style type="text/css">
 			.mult-img .back {
@@ -19,7 +20,7 @@
 				z-index: 99;
 				cursor: pointer;
 			}
-
+			
 			.input-file {
 				overflow: hidden;
 				height: 36px;
@@ -36,28 +37,27 @@
 				position: relative;
 				cursor: pointer;
 				background-color: #509ef0;
-
-
 			}
-
+			
 			.mult-img {
 				margin: 15px;
 			}
-			.phone-box{
 			
-			}
-			.ui-sortable{
+			.phone-box {}
+			
+			.ui-sortable {
 				width: 100%;
-
-    list-style-type: none;
-	    background-color: #d9d9d9;
-	height: auto;
-	overflow-y: auto;
-
+				list-style-type: none;
+				background-color: #d9d9d9;
+				height: auto;
+				overflow-y: auto;
 			}
-.ui-sortable li{
-	border: 0px;
-}
+			
+			.ui-sortable li {
+				border: 0px;
+				cursor: move;
+			}
+			
 			.mult-img .img-w {
 				padding: 5px;
 				border: 2px dotted #959595;
@@ -65,154 +65,144 @@
 				overflow: hidden;
 				box-sizing: border-box;
 				border-radius: 5px;
-				    height: 90px;
+				height: 90px;
 			}
-
+			
 			.input-file input {
-
 				opacity: 0;
 				position: absolute;
 				z-index: 9;
 				width: 100%;
 				height: inherit;
 			}
-
+			
 			.input-file input {}
 		</style>
 	</head>
+
 	<body>
 
-		
-			<div class="lzs-item margin-20">
-				<div class="input-file  margin-20">
-					<input name="file" type="file" class="multiple" multiple="multiple" />
-					<span class="name white">+ 上传文件</span>
-				</div>
+		<div class="lzs-item margin-20 ">
+			<div class="input-file  margin-20">
+				<input name="file" type="file" class="multiple" multiple="multiple" />
+				<span class="name white">+ 上传文件</span>
+			</div>
+           
+			<ul class="mult-img row flex-c">
+			</ul>
 
-				<ul class="mult-img row flex-c">
+			<h2 onclick="createDom()" class="button">上传到sm的服务器</h2>
+			<img id="img3">
+		</div>
+
+		<div class="analog-box container row">
+
+			<div class="phone-box col-lg-12">
+				<ul class="phone-box-ul" id="phone-box-ul">
 				</ul>
-				
-				<h2 onclick="createDom()" class="button">上传到sm的服务器</h2>
-				<img id="img3">
 			</div>
-			
-			
-			<div class="analog-box row">
-				
-				<div class="phone-box col-lg-12">
-					<ul class="phone-box-ul">
-						<button class="ht">button</button>
-					</ul>	
-				</div>	
-				<div class="pc-box col-lg-0">
-					
-					
-				</div>	
-				
-				
-			</div>
-				
-			
-			
-			<div class="lzs-item margin-20">
-				<div class="input-file">
-					<input name="file" type="file" class="file" />
-						<span class="name white">+ 上传文件</span>
-				</div>
+			<div class="pc-box col-lg-0">
+
 			</div>
 
+		</div>
 
-			<div id="res"></div>
-			
-			<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
-			 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-  <script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
-     <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-			<script>
-				var imgarray = [];
-				$(".multiple").change(function(el) {
-					var f = this.files;
-					var html = "";
-                   
-					for (var i = 0; i < this.files.length; i++) {
-                        
-						var formData = new FormData();
-						
-//  						formData.append('smfile', this.files[i]);
-//  						var srcSm = uploadSm(formData);
-// 						 console.log("aa",formData, this.files[i])
+		<div class="lzs-item margin-20">
+			<div class="input-file">
+				<input name="file" type="file" class="file" />
+				<span class="name white">+ 上传文件</span>
+			</div>
+		</div>
 
-	                    // 新建一个FileReader
-						const reader = new FileReader();
-						// 读取文件 
-						reader.readAsDataURL(this.files[i], "UTF-8");
-						// 读取完文件之后会回来这里
-						reader.onload = function(e) {
-							// 读取文件内容
-							const srcSm = e.target.result;
-					
-							var image=new Image();
-							image.src=srcSm;
-							image.onload=function(){
-										html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
+		<div id="res"></div>
+
+		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
+		<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+		<script>
+			var imgarray = [];
+			$(".multiple").change(function(el) {
+				var f = this.files;
+				var html = "";
+
+				for(var i = 0; i < this.files.length; i++) {
+
+					var formData = new FormData();
+
+					//  						formData.append('smfile', this.files[i]);
+					//  						var srcSm = uploadSm(formData);
+					// 						 console.log("aa",formData, this.files[i])
+
+					// 新建一个FileReader
+					const reader = new FileReader();
+					// 读取文件 
+					reader.readAsDataURL(this.files[i], "UTF-8");
+					// 读取完文件之后会回来这里
+					reader.onload = function(e) {
+						// 读取文件内容
+						const srcSm = e.target.result;
+
+						var image = new Image();
+						image.src = srcSm;
+						image.onload = function() {
+							html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
 								srcSm + '></div></li>';
-								$(".mult-img").append(html);
-								var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' +srcSm + '></div></li>';
-								$(".phone-box-ul").append(html2);
-								
-							}
-					
+							$(".mult-img").append(html);
+							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' + srcSm + '></div></li>';
+							$(".phone-box-ul").append(html2);
+
 						}
-					
-						
-						// 接下来可对文件内容进行处理
-						//html='<li class="col-lg-3"><div class="img-w"><img src='+fileString+'></div></li>';
-						//	$(".mult-img").append(html);
-						//	}
-					};
-				    $( ".phone-box-ul" ).sortable();
-					$( ".phone-box-ul" ).disableSelection();
 
+					}
 
-				});
+					// 接下来可对文件内容进行处理
+					//html='<li class="col-lg-3"><div class="img-w"><img src='+fileString+'></div></li>';
+					//	$(".mult-img").append(html);
+					//	}
+				};
+				$(".phone-box-ul").sortable();
+				$(".phone-box-ul").disableSelection();
 
-				function delectImg(e) {
-					var index = parseInt($(e).index())
-					$(e).remove();
-					imgarray.splice(index, index + 1);
+			});
 
-				}
-	
-	function downLoadJs(url,callback) {
-	   setTimeout(function() {
-			var elem = document.createElement("script");
-			elem.src = url;
-			document.body.appendChild(elem);
-			if(elem.readyState){   //IE
-	　　　　　　          elem.onreadystatechange=function(){
-		　　　　　　　　if(elem.readyState=='complete'||elem.readyState=='loaded'){
-		　　　　　　　　　　elem.onreadystatechange=null;
-		　　　　　　　　　　callback();
-		　　　　　　　　}
-		　　　　　　}
-		　　　　}else{    //非IE
-		　　　　　　elem.onload=function(){callback();}
-		　　　　}
-		}, 2000);
-	}
+			function delectImg(e) {
+				var index = parseInt($(e).index())
+				$(e).remove();
+				imgarray.splice(index, index + 1);
 
-				function upload1(){
-                    					
-				}
-                function createDom(){
-					
-					downLoadJs("https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js",function(){
-						
-						
-						
-				
-					
-					
+			}
+
+			function downLoadJs(url, callback) {
+				setTimeout(function() {
+					var elem = document.createElement("script");
+					elem.src = url;
+					document.body.appendChild(elem);
+					if(elem.readyState) { //IE
+						　　　　　　
+						elem.onreadystatechange = function() {　　　　　　　　
+							if(elem.readyState == 'complete' || elem.readyState == 'loaded') {　　　　　　　　　　
+								elem.onreadystatechange = null;　　　　　　　　　　
+								callback();　　　　　　　　
+							}　　　　　　
+						}　　　　
+					} else { //非IE
+						　　　　　　
+						elem.onload = function() {
+							callback();
+						}　　　　
+					}
+				}, 2000);
+			}
+
+			function upload1() {
+
+			}
+
+			function createDom() {
+
+				downLoadJs("https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js", function() {
+
 					//直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
 					//html2canvas(document.querySelector('div')).then(function(canvas) {
 					//    document.body.appendChild(canvas);
@@ -232,111 +222,116 @@
 					//  context.translate(0,0);
 					var context = canvas2.getContext("2d");
 					context.scale(2, 2);
-					
-					
-					
-					html2canvas(document.querySelector('.phone-box-ul'), 
-						{ 
-							//  canvas: context, //自定义 canvas
-						   allowTanit:true,
-						   tainTest:true, 
-						   useCORS:true
-						 }).then(function(canvas) {
-							 
-							 	var codeimg=canvas.toDataURL()
-	                            $("#img3").attr("src",codeimg);
-								// 		var URL = URL || webkitURL;
-								// 		var blob = URL.createObjectURL(codeimg);
 
-							    // 构造新File对象
-							
-// 						     	var image2= new Image();
-// 		                        image2.src=canvas.toDataURL();
-// 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
-// 								console.log("data",aafile,codeimg)
+					html2canvas(document.querySelector('.phone-box-ul'), { //  canvas: context, //自定义 canvas
+						allowTanit: true,
+					    logging: false,
+					//	scale: window.devicePixelRatio*4, // 默认值是window.devicePixelRatio
+                        backgroundColor: null,
+						tainTest: true,
+						useCORS: false,
+						onrendered: function(canvas) {
+							imgBlob = canvas.toDataURL('image/jpeg', 1.0); //将图片转为base64
+							imgBlob = imgBlob.toString().substring(imgBlob.indexOf(",") + 1); //截取base64以便上传
+						}
+					}).then(function(canvas) {
+						//							 var canvas = document.getElementById('phone-box-ul');
+						//                              var gl = canvas.getContext("experimental-webgl", {preserveDrawingBuffer: true});
+						var codeimg = canvas.toDataURL()
+						$("#img3").attr("src", codeimg);
+						// 		var URL = URL || webkitURL;
+						// 		var blob = URL.createObjectURL(codeimg);
 
+						// 构造新File对象
 
+						// 						     	var image2= new Image();
+						// 		                        image2.src=canvas.toDataURL();
+						// 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
+						// 								console.log("data",aafile,codeimg)
 
-//                                 var aafile=dataURLtoFile(codeimg,"test.png")
-// 								var formData = new FormData();				
-// 								formData.append('smfile', aafile);
-// 						
-// 								var  smdata=uploadSm(formData);
-								
-							
+						//                                 var aafile=dataURLtoFile(codeimg,"test.png")
+						// 								var formData = new FormData();				
+						// 								formData.append('smfile', aafile);
+						// 						
+						// 								var  smdata=uploadSm(formData);
+
 						//document.body.appendChild(canvas);
 						//canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
-					//	document.querySelector(".down").setAttribute('href', canvas.toDataURL());
-					
+						//	document.querySelector(".down").setAttribute('href', canvas.toDataURL());
+
 					});
-			
+
 				})
-			
+
+			}
+			//转换为照片
+			function dataURLtoFile(dataurl, filename) {
+				var arr = dataurl.split(','),
+					mime = arr[0].match(/:(.*?);/)[1],
+					bstr = atob(arr[1]),
+					n = bstr.length,
+					u8arr = new Uint8Array(n);
+				while(n--) {
+					u8arr[n] = bstr.charCodeAt(n);
 				}
-					//转换为照片
-					function dataURLtoFile(dataurl, filename) {
-					var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-						bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-					while(n--){
-						u8arr[n] = bstr.charCodeAt(n);
-					}
-					return new File([u8arr], filename, {type:mime});
-				}
-				//上传到sm的地址
-				function uploadSm(formData, callback) {
-					var backData = '';
-					$.ajax({
-						url: 'https://sm.ms/api/upload',
-						type: 'POST',
-						async: false, //使用同步的方式,true为异步方式
-						success: function(data) {
-							//$('#res').html(JSON.stringify(data.data.url));
-
-
-							backData = data.data.url;
-							backData.replace(/\"/g, "");
-							imgarray.push(backData)
-
-							//   return JSON.stringify(data.data.url);
-
-						},
-						error: function(data) {
-							console.log(data);
-						},
-						data: formData,
-						cache: false,
-						contentType: false,
-						processData: false
-
-					});
-					return backData;
-				}
-
-				$('.file').change(function() {
-					var f = this.files[0];
-					var formData = new FormData();
-					formData.append('smfile', f);
-
-					$.ajax({
-						url: 'https://sm.ms/api/upload',
-						type: 'POST',
-						success: function(data) {
-							console.log(data);
-							$('#res').html(JSON.stringify(data.data.url));
-							console.log(data);
-						},
-						error: function(data) {
-							console.log(data);
-						},
-
-						data: formData,
-						cache: false,
-						contentType: false,
-						processData: false
-
-					});
+				return new File([u8arr], filename, {
+					type: mime
 				});
-			</script>
-	</body>
-</html>
+			}
+			//上传到sm的地址
+			function uploadSm(formData, callback) {
+				var backData = '';
+				$.ajax({
+					url: 'https://sm.ms/api/upload',
+					type: 'POST',
+					async: false, //使用同步的方式,true为异步方式
+					success: function(data) {
+						//$('#res').html(JSON.stringify(data.data.url));
 
+						backData = data.data.url;
+						backData.replace(/\"/g, "");
+						imgarray.push(backData)
+
+						//   return JSON.stringify(data.data.url);
+
+					},
+					error: function(data) {
+						console.log(data);
+					},
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+
+				});
+				return backData;
+			}
+
+			$('.file').change(function() {
+				var f = this.files[0];
+				var formData = new FormData();
+				formData.append('smfile', f);
+
+				$.ajax({
+					url: 'https://sm.ms/api/upload',
+					type: 'POST',
+					success: function(data) {
+						console.log(data);
+						$('#res').html(JSON.stringify(data.data.url));
+						console.log(data);
+					},
+					error: function(data) {
+						console.log(data);
+					},
+
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+
+				});
+			});
+		</script>
+	</body>
+
+</html>
