@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<style type="text/css">
 			.mult-img .back {
@@ -38,12 +39,22 @@
 				cursor: pointer;
 				background-color: #509ef0;
 			}
-			
+			.ui-sortable li img{
+				font-size:0 !important;
+			}
 			.mult-img {
-				margin: 15px;
+				margin: 0px 0px;
+    border-color: #e6e6e6;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    padding: 10px;
+    min-height: 124px;
+    background-color: white;
 			}
 			
-			.phone-box {}
+			.phone-box { 
+				overflow:hidden;
+			}
 			
 			.ui-sortable {
 				width: 100%;
@@ -75,37 +86,67 @@
 				width: 100%;
 				height: inherit;
 			}
-			
+			.create_dom{
+				    background-color: #FFC107;
+    border: 0px;
+    width: auto;
+    margin: 15px auto;
+			}
 			.input-file input {}
+			.upload-box{
+				background-color: #f2f2f2;
+    padding: 5px 10px;
+	padding-bottom:15px;
+			}
+			.head-title{
+				border-left: 5px solid #509ef0;
+    padding-left: 10px;
+    height: 34px;
+    vertical-align: middle;
+    line-height: 34px;
+			}
+			.analog-box{
+				    padding: 20px 5px;
+    background-color: white;
+/*    box-shadow: 0px 0px 2px 2px #cccccc; */
+			}
 		</style>
 	</head>
 
 	<body>
 
-		<div class="lzs-item margin-20 ">
-			<div class="input-file  margin-20">
+		<div class="lzs-item  upload-box    ">
+			
+			<div class="input-file " style="margin: 5px 0px;">
 				<input name="file" type="file" class="multiple" multiple="multiple" />
-				<span class="name white">+ 上传文件</span>
+				<span class="name white">+点击选择文件</span>
 			</div>
            
+		   
+		   
 			<ul class="mult-img row flex-c">
 			</ul>
-
-			<h2 onclick="createDom()" class="button">上传到sm的服务器</h2>
-			<img id="img3">
+    <div class="flex-c">
+			 <h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整上传之后的图片位置</span></h3>
+		  	<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
+		<!-- 	<img id="img3"> -->
 		</div>
-
-		<div class="analog-box container row">
-
+		
+		<div class="analog-box container">
+		   
 			<div class="phone-box col-lg-12">
 				<ul class="phone-box-ul" id="phone-box-ul">
 				</ul>
 			</div>
 			<div class="pc-box col-lg-0">
-
+		
 			</div>
-
+		
 		</div>
+			 
+		</div>
+    
+		
 
 		<div class="lzs-item margin-20">
 			<div class="input-file">
@@ -146,7 +187,7 @@
 						var image = new Image();
 						image.src = srcSm;
 						image.onload = function() {
-							html = '<li class="col-lg-3" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
+							html = '<li class="col-lg-3 col-xs-4" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
 								srcSm + '></div></li>';
 							$(".mult-img").append(html);
 							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' + srcSm + '></div></li>';

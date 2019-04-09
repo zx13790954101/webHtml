@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Title</title>
+		<style>
+			/* video {
+            width: 0;
+            height: 0;
+            opacity: 0;
+            display: none;
+        } */
+			canvas {
+				width: 375px;
+				height: 667px;
+			}
+		</style>
+	</head>
+	<body>
+		<video class="Movies"  autoplay controls preload="auto" width="100%" poster="{$Think.HTML_STATIC}/images/screenshot1.jpg" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true"
+           x5-playsinline="true" style="object-fit: fill;" x5-video-player-fullscreen="true" x5-video-player-type='h5'>
+        <source src="http://www.w3school.com.cn/example/html5/mov_bbb.mp4" type="video/mp4">
+    </video>
+
+
+		<button id="play">播放</button>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		// get the video
+		var video = document.querySelector('#video1');
+		// use the whole window and a *named function*
+		window.addEventListener('touchstart', function videoStart() {
+			video.play();
+			console.log('first touch');
+			// remove from the window and call the function we are removing
+			this.removeEventListener('touchstart', videoStart);
+		});
+
+
+		function autoPlayMusic() {
+
+			/* 自动播放音乐效果，解决浏览器或者APP自动播放问题 */
+
+			function musicInBrowserHandler() {
+
+				musicPlay(true);
+
+				document.body.removeEventListener('touchstart', musicInBrowserHandler);
+
+			}
+
+			document.body.addEventListener('touchstart', musicInBrowserHandler);
+
+			/* 自动播放音乐效果，解决微信自动播放问题 */
+
+			function musicInWeixinHandler() {
+
+				musicPlay(true);
+
+				document.addEventListener("WeixinJSBridgeReady", function() {
+
+					musicPlay(true);
+
+				}, false);
+
+				document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+
+			}
+
+			document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+
+		}
+
+		function musicPlay(isPlay) {
+
+			var media = document.getElementById('myMusic');
+
+			if (isPlay && media.paused) {
+
+				media.play();
+
+			}
+
+			if (!isPlay && !media.paused) {
+
+				media.pause();
+
+			}
+
+		}
+	</script>
+</html>

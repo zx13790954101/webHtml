@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
+		
+	</head>
+
+	<body>
+        <div class="img-w">
+			<img src="" id="main-img">
+		</div>
+        
+		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			 $(function(){
+				var image1=new Image();
+				var src="./hua.png";
+				image1.src=src;
+				image1.onload=function(){
+					$("#main-img").attr("src",src); 
+				}
+			
+			 });
+			
+		</script>
+	</body>
+
+</html>
