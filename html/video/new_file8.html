@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>android wechat playsinline demo</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      margin: 0;
+      background: wheat;
+    }
+    .player{
+      width: 100%;
+      height: 300px;
+      height: 56.25vw;
+      position: relative;
+    }
+    .player .video{
+      width: 100%;
+      height: 100%;
+    }
+    .poster{
+      background:url('http://via.placeholder.com/350x150?text=poster') no-repeat center center;
+      background-size: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .poster::after{
+      content: '';
+      width: 50px;
+      height: 50px;
+      background: url("https://milklife.com/sites/all/themes/breakfast/owl-carousel/play-button@2x.png") no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%,-50%);
+      -moz-transform: translate(-50%,-50%);
+      -o-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+    .fullscreen .player{
+      /* margin-top: 80px; */
+    }
+    .fullscreen video{
+      object-position: center 0;
+      height: 0.5625vw;
+    }
+    .content{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="player">
+      <video id="video" class="video" width="1" height="1" preload="auto" style="object-fit:contain" webkit-playsinline="true" playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" >
+        <source type="audio/mp4" src="https://images.apple.com/media/us/iphone-7/2016/5937a0dc_edb0_4343_af1c_41ff71808fe5/camera/4k-footage/iphone7-4k-footage-cc-us-20160907_1280x720h.mp4">
+      </video>
+      <div id="poster" class="poster">
+      </div>
+    </div>
+    <div class="content">
+      <p>hello content</p>
+    </div>
+  </div>
+  <script>
+    var myPlayer = document.getElementById('video');
+    document.getElementById("poster").addEventListener("click", function(){
+      myPlayer.play();
+      document.getElementById('poster').style.display='none';
+    });
+    //x5
+    myPlayer.addEventListener('x5videoenterfullscreen',function(){
+      myPlayer.style.width = window.screen.width + 'px';
+      myPlayer.style.height = window.screen.height + 'px';
+      document.body.classList.add('fullscreen');
+      document.getElementById('poster').style.display='none';
+    });
+    myPlayer.addEventListener('x5videoexitfullscreen',function(){
+      myPlayer.style.width = myPlayer.style.height = "";
+      document.body.classList.remove('fullscreen');
+      document.getElementById('poster').style.display='block';
+    },false);
+  </script>
+
+</body>
+</html>
