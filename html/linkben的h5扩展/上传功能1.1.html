@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
 		<style type="text/css">
 			.mult-img .back {
@@ -21,7 +21,7 @@
 				z-index: 99;
 				cursor: pointer;
 			}
-			
+
 			.input-file {
 				overflow: hidden;
 				height: 36px;
@@ -39,25 +39,27 @@
 				cursor: pointer;
 				background-color: #509ef0;
 			}
-			.ui-sortable li img{
-				font-size:0 !important;
+
+			.ui-sortable li img {
+				font-size: 0 !important;
 			}
+
 			.mult-img {
 				margin: 0px 0px;
-    border-color: #e6e6e6;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    padding: 10px;
-    min-height: 124px;
-    background-color: white;
+				border-color: #e6e6e6;
+				border-style: solid;
+				border-width: 1px 1px 1px 1px;
+				padding: 10px;
+				min-height: 124px;
+				background-color: white;
 			}
-			
-			.phone-box { 
-				overflow:hidden;
-				position:relative;
-				padding:0px;
+
+			.phone-box {
+				overflow: hidden;
+				position: relative;
+				padding: 0px;
 			}
-			
+
 			.ui-sortable {
 				width: 100%;
 				list-style-type: none;
@@ -65,12 +67,12 @@
 				height: auto;
 				overflow-y: auto;
 			}
-			
+
 			.ui-sortable li {
 				border: 0px;
 				cursor: move;
 			}
-			
+
 			.mult-img .img-w {
 				padding: 5px;
 				border: 2px dotted #959595;
@@ -80,7 +82,7 @@
 				border-radius: 5px;
 				height: 90px;
 			}
-			
+
 			.input-file input {
 				opacity: 0;
 				position: absolute;
@@ -88,113 +90,142 @@
 				width: 100%;
 				height: inherit;
 			}
-			.create_dom{
-				    background-color: #FFC107;
-    border: 0px;
-    width: auto;
-    margin: 15px auto;
+
+			.create_dom {
+				background-color: #FFC107;
+				border: 0px;
+				width: auto;
+				margin: 15px auto;
 			}
+
 			.input-file input {}
-			.upload-box{
+
+			.upload-box {
 				background-color: #f2f2f2;
-    padding: 5px 10px;
-	padding-bottom:15px;
+				padding: 5px 10px;
+				padding-bottom: 15px;
 			}
-			.head-title{
+
+			.head-title {
 				border-left: 5px solid #509ef0;
-    padding-left: 10px;
-    height: 34px;
-    vertical-align: middle;
-    line-height: 34px;
+				padding-left: 10px;
+				height: 34px;
+				vertical-align: middle;
+				line-height: 34px;
 			}
-			.analog-box{
-				    padding: 20px 5px;
-    background-color: white;
-/*    box-shadow: 0px 0px 2px 2px #cccccc; */
+
+			.analog-box {
+				padding: 20px 5px;
+				background-color: white;
+				/*    box-shadow: 0px 0px 2px 2px #cccccc; */
 			}
-			.to-dialog{
-				width:100%;
+
+			.to-dialog {
+				width: 100%;
 				position: absolute;
-    bottom: 1%;
-    left: 0%;
-	    background-color: white;
-    border-radius: 0px;
-    border: 0px;
-				}
-				.dialog-box{
-				   background-color: rgb(0, 0, 0);
-                    opacity: 0.8;
-					height:100%;
-					width:100%;
-					position:absolute;
-					top:0px;
-					left:0px;
-					display:none;
-					    align-items: center;
-                      justify-content: center;
-					  
-				}
-				.dialog-box .dialog{
-					    background-color: white;
-    border-radius: 2px;
-    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
-    width: 70%;
-    height: 70%;
-    display: flex;
-    padding: 10%;
-    justify-content: flex-end;
-    align-items: center;
-    overflow: hidden;
-				}
+				bottom: 1%;
+				left: 0%;
+				background-color: white;
+				border-radius: 0px;
+				border: 0px;
+			}
+
+			.dialog-box {
+				background-color: rgb(0, 0, 0);
+				opacity: 0.8;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				display: none;
+				align-items: center;
+				justify-content: center;
+
+			}
+
+			.dialog-box .dialog {
+				background-color: white;
+				border-radius: 2px;
+				box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
+				width: 70%;
+				height: 70%;
+				display: flex;
+				padding: 10%;
+				justify-content: flex-end;
+				align-items: center;
+				overflow: hidden;
+			}
+			.mult-full{
+				position: relative;
+				overflow: hidden;
+				max-height: 200px;
+			}
+			.mult-full-ul{
+				
+			}
+			.mult-full-btn{
+				
+				bottom: 10px;
+			}
 		</style>
 	</head>
 
 	<body>
 
 		<div class="lzs-item  upload-box    ">
-			
+
 			<div class="input-file " style="margin: 5px 0px;">
 				<input name="file" type="file" class="multiple" multiple="multiple" />
 				<span class="name white">+点击选择文件</span>
 			</div>
-           
-		   
-		   
+
+
+
 			<ul class="mult-img row flex-c">
 			</ul>
-    <div class="flex-c">
-			 <h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
-		  	<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
-		<!-- 	<img id="img3"> -->
-				
-			
-		</div>
-		
-		<div class="analog-box container">
-		   
-			<div class="phone-box col-lg-12">
-				<ul class="phone-box-ul" id="phone-box-ul">
-				</ul>
+			<div class="flex-c">
+				<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
+				<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
+				<!-- 	<img id="img3"> -->
+
+
+			</div>
+
+			<div class="analog-box container">
+                
+                <div class="mult-full">
+					 <ul class="mult-full-ul" >
+					 </ul>
+					 <button class="pos-a-b mult-full-btn">查看详情</button>
+			    </div>
+
+
+				<div class="phone-box col-lg-12">
+					<ul class="phone-box-ul" id="phone-box-ul">
+					</ul>
 					<button class="to-dialog" onclick="toDialog()">查看我的联系方式</button>
-				<div class="dialog-box">
-					<div class="dialog">
-						<div class="img-r">
-							<img src="./hua.png"> 
+					<div class="dialog-box">
+						<div class="dialog">
+							<div class="img-r">
+								<img src="./hua.png">
 							</div>
-					</div>	
-					
-			    </div>		
+						</div>
+
+					</div>
+				</div>
 				
+				
+				
+				<div class="pc-box col-lg-0">
+
+				</div>
+
 			</div>
-			<div class="pc-box col-lg-0">
-		
-			</div>
-		
+
 		</div>
-			 
-		</div>
-    
-		
+
+
 
 		<div class="lzs-item margin-20">
 			<div class="input-file">
@@ -210,8 +241,8 @@
 		<script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
 		<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 		<script>
-			function toDialog(){
-			
+			function toDialog() {
+
 				$(".dialog-box").show();
 			}
 			var imgarray = [];
@@ -219,7 +250,7 @@
 				var f = this.files;
 				var html = "";
 
-				for(var i = 0; i < this.files.length; i++) {
+				for (var i = 0; i < this.files.length; i++) {
 
 					var formData = new FormData();
 
@@ -239,9 +270,11 @@
 						var image = new Image();
 						image.src = srcSm;
 						image.onload = function() {
-							html = '<li class="col-lg-3 col-xs-4" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
+							html =
+								'<li class="col-lg-3 col-xs-4" onclick="delectImg(this)"><div class="img-w"><i class="back">X</i><img src=' +
 								srcSm + '></div></li>';
 							$(".mult-img").append(html);
+							$(".mult-full-ul").append(html);
 							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' + srcSm + '></div></li>';
 							$(".phone-box-ul").append(html2);
 
@@ -254,9 +287,20 @@
 					//	$(".mult-img").append(html);
 					//	}
 				};
-				$(".phone-box-ul").sortable();
-				$(".phone-box-ul").disableSelection();
-
+// 				$(".phone-box-ul").sortable();
+// 				$(".phone-box-ul").disableSelection();
+                $(".mult-img").sortable({
+					sort: function( event, ui ) {},
+					update: function( event, ui ) {}
+				});
+				$( ".mult-img" ).on( "sort", function( event, ui ) {
+					
+				} );
+				$( ".mult-img" ).on( "sortupdate", function( event, ui ) {
+					
+					$(".mult-full-ul").html($(".mult-img").html());
+				} );
+				$(".mult-img").disableSelection();
 			});
 
 			function delectImg(e) {
@@ -265,26 +309,26 @@
 				imgarray.splice(index, index + 1);
 
 			}
-			
-		
+
+
 			function downLoadJs(url, callback) {
 				setTimeout(function() {
 					var elem = document.createElement("script");
 					elem.src = url;
 					document.body.appendChild(elem);
-					if(elem.readyState) { //IE
-						　　　　　　
-						elem.onreadystatechange = function() {　　　　　　　　
-							if(elem.readyState == 'complete' || elem.readyState == 'loaded') {　　　　　　　　　　
-								elem.onreadystatechange = null;　　　　　　　　　　
-								callback();　　　　　　　　
-							}　　　　　　
-						}　　　　
+					if (elem.readyState) { //IE
+
+						elem.onreadystatechange = function() {
+							if (elem.readyState == 'complete' || elem.readyState == 'loaded') {
+								elem.onreadystatechange = null;
+								callback();
+							}
+						}
 					} else { //非IE
-						　　　　　　
+
 						elem.onload = function() {
 							callback();
-						}　　　　
+						}
 					}
 				}, 2000);
 			}
@@ -319,9 +363,9 @@
 
 					html2canvas(document.querySelector('.phone-box-ul'), { //  canvas: context, //自定义 canvas
 						allowTanit: true,
-					    logging: false,
-					//	scale: window.devicePixelRatio*4, // 默认值是window.devicePixelRatio
-                        backgroundColor: null,
+						logging: false,
+						//	scale: window.devicePixelRatio*4, // 默认值是window.devicePixelRatio
+						backgroundColor: null,
 						tainTest: true,
 						useCORS: false,
 						onrendered: function(canvas) {
@@ -343,11 +387,12 @@
 						// 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
 						// 								console.log("data",aafile,codeimg)
 
-						//                                 var aafile=dataURLtoFile(codeimg,"test.png")
-						// 								var formData = new FormData();				
-						// 								formData.append('smfile', aafile);
-						// 						
-						// 								var  smdata=uploadSm(formData);
+						                                var aafile=dataURLtoFile(codeimg,"test.png")
+														var formData = new FormData();				
+														formData.append('smfile', aafile);
+												
+														var  smdata=uploadSm(formData);
+														console.log("address",smdata);
 
 						//document.body.appendChild(canvas);
 						//canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
@@ -365,7 +410,7 @@
 					bstr = atob(arr[1]),
 					n = bstr.length,
 					u8arr = new Uint8Array(n);
-				while(n--) {
+				while (n--) {
 					u8arr[n] = bstr.charCodeAt(n);
 				}
 				return new File([u8arr], filename, {
