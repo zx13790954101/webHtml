@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+		<title></title>
+	</head>
+	<body>
+<input id="cptar" value="复制我复制我" style="opacity: 0;">
+<button onclick="copytext('cptar')">Copy</button>
+ <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function copytext(id) {
+    var selectedText, element = document.getElementById(id);
+    if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        var isReadOnly = element.hasAttribute('readonly');
+        if (!isReadOnly) {
+            element.setAttribute('readonly', '');
+        }
+        element.select();
+        element.setSelectionRange(0, element.value.length);
+        if (!isReadOnly) {
+            element.removeAttribute('readonly');
+        }
+        selectedText = element.value;
+    }
+    $(".copy_btn").css({
+        'background-color': '#000000',
+        'color': '#ffffff'
+    });
+    //判断是否为Uc浏览器
+    var u = navigator.userAgent;
+    if (u.indexOf('Linux') > -1) {
+        alert("复制成功,即将打开微信!");
+        window.location.href = 'weixin://';
+    } else {
+        try {
+            if (document.execCommand('copy', false, null)) {
+                alert("复制成功,即将打开微信!");
+                window.location.href = 'weixin://';
+            }
+        } catch (e) {
+            $("#target").focus();
+            alert("请长按后复制！");
+            window.location.href = 'weixin://';
+        }
+    }
+}
+
+
+</script>
+	</body>
+</html>
