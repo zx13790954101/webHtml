@@ -167,15 +167,16 @@
 				    padding: 0px;
 			}
 			.mult-full-ul{
-				    overflow: hidden;
-				    position: relative;
+				    /*overflow: hidden;
+				    position: relative;*/
 				
 			}
 			.mult-full-ul li{
 				 width:100%;
 				 padding:0px;
 				 margin-bottom: 0px;
-				 font-size: 0 !important;
+				     float: none;
+    font-size: 0 !important;
 			}
 			.mult-full-ul li .back{
 				display:none;
@@ -213,8 +214,9 @@
 			<div class="flex-c">
 				<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
 				<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
-				<!-- 	<img id="img3"> -->
+				 
 			</div>
+				<img id="img3"> 
 			<div class="analog-box container">
                
                 <div class="mult-full scrollbar">
@@ -399,7 +401,7 @@
 						//							 var canvas = document.getElementById('phone-box-ul');
 						//                              var gl = canvas.getContext("experimental-webgl", {preserveDrawingBuffer: true});
 						var codeimg = canvas.toDataURL()
-				//		$("#img3").attr("src", codeimg);
+				    	$("#img3").attr("src", codeimg);
 						// 		var URL = URL || webkitURL;
 						// 		var blob = URL.createObjectURL(codeimg);
 
@@ -414,7 +416,7 @@
 														var formData = new FormData();				
 														formData.append('smfile', aafile);
 												
-														var  smdata=uploadSm(formData);
+												//		var  smdata=uploadSm(formData);
 														console.log("address",smdata);
 
 						//document.body.appendChild(canvas);
