@@ -191,6 +191,9 @@
     border: 0px;	
     border-radius:0px;
 			}
+			.show-upload-p{
+				display:none;
+			}
 		</style>
 	</head>
 
@@ -198,42 +201,43 @@
 
 		<div class="lzs-item  upload-box    ">
           
-			<div class="flex-c">
-				<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
-				<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
+		  
+		    <div  class="show-upload-p">
+			  	<div class="flex-c">
+			  	<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
+			  	<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
+			  	 
+			  </div>
+			  <!--	<img id="img3"> -->
+			  <div class="analog-box ">
+			     
 				 
-			</div>
-			<!--	<img id="img3"> -->
-			<div class="analog-box container">
-               
-               <div></div>
-                <div class="mult-full scrollbar">
-					 <ul class="mult-full-ul" id="phone-box-ul">
-					 </ul>
-				     <button class="pos-a-b mult-full-btn">查看详情</button>
-			    </div>
-
-				<div class="phone-box col-lg-12" style="display: none;">
-					<ul class="phone-box-ul" >
-					</ul>
-					<button class="to-dialog" onclick="toDialog()">查看我的联系方式</button>
-					<div class="dialog-box">
-						<div class="dialog">
-							<div class="img-r">
-								<img src="./hua.png">
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<div class="pc-box col-lg-0">
-
-				</div>
-
-
-
-			</div>
-            <div class="flex-c">
+			      <div class="mult-full scrollbar">
+			  		 <ul class="mult-full-ul" id="phone-box-ul">
+			  		 </ul> 
+			      </div>
+			   <button class="pos-a-b mult-full-btn">查看详情</button>
+			  	<div class="phone-box col-lg-12" style="display: none;">
+			  		<ul class="phone-box-ul" >
+			  		</ul>
+			  		<button class="to-dialog" onclick="toDialog()">查看我的联系方式</button>
+			  		<div class="dialog-box">
+			  			<div class="dialog">
+			  				<div class="img-r">
+			  					<img src="./hua.png">
+			  				</div>
+			  			</div>
+			  
+			  		</div>
+			  	</div>
+			 
+			  </div>
+			  
+			</div>  
+		
+         
+			
+			<div class="flex-c">
               <div class="input-file  " style="margin: 5px 0px;">
 			  	<input name="file" type="file" class="multiple" multiple="multiple" />
 				<span class="name white">+点击选择文件</span>
@@ -325,6 +329,7 @@
 					$(".mult-full-ul").html($(".mult-img").html());
 				} );
 				$(".mult-img").disableSelection();
+				$(".show-upload-p").show();
 			});
 
 			function delectImg(e) {
