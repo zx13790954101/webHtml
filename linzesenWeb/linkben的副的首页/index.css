@@ -1,0 +1,53 @@
+.logo-img{
+	width: 5rem;
+}
+.slide1-bg{
+	background: url(./img/banner5.jpg) center center no-repeat;
+	background-size: cover;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	    position: relative;
+	background-position:50% 50%;
+	-moz-transition: all 4.5s linear;
+	-o-transition: all 4.5s linear;
+	transition: all 4.5s linear;
+	-webkit-animation-duration: .3s;
+	animation-duration: .3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: slide1-bg2;
+	animation-name: slide1-bg2;
+	animation-duration:3s;
+	-webkit-animation-duration: 3s;
+	animation-iteration-count:infinite;
+}
+
+@keyframes slide1-bg2 {
+    0% {
+       margin-top:0px;
+    }
+	 50% {
+	   margin-top:-10px;
+	}
+    100% {
+       margin-top:0px;
+    }
+}
+.nav-ul li{
+	
+}
+.swiper-slide .header{
+	    background: url(./img/bannerbg.png) center center no-repeat;
+	    background-size: cover;
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    z-index: 99;
+	    text-align: center;
+		background-position:50% 50%;
+}
