@@ -1,7 +1,8 @@
 .logo-img{
 	width: 5rem;
 }
-.slide1-bg{
+
+.slide-item-img1{
 	background: url(./img/banner5.jpg) center center no-repeat;
 	background-size: cover;
 	left: 0;
@@ -19,12 +20,39 @@
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 	-webkit-animation-name: slide1-bg2;
-	animation-name: slide1-bg2;
+	animation-name: slide1-bg2;   
 	animation-duration:3s;
 	-webkit-animation-duration: 3s;
 	animation-iteration-count:infinite;
 }
-
+.slide-item-img3{
+	background: url(./img/3.png) center center no-repeat;
+	background-size: cover;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	    position: relative;
+	background-position:50% 50%;
+	-moz-transition: all 4.5s linear;
+	-o-transition: all 4.5s linear;
+	transition: all 4.5s linear;
+}
+.slide-item-img2{
+	background: url(./img/4.png) center center no-repeat;
+	background-size: cover;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	    position: relative;
+	background-position:50% 50%;
+	-moz-transition: all 4.5s linear;
+	-o-transition: all 4.5s linear;
+	transition: all 4.5s linear;
+}
 @keyframes slide1-bg2 {
     0% {
        margin-top:0px;
@@ -39,7 +67,29 @@
 .nav-ul li{
 	
 }
-.swiper-slide .header{
+.lzs-nav li{
+	min-height: 50px;
+	height: auto;
+}
+.lzs-nav .nav-ul{
+	min-height: 50px;
+	height: auto;
+	margin: 5px 0px;
+	background-color: rgba(0,0,0,0);
+}
+.video-box{
+	    width: 100%;
+    height: auto;
+}
+.swiper-slide4{
+	background-color:white;
+	    background-image: linear-gradient(62deg, rgb(255, 255, 255) 0%, #ffffff 100%) !important;
+}
+.slide4-img{
+	margin:0px 5%;
+	margin-top:-5%;
+}
+.slide-item-bg{
 	    background: url(./img/bannerbg.png) center center no-repeat;
 	    background-size: cover;
 	    position: absolute;
@@ -47,7 +97,7 @@
 	    top: 0;
 	    width: 100%;
 	    height: 100%;
-	    z-index: 99;
+	    z-index: 9;
 	    text-align: center;
-		background-position:50% 50%;
+	    background-position:50% 50%;
 }
