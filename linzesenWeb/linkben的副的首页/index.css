@@ -1,5 +1,7 @@
 .logo-img{
-	width: 5rem;
+	width: 4.8rem;
+	margin-right: 10px;
+	opacity: 0.8;
 }
 
 .slide-item-img1{
@@ -24,6 +26,43 @@
 	animation-duration:3s;
 	-webkit-animation-duration: 3s;
 	animation-iteration-count:infinite;
+}
+.tab-box{
+	height: 80%;
+}
+.product .tba-nav{
+	height: 22%;
+	background-color: white;
+	margin-top: -10px;
+}
+
+.product .tba-nav li.active{
+	  color: #FFC306;
+      border: 1px solid rgba(255, 195, 6, 0.25098);
+      background: rgba(255, 213, 69, .06);
+}
+
+.product .tba-nav li{
+	   display: inline-block;
+      vertical-align: middle;
+      width: 128px;
+      line-height: 42px;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: bolder;
+      margin: 12px;
+      color: #BBC0CA;
+      border: 1px solid rgba(216, 221, 228, 0.43922);
+      background: rgba(216, 221, 228, .2);
+      cursor: pointer;
+}
+.submit{
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	color: #333;
+	background-color: white;
+	font-weight: 600;
 }
 .slide-item-img3{
 	background: url(./img/3.png) center center no-repeat;
@@ -100,4 +139,81 @@
 	    z-index: 9;
 	    text-align: center;
 	    background-position:50% 50%;
+}
+.header-title{
+	opacity: 0.8;
+}
+textarea{
+	background-color: rgba(0,0,0,0.1);
+}
+input{
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15) inset;
+	border: 0px solid #ccc;
+	background-color: rgba(0,0,0,0.1);
+}
+.swiper2 .title{
+	margin-bottom: 20px;
+}
+.nav-ul .name{
+	letter-spacing: 1rem;
+	text-align: center;
+	padding-left: 1rem;
+}
+.swiper2 .head{
+width: 90%;
+}
+.sidebar-box {
+    background-color: rgba(0, 6, 8, 0.62);
+    bottom: 20%;
+}
+.sidebar-box li {
+    color: rgba(255,255,255);
+}
+
+@media screen and (max-width: 769px){
+	.logo-img{
+	width: 3rem;
+	margin-right: 10px;
+}
+.swiper1-content>.title{
+	font-size: 1.6rem;
+}
+.big{
+	font-size: 7rem;
+}
+.biz-box .item .content2{
+	line-height: 2.0rem;
+}
+.slide4-item-img{
+	width: 100%;
+	position: relative;
+	transform: scale(1.5);
+}
+	h1{
+		    font-size: 1.67rem;
+	}
+	h4{
+		font-size: 1.3rem;
+	}
+	h2{
+		 font-size: 1.3rem;
+		 line-height: 1.6rem;
+	}
+	h5{
+		font-size: 1rem;
+	}
+	h6{
+		line-height: 1.2rem;
+		font-size: 0.8rem;
+	}
+	.h5{
+		font-size: 1rem;
+	}
+	.lzs-nav>.nav-ul{
+		   display: none !important;
+		   margin: 3px 10px;
+	}
+	.lzs-nav>.nav-mobile {
+		 display: flex !important;
+	}
 }
