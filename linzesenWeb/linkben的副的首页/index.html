@@ -95,7 +95,14 @@
 					<h6>-LINKBEN-</h6>
 				</span>
             </li>
-            <li class="flex-r"><i class="iconfont icon-quanbu1"></i></li>
+            <li class="flex-r"><i class="iconfont icon-quanbu1 nav-btn"></i></li>
+          </ul>
+          <ul class="nav-pc  ">
+          	        <li>首页</li>
+            <li>自定义网页</li>
+            <li>网站案例</li>
+            <li>联系我们</li>
+            <li>关于我们</li>
           </ul>
           <ul class="nav-ul flex-c container  ">
             <li class="head flex-item flex-c">
@@ -117,6 +124,25 @@
         </nav>
         <div class="swiper-container  head-swiper" id="head-swiper">
           <div class="swiper-wrapper">
+          	  <div class="swiper-slide flex-c">
+              <div class="swiper1-content2 pos-a-c white">
+                <div class="center">
+                  <h4>立本服务的客户</h4>
+                  <span class="big flex-c flex-c-y animate-num">0 <h1>+</h1></span>
+                  <h4>为客户提供各类最优网站定制解决方法</h4>
+                  <h4>包括企业网站、商城系统、旅游网站、外贸网站、博彩app、预约微信公众号、宣传类型小程序</h4>
+                  <a href="/index/about/h5.html" target="" class="link "><button class="center">查看更多</button></a>
+                </div>
+
+              </div>
+              <div class="video-box block">
+                <video class="banner-background" src="http://linkben.com/assets/img/about/banner12.mp4" autoplay="true" loop="true"
+                  poster="" muted="" preload="load">
+                  <source src="http://linkben.com/assets/img/about/banner12.mp4" type="video/mp4">
+                </video>
+              </div>
+
+            </div>
       
            <div class="swiper-slide  flex-c ">
               
@@ -181,25 +207,7 @@
          </div>
          
          
-               <div class="swiper-slide flex-c">
-              <div class="swiper1-content2 pos-a-c white">
-                <div class="center">
-                  <h4>立本服务的客户</h4>
-                  <span class="big flex-c flex-c-y animate-num">0 <h1>+</h1></span>
-                  <h4>为客户提供各类最优网站定制解决方法</h4>
-                  <h4>包括企业网站、商城系统、旅游网站、外贸网站、博彩app、预约微信公众号、宣传类型小程序</h4>
-                  <a href="/index/about/h5.html" target="" class="link "><button class="center">查看更多</button></a>
-                </div>
-
-              </div>
-              <div class="video-box block">
-                <video class="banner-background" src="http://linkben.com/assets/img/about/banner12.mp4" autoplay="true" loop="true"
-                  poster="" muted="" preload="load">
-                  <source src="http://linkben.com/assets/img/about/banner12.mp4" type="video/mp4">
-                </video>
-              </div>
-
-            </div>
+             
     
     
           
@@ -470,7 +478,7 @@
           <!-- <h1 class="flex-b">联系我们</h1> -->
           <div class="content flex row">
 
-            <ul class="col-lg-6 col-xs-12  contact">
+            <!--<ul class="col-lg-6 col-xs-12  contact">
               <li class="flex-c head">
                 <h3 class="title">联系方式</h3>
               </li>
@@ -490,17 +498,19 @@
                 <a class="" href="#">微信：lin_805650999
                 </a>
               </li>
-            </ul>
-            <span class="col-lg-6 col-xs-12 ">
+            </ul>-->
+            <span class="col-lg-12 col-xs-12 ">
               <h3 class="title">在线资讯</h3>
               <from class="form  linker" action="">
                 <div class="flex-c  lzs-item">
                   <input name="name" class="name block" type="text" id="name" value="" placeholder="您的尊称 Name"
                     maxlength="10" onfocus="if (value =='您的尊称 Name'){value =''}" onblur="if (value ==''){value='您的尊称 Name'}">
+                    <span style="margin: 0px 10px;"></span>
+                    <input name="wechat" class="call block" type="text" id="wechat" value="" placeholder="您的微信 wechat"
+                    maxlength="11" onfocus="if (value =='您的微信 wechat'){value =''}" onblur="if (value ==''){value='您的微信 wechat'}">
                 </div>
                 <div class="flex-c  lzs-item">
-                  <input name="wechat" class="call block" type="text" id="wechat" value="" placeholder="您的微信 wechat"
-                    maxlength="11" onfocus="if (value =='您的微信 wechat'){value =''}" onblur="if (value ==''){value='您的微信 wechat'}">
+                  
                 </div>
                 <div class="flex-c  lzs-item">
                   <textarea name="content" class="msg" cols="" id="content" value="" placeholder="您要留言的内容 Content"
@@ -569,7 +579,7 @@
 		            </dl>
 		
 		        </div>
-		        <div class="f-right flex-r     flex-item ">
+		        <div class="f-right flex     flex-item ">
 		            <dl class=" center">
 		                <dt class="">
 		                    <a href="#" class="h4">官方微信服务号</a></dt>
@@ -671,6 +681,14 @@
     //鍒濆鍖栫殑linzesen 鐨刯s鏂囦欢
     lzeInit: function () {
 
+     $(".nav-btn").click(function(e){
+     	if( $(".nav-pc").is(":hidden") ){
+     			$(".nav-pc").show();
+     	}else{
+     			$(".nav-pc").hide();
+     	}
+     
+     });
 
         $(".sidebar-box li").click(function (e) {
             let name = $(this).attr("title");
