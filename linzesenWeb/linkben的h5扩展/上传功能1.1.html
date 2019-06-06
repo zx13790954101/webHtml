@@ -7,194 +7,7 @@
 		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../../plugin/linzesen/linzesen.css" />
-		<style type="text/css">
-			.mult-img .back {
-				position: absolute;
-				top: 0px;
-				right: 5px;
-				padding: 5px;
-				width: 20px;
-				height: 20px;
-				border-radius: 50px;
-				background-color: rgba(0, 0, 0, 0.5);
-				color: white;
-				z-index: 99;
-				cursor: pointer;
-			}
-
-			.input-file {
-				overflow: hidden;
-				height: 36px;
-				line-height: 36px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				min-width: 100px;
-				/* box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.1); */
-				width: 100px;
-				max-width: 100%;
-				margin: 0px 10px;
-				border-radius: 4px;
-				position: relative;
-				cursor: pointer;
-				background-color: #509ef0;
-			}
-
-			.ui-sortable li img {
-				font-size: 0 !important;
-			}
-
-			.mult-img {
-				margin: 0px 0px;
-				border-color: #e6e6e6;
-				border-style: solid;
-				border-width: 1px 1px 1px 1px;
-				padding: 10px;
-				min-height: 124px;
-				background-color: white;
-			}
-
-			.phone-box {
-				overflow: hidden;
-				position: relative;
-				padding: 0px;
-			}
-
-			.ui-sortable {
-				width: 100%;
-				list-style-type: none;
-				background-color: #d9d9d9;
-				height: auto;
-				overflow-y: auto;
-				-webkit-flex-wrap: wrap;
-                flex-wrap: wrap;
-			}
-
-			.ui-sortable li {
-				border: 0px;
-				cursor: move;
-			}
-
-			.mult-img .img-w {
-				padding: 5px;
-				border: 2px dotted #959595;
-				margin: 5px 0px;
-				overflow: hidden;
-				box-sizing: border-box;
-				border-radius: 5px;
-				height: 90px;
-			}
-
-			.input-file input {
-				opacity: 0;
-				position: absolute;
-				z-index: 9;
-				width: 100%;
-				height: inherit;
-			}
-
-			.create_dom {
-				background-color: #FFC107;
-				border: 0px;
-				width: auto;
-				margin: 15px auto;
-			}
-
-			.input-file input {}
-
-			.upload-box {
-				background-color: #f2f2f2;
-				padding: 5px 10px;
-				padding-bottom: 15px;
-			}
-
-			.head-title {
-				border-left: 5px solid #509ef0;
-				padding-left: 10px;
-				height: 34px;
-				vertical-align: middle;
-				line-height: 34px;
-			}
-
-			.analog-box {
-				padding: 20px 5px;
-				background-color: white;
-				/*    box-shadow: 0px 0px 2px 2px #cccccc; */
-			}
-
-			.to-dialog {
-				width: 100%;
-				position: absolute;
-				bottom: 1%;
-				left: 0%;
-				background-color: white;
-				border-radius: 0px;
-				border: 0px;
-			}
-
-			.dialog-box {
-				background-color: rgb(0, 0, 0);
-				opacity: 0.8;
-				height: 100%;
-				width: 100%;
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				display: none;
-				align-items: center;
-				justify-content: center;
-
-			}
-
-			.dialog-box .dialog {
-				background-color: white;
-				border-radius: 2px;
-				box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
-				width: 70%;
-				height: 70%;
-				display: flex;
-				padding: 10%;
-				justify-content: flex-end;
-				align-items: center;
-				overflow: hidden;
-			}
-			.mult-full{
-				position: relative;
-				overflow: hidden;
-				max-height: 70vh;
-				overflow-y: auto;
-				margin: 0px 30px;
-				    padding: 0px;
-			}
-			.mult-full-ul{
-				    /*overflow: hidden;
-				    position: relative;*/
-				
-			}
-			.mult-full-ul li{
-				 width:100%;
-				 padding:0px;
-				 margin-bottom: 0px;
-				     float: none;
-    font-size: 0 !important;
-			}
-			.mult-full-ul li .back{
-				display:none;
-			}
-			.mult-full-btn{
-				
-			}
-			.mult-full-btn{
-				    background-color: #509ef0bf;
-    bottom: 10px;
-    color: white;
-    border: 0px;	
-    border-radius:0px;
-			}
-			.show-upload-p{
-				display:none;
-			}
-		</style>
+		<link rel="stylesheet" href="index.css" />
 	</head>
 
 	<body>
@@ -202,21 +15,21 @@
 		<div class="lzs-item  upload-box    ">
           
 		  
-		    <div  class="show-upload-p">
-			  	<div class="flex-c">
+		       <div  class="show-upload-p">
+			  	<div class="flex-c  top-header">
 			  	<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
-			  	<h2 onclick="createDom()" class="button create_dom">点击上传到服务器</h2>
+			  	<h2 onclick="createDom()" class="button create_dom">点击确认完成</h2>
 			  	 
 			  </div>
 			  <!--	<img id="img3"> -->
 			  <div class="analog-box ">
 			     
 				 
-			      <div class="mult-full scrollbar">
+			      <div class="mult-full ">
 			  		 <ul class="mult-full-ul" id="phone-box-ul">
 			  		 </ul> 
 			      </div>
-			     <button class="pos-a-b mult-full-btn">查看详情</button>
+			    
 			  	<div class="phone-box col-lg-12" style="display: none;">
 			  		<ul class="phone-box-ul" >
 			  		</ul>
@@ -236,31 +49,35 @@
 			</div>  
 		
          
+			<div class="bottom-fun">
+				<div class="flex-c bottom-header">
+	              <div class="input-file  " style="margin: 5px 0px;">
+				  	<input name="file" type="file" class="multiple" multiple="multiple" />
+					<span class="name white">+点击选择文件</span>
+				  </div>
+				  <span class="flex-item"></span>
+				   <button class="btn mult-full-btn address-href"></button>
+				   
+				   
+				  <!--<div class="flex-item  flex-r">
+				  		<h2 onclick="toDialog()" class="button create_dom">预览</h2>
+				  </div>-->
+	           </div>
+				<ul class="mult-img row flex-c">
+				</ul>
+			</div>
 			
-			<div class="flex-c">
-              <div class="input-file  " style="margin: 5px 0px;">
-			  	<input name="file" type="file" class="multiple" multiple="multiple" />
-				<span class="name white">+点击选择文件</span>
-			  </div>
-			  <!--<div class="flex-item  flex-r">
-			  		<h2 onclick="toDialog()" class="button create_dom">预览</h2>
-			  </div>-->
-            </div>
-		
-
-
-			<ul class="mult-img row flex-c">
-			</ul>
+			
 		</div>
 
 
 
-		<div class="lzs-item margin-20">
+		<!--<div class="lzs-item margin-20">
 			<div class="input-file">
 				<input name="file" type="file" class="file" />
 				<span class="name white">+ 上传文件</span>
 			</div>
-		</div>
+		</div>-->
 
 		<div id="res"></div>
 
@@ -269,6 +86,22 @@
 		<script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
 		<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 		<script>
+			
+			$(function(){
+				
+				
+			
+			});
+			
+			
+			//监听高度
+			function listenHeight(){
+				
+				
+			   let height2=$(".bottom-fun").height()
+				$(".upload-box").css({"margin-bottom":height2});
+			}
+			
 			function toDialog() {
 
 				$(".dialog-box").show();
@@ -299,12 +132,14 @@
 						image.src = srcSm;
 						image.onload = function() {
 							html =
-								'<li class="col-lg-3 col-xs-4" ><div class="img-w"><i class="back" onclick="delectImg(this)">X</i><img src=' +
+								'<li class="col-lg-3 col-xs-3" ><div class="img-w"><i class="back" onclick="delectImg(this)">X</i><img src=' +
 								srcSm + '></div></li>';
 							$(".mult-img").append(html);
 							$(".mult-full-ul").append(html);
 							var html2 = '<li class="ui-state-default"><div class="img-w"><img src=' + srcSm + '></div></li>';
 							$(".phone-box-ul").append(html2);
+
+                             listenHeight();
 
 						}
 
@@ -333,9 +168,11 @@
 			});
 
 			function delectImg(e) {
+				debugger;
 				var index = parseInt($(e).index())
-				$(e).remove();
+				$(e).parent().parent().remove();
 				imgarray.splice(index, index + 1);
+				$(".mult-full-ul li").eq(index).remove();
 
 			}
 
@@ -417,13 +254,17 @@
 						// 		                        image2.src=canvas.toDataURL();
 						// 								var aafile = new File([codeimg], "test1.png",{type:"image/png"});
 						// 								console.log("data",aafile,codeimg)
-
+    
+                                  
 						                                var aafile=dataURLtoFile(codeimg,"test.png")
 														var formData = new FormData();				
 														formData.append('smfile', aafile);
 												
-												//		var  smdata=uploadSm(formData);
-														console.log("address",smdata);
+														setTimeout(function(){
+															var  smdata=uploadSm(formData);
+															$(".address-href").html(smdata);
+														},100);
+												
 
 						//document.body.appendChild(canvas);
 						//canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
@@ -459,10 +300,11 @@
 					success: function(data) {
 						//$('#res').html(JSON.stringify(data.data.url));
 
+                     
 						backData = data.data.url;
 						backData.replace(/\"/g, "");
 						imgarray.push(backData)
-
+	                    return backData;
 						//   return JSON.stringify(data.data.url);
 
 					},

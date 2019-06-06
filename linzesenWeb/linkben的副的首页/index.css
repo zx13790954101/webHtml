@@ -237,6 +237,22 @@ width: 90%;
 	.footer-site .f-left{
 		display: none !important;
 	}
+	.swiper1-content2 button{
+		height: 36px;
+		font-size: 1.3rem;
+		font-weight: 600;
+		letter-spacing: 2px;
+		border-radius: 0px;
+		background-color: #ffffffad;
+		color: #202020;
+		width: 50%;
+	}
+	footer dd, dt{
+		color: #333;
+	}
+	footer{
+		background-color: #00000000;
+	}
 	.biz-box{
 	height: 66%;
 }
@@ -246,6 +262,11 @@ width: 90%;
 	.logo-img{
 	width: 3rem;
 	margin-right: 10px;
+}
+.swiper1-content2 button{
+	    background-color: #ffffffad;
+    color: #202020;
+    width: 200px;
 }
 .swiper1-content>.title{
 	font-size: 1.6rem;
