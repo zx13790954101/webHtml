@@ -33,7 +33,17 @@
 .ui-sortable li img {
 	font-size: 0 !important;
 }
-
+.load-box{
+	position: fixed;
+	z-index: 999;
+	height: 100vh;
+	width: 100vw;
+	top: 0px;
+	left: 0px;
+}
+.load-box i{
+	font-size: 50px;
+}
 .mult-img {
 	margin: 0px 0px;
 	border-color: #e6e6e6;

@@ -80,7 +80,8 @@
 		</div>-->
 
 		<div id="res"></div>
-
+        <div class="load-box   " ><i class="layui-icon-loading  pos-a-c"></i> </div>
+        
 		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
 		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
@@ -292,6 +293,7 @@
 			}
 			//上传到sm的地址
 			function uploadSm(formData, callback) {
+				$(".load-box").show();
 				var backData = '';
 				$.ajax({
 					url: 'https://sm.ms/api/upload',
@@ -300,7 +302,7 @@
 					success: function(data) {
 						//$('#res').html(JSON.stringify(data.data.url));
 
-                     
+                     $(".load-box").hide();
 						backData = data.data.url;
 						backData.replace(/\"/g, "");
 						imgarray.push(backData)
