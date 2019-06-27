@@ -8,11 +8,19 @@ footer{
    position: absolute;
    bottom: 0px;
    left: 0px;
-   background-color: #00000087;
+   background-color: #000000d6;
    color: white;
 }
 footer dd,dt{
-	  color: #e4e4e4;
+	  color: rgb(136, 136, 136);
+	  font-weight: 500;
+	  letter-spacing: 3px;
+}
+footer  dt{
+	  font-weight: 400;
+	  color: #666;
+	  letter-spacing: 4px;
+	  margin-bottom: 8px;
 }
 .swiper-slide5 .wrapper{
 	color: #333;
@@ -108,7 +116,7 @@ footer dd,dt{
 	width: 100%;
 	height: 36px;
 	line-height: 36px;
-	color: #fff;
+	color: #000;
 	background-color: rgba(0,0,0,0.1);
 	font-weight: 600;
 }
@@ -165,6 +173,7 @@ footer dd,dt{
 }
 .lzs-nav li{
 	min-height: 50px;
+	font-weight: 400;
 	height: auto;
 }
 .lzs-nav .nav-ul{
