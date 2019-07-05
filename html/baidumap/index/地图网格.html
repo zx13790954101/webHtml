@@ -1,0 +1,30 @@
+<!-- 前言：最近要使用百度地图实现楼盘可视化的功能，因此最基础的功能就是将地图网格化以后实现不同地域的楼盘划分； -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 100%
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A3CklGvnFOjkAzKzay2dySgfdig0GKz4"></script> 
+<script type="text/javascript" src="ziroom-map.js"></script>
+ </head>
+ <body> 
+<div id="container"></div>
+ <script> 
+var myMap = new ZMap("container"); </script>
+ </body>
+ </html>

@@ -9,7 +9,7 @@ var BaiduMap = {
     //地图的名字
     initStratAddress:"",
     loadJScript: function (name) {
-        debugger
+       
         window.onload =function(){
             var script = document.createElement("script");
             script.type = "text/javascript";
@@ -109,9 +109,10 @@ var BaiduMap = {
             //}, { enableHighAccuracy: true });
 
             $(".select-city").val("莞城区[ 切换 ]")
-            map.centerAndZoom("广东省东莞市莞城区", 15);
-            localStorage.setItem("address", "莞城区[ 切换 ]");
-            localStorage.setItem("address2", "广东省" + "-" + "东莞市" + "-" + "莞城区");
+            map.centerAndZoom("广东省湛江市麻章区硇洲镇", 13);
+            //注释缓存当前的地址
+           // localStorage.setItem("address", "莞城区[ 切换 ]");
+          //  localStorage.setItem("address2", "广东省" + "-" + "东莞市" + "-" + "莞城区");
             sessionStorage.setItem("BaiduInit", true);
         }
 
@@ -156,7 +157,7 @@ var BaiduMap = {
                 BaiduMap.searchMap('dragend');
             }
         });
-   
+         
         //var myCity = new BMap.LocalCity();
         //myCity.get(myFun);
         //定位功能只能是市
@@ -180,6 +181,11 @@ var BaiduMap = {
         };
      
         //end
+    },
+    //自定义的路试
+    //params:坐标
+    pathMapDiy:function(params) {
+      
     },
     BaiduMapsearchMap :function(){
         console.log($(".search-box .map-search").val());
@@ -244,7 +250,7 @@ var BaiduMap = {
         }
         $.ajax({
             url: "./GetAllSchoolAddress.json",
-            type: "post",
+            type: "get",
             dataType: "json",
             data: datapoint,
             success: function (data) {
@@ -345,7 +351,7 @@ var BaiduMap = {
         //debugger;
         $.ajax({
             url: "./GetAllSchoolAddress.json",
-            type: "post",
+            type: "get",
             data: datapoint,
             dataType: "json",
             success: function (data) {

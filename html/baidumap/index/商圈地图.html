@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>商圈</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+</head>
+<body>
+<div style="z-index:9;width:520px;height:340px;border:1px solid gray" id="container"></div>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMap.Map("container",{mapType: BMAP_HYBRID_MAP});      //设置卫星图为底图
+map.centerAndZoom(new BMap.Point(116.325218,39.977441),12);                     // 初始化地图,设置中心点坐标和地图级别。
+map.addControl(new BMap.NavigationControl());  //添加鱼骨控件
+map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+map.setCurrentCity("北京");          // 设置3D地图显示的城市 此项是必须设置的
+
+//创建二环
+//创建经纬度数组
+var secRingCenter = new BMap.Point(116.400244,39.931757);
+var secRing = [new BMap.Point(116.362875,39.949459),new BMap.Point(116.378972,39.956539),new BMap.Point(116.438764,39.955654),new BMap.Point(116.440488,39.911836),new BMap.Point(116.365175,39.905637)];
+//创建多边形
+var secRingPolygon = new BMap.Polygon(secRing, {strokeColor:"blue", strokeWeight:5, strokeOpacity:0.5});
+//添加多边形到地图上
+map.addOverlay(secRingPolygon);
+//给多边形添加鼠标事件
+secRingPolygon.addEventListener("mouseover",function(){
+    secRingPolygon.setStrokeColor("red");
+    map.addOverlay(secRingLabel);
+    map.panTo(secRingCenter);
+});
+secRingPolygon.addEventListener("mouseout",function(){
+    secRingPolygon.setStrokeColor("blue");
+    map.removeOverlay(secRingLabel);
+});
+secRingPolygon.addEventListener("click",function(){
+    map.zoomIn();
+    secRingPolygon.setStrokeColor("red");
+    map.setCenter(secRingCenter);
+});
+//创建标签
+var secRingLabel = new BMap.Label("<b>北京市二环</b>，包括了东城区</br>和西城区。著名旅游景点有</br>天安门、故宫、后海、北海</br>公园、景山、南锣鼓巷等。",{offset: new BMap.Size(-150,0), position: secRingCenter});
+secRingLabel.setStyle({"z-index":"999999", "padding": "10px","width": "140px","border": "1px solid #ccff00"});
+
+var secRingLabel2 = new BMap.Label("二  环",{offset: new BMap.Size(10,-30), position: secRingCenter});
+secRingLabel2.setStyle({"line-height": "20px", "text-align": "center", "width": "80px", "height": "29px", "border": "none", "padding": "2px","background": "url(http://jixingjx.com/mapapi/ac.gif) no-repeat",});
+map.addOverlay(secRingLabel2);
+
+//创建海淀区
+//创建经纬度数组
+var haidianCenter = new BMap.Point(116.305958,39.969037);
+var haidian = [new BMap.Point(116.352526,39.915599),new BMap.Point(116.278362,39.916485),new BMap.Point(116.252491,39.943042),new BMap.Point(116.234669,39.994358),new BMap.Point(116.281812,40.037239),new BMap.Point(116.281812,40.037239),new BMap.Point(116.386446,39.98684),new BMap.Point(116.389896,39.968263),new BMap.Point(116.336429,39.960299)];
+//创建多边形
+var haidianPolygon = new BMap.Polygon(haidian, {strokeColor:"blue", strokeWeight:5, strokeOpacity:0.5});
+//添加多边形到地图上
+map.addOverlay(haidianPolygon);
+//给多边形添加鼠标事件
+haidianPolygon.addEventListener("mouseover",function(){
+    haidianPolygon.setStrokeColor("red");
+    map.addOverlay(haidianLabel);
+    map.panTo(haidianCenter);
+});
+haidianPolygon.addEventListener("mouseout",function(){
+    haidianPolygon.setStrokeColor("blue");
+    map.removeOverlay(haidianLabel);
+});
+haidianPolygon.addEventListener("click",function(){
+    map.zoomIn();
+    haidianPolygon.setStrokeColor("red");
+    map.setCenter(haidianCenter);
+});
+//创建标签
+var haidianLabel = new BMap.Label("<b>北京市海淀区</b>，是北京市</br>高等学府的聚集地。这里涵</br>括了北京市80%的重点大学</br>。其中清华、北大都是大家</br>耳熟能详的求学地。",{offset: new BMap.Size(-150,0), position: haidianCenter});
+haidianLabel.setStyle({"z-index":"999999", "padding": "10px","width": "140px","border": "1px solid #ccff00"});
+
+var haidianLabel2 = new BMap.Label("海淀区",{offset: new BMap.Size(10,-30), position: haidianCenter});
+haidianLabel2.setStyle({"line-height": "20px", "text-align": "center", "width": "80px", "height": "29px", "border": "none", "padding": "2px","background": "url(http://jixingjx.com/mapapi/ac.gif) no-repeat",});
+map.addOverlay(haidianLabel2);
+</script>

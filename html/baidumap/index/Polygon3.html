@@ -1,0 +1,110 @@
+<!-- 建筑物的点的添加  分区 行政区域   多行政区域划分 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>
+    <!-- 开发需要替换密钥 可以在百度地图开放平台申请 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+    <!-- 点聚合需引用 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <title>地图展示</title>
+</head>
+<body>
+    <div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var boundary = ["石家庄市裕华区","石家庄市新华区","石家庄市桥西区","石家庄市长安区"];
+    var color = ["#FFD700","#FF83FA","#FF0000","#FF4500"];
+    var address = ["石家庄市铁道大学","石家庄市物联网大厦","石家庄科技中心","石家庄植物园","石家庄市裕华区南二环东路河北师范大学"];
+
+    map.centerAndZoom(new BMap.Point(114.527, 38.071), 13);  // 初始化地图,设置中心点坐标和地图级别
+    //map.centerAndZoom("河北", 9);  // 初始化地图,第一个参数可以使用中心点坐标,也可以使用城市名称;第二个参数为地图级别
+    //添加地图类型控件 
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));     
+    //map.setCurrentCity("北京");          // 百度注释(设置地图显示的城市 此项是必须设置的 )  不设置也不影响地图显示,不知道具体作用
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    for (var i = 0; i < boundary.length; i++) {
+        getBoundary(boundary[i],color[i]);  //行政区划覆盖遮罩
+    }
+    for (var j = 0; j < address.length; j++) {
+        getPoint(address[j]);  //地图描点
+    }
+
+    //点聚合
+    /* var markers = [];
+    for (var i = 0; i < 10; i++) {
+       pt = new BMap.Point(Math.random() * 40 + 85, Math.random() * 30 + 21);
+       markers.push(new BMap.Marker(pt));
+    }
+    var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers}); */
+
+    //单击获取点击的经纬度
+    /* map.addEventListener("click",function(e){
+        alert(e.point.lng + "," + e.point.lat);
+    }); */
+
+
+
+    function getBoundary(area,color){       
+        var bdary = new BMap.Boundary();
+        bdary.get(area, function(rs){       //获取行政区域
+            //map.clearOverlays();        //清除地图覆盖物       
+            var count = rs.boundaries.length; //行政区域的点有多少个
+            if (count === 0) {
+                alert('未能获取当前输入行政区域');
+                return ;
+            }
+            var pointArray = [];
+            for (var i = 0; i < count; i++) {
+                var ply = new BMap.Polygon(rs.boundaries[i], {strokeColor:"green",fillColor: color ,fillOpacity:"0.3",strokeOpacity:0.3,strokeWeight: 2}); //建立多边形覆盖物
+                map.addOverlay(ply);  //添加覆盖物
+                pointArray = pointArray.concat(ply.getPath());
+            }    
+            //map.setViewport(pointArray);    //调整视野  
+        });   
+    }
+    // 将地址解析结果显示在地图上,并调整地图视野
+    function getPoint(address) {
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        myGeo.getPoint(address, function(point){
+            if (point) {
+                //map.centerAndZoom(point, 16);
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);  //描点
+                var opts = {
+                    width : 280,     // 信息窗口宽度
+                    height: 150,     // 信息窗口高度
+                    title : "<span class='content'>详细信息</span>" , // 信息窗口标题
+                }
+                var infoWindow = new BMap.InfoWindow("<font class='content'>地址："+address+"<br/>坐标:"+point.lng+"," +point.lat+
+                        "<br/><a href='javascript:void(0)' onclick='alert(\"啦啦啦!!!\")' style='font-size:18px;color:blue;text-decoration:underline;'>点击有惊喜！！！</a></font>"
+                        ,opts);  //创建信息窗口对象 
+                //鼠标点击事件
+                marker.addEventListener("click", function(){          
+                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                    //map.centerAndZoom(point,14);
+                });
+                //鼠标移入事件
+                /* marker.addEventListener("mouseover", function(){            
+                    map.openInfoWindow(infoWindow,point); //开启信息窗口  
+                }); */
+            }else{
+                alert("您选择地址没有解析到结果!"); 
+            }
+        }, "石家庄市");
+    }
+</script>
