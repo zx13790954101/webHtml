@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <!-- 引入 echarts.js -->
+  <script src="../../plugin/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js">
+  </script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js">
+  </script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+  <script type="text/javascript"
+    src="https://api.map.baidu.com/api?v=2.0&ak=A3CklGvnFOjkAzKzay2dySgfdig0GKz4&__ec_v__=20190126"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+
+<body>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var uploadedDataURL = "./data-1464248983149-HJ1jcQNX.json";
+
+    $.getJSON(uploadedDataURL, function (data) {
+
+      var points = [].concat.apply([], data.map(function (track) {
+        return track.map(function (seg) {
+          return seg.coord.concat([1]);
+        });
+      }));
+      myChart.setOption({
+        animation: false,
+        bmap: {
+          center: [120.13066322374, 30.240018034923],
+          zoom: 14,
+          roam: true
+        },
+        visualMap: {
+          show: false,
+          top: 'top',
+          min: 0,
+          max: 5,
+          seriesIndex: 0,
+          calculable: true,
+          inRange: {
+            color: ['blue', 'blue', 'green', 'yellow', 'red']
+          }
+        },
+        series: [{
+          type: 'heatmap',
+          coordinateSystem: 'bmap',
+          data: points,
+          pointSize: 5,
+          blurSize: 6
+        }]
+      });
+
+      var bmap = myChart.getModel().getComponent('bmap').getBMap();
+      bmap.addControl(new BMap.MapTypeControl());
+    });
+  </script>
+</body>
+
+</html>
