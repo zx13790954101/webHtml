@@ -1,0 +1,85 @@
+<%@ page language="java" import="java.util.*"  pageEncoding="UTF-8" %>  
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <%@ include file="/WEB-INF/jsp/common/common.jsp"%>
+  <style type="text/css">
+    body,
+    html,
+    #allmap {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      font-family: "微软雅黑";
+    }
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0E9754VgpTAO1iYUUw4L4T1k"></script>
+  <title>产业园地图</title>
+</head>
+
+<body>
+  <div id="allmap"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+  // 百度地图API功能
+  var map = new BMap.Map("allmap"); // 创建Map实例
+  map.centerAndZoom(new BMap.Point(104.211334, 30.879458), 19); // 初始化地图,设置中心点坐标和地图级别
+  map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+  map.setCurrentCity("成都"); // 设置地图显示的城市 此项是必须设置的
+  map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+
+
+  /* //添加交通图层示例
+  var traffic = new BMap.TrafficLayer();
+  map.addTileLayer(traffic);  */
+
+  //添加自定义切图,x,y为每一个瓦片的坐标,zoom为当前地图层级
+  var tileLayer = new BMap.TileLayer();
+  tileLayer.getTilesUrl = function (tileCoord, zoom) {
+    //debugger;
+    var x = tileCoord.x;
+    var y = tileCoord.y;
+    return '../img/' + zoom + '/tile' + x + '_' + y + '.png'; //根据当前坐标,选取合适的瓦片图,
+    1 - 18 级的瓦片图可以通过TileCutter软件切图, 19 级可暂用ps在百度19级地图瓦片层上进行切图(示例如下)
+
+
+  }
+
+  //显示瓦片坐标,可用于制作19级的自定义切图(把图片放大到合适的大小,覆盖在19级的地图上,用PS进行切割)
+  /* var zoom = map.getZoom();
+  var tileLayer = new BMap.TileLayer();
+  tileLayer.getTilesUrl = function(tileCoord, zoom) {
+  debugger;
+      var x = tileCoord.x;
+      var y = tileCoord.y;
+      console.log(x);
+      console.log(y);
+      //var url = 'img/' + zoom + '/tile' + x + '_' + y + '.png';     //根据当前坐标，选取合适的瓦片图
+      return "http://developer.baidu.com/map/jsdemo/img/border.png";//显示瓦片图,每一个瓦片是256*256像素的方格
+  } */
+
+  var copyCtrl = new BMap.CopyrightControl({
+    anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+  });
+  copyCtrl.addCopyright({
+    id: 1,
+    content: "版权说明:园区图片取自互联网"
+  });
+  map.addControl(copyCtrl);
+
+  function add_control() {
+    map.addTileLayer(tileLayer);
+  }
+
+  function delete_control() {
+    map.removeTileLayer(tileLayer);
+  }
+
+  add_control();
+</script>
