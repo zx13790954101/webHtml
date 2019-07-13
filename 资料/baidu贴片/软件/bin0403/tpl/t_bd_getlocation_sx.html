@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		#allmap {float:left;width: 90%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		#cust_var {float:left;width: 10%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D3e6ac29a69cf34da023250f6c322f7d"></script>
+	<title>地图展示</title>
+</head>
+<body>
+	<div id="allmap"></div>
+	<div id="cust_var">
+		 经度<br/>
+		<input id="longitude" type="text" name="lng" value="116"><br/>
+		 纬度<br/>
+		<input id="latitude" type="text" name="lat" value="27"><br/><br/>
+		<input type="submit" value="提交" onclick="custinfo()">
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+var zooma;
+	var tileLayer2 = new BMap.TileLayer({isTransparentPng: true});
+	tileLayer2.getTilesUrl = function(tileCoord, zoom) {
+	        zooma = zoom;
+		var x = tileCoord.x;
+		var y = tileCoord.y;
+		//return "http://developer.baidu.com/map/jsdemo/img/border.png";
+		return "sys/images/border.png";
+	}
+
+	var MyMap = new BMap.MapType('MyMap', tileLayer2, {minZoom: 5, maxZoom: 20});
+	var map = new BMap.Map('allmap', {mapType: MyMap});
+
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(#jd#,#wd#), 14);  // 114.443445,30.482447
+	map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.enableScrollWheelZoom();
+	map.setDefaultCursor("crosshair");
+    map.addTileLayer(tileLayer2);
+
+function showInfo(e){
+  
+
+  var zoomLevel = this.getZoom();
+  var lngLat = e.point;  
+  //var lngLatStr = "=经纬度:" + lngLat.lng + ", " + lngLat.lat + ";级别:" + zoomLevel;
+
+  var projection = map.getMapType().getProjection();
+  var worldCoordinate = projection.lngLatToPoint(lngLat);
+  //var worldCoordStr = "平面坐标：" + worldCoordinate.x + ", " + worldCoordinate.y;
+
+  clipboardData.setData('text',  "jwd:" + lngLat.lng + "," + lngLat.lat + ";pmzb:" + worldCoordinate.x + "," + worldCoordinate.y + ';level:' + zoomLevel);
+
+  alert("lng lat:" + lngLat.lng + "," + lngLat.lat + ";  ok. You may close this window. zoom:"+ zoomLevel);
+
+  //var pixelCoordinate = new BMap.Pixel(Math.floor(worldCoordinate.x * Math.pow(2, this.getZoom() - 18)), 
+                                       //Math.floor(worldCoordinate.y * Math.pow(2, this.getZoom() - 18)));
+  //var pixelCoordStr = "像素坐标：" + pixelCoordinate.x + ", " + pixelCoordinate.y;
+  
+  //var tileCoordinate = new BMap.Pixel(Math.floor(pixelCoordinate.x / 256),
+                                 //Math.floor(pixelCoordinate.y / 256));
+  //var tileCoordStr = "图块坐标：" + tileCoordinate.x + ", " + tileCoordinate.y;
+}
+
+function custinfo(){
+
+	if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+		//map.clearOverlays(); 
+		var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+		var marker = new BMap.Marker(new_point);  // 创建标注
+		map.addOverlay(marker);              // 将标注添加到地图中
+		map.panTo(new_point);      
+	}
+
+	  //var lngLatStr = "--经纬度:" + new_point.lng + ", " + new_point.lat + ";级别:18";
+
+	  var projection1 = map.getMapType().getProjection();
+	  var worldCoordinate = projection1.lngLatToPoint(new_point);
+	  //var worldCoordStr = "平面坐标：" + worldCoordinate.x + ", " + worldCoordinate.y;
+
+	  clipboardData.setData('text',  "jwd:" + new_point.lng + "," + new_point.lat + ";pmzb:" + worldCoordinate.x + "," + worldCoordinate.y + ';level:18');
+
+	  alert('ok.');
+
+
+}
+
+map.addEventListener("click", showInfo);
+
+
+</script>

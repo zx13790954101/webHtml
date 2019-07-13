@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>
+openlayers
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script type="text/javascript" src="http://www.openlayers.cn/olapi/OpenLayers.js"></script>
+<style>
+	html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+</style>
+<script type="text/javascript">
+	function init() {
+		var map = new OpenLayers.Map("map");
+		var osm = new OpenLayers.Layer.OSM();
+		map.addLayer(osm);
+
+       map.setCenter(
+            new OpenLayers.LonLat(116.45400390625, 39.85228265560386).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                map.getProjectionObject()
+            ), 13
+        ); 
+
+
+
+		//var lonLat = new OpenLayers.LonLat(117.62519, 39.52329);
+		//lonLat.transform(map.displayProjection, map.getProjectionObject());
+		//map.setCenter(lonLat, 12);
+
+		//map.setCenter(new OpenLayers.LonLat(12594129.06257,5227333.01196));  //中心点
+
+		//map.zoomTo(14);
+
+		//map.setCenter(117625, 39.52329, 15,true,true); 
+
+		//map.setCenter(new OpenLayers.LonLat(116, 39), 13); // new OpenLayers.LonLat(90, 10)
+		//map.setCenter(new OpenLayers.LonLat(0, 0), 3);  
+
+
+		map.zoomToMaxExtent();
+
+		map.events.register('click', map, function (e) {
+
+			var pixel = new OpenLayers.Pixel(e.xy.x,e.xy.y);
+			var lonlat = map.getLonLatFromPixel(pixel);
+			lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")); //由900913坐标系转为4326
+			jd = lonlat.lon;
+			wd = lonlat.lat;
+
+			var zoom = map.getZoom();
+	　　　　//alert(zoom);
+			clipboardData.setData("text",  "jwd:" + jd + "," + wd + ";pmzb:0.0,0.0;level:" +  zoom);
+			alert( jd + "," + wd + ",当前级别:" + zoom);
+		})
+
+	}
+</script>
+</head>
+
+<body onload="init()">
+	<div id="map" style="width: 100%;height: 100%;">
+</div>
+</body>
+
+</html>

@@ -6,3 +6,20 @@
 #allmap {
   height: 100vh;
 }
+
+.head-form {
+  z-index: 1;
+  background-color: white;
+  width: auto;
+  min-width: 200px;
+  left: 8%;
+  top: 2%;
+  position: absolute;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+}
+
+.poidetail {
+  display: none !important;
+
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="天地图"/>
+    <title>天地图－地图API－范例－自定义图层</title>
+    <script type="text/javascript" src="http://api.tianditu.gov.cn/api?v=4.0&tk=9b22a22569953f89bfeceed422c0b52f"></script>
+    <style type="text/css">body,html{width:100%;height:100%;margin:0;font-family:"Microsoft YaHei"}#mapDiv{width:100%;height:400px}input,b,p{margin-left:5px;font-size:14px}</style>
+    <script>
+        var map;
+        var zoom = 12;
+        function onLoad() {
+            //初始化地图对象
+            map = new T.Map("mapDiv");
+            //设置显示地图的中心点和级别
+            map.centerAndZoom(new T.LngLat(116.40969, 39.89945), zoom);
+            //允许鼠标滚轮缩放地图
+            map.enableScrollWheelZoom();
+
+            var imageURL = "http://t0.tianditu.gov.cn/img_w/wmts?" +
+                "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
+                "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}";
+            //创建自定义图层对象
+            var lay = new T.TileLayer(imageURL, {minZoom: 1, maxZoom: 18});
+            //将图层增加到地图上
+            map.addLayer(lay);
+        }
+    </script>
+</head>
+<body onLoad="onLoad()">
+<div id="mapDiv"></div>
+<p>本示例演示如何向地图上添加自定义图层。</p>
+</body>
+</html>

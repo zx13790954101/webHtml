@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>腾讯地图叠加自定义瓦片</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body, button, input, select, textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            width: 603px;
+            padding-top: 3px;
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 100px;
+            height: 26px
+        }
+        #container {
+           min-width:603px;
+           min-height:767px;
+        }
+    </style>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script>
+        
+        function getNormalizedCoord(coord, zoom) {
+            var y = coord.y;
+            var x = coord.x;
+            var tileRange = 1 << zoom;
+            if (y < 0 || y >= tileRange) {
+                return null;
+            }
+            if (x < 0 || x >= tileRange) {
+                x = (x % tileRange + tileRange) % tileRange;
+            }
+            return {
+                x: x,
+                y: y
+            };
+        }
+
+        var map;
+        function init() {
+            //新建一个ImageMapType，实现ImageMapTypeOptions规范
+            var earthlayer = new qq.maps.ImageMapType({
+                name: '绿色家园',
+                alt: '绿色家园',
+                tileSize: new qq.maps.Size(256, 256),
+                opacity: 1,
+                getTileUrl: function (tile, zoom) {
+                    var normalizedCoord = getNormalizedCoord(tile, zoom);
+                    var z = zoom,
+                            x = tile.x,
+                            y = tile.y;
+                    //return 'http://lbs.qq.com/doc/sample/img/earth/tile_' + z + '_' + normalizedCoord.x + '-' + normalizedCoord.y + '.png';
+	     
+		    		 //return 'sys/images/border.png'; 
+                }
+            });
+
+            map = new qq.maps.Map(document.getElementById("container"), {
+                // 地图的中心地理坐标。
+                center: new qq.maps.LatLng(#wd#,#jd#),
+                zoom: 10,
+				draggableCursor: "crosshair"
+            });
+            map.overlayMapTypes.push(earthlayer);
+			
+
+        //添加监听事件
+        qq.maps.event.addListener(map, 'click', function(event) {
+            var latLng = event.latLng,
+                lat = latLng.getLat().toFixed(5),
+                lng = latLng.getLng().toFixed(5);
+            var zoomLevel = map.getZoom();
+            clipboardData.setData("text",  "jwd:" + lng + "," + lat + ";pmzb:0.0,0.0;level:" +  zoomLevel);
+            alert(lng + ' ' + lat + ' 当前级别：' + zoomLevel );
+        });
+
+
+        }
+    </script>
+</head>
+<body onload="init();">
+<div id="container"></div>
+<span id="info"></span>
+</body>
+</html>

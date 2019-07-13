@@ -1,0 +1,65 @@
+<html> 
+
+<head> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+
+<script type="text/javascript">
+    var geocoder;
+    var map;
+    function initialize() {
+        geocoder =new google.maps.Geocoder();
+        var latlng =new google.maps.LatLng(34.264987, 108.94426900000007);
+        var myOptions = {
+            zoom: 12,
+            center: latlng,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        }
+        map =new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        //初始化标注添加以下代码
+        marker =new google.maps.Marker({
+                    title: '',
+                    map: map,
+                    position:latlng
+                });
+        var infowindow =new google.maps.InfoWindow({
+                    content: '<strong>love</strong>'
+                });
+       infowindow.open(map, marker); 
+    }
+
+    functioncodeAddress() {
+        varaddress = document.getElementById("address").value;
+        geocoder.geocode({ 'address': address }, function(results, status) {
+            if(status == google.maps.GeocoderStatus.OK) {
+               map.setCenter(results[0].geometry.location);
+                this.marker =newgoogle.maps.Marker({
+                    title: address,
+                    map: map,
+                    position:results[0].geometry.location
+                });
+                var infowindow =newgoogle.maps.InfoWindow({
+                    content: '<strong>'+ address +'</strong><br/>'+'纬度: '+ results[0].geometry.location.lat() +'<br/>经度: '+ results[0].geometry.location.lng()
+                });
+                infowindow.open(map, marker);
+            } else {
+                alert("Geocode was not successful for the following reason:"+ status);
+            }
+            alert('纬度: '+ results[0].geometry.location.lat() +'<br/>经度: '+ results[0].geometry.location.lng())
+        });
+    } 
+
+</script> 
+</head> 
+<body onload="initialize()"> 
+  <div> 
+    <input id="address" type="text" value="西安市"> 
+    <input type="button" value="地址解析" onclick="codeAddress()"> 
+  </div> 
+<div id="map_canvas" style="height:90%;top:30px"></div> 
+</body> 
+</html>

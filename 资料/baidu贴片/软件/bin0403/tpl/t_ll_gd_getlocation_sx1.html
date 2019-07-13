@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://www.1hwj.net/down/leaflet/leaflet.css">
+    <style type="text/css">
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    html,
+    body,
+    #map {
+        height: 100%;
+    }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    <script type="text/javascript" src='http://www.1hwj.net/down/leaflet/leaflet.ChineseTmsProviders.js'></script>
+</head>
+
+<body>
+    <div id='map'></div>
+</body>
+<script type="text/javascript">
+	var normalm = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+	var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+	var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+
+	var normal = L.layerGroup([normalm]),
+		image = L.layerGroup([imgm, imga]);
+
+	var baseLayers = {
+		"地图": normal,
+		"影像": image,
+	}
+
+	var map = L.map("map", {
+		center: [#wd#, #jd#], //39.9, 116.39
+		zoom: 14,
+		layers: [normal],
+		zoomControl: false
+	});
+
+	L.control.layers(baseLayers, null).addTo(map);
+	L.control.zoom({
+		zoomInTitle: '放大',
+		zoomOutTitle: '缩小'
+	}).addTo(map);
+
+
+	map.on('click', function(ev) {
+		var wd = ev.latlng.lat;
+		var jd = ev.latlng.lng; 
+		//clipboardData.setData("text",  "jwd:" + jd + "," + wd + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+		//alert( jd + "," + wd + ",当前级别:" + map.getZoom());
+
+		clipboardData.setData("text",  "jwd:" + jd + "," + wd + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+		alert(lng + ' ' + lat + ',当前级别：' + map.getZoom() + '。ok! 坐标选择完成，您现在可以关闭当前窗口。');
+	});
+
+
+</script>
+
+</html>

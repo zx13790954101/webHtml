@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mouse Position</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+	<div id="lonlat"></div>
+    <script>
+      var mousePositionControl = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(12),
+        projection: 'EPSG:4326',
+		className: 'custom-mouse-position',
+        target: document.getElementById('lonlat'),
+        undefinedHTML: '&nbsp;'
+      });
+
+      var map = new ol.Map({
+        controls: ol.control.defaults({
+          attributionOptions: {
+            collapsible: false
+          }
+        }).extend([mousePositionControl]),
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'map',
+        view: new ol.View({
+          center: [0, 0],
+          zoom: 2
+        })
+      });
+
+	  var map_click = map.on('click', function (evt) {
+		var view = map.getView();
+        var zoom = view.getZoom();
+		var lonlat = document.getElementById("lonlat").innerText;
+		var strs= new Array(); //定义一数组 
+		
+		strs = lonlat.split(","); //字符分割
+		var jd = strs[0];
+		var wd = strs[1];
+
+		clipboardData.setData("text",  "jwd:" + jd + "," + wd + ";pmzb:0.0,0.0;level:" +  zoom);
+		alert( jd + "," + wd + ",当前级别:" + zoom);
+      });
+
+    </script>
+  </body>
+</html>

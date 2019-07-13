@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>卫星图</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://webapi.amap.com/maps?v=1.4.6&key=acbee001e915f7d824de47e0b51f2c15"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+
+	<style>
+		#container{float:left; height:100%; width:86%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+		#cust_var {float:right; height:100%; width:13%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+			
+		#tip {
+			background-color: #fff;
+			padding:0 10px;
+			border: 1px solid silver;
+			box-shadow: 3px 4px 3px 0px silver;
+			position: absolute;
+			font-size: 12px;
+			right: 300px;
+			top: 5px;
+			border-radius: 3px;
+			line-height: 36px;
+		}
+
+		#btn-group {
+			background-color: #fff;
+			padding:0 10px;
+			border: 1px solid silver;
+			box-shadow: 3px 4px 3px 0px silver;
+			position: absolute;
+			font-size: 12px;
+			right: 300px;
+			bottom: 5px;
+			border-radius: 3px;
+			line-height: 36px;
+		}
+
+	</style>
+
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var satellite = new AMap.TileLayer.Satellite();
+	var standard = new AMap.TileLayer()//高德默认标准图层
+
+
+    var map = new AMap.Map('container',{
+         zoom:10,
+         layers:[
+                //new AMap.TileLayer()//高德默认标准图层
+				standard,
+				//satellite
+         ]
+    });
+
+	//网格图层
+    var gridLayer = new AMap.TileLayer({
+       zIndex:10,
+       tileUrl: 'border.png' 
+    });
+	gridLayer.setMap(map);
+
+
+	function show_standard(){
+		map.remove(satellite); //需要时可以移除
+		map.add(standard); //通过add方法添加图层
+	}
+
+	function show_satellite(){
+		map.remove(standard); //需要时可以移除
+		map.add(satellite); //通过add方法添加图层	}
+	}
+
+</script>
+
+
+
+
+	<div id="btn-group">
+		<input type="button" class="button" value="标准地图" onclick="show_standard()" id="standartmap"/>
+		<input type="button" class="button" value="卫星地图" onclick="show_satellite()" id="satellitemap"/>
+	</div>
+
+
+</body>
+</html>

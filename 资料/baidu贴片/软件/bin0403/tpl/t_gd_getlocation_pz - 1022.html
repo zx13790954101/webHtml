@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>高德地图获取经纬度</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0"/>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.2&key=您申请的key值&plugin=AMap.DistrictSearch"></script>
+<style>
+	#container{height:95%;width:100%;}
+	#cust_var {position:absolute;bottom:0px;width:100%;height:5%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+</style>
+
+</head>
+
+<body onLoad="mapInit()">
+	<div id="container"></div>
+	<div id="cust_var">
+		 经度：	<input id="longitude" type="text" name="lng" value="116">
+		 纬度：	<input id="latitude" type="text" name="lat" value="27">
+		<input type="submit" value="提交" onclick="inputinfo()">
+	</div>
+</body>
+
+<script language="javascript">
+	var map;
+	var lnglatXY;
+	var zoom;
+
+	//初始化地图
+	function mapInit(){
+		var opt = {  
+			level: 14, //设置地图缩放级别    
+			center: new AMap.LngLat(#jd#,#wd#) //设置地图中心点  
+		}  
+		map = new AMap.Map("container", opt);  
+
+		map.plugin(["AMap.MapType"],function(){
+			//地图类型切换
+			var type= new AMap.MapType({
+			defaultType:0 //使用2D地图
+			});
+			map.addControl(type);
+		});
+		
+		AMap.event.addListener(map,'click',getLnglat); //点击事件
+		map.setDefaultCursor("crosshair");
+
+		var gridLayer = new AMap.TileLayer({
+		   zIndex:100
+		   //tileUrl: 'sys/images/border.png' 
+		});
+		gridLayer.setMap(map);
+
+	}
+
+	//鼠标点击，获取经纬度坐标  
+	function getLnglat(e){    
+		map.clearMap();
+		var x = e.lnglat.getLng();
+		var y = e.lnglat.getLat(); 
+		  
+		clipboardData.setData("text",  "jwd:" + x + "," + y + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+		alert( x + "," + y + ",当前级别:" + map.getZoom());
+		
+		lnglatXY = new AMap.LngLat(x,y);
+	}
+
+	function inputinfo()
+	{
+	  
+		if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+			lng = document.getElementById("longitude").value;
+			lat = document.getElementById("latitude").value;
+			map.setZoomAndCenter(14, [lng, lat]);
+			// 在新中心点添加 marker 
+			var marker = new AMap.Marker({
+				map: map,
+				icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+				position: [lng, lat]
+			});
+			marker.setMap(map);
+			clipboardData.setData("text",  "jwd:" + lng + "," + lat + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+			//alert( x + "," + y + ",当前级别:" + map.getZoom());
+			alert(lng + "," + lat + ',当前级别:' + map.getZoom() + ',ok! 坐标输入完成，您现在可以关闭当前窗口。');
+		}
+
+	}
+
+</script>
+</html>

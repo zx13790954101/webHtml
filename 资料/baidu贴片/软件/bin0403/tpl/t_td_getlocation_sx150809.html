@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>over pic</title>
+    <script type="text/javascript" src="http://api.tianditu.gov.cn/api?v=4.0&tk=9b22a22569953f89bfeceed422c0b52f"></script>
+<style>
+	#mapDiv{float:left; height:100%; width:86%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+	#cust_var {float:right; height:100%; width:13%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+
+</style>
+
+    <script>
+        //var map;
+        var zoom = 12;
+        function onLoad() {
+            //初始化地图对象
+            map = new T.Map("mapDiv");
+
+            //设置显示地图的中心点和级别
+            map.centerAndZoom(new T.LngLat(119, 36), zoom); // #jd#, #wd# 119, 36
+            //允许鼠标滚轮缩放地图
+            map.enableScrollWheelZoom();
+			var imageURL = 'border.png'; // sys/images/border.png
+					
+            //创建自定义图层对象
+            var lay = new T.TileLayer(imageURL, {minZoom: 1, maxZoom: 18});
+            //将图层增加到地图上
+            map.addLayer(lay);
+        }
+
+		function showInfo(event){
+			var lnglat = event.lnglat,
+				lat = lnglat.getLat().toFixed(5),
+				lng = lnglat.getLng().toFixed(5);
+
+			var zoomLevel = map.getZoom();
+			clipboardData.setData("text",  "jwd:" + lng + "," + lat + ";pmzb:0.0,0.0;level:" +  zoomLevel);
+			alert(lng + ' ' + lat + ' 当前级别：' + zoomLevel );
+		}
+
+    </script>
+</head>
+<body onLoad="onLoad()">
+<div id="mapDiv"></div>
+
+</body>
+</html>

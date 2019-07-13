@@ -1,0 +1,9 @@
+function showInfo(e){
+  var projection = this.getMapType().getProjection();
+  var lngLat = e.point;  
+  var lngLatStr = "经纬度:" + lngLat.lng + ", " + lngLat.lat + ";级别:" + zooma;
+  var worldCoordinate = projection.lngLatToPoint(lngLat);
+  var worldCoordStr = "平面坐标：" + worldCoordinate.x + ", " + worldCoordinate.y;
+  window.clipboardData.setData('text',  "jwd:" + lngLat.lng + "," + lngLat.lat + ";pmzb:" + worldCoordinate.x + "," + worldCoordinate.y);
+}
+map.addEventListener("click", showInfo);

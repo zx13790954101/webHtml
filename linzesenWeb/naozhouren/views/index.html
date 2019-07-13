@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="//linkben.com/assets/plugin/linzesen/linzesen.css">
   <link rel="stylesheet" href="../src/index.css" />
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
+  <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
   </script>
   <title>首页,硇洲岛指南</title>
@@ -13,6 +14,26 @@
 
 <body>
   <section class="main-container  ">
+    <!-- 搜索框 -->
+    <form class="tool-bar head-form col-xs-12">
+      <article class="form-item flex-c">
+        <input type="text" class="init-address" max="">
+        <button class="search-btn">搜索</button>
+      </article>
+      <!-- 搜索框的详情的内容 -->
+      <article class="flex-item poidetail flex-c">
+        <span class="flex-item">
+          <h3 class="poi-name">暂无姓名</h3>
+        </span>
+        <span class="poi-btn-array">
+          <button class="to-address">到这去</button>
+        </span>
+        <div class="more-content">
+
+        </div>
+      </article>
+    </form>
+    <!-- 地图的div -->
     <div id="allmap"></div>
   </section>
 </body>

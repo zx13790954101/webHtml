@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>地图显示范围</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <style>
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .lnglat {
+      color: #0288d1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <div class="info">
+    <h4>地图限制区域信息</h4>
+    <p>NorthEast坐标：<span id="ne" class="lnglat"></span></p>
+    <p>SouthWest坐标：<span id="sw" class="lnglat"></span></p>
+  </div>
+  <div class="input-card" style="width:14rem;">
+    <h4>限制地图显示范围</h4>
+    <div class="input-item">
+      <button class="btn" id="lock-bounds">限定地图显示范围</button>
+    </div>
+    <div class="input-item">
+      <button class="btn" id="unlock-bounds">取消地图显示限制</button>
+    </div>
+  </div>
+  <script src="https://webapi.amap.com/maps?v=1.4.15&key=15df44e41411723025c46d40030ebea7"></script>
+  <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+  <script>
+    //创建地图
+    var map = new AMap.Map('container', {
+      resizeEnable: true,
+      zoom: 13,
+      center: [110.5974065, 20.903798], //初始地图中心点
+      showIndoorMap: false
+    });
+
+    function logMapInfo() {
+      var limitBounds = map.getLimitBounds();
+      if (limitBounds) {
+        document.querySelector("#ne").innerText = limitBounds.northeast.toString();
+        document.querySelector("#sw").innerText = limitBounds.southwest.toString();
+      } else {
+        document.querySelector("#ne").innerText = document.querySelector("#sw").innerText = "未限定";
+      }
+    }
+
+    //限制地图显示范围
+    function lockMapBounds() {
+      var bounds = map.getBounds();
+      map.setLimitBounds(bounds);
+      logMapInfo();
+    }
+
+    //取消地图显示限制
+    function unlockMapBounds() {
+      map.clearLimitBounds();
+      logMapInfo();
+    }
+
+    //启用地图范围限定
+    lockMapBounds();
+    logMapInfo();
+
+    //绑定按钮事件
+    document.querySelector("#lock-bounds").onclick = lockMapBounds;
+    document.querySelector("#unlock-bounds").onclick = unlockMapBounds;
+  </script>
+</body>
+
+</html>

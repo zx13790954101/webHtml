@@ -1,0 +1,30 @@
+	var data_info = [
+#g2_arr_jwd_text#
+			];
+	var opts = {
+				width : 300,    
+				height: 150,    
+				title : "" ,
+				enableMessage:true
+			   };
+	for(var i=0;i<data_info.length;i++){
+	    //var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(150,100));
+		var label = new BMap.Label(data_info[i][2],{offset:new BMap.Size(20,-10)});
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));
+		marker.setLabel(label);
+		var content =  "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>" + data_info[i][2] + "</h4>"  +
+				"<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>"+data_info[i][3]+"</p>";
+		map.addOverlay(marker);               
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  
+		map.openInfoWindow(infoWindow,point); 
+	}

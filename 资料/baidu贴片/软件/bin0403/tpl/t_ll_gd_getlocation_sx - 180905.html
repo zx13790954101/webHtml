@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://www.1hwj.net/down/leaflet/leaflet.css">
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		#map {
+			float:left;width: 90%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";
+		}
+		#cust_var {float:left;width: 10%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>    
+	
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+	<script type="text/javascript" src='http://www.1hwj.net/down/leaflet/leaflet.ChineseTmsProviders.js'></script>
+
+</head>
+
+<body>
+    <div id='map'></div>
+	<div id="cust_var">
+		 经度：<br>
+		<input id="longitude" type="text" name="lng" value="116.39"><br>
+		 纬度：<br>
+		<input id="latitude" type="text" name="lat" value="39.9"><br><br>
+		<input type="submit" value="提交" onclick="custinfo()">
+	</div>
+
+</body>
+<script type="text/javascript">
+	var normalm = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+	var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+	var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+		maxZoom: 21,
+		minZoom: 2
+	});
+
+	L.TileLayer.T = L.TileLayer.extend({
+		getTileUrl: function(coords) {
+			return 'sys/images/border.png'; 
+		}
+	});
+
+	L.tileLayer.t = function() {
+		return new L.TileLayer.T();
+	}
+
+	var normal = L.layerGroup([normalm, L.tileLayer.t()]),
+		image = L.layerGroup([imgm, imga, L.tileLayer.t()]);
+
+	var baseLayers = {
+		"地图": normal,
+		"影像": image,
+	}
+
+	var map = L.map("map", {
+		center: [#wd#, #jd#], //39.9, 116.39
+		zoom: 14,
+		layers: [normal],
+		zoomControl: false
+	});
+
+	L.control.layers(baseLayers, null).addTo(map);
+	L.control.zoom({
+		zoomInTitle: '放大',
+		zoomOutTitle: '缩小'
+	}).addTo(map);
+
+	L.TileLayer.T = L.TileLayer.extend({
+		getTileUrl: function(coords) {
+			return 'sys/images/border.png'; 
+		}
+	});
+
+	L.tileLayer.t = function() {
+		return new L.TileLayer.T();
+	}
+
+	map.addLayer( L.tileLayer.t() );
+
+
+	map.on('click', function(ev) {
+		var wd = ev.latlng.lat;
+		var jd = ev.latlng.lng; 
+		clipboardData.setData("text",  "jwd:" + jd + "," + wd + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+		alert( jd + "," + wd + ",当前级别:" + map.getZoom());
+	});
+
+	function custinfo(){
+		if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+			//map.clearOverlays(); 
+			var lng = document.getElementById("longitude").value;
+			var lat = document.getElementById("latitude").value;
+			var latlng = L.latLng(lat, lng);
+			
+			var point = L.point(lat, lng);
+
+			L.marker(latlng).addTo(map); //39.9, 116.39
+			map.panTo(latlng); //L.latLng(lat, lng)
+
+			//var lngLatStr = "--经纬度:" + point.x + ", " + point.y + ";级别:18";
+			clipboardData.setData("text",  "jwd:" + lng + "," + lat + ";pmzb:0.0,0.0;level:" +  map.getZoom());
+			//clipboardData.setData("text",  "jwd:");
+
+			alert(lng + "," + lat + ',当前级别:' + map.getZoom() + 'ok! 坐标输入完成，您现在可以关闭当前窗口。');
+		}
+	}
+
+</script>
+
+</html>

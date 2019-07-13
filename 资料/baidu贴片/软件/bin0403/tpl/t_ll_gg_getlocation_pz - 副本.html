@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://www.1hwj.net/down/leaflet/leaflet.css">
+    <style type="text/css">
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    html,
+    body,
+    #map {
+        height: 100%;
+    }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    <script type="text/javascript" src='http://www.1hwj.net/down/leaflet/leaflet.ChineseTmsProviders.js'></script>
+</head>
+
+<body>
+    <div id='map'></div>
+</body>
+<script type="text/javascript">
+	var normalMap = L.tileLayer.chinaProvider('Google.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 5
+    }),
+    satelliteMap = L.tileLayer.chinaProvider('Google.Satellite.Map', {
+        maxZoom: 18,
+        minZoom: 5
+    });
+
+var baseLayers = {
+    "地图": normalMap,
+    "影像": satelliteMap,
+}
+
+var overlayLayers = {
+
+}
+
+	var map = L.map("map", {
+		center: [39.9, 116.39],
+		zoom: 12,
+		layers: [normal],
+		zoomControl: false
+	});
+
+	L.control.layers(baseLayers, null).addTo(map);
+	L.control.zoom({
+		zoomInTitle: '放大',
+		zoomOutTitle: '缩小'
+	}).addTo(map);
+
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="天地图"/>
+    <title>覆盖</title>
+    <script type="text/javascript" src="http://api.tianditu.com/api?v=4.0"></script>
+    <script>
+        var map;
+        var zoom = 12;
+        function onLoad() {
+            //初始化地图对象
+            map = new T.Map("mapDiv");
+            //设置显示地图的中心点和级别
+            map.centerAndZoom(new T.LngLat(#jd#, #wd#), zoom);
+            //允许鼠标滚轮缩放地图
+            map.enableScrollWheelZoom();
+
+//			var imageURL = 'sys/images/border.png';
+//            var lay = new T.TileLayer(imageURL,{minZoom:1,maxZoom:18});
+//            map.addLayer(lay);
+
+			map.addEventListener("click",showInfo);
+        }
+
+		function showInfo(event){
+			var lnglat = event.lnglat,
+				lat = lnglat.getLat().toFixed(5),
+				lng = lnglat.getLng().toFixed(5);
+
+			var zoomLevel = map.getZoom();
+			clipboardData.setData("text",  "jwd:" + lng + "," + lat + ";pmzb:0.0,0.0;level:" +  zoomLevel);
+			alert(lng + ' ' + lat + ' 当前级别：' + zoomLevel );
+		}
+
+    </script>
+</head>
+<body onLoad="onLoad()">
+<div id="mapDiv" style="position:absolute;width:100%; height:100%"></div>
+
+</body>
+</html>

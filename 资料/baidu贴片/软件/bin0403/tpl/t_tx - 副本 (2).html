@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>tengxun</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body, button, input, select, textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            width: 603px;
+            padding-top: 3px;
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 100px;
+            height: 26px
+        }
+        #container {
+           min-width:603px;
+           min-height:767px;
+        }
+    </style>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script>
+        var map;
+        function init() {
+            var earthlayer = new qq.maps.ImageMapType({
+                name: 'tentxun',
+                alt: 'tentxun',
+                tileSize: new qq.maps.Size(256, 256),
+                minZoom: #minZoom#,
+                maxZoom: #maxZoom#,
+                opacity: 1,
+                getTileUrl: function (tile, zoom) {
+                    var z = zoom,
+                            x = tile.x,
+                            y = tile.y;
+					return 'tiles/' + z + '/' + x + '_' + y + '.#ext#';
+                }
+
+            });
+
+            map = new qq.maps.Map(document.getElementById("container"), {
+                center: new qq.maps.LatLng(#center_y#, #center_x#),
+                zoom: #defaultZoom#
+            });
+            map.overlayMapTypes.push(earthlayer);
+
+        }
+    </script>
+</head>
+<body onload="init();">
+<div id="container"></div>
+<span id="info"></span>
+</body>
+</html>
