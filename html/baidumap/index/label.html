@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    html {
+      height: 100%
+    }
+
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px
+    }
+
+    #main {
+      height: 100%
+    }
+
+    .circle-marker {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      background: #c00;
+      border-radius: 50%;
+      opacity: .7
+    }
+  </style>
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=Ls1zIpQI8SB8bi46cSGieAYLHYeyHzfW"></script>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script>
+    var map = new BMap.Map("main", {
+      enableMapClick: false
+    }); // 创建地图实例
+    var point = new BMap.Point(116.400551, 39.893524); // 创建点坐标
+    var point2 = new BMap.Point(116.400551, 39.964534)
+    map.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
+
+    map.enableScrollWheelZoom()
+    map.addControl(new BMap.ScaleControl({
+      anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+    }))
+    // 圆形覆盖物
+    function customOverlay(point) {
+      this.point = point
+    }
+    customOverlay.prototype = new BMap.Overlay()
+    // 初始化，设置覆盖物形状
+    customOverlay.prototype.initialize = function () {
+      var div = this.div = document.createElement('div')
+      div.className = 'circle-marker'
+      map.getPanes().labelPane.appendChild(div)
+    }
+    // 覆盖物的位置
+    customOverlay.prototype.draw = function () {
+      var p = map.pointToOverlayPixel(this.point)
+      this.div.style.left = p.x - 45 + 'px'
+      this.div.style.top = p.y - 45 + 'px'
+    }
+
+    var marker = new BMap.Marker(point)
+    map.addOverlay(marker)
+    var marker2 = new customOverlay(point2)
+    map.addOverlay(marker2)
+
+    marker.addEventListener('click', function () {
+      console.log('点击了预设覆盖物')
+    })
+
+    marker2.addEventListener('click', function () {
+      console.log('点击了自定义覆盖物')
+    })
+  </script>
+</body>
+
+</html>

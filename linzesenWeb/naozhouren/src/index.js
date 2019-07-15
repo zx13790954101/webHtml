@@ -1,9 +1,10 @@
+var map = null;
 var active = {
   init: function () {
     active.baiduMap();
   },
   baiduMap: function () {
-    window.BMap = BMap
+
     // var tileLayer = new BMap.TileLayer({
     //   isTransparentPng: true
     // });
@@ -14,22 +15,28 @@ var active = {
     //   return /*dir*/ 'tiles/' + zoom + '/' + x + '_' + y + '.png'; //
     // }
 
-    var map = new BMap.Map('allmap', {
+    map = new BMap.Map('allmap', {
       minZoom: 14,
       maxZoom: 22
     });
+    window.BMap = BMap
     // map.addTileLayer(tileLayer);
     //map.addControl(new BMap.NavigationControl());
     map.centerAndZoom(new BMap.Point(110.597205, 20.902689), 14);
     map.enableScrollWheelZoom();
-    var b = new BMap.Bounds(new BMap.Point(110.597205, 20.902689), new BMap.Point(110.597205, 20.902689));
-    try {
-      BMapLib.AreaRestriction.setBounds(map, b);
-    } catch (e) {
-      alert(e);
-    }
+    //设置可以显示的范围
+    // var b = new BMap.Bounds(new BMap.Point(110.597205, 20.902689), new BMap.Point(110.597205, 20.902689));
+    // try {
+    //   BMapLib.AreaRestriction.setBounds(map, b);
+    // } catch (e) {
+    //   alert(e);
+    // }
     active.getLocation();
-
+    var markerArray = [{
+      longitude: '110.5724540000',
+      latitude: '20.8940390000'
+    }]
+    active.addMarker(markerArray);
     // var geolocation = new BMap.Geolocation();
     // geolocation.getCurrentPosition(function (r) {
     //   if (this.getStatus() == BMAP_STATUS_SUCCESS) {
@@ -75,9 +82,76 @@ var active = {
     }
   },
   //数据监听
+  //添加marker 覆盖物
+  addMarker: function (array) {
+    let backData = [];
+    $(array).each(function (index, item) {
+      let itemData = null;
+      var myIcon = new BMap.Icon("http://api0.map.bdimg.com/images/marker_red_sprite.png", new BMap.Size(50, 50));
+
+      let marker = new BMap.Marker(new BMap.Point('110.562173', '20.902287'), {
+        icon: myIcon
+      }); // 创建点
+
+
+      var label = new BMap.Label("2", {
+        offset: new BMap.Size(5, 4)
+      });
+      label.setStyle({
+        background: 'none',
+        color: 'red',
+        border: 'none' //只要对label样式进行设置就可达到在标注图标上显示数字的效果
+      });
+      marker.setLabel(label); //显示地理名称 a 
+      map.addControl(new BMap.ScaleControl({
+        anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+      }))
+      // 圆形覆盖物
+      function customOverlay(point) {
+        this.point = point
+      }
+      customOverlay.prototype = new BMap.Overlay()
+      // 初始化，设置覆盖物形状
+      customOverlay.prototype.initialize = function () {
+        var div = this.div = document.createElement('div')
+        var childDiv = document.createElement('img');
+        childDiv.src = "http://127.0.0.1:5500/linzesenWeb/naozhouren/src/hua.png"
+        childDiv.className = 'circle-marker-child'
+        div.appendChild(childDiv);
+        div.className = 'circle-marker'
+        map.getPanes().labelPane.appendChild(div)
+      }
+      // 覆盖物的位置
+      customOverlay.prototype.draw = function () {
+        var p = map.pointToOverlayPixel(this.point)
+        this.div.style.left = p.x - 35 + 'px'
+        this.div.style.top = p.y - 35 + 'px'
+      }
+      var point2 = new BMap.Point(item.longitude, item.latitude)
+      var marker2 = new customOverlay(point2)
+      map.addOverlay(marker2);
+      //   map.addOverlay(marker);
+      marker2.addEventListener('click', function () {
+        console.log('点击了自定义覆盖物')
+      });
+      //设置第二个地点
+      var point3 = new BMap.Point("110.563879", "20.900497");
+      let marker3 = new BMap.Marker(point3);
+      map.addOverlay(marker3);
+      map.addOverlay(marker);
+      marker.addEventListener("click", active.markerListen);
+      marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    });
+  },
+  //marker的点击事件
+  markerListen: function (e) {
+    console.log("markerListen", e);
+  }
 
 
 };
+
+
 
 var getLocation = {
   //浏览器原生获取经纬度方法  
