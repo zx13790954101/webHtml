@@ -1,0 +1,32 @@
+.app-box {
+  position: relative;
+  background-color: #4a90e2;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-logo {
+  height: 30rem;
+}
+
+.main-logo img {
+  opacity: 0.15;
+}
+
+.text-box {
+  color: white;
+  position: absolute;
+  font-family: cursive;
+  font-weight: 600;
+}
+
+.text-box span {
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0.7;
+  font-family: cursive;
+  margin-top: 5px;
+  font-weight: 400;
+}
