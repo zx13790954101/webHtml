@@ -50,6 +50,7 @@
   background-color: white;
   height: 40px;
   line-height: 40px;
+  width: 100%;
 }
 
 .init-address:focus {

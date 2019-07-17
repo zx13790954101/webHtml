@@ -12,7 +12,7 @@
   background-color: white;
   width: auto;
   min-width: 200px;
-  left: 20px;
+  left: 8%;
   top: 2%;
   position: absolute;
   box-sizing: border-box;
@@ -60,7 +60,6 @@
 .init-address {
   box-shadow: none;
   border: 0px;
-  width: 100%;
 }
 
 .right-bar {
@@ -131,25 +130,16 @@
 
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
-  .head-form {
-    width: 96%;
-    left: 2%
-  }
-
   .right-bar {
     background: #fff;
     color: #333;
     display: inline-block;
     width: auto;
-    min-width: 0.5rem;
-    top: 10rem;
   }
 
   .right-bar li {
-    display: block;
-    padding: 10px 0px;
-    width: 60px;
-    border-left: 0px #dbdee2 dashed;
+    width: 100%;
+    display: -block;
   }
 
   .right-bar span {
@@ -157,20 +147,10 @@
   }
 
   .right-bar img {
-    height: 2.8rem;
     display: inline-block;
   }
 
   .right-bar i {
     display: none;
   }
-}
-
-/* 百度地图的样式修改 */
-.BMap_cpyCtrl {
-  display: none;
-}
-
-.anchorBL {
-  display: none;
 }
