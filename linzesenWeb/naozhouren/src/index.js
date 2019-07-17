@@ -144,8 +144,8 @@ var active = {
     $(array).each(function(index, item) {
       let itemData = null
       var myIcon = new BMap.Icon(
-        'http://api0.map.bdimg.com/images/marker_red_sprite.png',
-        new BMap.Size(50, 50)
+        'http://127.0.0.1:8020/webHtml/linzesenWeb/naozhouren/src/icon/jw.png',
+        new BMap.Size(23, 35)
       )
 
       let marker = new BMap.Marker(new BMap.Point('110.562173', '20.902287'), {
