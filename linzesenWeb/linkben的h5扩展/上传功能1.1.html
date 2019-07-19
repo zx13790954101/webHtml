@@ -11,20 +11,16 @@
 	</head>
 
 	<body>
-
-		<div class="lzs-item  upload-box    ">
-          
-		  
-		       <div  class="show-upload-p">
-			  	<div class="flex-c  top-header">
+	    <header class="flex-c  top-header">
 			  	<h3 class="flex-item head-title">网页展示<span class="h5" style="padding:0px 5px">调整图片位置</span></h3>
 			  	<h2 onclick="createDom()" class="button create_dom">点击确认完成</h2>
 			  	 
-			  </div>
-			  <!--	<img id="img3"> -->
+	    </header>
+			  
+		<section class="lzs-item  upload-box">
 			  <div class="analog-box ">
 			     
-				 
+				
 			      <div class="mult-full ">
 			  		 <ul class="mult-full-ul" id="phone-box-ul">
 			  		 </ul> 
@@ -45,33 +41,27 @@
 			  	</div>
 			 
 			  </div>
-			  
-			</div>  
-		
-         
-			<div class="bottom-fun">
-				<div class="flex-c bottom-header">
-	              <div class="input-file  " style="margin: 5px 0px;">
-				  	<input name="file" type="file" class="multiple" multiple="multiple" />
-					<span class="name white">+点击选择文件</span>
-				  </div>
-				  <span class="flex-item"></span>
-				   <button class="btn mult-full-btn address-href"></button>
-				   
-				   
-				  <!--<div class="flex-item  flex-r">
-				  		<h2 onclick="toDialog()" class="button create_dom">预览</h2>
-				  </div>-->
-	           </div>
-				<ul class="mult-img row flex-c">
-				</ul>
-			</div>
-			
-			
-		</div>
+	
+		</section>
 
 
-
+        <nav class="bottom-fun">
+			<div class="flex-c bottom-header">
+              <div class="input-file  " style="margin: 5px 0px;">
+			  	<input name="file" type="file" class="multiple" multiple="multiple" />
+				<span class="name white">+点击选择文件</span>
+			  </div>
+			  <span class="flex-item"></span>
+			   <button class="btn mult-full-btn address-href"></button>
+			   
+			   
+			  <!--<div class="flex-item  flex-r">
+			  		<h2 onclick="toDialog()" class="button create_dom">预览</h2>
+			  </div>-->
+           </div>
+			<ul class="mult-img row flex-c">
+			</ul>
+		</nav>
 		<!--<div class="lzs-item margin-20">
 			<div class="input-file">
 				<input name="file" type="file" class="file" />
@@ -80,8 +70,8 @@
 		</div>-->
 
 		<div id="res"></div>
-        <div class="load-box   " ><i class="layui-icon-loading  pos-a-c"></i> </div>
-        
+        <!--<div class="load-box   " ><i class="layui-icon-loading  pos-a-c"></i> </div>
+        -->
 		<script type="text/javascript " src="../../plugin/jquery/jquery.min.js" charset="utf-8"></script>
 		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<script src="../../plugin/jquery/jquery.ui.touch-punch.min.js"></script>
@@ -227,6 +217,8 @@
 					//  var context = canvas.getContext("2d");
 					//  context.translate(0,0);
 					var context = canvas2.getContext("2d");
+					//canvas2.getContext("2d").translate()
+					context.translate()
 					context.scale(2, 2);
 
 					html2canvas(document.querySelector('.mult-full-ul'), { //  canvas: context, //自定义 canvas
