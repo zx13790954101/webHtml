@@ -1,12 +1,9 @@
-//2019/7/16/8:47
-//https://www.cnblogs.com/RiseSoft/p/7979637.html
-//https://www.cnblogs.com/yaotome/p/8877551.html
-//https://www.haolizi.net/example/view_18540.html
-
 var map = null
 var active = {
   init: function() {
-    active.baiduMap()
+    active.baiduMap();
+    //百度自带的搜索功能
+    active.getSearchTip();
   },
   baiduMap: function() {
     // var tileLayer = new BMap.TileLayer({
@@ -35,7 +32,7 @@ var active = {
     // } catch (e) {
     //   alert(e);
     // }
-    active.getLocation()
+    //active.getLocation()
     var markerArray = [
       {
         longitude: '110.5724540000',
@@ -200,15 +197,69 @@ var active = {
       let marker3 = new BMap.Marker(point3)
       map.addOverlay(marker3)
       map.addOverlay(marker)
+      //标注点的点击事件
       marker.addEventListener('click', active.markerListen)
-      marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
+// /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
     })
   },
   //marker的点击事件
   markerListen: function(e) {
-    console.log('markerListen', e)
+    console.log('markerListen', e);
+  },
+  //百度原生的搜索框输入提示
+  //name 搜索框的class
+  getSearchTip: function(classname){
+  	var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+			{"input" : "suggestId"
+			,"location" : map
+	  });
+	  ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+		  var str = "";
+			var _value = e.fromitem.value;
+			var value = "";
+			if (e.fromitem.index > -1) {
+				value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			}    
+			str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+			
+			value = "";
+			if (e.toitem.index > -1) {
+				_value = e.toitem.value;
+				value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			}    
+			str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+			G("searchResultPanel").innerHTML = str;
+		});
+		var myValue;
+		ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+		var _value = e.item.value;
+			myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+			
+			setPlace();
+		});
   }
 }
+
+//百度地图API功能-搜索功能-getSearchTip
+function setPlace(){
+		map.clearOverlays();    //清除地图上所有覆盖物
+		function myFun(){
+			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+			map.centerAndZoom(pp, 18);
+			map.addOverlay(new BMap.Marker(pp));    //添加标注
+		}
+		var local = new BMap.LocalSearch(map, { //智能搜索
+		  onSearchComplete: myFun
+		});
+		local.search(myValue);
+	}
+// 百度地图API功能-搜索功能
+function G(id) {
+	return document.getElementById(id);
+}
+
+
 
 var getLocation = {
   //浏览器原生获取经纬度方法
