@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  background-image: url('../../../src/main.jpg');
 }
 
 .main-logo {
@@ -29,4 +30,12 @@
   font-family: cursive;
   margin-top: 5px;
   font-weight: 400;
+}
+img.logo-test{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	opacity: 1;
+	height: 9rem;
 }
