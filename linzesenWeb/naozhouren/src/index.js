@@ -176,7 +176,7 @@ var active = {
         var div = (this.div = document.createElement('div'))
         var childDiv = document.createElement('img')
         childDiv.src =
-          'http://127.0.0.1:5500/linzesenWeb/naozhouren/src/hua.png'
+          '../src/hua.png'
         childDiv.className = 'circle-marker-child'
         div.appendChild(childDiv)
         div.className = 'circle-marker'
