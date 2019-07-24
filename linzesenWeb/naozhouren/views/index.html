@@ -3,7 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_1ai584ov7rqi.css">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_dr4t0cdjsjg.css">
   <link rel="stylesheet" href="//linkben.com/assets/plugin/linzesen/linzesen.css">
 	<!--<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">-->
   <link rel="stylesheet" href="../src/index.css" />
@@ -26,7 +28,7 @@
     <form class="tool-bar head-form ">
       <article class="form-item flex-c search-box">
         <input type="text" class="init-address" max="" size="25" id="suggestId">
-      <!--  <i class="back-btn iconfont icon-guanbi"></i>-->
+        <i class="back-btn iconfont icon-guanbi2"></i>
         <i class="search-btn iconfont icon-sousuo"></i>
       </article>
       <!-- 搜索框的详情的内容 -->
@@ -42,6 +44,17 @@
         	  	 <span ></span>
         	  </div>
             <ul class="img-array">
+            	<li class="flex">
+            		
+            		<span class="flex-item">
+            			<h4  class="name">1.name</h4>
+            			<p class="evaluate">*****</p>
+            			<h6>介绍:广东省最好吃的东西</h6>
+            		</span>
+            		<div class="img-h">
+            			<img class="" src="../src/hua.png">
+            		</div>
+            	</li>
             	<li class="flex">
             		
             		<span class="flex-item">
@@ -83,6 +96,8 @@
     <div id="allmap"></div>
   </section>
 </body>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="../../../plugin//jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../src/index.js"></script>
 <script type="text/javascript">
