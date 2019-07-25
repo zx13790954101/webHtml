@@ -4,6 +4,7 @@ var active = {
 		active.baiduMap();
 		//百度自带的搜索功能
 		active.getSearchTip();
+		active.searchBackBtn();
 	},
 	baiduMap: function() {
 		// var tileLayer = new BMap.TileLayer({
@@ -271,11 +272,40 @@ var active = {
 			setPlace();
 		});
 	},
-  //搜索框的关闭按钮  
-  searchBackBtn:function(){
-  },
-  	
-
+    //搜索框的关闭按钮  
+    searchBackBtn:function(){
+    	let window_w=$(Window).width();
+    	if(window_w<=560){
+    		$(".tool-bar").removeClass("default-bar");
+    		$(".right-bar").removeClass("default-bar");
+    		return;
+    	}
+    	//关闭按钮
+    	$(".back-btn").click(function(){
+    		$(".poidetail").fadeOut();
+    	});
+    	//搜索框获取焦点功能
+    	$("#suggestId").focus(function(){
+    		$(".tool-bar").removeClass("default-bar");
+    		$(".right-bar").removeClass("default-bar");
+    	});
+    	//搜索框获取焦点功能
+    	$("#suggestId").blur(function(){
+    	
+    		if($("#suggestId")[0].value==""){
+    			$(".tool-bar").addClass("default-bar");
+    			$(".right-bar").addClass("default-bar");
+    		}
+    	});
+    	//搜索框获取焦点功能
+    	$("#allmap").click(function(){
+    		if($("#suggestId")[0].value==""){
+    			$(".tool-bar").addClass("default-bar");
+    			$(".right-bar").addClass("default-bar");
+    		}
+    	});
+    	
+    },
 }
 
 //百度地图API功能-搜索功能-getSearchTip
@@ -294,6 +324,40 @@ function setPlace() {
 // 百度地图API功能-搜索功能
 function G(id) {
 	return document.getElementById(id);
+}
+
+
+//天气的情况，
+//变化地图的样式，天气的动画
+var weather ={
+	init:function(){
+		
+	},
+	//得到天气的api
+	getJson:function(){
+		
+	}
+}
+
+//轮播图的初始化
+var swiper={
+	init:function(){
+		swiper.headSwiper();
+	},
+	headSwiper:function(){
+		  var swiper = new Swiper('.nav-swiper', {
+		            slidesPerView: 1,
+		            direction: 'vertical',
+		            autoplay: true,
+		            speed: 3500,
+		            lazyLoading: true, //启动延迟加载
+		          //  slidesPerColumn: 2, //显示两行
+		           // spaceBetween: 20,
+		            //			      slidesPerGroup: 5,
+		            //			      loop: true,
+		            //			      loopFillGroupWithBlank: true,
+		    });
+	}
 }
 
 var getLocation = {
