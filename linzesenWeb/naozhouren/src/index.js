@@ -306,6 +306,10 @@ var active = {
     	});
     	
     },
+    //导航功能
+    getGps:function(){
+    	
+    },
 }
 
 //百度地图API功能-搜索功能-getSearchTip
