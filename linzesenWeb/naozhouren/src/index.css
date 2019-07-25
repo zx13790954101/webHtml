@@ -166,7 +166,55 @@
   width: 40px;
   text-align: center;
 }
-
+.message-box{
+	position: absolute;
+	right: 15px;
+	top: 120px;
+	height: 60vh;
+	overflow: hidden;
+	    z-index: 1;
+}
+.message-ul{
+	
+}
+.message-back{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	   color: #f90;
+}
+.message-img{
+	width: 8rem;
+	height: 5rem;
+	margin-right: 10px;
+}
+.message-ul li{
+	position: relative;
+	background-color: rgba(0,0,0,0.6);
+    border-radius: 6px;
+    padding: 8px 15px;
+    font-weight: 400;
+        color: #d2ae7c;
+            font-family: Tahoma,Arial,Helvetica,sans-serif;
+}
+.message-box .content{
+	font-weight: 400;
+	    font-family: Tahoma,Arial,Helvetica,sans-serif;
+	    color: #d2ae7c;
+	    line-height: inherit;
+}
+.message-box .content2{
+		font-weight: 400;
+	    font-family: Tahoma,Arial,Helvetica,sans-serif;
+   color: #da8606;
+     line-height: inherit;
+}
+.message-ul li .name{
+		font-weight: 400;
+	    font-family: Tahoma,Arial,Helvetica,sans-serif;
+	     color: #f90;
+	       line-height: inherit;
+}
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
   .head-form {

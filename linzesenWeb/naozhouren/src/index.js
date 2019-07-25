@@ -189,7 +189,15 @@ var active = {
 			var marker2 = new customOverlay(point2)
 			map.addOverlay(marker2)
 			//   map.addOverlay(marker); 
-			marker2.addEventListener('click', active.markerListen(point2,'default'));
+			marker2.addEventListener('click',function(){
+					let sContent =
+					"<div class='infoWin_box'><h4 >天安门</h4>" +
+					"<div class='img-w info_windows_img'><img  id='imgDemo' src='../src/1.jpg'   class='' title='天安门'/></div>" +
+					"<p class='content'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" +
+					"</div>";
+				let infoWindow = new BMap.InfoWindow(sContent,point2); // 创建信息窗口对象 
+					map.openInfoWindow(infoWindow, point2);
+			});
 			//设置第二个地点
 			var point3 = new BMap.Point('110.563879', '20.900497')
 			let marker3 = new BMap.Marker(point3)
@@ -202,6 +210,7 @@ var active = {
 	},
 	//marker的点击事件
 	markerListen: function(point,type) {
+			
 		var opts = {
 			width: 250, // 信息窗口宽度
 			height: 80, // 信息窗口高度
@@ -214,8 +223,8 @@ var active = {
 			"<div class='img-w info_windows_img'><img  id='imgDemo' src='../src/1.jpg'   class='' title='天安门'/></div>" +
 			"<p class='content'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" +
 			"</div>";
-		let infoWindow = new BMap.InfoWindow(sContent); // 创建信息窗口对象 
-	
+		let infoWindow = new BMap.InfoWindow(sContent,point); // 创建信息窗口对象 
+
 		if(type=='default') {
 			map.openInfoWindow(infoWindow, point);
 		} else {
