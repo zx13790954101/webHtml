@@ -87,51 +87,37 @@
 					<div class="img-c head-img">
 						<img src="../src/hua.png">
 					</div>
-					<input type="text" class="init-address" max="" size="25" id="suggestId">
-					<i class="back-btn iconfont icon-guanbi2"></i>
+					<input type="text" class="init-address" max="" :value="suggest_value" size="25" id="suggestId">
+				<i class="back-btn iconfont icon-guanbi2"></i>
 					<i class="search-btn iconfont icon-sousuo"></i>
+					<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 				</article>
-				<!-- 搜索框的详情的内容 -->
-				<article class="flex-item poidetail flex-c">
-					<!--<span class="flex-item">
-          <h3 class="poi-name">暂无姓名</h3>
-        </span>
-        <span class="poi-btn-array">
-          <button class="to-address">到这去</button>
-        </span>-->
-					<div class="more-content">
-						<div>
-							<span></span>
-						</div>
-						<ul class="img-array">
-							<!--<li class="flex">
 
-								<span class="flex-item">
-            			<h4  class="name">1.name</h4>
-            			<p class="evaluate">*****</p>
-            			<h6>介绍:广东省最好吃的东西</h6>
-            		</span>
+				<!-- 搜索框的详情的内容 -->
+				<article class="flex-item poidetail flex-c" >
+					<div class="path-box">
+						 
+					</div>
+        
+					<div class="more-content" id="r-result">
+						<!--<ul class="img-array">
+							<li class="flex">
+                                <span class="flex-item">
+			            			<h4  class="name">1.name</h4>
+			            			<p class="evaluate">*****</p>
+			            			<h6>介绍:广东省最好吃的东西</h6>
+			            		</span>
 								<div class="img-h">
 									<img class="" src="../src/hua.png">
 								</div>
 							</li>
-							<li class="flex">
-
-								<span class="flex-item">
-            			<h4  class="name">1.name</h4>
-            			<p class="evaluate">*****</p>
-            			<h6>介绍:广东省最好吃的东西</h6>
-            		</span>
-								<div class="img-h">
-									<img class="" src="../src/hua.png">
-								</div>
-							</li>-->
-						</ul>
+						</ul>-->
 					</div>
+					
 				</article>
 			</form>
 
-			<ul class="flex-c ul-array right-bar default-bar">
+			<ul class="flex-c ul-array right-bar default-bar" >
 				<li class="active">
 					<img src="../src/icon/recreation.png">
 					<i class="iconfont icon-weibiaoti1"></i>
@@ -159,6 +145,8 @@
 				<div id="allmap"></div>
 			</section>
 
+            <!--移动端的背景-->
+            <section class="mobile-bg"></section>
 			<footer class="">
 				<div class="footer-info   center container  ">
 					<span class="col-xs-0">© 2010- 2018 · All Rights Reserved ·
@@ -167,8 +155,7 @@
 					<span> 粤ICP备15117005号-1 版权所有 © 连接基本信息有限公司</span>
 				</div>
 			</footer>
-			
-			
+
 		</div>
 
 	</body>
@@ -192,7 +179,9 @@
 			el: '#app',
 			data: function() {
 				return {
-					visible: false
+					visible: false,
+					ifSearch:false,
+					suggest_value:'',
 				}
 			}
 		})

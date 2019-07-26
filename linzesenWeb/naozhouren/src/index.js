@@ -1,10 +1,14 @@
-var map = null
+var map = null;
 var active = {
 	init: function() {
 		active.baiduMap();
 		//百度自带的搜索功能
-		active.getSearchTip();
+		//active.getSearchTip();
 		active.searchBackBtn();
+		var window_w=$(Window).width();
+		if(window_w<=560){
+			$('.mobile-bg').fadeIn();
+    	}
 	},
 	baiduMap: function() {
 		// var tileLayer = new BMap.TileLayer({
@@ -16,15 +20,20 @@ var active = {
 		//   var y = tileCoord.y;
 		//   return /*dir*/ 'tiles/' + zoom + '/' + x + '_' + y + '.png'; //
 		// }
-
+       let window_w=$(Window).width();
+       var  zindex=14;
+    	if(window_w<=560){
+    		zindex=13
+    	}
+    	
 		map = new BMap.Map('allmap', {
-			minZoom: 14,
+			minZoom: zindex,
 			maxZoom: 22
 		})
 		window.BMap = BMap
 		// map.addTileLayer(tileLayer);
 		//map.addControl(new BMap.NavigationControl());
-		map.centerAndZoom(new BMap.Point(110.597205, 20.902689), 14)
+		map.centerAndZoom(new BMap.Point(110.597205, 20.902689), zindex)
 		map.enableScrollWheelZoom()
 		//设置可以显示的范围
 		// var b = new BMap.Bounds(new BMap.Point(110.597205, 20.902689), new BMap.Point(110.597205, 20.902689));
@@ -247,6 +256,7 @@ var active = {
 				"location": map
 			});
 		ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+		
 			var str = "";
 			var _value = e.fromitem.value;
 			var value = "";
@@ -271,19 +281,48 @@ var active = {
 
 			setPlace();
 		});
+		//百度地图API功能-搜索功能-getSearchTip
+		function setPlace() {
+			map.clearOverlays(); //清除地图上所有覆盖物
+			function myFun() {
+				var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+				map.centerAndZoom(pp, 18);
+				map.addOverlay(new BMap.Marker(pp)); //添加标注
+			}
+			var local = new BMap.LocalSearch(map, { //智能搜索
+				onSearchComplete: myFun
+			});
+			local.search(myValue);
+		}
+		// 百度地图API功能-搜索功能
+		function G(id) {
+			return document.getElementById(id);
+		}
 	},
     //搜索框的关闭按钮  
     searchBackBtn:function(){
+        $(".search-btn").click(function(){
+    
+        	var myKeys= $("#suggestId")[0].value;
+        	var local = new BMap.LocalSearch(map, {
+				renderOptions:{map: map, panel:"r-result"},
+				pageCapacity:4
+			});
+			local.searchInBounds(myKeys, map.getBounds());
+		
+        });
+        	//关闭按钮
+    	$(".back-btn").click(function(){
+    		$(".poidetail").fadeOut();
+    	});
+    	
     	let window_w=$(Window).width();
     	if(window_w<=560){
     		$(".tool-bar").removeClass("default-bar");
     		$(".right-bar").removeClass("default-bar");
-    		return;
+    	    return;
     	}
-    	//关闭按钮
-    	$(".back-btn").click(function(){
-    		$(".poidetail").fadeOut();
-    	});
+    
     	//搜索框获取焦点功能
     	$("#suggestId").focus(function(){
     		$(".tool-bar").removeClass("default-bar");
@@ -305,30 +344,17 @@ var active = {
     		}
     	});
     	
+   
+		
     },
+    
     //导航功能
     getGps:function(){
     	
     },
 }
 
-//百度地图API功能-搜索功能-getSearchTip
-function setPlace() {
-	map.clearOverlays(); //清除地图上所有覆盖物
-	function myFun() {
-		var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
-		map.centerAndZoom(pp, 18);
-		map.addOverlay(new BMap.Marker(pp)); //添加标注
-	}
-	var local = new BMap.LocalSearch(map, { //智能搜索
-		onSearchComplete: myFun
-	});
-	local.search(myValue);
-}
-// 百度地图API功能-搜索功能
-function G(id) {
-	return document.getElementById(id);
-}
+
 
 
 //天气的情况，
