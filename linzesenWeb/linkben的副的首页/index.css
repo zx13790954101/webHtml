@@ -169,7 +169,7 @@ footer  dt{
     }
 }
 .nav-ul li{
-	
+	display: flex;
 }
 .lzs-nav li{
 	min-height: 50px;
