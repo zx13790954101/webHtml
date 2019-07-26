@@ -1,3 +1,8 @@
+.main-wrapper{
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
 .main-container {
   max-height: 100vh;
   height: 100vh;
@@ -8,7 +13,7 @@
 }
 
 .head-form {
-  z-index: 10;
+  z-index: 1;
   background-color: white;
   width: 330px;
   min-width: 250px;
@@ -17,13 +22,14 @@
   position: absolute;
   box-sizing: border-box;
   box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+  webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .poidetail {
-
 }
 .more-content{
-	padding-top: 15px;
 	width: 100%;
 	box-shadow: 0 -2px -2px rgba(0,0,0,.15);
 }
@@ -37,6 +43,14 @@
 	 margin: 0px 15px;
 	 margin-bottom: 10px;
 	 padding-bottom: 10px;
+}
+.more-setting{
+	margin-left: 20px;
+	font-size: ;
+}
+.notice-box .title{
+	max-width: 40%;
+	margin-right: 10px;
 }
 .circle-marker {
   position: absolute;
@@ -62,16 +76,17 @@
 }
 
 .search-box {
-  background-color: white;
-  height: 40px;
-  line-height: 40px;
+  height: 44px;
+  line-height: 44px;
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
   padding: 0px 15px;
+  background-color: white;
 }
 
 .init-address:focus {
-  border: 0px;
-  border-bottom-width: 1px;
+  border: 0px solid white;
+  box-shadow: 0px 0px 0px;
+  border-bottom-width: 0px;
 }
 
 .init-address {
@@ -96,7 +111,7 @@
 }
 
 .notice-box .title {
-  margin: 0px 5px;
+  margin: 0px 15px 0px 5px;
 }
 
 .right-bar {
@@ -104,20 +119,21 @@
   color: #fff;
   background: #fff;
   position: absolute;
-  right: 2%;
+  right: 20px;
   margin: 0px;
   top: 40px;
   width: auto;
   min-width: 34rem;
   z-index: 9;
-  min-height: 40px;
+  min-height: 44px;
   border-radius: 2px 3px 3px 2px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
   font-family: Arial, sans-serif;
   font-size: 1.17rem;
   padding: 8px 0px;
-
-
+  webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .right-bar li {
@@ -129,6 +145,7 @@
   opacity: 0.7;
   border-left: 1px #dbdee2 dashed;
   display: flex;
+  cursor: pointer;
   justify-content: center;
 }
 
@@ -168,9 +185,9 @@
 }
 .message-box{
 	position: absolute;
-	right: 15px;
-	top: 120px;
-	height: 60vh;
+	right: 20px;
+	bottom: 50px;
+	max-height: 60vh;
 	overflow: hidden;
 	    z-index: 1;
 }
@@ -190,12 +207,13 @@
 }
 .message-ul li{
 	position: relative;
-	background-color: rgba(0,0,0,0.6);
-    border-radius: 6px;
-    padding: 8px 15px;
-    font-weight: 400;
-        color: #d2ae7c;
-            font-family: Tahoma,Arial,Helvetica,sans-serif;
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 6px;
+	padding: 8px 15px;
+	margin: 10px 0px;
+	font-weight: 400;
+	color: #d2ae7c;
+	font-family: Tahoma,Arial,Helvetica,sans-serif;
 }
 .message-box .content{
 	font-weight: 400;
@@ -215,13 +233,92 @@
 	     color: #f90;
 	       line-height: inherit;
 }
+.tool-bar.default-bar{
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    background-color: rgba(0,0,0,0);
+    top: 120px;
+    box-shadow: 0px 0px 0px;
+  
+}
+.tool-bar.default-bar .more-content{
+	background-color: white;
+	margin-top: 15px;
+ webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.tool-bar.default-bar .search-box{
+	border-radius: 50px;
+	background-color: rgba(255, 255, 255, 0.5);
+ webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.tool-bar.default-bar input{
+	background-color: rgba(0,0,0,0);
+	height: 50px;
+	 webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.right-bar.default-bar{
+	    left: 50%;
+	    transform: translateX(-50%);
+	    width: 510px;
+	    top: 80px;
+	    background-color: rgba(0,0,0,0);
+	    box-shadow: 0px 0px 0px;
+	   
+}
+footer{
+	position: absolute;
+	bottom: 0px;
+	z-index: 1;
+	left: 0px;
+	width: 100%;
+	background-color: #333;
+}
+.nav-swiper{
+	 height: 14px;
+	 overflow: hidden;
+}
+.head-img{
+	height: 35px;
+	width: 35px;
+	line-height: inherit;
+	border-radius: 40px;
+	min-width: 35px;
+	margin-left: -10px;
+}
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
   .head-form {
     width: 96%;
-    left: 2%
+    box-shadow: none;
+    background-color: rgba(0,0,0,0);
+    left: 2%;
   }
-
+  .init-address{
+  	font-size: 1.5rem;
+  }
+  .footer-info{
+  	padding: 0px;
+  }
+  .message-ul li{
+  	padding: 5px 10px;
+  }
+  .message-img{
+  	width: 4rem;
+  	    height: 2.5rem;
+  }
+	.head-form .search-box{
+		border-radius: 50px;
+		background-color: rgba(255, 255, 255, 0.5);
+		height: 44px;
+		line-height: 44px;
+	}
   .right-bar {
     background: #fff;
     color: #333;
@@ -288,4 +385,7 @@
 }
 .BMap_pop .BMap_bottom{
 	   /* border-bottom: 1px solid #e9e9e9 !important;*/
+}
+.tangram-suggestion-main{
+	z-index: 2;
 }
