@@ -5,7 +5,7 @@ var active = {
 		//百度自带的搜索功能
 		//active.getSearchTip();
 		active.searchBackBtn();
-		var window_w=$(Window).width();
+		var window_w=$(window).width();
 		if(window_w<=560){
 			$('.mobile-bg').fadeIn();
     	}
@@ -20,7 +20,7 @@ var active = {
 		//   var y = tileCoord.y;
 		//   return /*dir*/ 'tiles/' + zoom + '/' + x + '_' + y + '.png'; //
 		// }
-       let window_w=$(Window).width();
+       let window_w=$(window).width();
        var  zindex=14;
     	if(window_w<=560){
     		zindex=13
@@ -319,7 +319,6 @@ var active = {
     	let window_w=$(Window).width();
     	if(window_w<=560){
     		$(".tool-bar").removeClass("default-bar");
-    		$(".right-bar").removeClass("default-bar");
     	    return;
     	}
     
@@ -373,6 +372,7 @@ var weather ={
 var swiper={
 	init:function(){
 		swiper.headSwiper();
+		swiper.newSwiper();
 	},
 	headSwiper:function(){
 		  var swiper = new Swiper('.nav-swiper', {
@@ -387,6 +387,14 @@ var swiper={
 		            //			      loop: true,
 		            //			      loopFillGroupWithBlank: true,
 		    });
+	},
+	//新闻的sweiper
+	newSwiper:function(){
+		 var swiper = new Swiper('.new-swiper', {
+		 	  slidesPerView: 'auto',
+//            spaceBetween: 15,
+              initialSlide:1
+		 });
 	}
 }
 

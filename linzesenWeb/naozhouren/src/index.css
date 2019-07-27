@@ -302,12 +302,63 @@ footer{
 	display: none;
 	height: 100vh;
 	width: 100vw;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 1);
 	position: absolute;
 	top: 0px;
 }
+.new-swiper{
+	display: none;
+}
+.new-swiper .swiper-slide{
+	    background-color: white;
+    padding: 10px;
+    width: 70%;
+    margin-left: 5%;
+    border-radius: 5px;
+}
+.new-swiper .head{
+	
+}
+.new-swiper .img-w{
+	height: 8rem;
+	margin: 10px 0px;
+}
+.new-swiper .btn{
+	min-width: 100px;
+    margin: 5px auto;
+}
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
+	.new-swiper{
+	display: block;
+	height: auto;
+	    position: absolute;
+   top: 220px;
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 15px 0px;
+    
+}
+	.message-box.default{
+		display: none;
+	}
+	.right-bar.default-bar{
+		top: 90px;
+		width: 100%;
+	}
+	.right-bar.default-bar li{
+		
+		width: 25%;
+display: inline-block;
+border: 0px;
+float: left;
+	}
+	.right-bar.default-bar img{
+		height: 2.2rem;
+	}
+	.right-bar.default-bar  span{
+		font-size: 1rem;
+	}
 	.notice-box .title{
 		max-width: 100%;
 		width: 100%;

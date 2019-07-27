@@ -37,8 +37,48 @@
 			<section class="weather-box">
 
 			</section>
+			<section class="swiper-container  new-swiper">
+					<div class="swiper-wrapper">
+						<article class="swiper-slide ">
+							<div class="head flex-c">
+								<h5 class="name flex-item">name</h5>
+								<h6 class="time">time</h6>
+							</div>
+							<div class="img-w">
+								<img src="../src/1.jpg">
+							</div>
+							<div class="btn-array">
+								<button class="btn">更多</button>
+							</div>
+						</article>
+						<article class="swiper-slide ">
+							<div class="head flex-c">
+								<h5 class="name flex-item">name</h5>
+								<h6 class="time">time</h6>
+							</div>
+							<div class="img-w">
+								<img src="../src/1.jpg">
+							</div>
+							<div class="btn-array">
+								<button class="btn">更多</button>
+							</div>
+						</article>
+						<article class="swiper-slide ">
+							<div class="head flex-c">
+								<h5 class="name flex-item">name</h5>
+								<h6 class="time">time</h6>
+							</div>
+							<div class="img-w">
+								<img src="../src/1.jpg">
+							</div>
+							<div class="btn-array">
+								<button class="btn">更多</button>
+							</div>
+						</article>
+					</div>
+			</section>
 			<!--信息流-->
-			<section class="message-box">
+			<section class="message-box default">
 				<ul class="message-ul">
 					<li class="">
 						<i class="back-btn iconfont icon-guanbi2 message-back"></i>
@@ -87,7 +127,7 @@
 					<div class="img-c head-img">
 						<img src="../src/hua.png">
 					</div>
-					<input type="text" class="init-address" max="" :value="suggest_value" size="25" id="suggestId">
+					<input type="text" class="init-address" max="" size="25" id="suggestId">
 				<i class="back-btn iconfont icon-guanbi2"></i>
 					<i class="search-btn iconfont icon-sousuo"></i>
 					<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
@@ -146,7 +186,9 @@
 			</section>
 
             <!--移动端的背景-->
-            <section class="mobile-bg"></section>
+            <section class="mobile-bg">
+            	
+            </section>
 			<footer class="">
 				<div class="footer-info   center container  ">
 					<span class="col-xs-0">© 2010- 2018 · All Rights Reserved ·
@@ -161,8 +203,8 @@
 	</body>
 	<!-- 引入组件库 -->
 	<!-- import Vue before Element -->
-	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
 
 	<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
 	<script src="../../../plugin//jquery/jquery.min.js"></script>
@@ -175,16 +217,16 @@
 		});
 
 		//懒人用vue.js
-		new Vue({
-			el: '#app',
-			data: function() {
-				return {
-					visible: false,
-					ifSearch:false,
-					suggest_value:'',
-				}
-			}
-		})
+//		new Vue({
+//			el: '#app',
+//			data: function() {
+//				return {
+//					visible: false,
+//					ifSearch:false,
+//					suggest_value:'',
+//				}
+//			}
+//		})
 	</script>
 
 </html>
