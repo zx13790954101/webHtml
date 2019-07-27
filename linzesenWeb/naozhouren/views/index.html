@@ -1,146 +1,182 @@
 <html>
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<!-- 引入样式 -->
-		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_o6t9lcydm8j.css">
-		<link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
-		<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">
-		<!--<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">-->
-		<link rel="stylesheet" href="../src/index.css" />
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
-		<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
-		<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-		</script>
-		<title>首页,硇洲岛指南</title>
-	</head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_o6t9lcydm8j.css">
+  <link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
+  <link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">
+  <!--<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">-->
+  <link rel="stylesheet" href="../src/index.css" />
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
+  <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+  </script>
+  <title>首页,硇洲岛指南</title>
+</head>
 
-	<body class="main-wrapper">
+<body class="main-wrapper">
 
-		<div id="app">
+  <div id="app">
 
-			<nav class="notice-box flex-c">
-				<i class="iconfont icon-laba"></i>
-				<div class="swiper-container  nav-swiper title">
-					<div class="swiper-wrapper">
-						<h6 class="swiper-slide ">swiper的跑马灯</h6>
-						<h6 class="swiper-slide ">swiper的跑页的3</h6>
-					</div>
-				</div>
-				<i class="iconfont icon-guanbi1 "></i>
-				<span class="flex-item"></span>
-				<i class="iconfont icon-shezhi more-setting"></i>
-			</nav>
-			<!--天气的div-->
-			<section class="weather-box">
+    <nav class="notice-box flex-c">
+      <i class="iconfont icon-laba"></i>
+      <div class="swiper-container  nav-swiper title">
+        <div class="swiper-wrapper">
+          <h6 class="swiper-slide ">swiper的跑马灯</h6>
+          <h6 class="swiper-slide ">swiper的跑页的3</h6>
+        </div>
+      </div>
+      <i class="iconfont icon-guanbi1 "></i>
+      <span class="flex-item"></span>
+      <i class="iconfont icon-shezhi more-setting"></i>
+    </nav>
+    <!--天气的div-->
+    <section class="weather-box">
 
-			</section>
-			<section class="swiper-container  new-swiper">
-					<div class="swiper-wrapper">
-						<article class="swiper-slide ">
-							<div class="head flex-c">
-								<h5 class="name flex-item">name</h5>
-								<h6 class="time">time</h6>
-							</div>
-							<div class="img-w">
-								<img src="../src/1.jpg">
-							</div>
-							<div class="btn-array">
-								<button class="btn">更多</button>
-							</div>
-						</article>
-						<article class="swiper-slide ">
-							<div class="head flex-c">
-								<h5 class="name flex-item">name</h5>
-								<h6 class="time">time</h6>
-							</div>
-							<div class="img-w">
-								<img src="../src/1.jpg">
-							</div>
-							<div class="btn-array">
-								<button class="btn">更多</button>
-							</div>
-						</article>
-						<article class="swiper-slide ">
-							<div class="head flex-c">
-								<h5 class="name flex-item">name</h5>
-								<h6 class="time">time</h6>
-							</div>
-							<div class="img-w">
-								<img src="../src/1.jpg">
-							</div>
-							<div class="btn-array">
-								<button class="btn">更多</button>
-							</div>
-						</article>
-					</div>
-			</section>
-			<!--信息流-->
-			<section class="message-box default">
-				<ul class="message-ul">
-					<li class="">
-						<i class="back-btn iconfont icon-guanbi2 message-back"></i>
-						<h4 class="name">name</h4>
-						<div class="flex">
-							<span class="img-w message-img">
-       				<img src="../src/hua.png" />
-       			</span>
-							<span class="flex-item">
-       					<h6 class="content">详细的内容的介绍，里面的</h6>
-       			   	<h6  class="content2">详细的内容的介绍，里面的</h6>
-       			</span>
-						</div>
-					</li>
-					<li class="">
-						<i class="back-btn iconfont icon-guanbi2 message-back"></i>
-						<h4 class="name">name</h4>
-						<div class="flex">
-							<span class="img-w message-img">
-       				<img src="../src/hua.png" />
-       			</span>
-							<span class="flex-item">
-       					<h6 class="content">详细的内容的介绍，里面的</h6>
-       			   	<h6  class="content2">详细的内容的介绍，里面的</h6>
-       			</span>
-						</div>
-					</li>
-					<li class="">
-						<i class="back-btn iconfont icon-guanbi2 message-back"></i>
-						<h4 class="name">name</h4>
-						<div class="flex">
-							<span class="img-w message-img">
-       				<img src="../src/hua.png" />
-       			</span>
-							<span class="flex-item">
-       					<h6 class="content">详细的内容的介绍，里面的</h6>
-       			   	<h6  class="content2">详细的内容的介绍，里面的</h6>
-       			</span>
-						</div>
-					</li>
-				</ul>
-			</section>
-			<!-- 搜索框 -->
-			<form class="tool-bar head-form default-bar ">
-				<article class="form-item flex-c search-box">
-					<div class="img-c head-img">
-						<img src="../src/hua.png">
-					</div>
-					<input type="text" class="init-address" max="" size="25" id="suggestId">
-				<i class="back-btn iconfont icon-guanbi2"></i>
-					<i class="search-btn iconfont icon-sousuo"></i>
-					<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-				</article>
+    </section>
+    <!-- 移动端的信息流 -->
+    <section class="swiper-container  new-swiper">
+      <h5 class="tip">热门活动<span class="small ">更多</span>
+      </h5>
+      <div class="swiper-wrapper">
+        <article class="swiper-slide  ">
+          <div class="head flex-c">
+            <h5 class="name flex-item flex-c ">
+              <span class="img-h small-img">
+                <img src="../src/icon/人面狮身像.png">
+              </span>
+              <span class="h6 name">周杰伦</span>
+            </h5>
+            <h6 class="time">2017-07-08</h6>
+          </div>
+          <div class="img-w">
+            <img src="../src/2.jpg">
+          </div>
+          <div class="btn-array">
+            <button class="btn">更多</button>
+          </div>
+        </article>
+        <article class="swiper-slide ">
+          <div class="head flex-c">
+            <h5 class="name flex-item flex-c ">
+              <span class="img-h small-img">
+                <img src="../src/icon/Schmoes 人物.png">
+              </span>
+              <span class="h6 name">周杰伦</span>
+            </h5>
+            <h6 class="time">2017-07-08</h6>
+          </div>
+          <div class="img-w">
+            <img src="../src/3.jpg">
+          </div>
+          <div class="btn-array">
+            <button class="btn">更多</button>
+          </div>
+        </article>
+        <article class="swiper-slide ">
+          <div class="head flex-c">
+            <h5 class="name flex-item flex-c ">
+              <span class="img-h small-img">
+                <img src="../src/icon/人体炮弹.png">
+              </span>
+              <span class="h6 name">刘德华</span>
+            </h5>
+            <h6 class="time">2017-07-08</h6>
+          </div>
+          <div class="img-w">
+            <img src="../src/main.jpg">
+          </div>
+          <div class="btn-array">
+            <button class="btn">更多</button>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!--信息流-->
+    <section class="message-box default">
+      <ul class="message-ul">
+        <li class="">
+          <i class="back-btn iconfont icon-guanbi2 message-back"></i>
+          <h4 class="name">name</h4>
+          <div class="flex">
+            <span class="img-w message-img">
+              <img src="../src/hua.png" />
+            </span>
+            <span class="flex-item">
+              <h6 class="content">详细的内容的介绍，里面的</h6>
+              <h6 class="content2">详细的内容的介绍，里面的</h6>
+            </span>
+          </div>
+        </li>
+        <li class="">
+          <i class="back-btn iconfont icon-guanbi2 message-back"></i>
+          <h4 class="name">name</h4>
+          <div class="flex">
+            <span class="img-w message-img">
+              <img src="../src/hua.png" />
+            </span>
+            <span class="flex-item">
+              <h6 class="content">详细的内容的介绍，里面的</h6>
+              <h6 class="content2">详细的内容的介绍，里面的</h6>
+            </span>
+          </div>
+        </li>
+        <li class="">
+          <i class="back-btn iconfont icon-guanbi2 message-back"></i>
+          <h4 class="name">name</h4>
+          <div class="flex">
+            <span class="img-w message-img">
+              <img src="../src/hua.png" />
+            </span>
+            <span class="flex-item">
+              <h6 class="content">详细的内容的介绍，里面的</h6>
+              <h6 class="content2">详细的内容的介绍，里面的</h6>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!-- 更多的功能 -->
+    <section class="more-function animate" id="more-function">
+      <h5 class="head">常用功能</h5>
+      <div class="btn-array">
+        <span class="item">
+          <img src="../src/icon/仙人掌.png">
+          <h5 class="">全景地图</h5>
+        </span>
+        <span class="item">
+          <img src="../src/icon/森林.png">
+          <h5 class="">村子文化</h5>
+        </span>
+        <span class="item">
+          <img src="../src/icon/椰子.png">
+          <h5 class="">景点介绍</h5>
+        </span>
+      </div>
+    </section>
+    <!-- 搜索框 -->
+    <form class="tool-bar head-form default-bar ">
+      <article class="form-item flex-c search-box">
+        <div class="img-c head-img">
+          <img src="../src/hua.png">
+        </div>
+        <input type="text" class="init-address" max="" size="25" id="suggestId">
+        <i class="back-btn iconfont icon-guanbi2"></i>
+        <i class="search-btn iconfont icon-sousuo"></i>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+      </article>
 
-				<!-- 搜索框的详情的内容 -->
-				<article class="flex-item poidetail flex-c" >
-					<div class="path-box">
-						 
-					</div>
-        
-					<div class="more-content" id="r-result">
-						<!--<ul class="img-array">
+      <!-- 搜索框的详情的内容 -->
+      <article class="flex-item poidetail flex-c">
+        <div class="path-box">
+
+        </div>
+
+        <div class="more-content" id="r-result">
+          <!--<ul class="img-array">
 							<li class="flex">
                                 <span class="flex-item">
 			            			<h4  class="name">1.name</h4>
@@ -152,81 +188,86 @@
 								</div>
 							</li>
 						</ul>-->
-					</div>
-					
-				</article>
-			</form>
+        </div>
 
-			<ul class="flex-c ul-array right-bar default-bar" >
-				<li class="active">
-					<img src="../src/icon/recreation.png">
-					<i class="iconfont icon-weibiaoti1"></i>
-					<span>娱乐</span>
-				</li>
-				<li><img src="../src/icon/hotel.png">
-					<i class="iconfont icon-zhusuxinxi"></i>
-					<span>住宿</span></li>
-				<li><img src="../src/icon/traffic.png">
-					<i class="iconfont icon-jiaotongyunshu"></i>
-					<span>交通</span></li>
-				<li><img src="../src/icon/food.png">
-					<i class="iconfont icon-meishi"></i>
-					<span>美食</span></li>
-				<li><img src="../src/icon/shop.png">
-					<i class="iconfont icon-chaoshi"></i>
-					<span>超市</span></li>
-				<li><img src="../src/icon/strategy.png">
-					<i class="iconfont icon-gonglve"></i>
-					<span>攻略</span></li>
-			</ul>
+      </article>
+    </form>
 
-			<!-- 地图的div -->
-			<section class="main-container">
-				<div id="allmap"></div>
-			</section>
+    <ul class="flex-c ul-array right-bar default-bar">
+      <li class="active">
+        <img src="../src/icon/recreation.png">
+        <i class="iconfont icon-weibiaoti1"></i>
+        <span>娱乐</span>
+      </li>
+      <li><img src="../src/icon/hotel.png">
+        <i class="iconfont icon-zhusuxinxi"></i>
+        <span>住宿</span></li>
+      <li><img src="../src/icon/traffic.png">
+        <i class="iconfont icon-jiaotongyunshu"></i>
+        <span>交通</span></li>
+      <li><img src="../src/icon/food.png">
+        <i class="iconfont icon-meishi"></i>
+        <span>美食</span></li>
+      <li><img src="../src/icon/shop.png">
+        <i class="iconfont icon-chaoshi"></i>
+        <span>超市</span></li>
+      <li><img src="../src/icon/strategy.png">
+        <i class="iconfont icon-gonglve"></i>
+        <span>攻略</span></li>
+    </ul>
 
-            <!--移动端的背景-->
-            <section class="mobile-bg">
-            	
-            </section>
-			<footer class="">
-				<div class="footer-info   center container  ">
-					<span class="col-xs-0">© 2010- 2018 · All Rights Reserved ·
-            <a href="http://www.linkben.com">连接基本</a>
+
+    <!-- 地图的div -->
+    <section class="main-container">
+      <div id="allmap"></div>
+    </section>
+
+    <!--移动端的背景-->
+    <section class="mobile-bg">
+      <div class="head-bg"><img src="../src/1.png"></div>
+    </section>
+    <footer class="">
+      <div class="footer-info   center container  ">
+        <span class="col-xs-0">© 2010- 2018 · All Rights Reserved ·
+          <a href="http://www.linkben.com">连接基本</a>
         </span>
-					<span> 粤ICP备15117005号-1 版权所有 © 连接基本信息有限公司</span>
-				</div>
-			</footer>
+        <span> 粤ICP备15117005号-1 版权所有 © 连接基本信息有限公司</span>
+      </div>
+    </footer>
 
-		</div>
+  </div>
 
-	</body>
-	<!-- 引入组件库 -->
-	<!-- import Vue before Element -->
-	<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+</body>
+<!-- 引入组件库 -->
+<!-- import Vue before Element -->
+<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-	<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
-	<script src="../../../plugin//jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="../src/index.js"></script>
 
-	<script type="text/javascript">
-		$(function() {
-			active.init();
-			swiper.init();
-		});
+<script type="text/javascript" src="../../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../src/swiper.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../plugin//jquery/jquery.min.js"></script>
+<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+<script type="text/javascript" src="../src/index.js"></script>
 
-		//懒人用vue.js
-//		new Vue({
-//			el: '#app',
-//			data: function() {
-//				return {
-//					visible: false,
-//					ifSearch:false,
-//					suggest_value:'',
-//				}
-//			}
-//		})
-	</script>
+<script type="text/javascript">
+  $(function () {
+    active.init();
+    swiper.init();
+  });
+
+  // // 懒人用vue.js
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        visible: false,
+        ifSearch: false,
+        suggest_value: '',
+      }
+    }
+  })
+</script>
 
 </html>
