@@ -13,7 +13,6 @@
 .main-container {
   max-height: 100vh;
   height: 100vh;
-
 }
 
 #allmap {
@@ -30,7 +29,7 @@
   position: absolute;
   box-sizing: border-box;
   box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
-  webkit-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
@@ -212,8 +211,8 @@
 
 .message-box {
   position: absolute;
-  right: 20px;
-  bottom: 50px;
+  left: 0px;
+  bottom: 0px;
   max-height: 60vh;
   z-index: 1;
 }
@@ -227,30 +226,44 @@
   color: #fff;
   background-color: #7a7a7a;
   background: hsla(0, 0%, 0%, 0.4);
-  border-radius: 50px;
+  border-radius: 25px;
   padding: 6px;
   font-weight: 600;
   font-size: 1rem;
   right: -10px;
   top: -10px;
+  width: 25px;
+  height: 25px;
+  display: none
 }
 
 .message-img {
   width: 4.5rem;
   height: 4.5rem;
-  margin-right: 15px;
+  margin-right: 0px;
+  margin: 0 auto;
 }
 
 .message-ul li {
   position: relative;
   background-color: rgba(255, 255, 255, 0.59);
   background: hsla(0, 0%, 100%, .4);
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin: 25px 0px;
+  border-radius: 0px;
+  padding: 8px 8px;
+  margin: 10px 2px;
   font-weight: 400;
   color: #000000;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
+  display: inline-block;
+  width: 180px;
+  float: left;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.message-ul .frist {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 86px;
+  color: white;
 }
 
 .message-box .content {
@@ -291,6 +304,16 @@
   line-height: 2.1rem;
   top: -10px;
   color: white;
+  display: none;
+}
+
+.r-content {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100vh;
+  width: 30px;
+  background-color: #333
 }
 
 .tool-bar.default-bar {
@@ -358,6 +381,7 @@ footer {
   left: 0px;
   width: 100%;
   /* background-color: #333; */
+  display: none;
 }
 
 .nav-swiper {
@@ -593,6 +617,7 @@ footer {
 
   footer {
     background-color: rgba(0, 0, 0, 0);
+
   }
 
   footer span {

@@ -54,7 +54,9 @@ var baiduMap = {
     //active.getLocation()
     var markerArray = [{
       longitude: '110.5724540000',
-      latitude: '20.8940390000'
+      latitude: '20.8940390000',
+      label: "2",
+      title: "酒店"
     }]
     baiduMap.addMarker(markerArray)
     baiduMap.addPolyline()
@@ -164,7 +166,7 @@ var baiduMap = {
   },
   //数据监听
   //添加marker 覆盖物
-  addMarker: function (array) {
+  addMarker: function (array, type) {
     let backData = []
     $(array).each(function (index, item) {
       let itemData = null
@@ -172,11 +174,9 @@ var baiduMap = {
         'http://127.0.0.1:8020/webHtml/linzesenWeb/naozhouren/src/icon/jw.png',
         new BMap.Size(23, 35)
       )
-
       let marker = new BMap.Marker(new BMap.Point('110.562173', '20.902287'), {
         icon: myIcon
       }) // 创建点
-
       var label = new BMap.Label('2', {
         offset: new BMap.Size(5, 4)
       })
@@ -191,6 +191,11 @@ var baiduMap = {
           anchor: BMAP_ANCHOR_BOTTOM_RIGHT
         })
       )
+      //设置第二个地点
+      map.addOverlay(marker)
+      //标注点的点击事件
+      marker.addEventListener('click', baiduMap.markerListen)
+      // /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
       // 圆形覆盖物
       function customOverlay(point) {
         this.point = point
@@ -229,14 +234,7 @@ var baiduMap = {
         let infoWindow = new BMap.InfoWindow(sContent, point2); // 创建信息窗口对象 
         map.openInfoWindow(infoWindow, point2);
       });
-      //设置第二个地点
-      var point3 = new BMap.Point('110.563879', '20.900497')
-      let marker3 = new BMap.Marker(point3)
-      map.addOverlay(marker3)
-      map.addOverlay(marker)
-      //标注点的点击事件
-      marker.addEventListener('click', baiduMap.markerListen)
-      // /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
+
     })
   },
   //marker的点击事件
