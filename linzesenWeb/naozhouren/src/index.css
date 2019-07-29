@@ -208,57 +208,82 @@
   right: 20px;
   bottom: 50px;
   max-height: 60vh;
-  overflow: hidden;
   z-index: 1;
 }
 
 .message-ul {}
 
 .message-back {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #000;
+ position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    background-color: #7a7a7a;
+    background: hsla(0, 0%, 0%, 0.4);
+    border-radius: 50px;
+    padding: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    right: -10px;
+    top: -10px;
 }
 
 .message-img {
-  width: 8rem;
-  height: 5rem;
-  margin-right: 10px;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-right: 15px;
 }
 
 .message-ul li {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.59);
-  border-radius: 6px;
-  padding: 8px 15px;
-  margin: 10px 0px;
-  font-weight: 400;
-  color: #000000;
-  font-family: Tahoma, Arial, Helvetica, sans-serif;
+    background-color: rgba(255, 255, 255, 0.59);
+    background: hsla(0,0%,100%,.4);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 25px 0px;
+    font-weight: 400;
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
 
 .message-box .content {
   font-weight: 400;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
-  color: #626262;
+  color: #000000;
   line-height: inherit;
+  min-height: inherit;
 }
 
 .message-box .content2 {
   font-weight: 400;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
-  color: #626262;
+  color: #000000;
   line-height: inherit;
 }
-
+.message-box .head-title{
+	
+}
 .message-ul li .name {
-  font-weight: 400;
-  font-family: Tahoma, Arial, Helvetica, sans-serif;
-  color: #000;
-  line-height: inherit;
+    font-weight: 400;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
-
+.message-ul .num{
+	font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #FF9800;
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: -10px;
+    text-align: center;
+    line-height: 2.1rem;
+    top: -10px;
+    color: white;
+}
 .tool-bar.default-bar {
   left: 50%;
   transform: translateX(-50%);
@@ -268,7 +293,15 @@
   box-shadow: 0px 0px 0px;
 
 }
-
+.tool-bar.default-bar .search-btn{
+	border-bottom-right-radius: 50px;
+	border-top-right-radius: 50px;
+	background-color: rgba(0,0,0,0);
+	color: #333;
+    border-left: 2px solid #3333337d;
+    line-height: 25px;
+    font-weight: 600;
+}
 .tool-bar.default-bar .more-content {
 
   background-color: white;
@@ -440,20 +473,26 @@ footer {
 }
 
 .more-function {
+	padding: 15px 0px;
   position: absolute;
   display: none;
   transform: translateY(467px);
   width: 100%;
   z-index: 2;
-  background-color: #e3e6ea;
+  background-color: #ffffff;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  transition: all 0.1s ;
+  transition: all 0.001s linear;
 
 }
-
+.foggy-box{
+	position: absolute;
+	top: 0%;
+	left: 0px;
+	width: 100%;
+}
 .more-fun-animte {
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
@@ -463,7 +502,6 @@ footer {
 .more-function .btn-array {
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
 }
 
 .more-function .item {
@@ -479,7 +517,9 @@ footer {
   margin-bottom: 5px;
 
 }
-
+.more-function .head{
+	padding-left: 15px;
+}
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
   .more-function {

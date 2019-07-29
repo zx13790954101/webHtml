@@ -10,10 +10,7 @@
   <link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">
   <!--<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">-->
   <link rel="stylesheet" href="../src/index.css" />
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
-  <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
-  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-  </script>
+
   <title>首页,硇洲岛指南</title>
 </head>
 
@@ -22,6 +19,7 @@
   <div id="app">
 
     <nav class="notice-box flex-c">
+    	<div class="foggy-box">  </div>
       <i class="iconfont icon-laba"></i>
       <div class="swiper-container  nav-swiper title">
         <div class="swiper-wrapper">
@@ -32,6 +30,7 @@
       <i class="iconfont icon-guanbi1 "></i>
       <span class="flex-item"></span>
       <i class="iconfont icon-shezhi more-setting"></i>
+
     </nav>
     <!--天气的div-->
     <section class="weather-box">
@@ -97,15 +96,17 @@
     </section>
     <!--信息流-->
     <section class="message-box default">
+    	<h3 class="head-title">热门信息</h3>
       <ul class="message-ul">
         <li class="">
           <i class="back-btn iconfont icon-guanbi2 message-back"></i>
-          <h4 class="name">name</h4>
+        <label class="num">1</label>
           <div class="flex">
             <span class="img-w message-img">
-              <img src="../src/hua.png" />
+              <img src="../src/1.png" />
             </span>
             <span class="flex-item">
+            	   <h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -113,12 +114,13 @@
         </li>
         <li class="">
           <i class="back-btn iconfont icon-guanbi2 message-back"></i>
-          <h4 class="name">name</h4>
+          <label class="num">2</label>
           <div class="flex">
             <span class="img-w message-img">
-              <img src="../src/hua.png" />
+              <img src="../src/2.jpg" />
             </span>
             <span class="flex-item">
+            	   <h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -126,12 +128,13 @@
         </li>
         <li class="">
           <i class="back-btn iconfont icon-guanbi2 message-back"></i>
-          <h4 class="name">name</h4>
+           <label class="num">2</label>
           <div class="flex">
             <span class="img-w message-img">
               <img src="../src/hua.png" />
             </span>
             <span class="flex-item">
+            	<h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -244,30 +247,38 @@
 <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
+<script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write(
+        '<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+</script>
 
 <script type="text/javascript" src="../../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="../src/swiper.js" charset="utf-8"></script>
-<script type="text/javascript" src="../../../plugin//jquery/jquery.min.js"></script>
+
 <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
+  <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+  </script>
 <script type="text/javascript" src="../src/index.js"></script>
+
 
 <script type="text/javascript">
   $(function () {
     active.init();
     swiper.init();
+
   });
 
   // // 懒人用vue.js
-  new Vue({
+new Vue({
     el: '#app',
     data: function () {
       return {
-        visible: false,
-        ifSearch: false,
-        suggest_value: '',
       }
     }
-  })
+})
 </script>
 
 </html>
