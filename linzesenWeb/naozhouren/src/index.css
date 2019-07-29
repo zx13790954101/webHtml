@@ -13,6 +13,7 @@
 .main-container {
   max-height: 100vh;
   height: 100vh;
+
 }
 
 #allmap {
@@ -133,7 +134,8 @@
 .right-bar {
   /* background: #3d93fd; */
   color: #fff;
-  background: #fff;
+  /* background: #fff; */
+  background: hsla(0, 0%, 100%, .6);
   position: absolute;
   right: 20px;
   margin: 0px;
@@ -141,12 +143,12 @@
   width: auto;
   min-width: 34rem;
   z-index: 1;
-  min-height: 44px;
-  border-radius: 2px 3px 3px 2px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+  height: 44px;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
   font-family: Arial, sans-serif;
   font-size: 1.17rem;
-  padding: 8px 0px;
+  padding: 0px 0px;
   webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
@@ -157,12 +159,14 @@
   border: 0px;
   margin-bottom: 0px;
   text-align: center;
-  padding: 2px 15px;
+  padding: 1px 15px;
   opacity: 0.7;
   border-left: 1px #dbdee2 dashed;
   display: flex;
   cursor: pointer;
   justify-content: center;
+  align-items: center;
+
 }
 
 .right-bar li:nth-child(1) {
@@ -181,6 +185,9 @@
   font-weight: 500;
   padding-right: 5px;
   color: #5f6477;
+  height: auto;
+  padding-top: 5px;
+  vertical-align: middle;
 }
 
 .right-bar img {
@@ -214,18 +221,18 @@
 .message-ul {}
 
 .message-back {
- position: absolute;
-    top: 5px;
-    right: 5px;
-    color: #fff;
-    background-color: #7a7a7a;
-    background: hsla(0, 0%, 0%, 0.4);
-    border-radius: 50px;
-    padding: 6px;
-    font-weight: 600;
-    font-size: 1rem;
-    right: -10px;
-    top: -10px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #fff;
+  background-color: #7a7a7a;
+  background: hsla(0, 0%, 0%, 0.4);
+  border-radius: 50px;
+  padding: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  right: -10px;
+  top: -10px;
 }
 
 .message-img {
@@ -236,14 +243,14 @@
 
 .message-ul li {
   position: relative;
-    background-color: rgba(255, 255, 255, 0.59);
-    background: hsla(0,0%,100%,.4);
-    border-radius: 4px;
-    padding: 10px 15px;
-    margin: 25px 0px;
-    font-weight: 400;
-    color: #000000;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
+  background-color: rgba(255, 255, 255, 0.59);
+  background: hsla(0, 0%, 100%, .4);
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 25px 0px;
+  font-weight: 400;
+  color: #000000;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
 
 .message-box .content {
@@ -260,30 +267,32 @@
   color: #000000;
   line-height: inherit;
 }
-.message-box .head-title{
-	
-}
+
+.message-box .head-title {}
+
 .message-ul li .name {
-    font-weight: 400;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-    color: #000;
-    font-size: 1.1rem;
-    font-weight: 600;
+  font-weight: 400;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
-.message-ul .num{
-	font-size: 1.2rem;
-    font-weight: 600;
-    background-color: #FF9800;
-    border-radius: 24px;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    left: -10px;
-    text-align: center;
-    line-height: 2.1rem;
-    top: -10px;
-    color: white;
+
+.message-ul .num {
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #FF9800;
+  border-radius: 24px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -10px;
+  text-align: center;
+  line-height: 2.1rem;
+  top: -10px;
+  color: white;
 }
+
 .tool-bar.default-bar {
   left: 50%;
   transform: translateX(-50%);
@@ -293,15 +302,17 @@
   box-shadow: 0px 0px 0px;
 
 }
-.tool-bar.default-bar .search-btn{
-	border-bottom-right-radius: 50px;
-	border-top-right-radius: 50px;
-	background-color: rgba(0,0,0,0);
-	color: #333;
-    border-left: 2px solid #3333337d;
-    line-height: 25px;
-    font-weight: 600;
+
+.tool-bar.default-bar .search-btn {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #333;
+  border-left: 2px solid #3333337d;
+  line-height: 25px;
+  font-weight: 600;
 }
+
 .tool-bar.default-bar .more-content {
 
   background-color: white;
@@ -346,7 +357,7 @@ footer {
   z-index: 1;
   left: 0px;
   width: 100%;
-  background-color: #333;
+  /* background-color: #333; */
 }
 
 .nav-swiper {
@@ -473,7 +484,7 @@ footer {
 }
 
 .more-function {
-	padding: 15px 0px;
+  padding: 15px 0px;
   position: absolute;
   display: none;
   transform: translateY(467px);
@@ -487,12 +498,14 @@ footer {
   transition: all 0.001s linear;
 
 }
-.foggy-box{
-	position: absolute;
-	top: 0%;
-	left: 0px;
-	width: 100%;
+
+.foggy-box {
+  position: absolute;
+  top: 0%;
+  left: 0px;
+  width: 100%;
 }
+
 .more-fun-animte {
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
@@ -517,9 +530,11 @@ footer {
   margin-bottom: 5px;
 
 }
-.more-function .head{
-	padding-left: 15px;
+
+.more-function .head {
+  padding-left: 15px;
 }
+
 /* 小屏幕的适配 */
 @media (max-width: 568px) {
   .more-function {

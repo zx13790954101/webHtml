@@ -1,12 +1,19 @@
 var map = null;
-
-
-var active = {
+//判断是不是移动端
+var if_moblie = true;
+if (parseInt($(window).width()) <= 560) {
+  if_moblie = false;
+}
+//获取地图的数据
+var getMapData = null;
+var baiduMap = {
   init: function () {
-    active.baiduMap();
+    baiduMap.baiduMap();
     //百度自带的搜索功能
-    //active.getSearchTip();
-    active.searchBackBtn();
+    // /active.getSearchTip();
+    baiduMap.searchBackBtn();
+    //分类的点的点击事件
+    baiduMap.typeTabPoint();
     var window_w = $(window).width();
     if (window_w <= 560) {
       $('.mobile-bg').fadeIn();
@@ -49,8 +56,8 @@ var active = {
       longitude: '110.5724540000',
       latitude: '20.8940390000'
     }]
-    active.addMarker(markerArray)
-    active.addPolyline()
+    baiduMap.addMarker(markerArray)
+    baiduMap.addPolyline()
     // var geolocation = new BMap.Geolocation();
     // geolocation.getCurrentPosition(function (r) {
     //   if (this.getStatus() == BMAP_STATUS_SUCCESS) {
@@ -69,6 +76,18 @@ var active = {
     // }, {
     //   enableHighAccuracy: true
     // })
+  },
+  //分类的点
+  typeTabPoint: function () {
+    $(".right-bar li").click(function (e) {
+      let that = $(this);
+      if (that.hasClass('active')) {
+        $("#suggestId").value(that.find("span").html());
+
+      } else {
+        that.addClass("active").siblings().removeClass("active");
+      }
+    });
   },
   //判断当前的位置-params
   //return 当前的位置的经纬度
@@ -116,7 +135,7 @@ var active = {
       }
     ) //创建折线
     //map.addOverlay(Polygon) //增加折线
-    active.getBoundary([
+    baiduMap.getBoundary([
       new BMap.Point(110.576104, 20.892653),
       new BMap.Point(110.5739270213, 20.8958612759),
       new BMap.Point(110.5711717761, 20.8951967079),
@@ -216,7 +235,7 @@ var active = {
       map.addOverlay(marker3)
       map.addOverlay(marker)
       //标注点的点击事件
-      marker.addEventListener('click', active.markerListen)
+      marker.addEventListener('click', baiduMap.markerListen)
       // /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
     })
   },
@@ -357,9 +376,22 @@ var active = {
 
   },
 }
+//ajaxurl
+const ajaxUrl = {
+  mapDataUrl: "../src/getMapData.json"
+}
 
+//获取ajax的数据
+var ajaxData = {
+  //获取地图的数据
+  getMapData: function () {
+    $.getJSON(ajaxUrl.mapDataUrl, function (data) {
 
+      getMapData = data.data.typelist;
+    })
+  },
 
+}
 
 //天气的情况，
 //变化地图的样式，天气的动画
@@ -386,36 +418,36 @@ var swiper = {
     let next_div = $("#more-function");
     let el = document.getElementById("more-function");
     $(el).css({
-      "height": $(window).height() - next_div.offset().top-1 + 'px'
+      "height": $(window).height() - next_div.offset().top - 1 + 'px'
     })
-    var default_h=next_div.offset().top;
+    var default_h = next_div.offset().top;
     var hammer = new Hammer(el);
     hammer.get('pan').set({
       direction: Hammer.DIRECTION_ALL
     });
     var pos_x = $("#more-function").position().left;
     var pos_y = $("#more-function").position().top;
-    var box_h=$("#more-function").height();
+    var box_h = $("#more-function").height();
     hammer.on("pan", function (e) {
-    	let offset_h=pos_y+e.deltaY;
-		  if( e.deltaY>0 && default_h <= offset_h  ){
-			  console.log("到底了");
-			  $("#more-function").css("transform", 'translateY(' + default_h + 'px)');
-	      $(el).css({
-	         "height": $(window).height() - default_h + 'px'
-	      })
-			  return;
-		  }else if( e.deltaY<0 && offset_h<=$(window).height()*0.4 ){
-		    console.log("到顶了");
-		     $("#more-function").css("transform", 'translateY(' + $(window).height()*0.4 + 'px)');
-		     $(el).css({
-		         "height": $(window).height()*0.6 + 'px'
-		     })
-  		  return;
-	    }
+      let offset_h = pos_y + e.deltaY;
+      if (e.deltaY > 0 && default_h <= offset_h) {
+        console.log("到底了");
+        $("#more-function").css("transform", 'translateY(' + default_h + 'px)');
+        $(el).css({
+          "height": $(window).height() - default_h + 'px'
+        })
+        return;
+      } else if (e.deltaY < 0 && offset_h <= $(window).height() * 0.4) {
+        console.log("到顶了");
+        $("#more-function").css("transform", 'translateY(' + $(window).height() * 0.4 + 'px)');
+        $(el).css({
+          "height": $(window).height() * 0.6 + 'px'
+        })
+        return;
+      }
       $("#more-function").css("transform", 'translateY(' + (offset_h) + 'px)');
       $(el).css({
-         "height": $(window).height() - next_div.offset().top + 'px'
+        "height": $(window).height() - next_div.offset().top + 'px'
       })
     });
 
@@ -433,7 +465,7 @@ var swiper = {
 
   },
   headSwiper: function () {
-  	
+
     var swiper = new Swiper('.nav-swiper', {
       slidesPerView: 1,
       direction: 'vertical',

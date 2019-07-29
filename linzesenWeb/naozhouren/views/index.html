@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_o6t9lcydm8j.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_narvmcqstbg.css">
   <link rel="stylesheet" href="../../../plugin/swiper/swiper.min.css" />
   <link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">
   <!--<link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">-->
@@ -19,12 +19,12 @@
   <div id="app">
 
     <nav class="notice-box flex-c">
-    	<div class="foggy-box">  </div>
+      <div class="foggy-box"> </div>
       <i class="iconfont icon-laba"></i>
       <div class="swiper-container  nav-swiper title">
         <div class="swiper-wrapper">
-          <h6 class="swiper-slide ">swiper的跑马灯</h6>
-          <h6 class="swiper-slide ">swiper的跑页的3</h6>
+          <h6 class="swiper-slide ">最近的新闻</h6>
+          <h6 class="swiper-slide ">硇洲海鲜</h6>
         </div>
       </div>
       <i class="iconfont icon-guanbi1 "></i>
@@ -96,17 +96,17 @@
     </section>
     <!--信息流-->
     <section class="message-box default">
-    	<h3 class="head-title">热门信息</h3>
+      <h3 class="head-title">热门信息</h3>
       <ul class="message-ul">
         <li class="">
           <i class="back-btn iconfont icon-guanbi2 message-back"></i>
-        <label class="num">1</label>
+          <label class="num">1</label>
           <div class="flex">
             <span class="img-w message-img">
               <img src="../src/1.png" />
             </span>
             <span class="flex-item">
-            	   <h6 class="name">name</h6>
+              <h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -120,7 +120,7 @@
               <img src="../src/2.jpg" />
             </span>
             <span class="flex-item">
-            	   <h6 class="name">name</h6>
+              <h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -128,13 +128,13 @@
         </li>
         <li class="">
           <i class="back-btn iconfont icon-guanbi2 message-back"></i>
-           <label class="num">2</label>
+          <label class="num">2</label>
           <div class="flex">
             <span class="img-w message-img">
               <img src="../src/hua.png" />
             </span>
             <span class="flex-item">
-            	<h6 class="name">name</h6>
+              <h6 class="name">name</h6>
               <h6 class="content">详细的内容的介绍，里面的</h6>
               <h6 class="content2">详细的内容的介绍，里面的</h6>
             </span>
@@ -195,7 +195,7 @@
 
       </article>
     </form>
-
+    <!--type-->
     <ul class="flex-c ul-array right-bar default-bar">
       <li class="active">
         <img src="../src/icon/recreation.png">
@@ -249,36 +249,38 @@
 
 <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
 <script>
-    window.jQuery || document.write(
-        '<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
+  window.jQuery || document.write(
+    '<script  charset="utf-8" type="text/javascript"  src="../../../plugin/jquery/jquery.min.js"  >\x3C/script>')
 </script>
 
 <script type="text/javascript" src="../../../plugin/swiper/swiper.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="../src/swiper.js" charset="utf-8"></script>
 
 <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
-  <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
-  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-  </script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1ALTaV0tWvwNHFeCa4qsQMyAd9UYalwj"></script>
+<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+</script>
 <script type="text/javascript" src="../src/index.js"></script>
 
 
 <script type="text/javascript">
   $(function () {
-    active.init();
+    baiduMap.init();
     swiper.init();
-
+    ajaxData.getMapData();
   });
 
   // // 懒人用vue.js
-new Vue({
+  new Vue({
     el: '#app',
     data: function () {
       return {
+        if_moblie: if_moblie, //判断是不是移动端
+
       }
     }
-})
+  })
 </script>
 
 </html>

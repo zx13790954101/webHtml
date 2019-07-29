@@ -1,0 +1,36 @@
+getMapData {
+  "status": {
+    "code": 200
+  },
+  "data": {
+    // 分类的列表
+    "typelist": {
+      "recreationjt": [{
+        "longitude": "20.897049",
+        "latitude": "110.568456",
+        "name": "硇洲岛金海港渔家乐",
+      }],
+      "hotel": [{
+        "longitude": "20.897049",
+        "latitude": "110.568456",
+        "name": "硇洲岛金海港渔家乐",
+      }],
+      "traffic": [{
+        "longitude": "20.897049",
+        "latitude": "110.568456",
+        "name": "硇洲岛金海港渔家乐",
+      }],
+      "food": [{
+        "longitude": "20.897049",
+        "latitude": "110.568456",
+        "name": "硇洲岛金海港渔家乐",
+      }],
+      "shop": [{
+        "longitude": "20.897049",
+        "latitude": "110.568456",
+        "name": "硇洲岛金海港渔家乐",
+      }],
+      "psp": [{}],
+    }
+  }
+}
