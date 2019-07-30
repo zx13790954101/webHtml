@@ -371,7 +371,12 @@
   top: 80px;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 0px 0px 0px;
-
+    top: 30px;
+    width: 100%;
+    padding: 0% 20%;
+    text-align: center;
+    background-color: white;
+    border-radius: 0px;
 }
 
 footer {
