@@ -52,13 +52,13 @@ var baiduMap = {
     //   alert(e);
     // }
     //active.getLocation()
-    var markerArray = [{
-      longitude: '110.5724540000',
-      latitude: '20.8940390000',
-      label: "2",
-      title: "酒店"
-    }]
-    baiduMap.addMarker(markerArray)
+    // var markerArray = [{
+    //   longitude: '110.5724540000',
+    //   latitude: '20.8940390000',
+    //   label: "2",
+    //   title: "酒店"
+    // }]
+    // baiduMap.addMarker(markerArray)
     baiduMap.addPolyline()
     // var geolocation = new BMap.Geolocation();
     // geolocation.getCurrentPosition(function (r) {
@@ -77,18 +77,36 @@ var baiduMap = {
     //   }
     // }, {
     //   enableHighAccuracy: true
-    // })
+    // })z
   },
   //分类的点
   typeTabPoint: function () {
     $(".right-bar li").click(function (e) {
       let that = $(this);
-      if (that.hasClass('active')) {
-        $("#suggestId").value(that.find("span").html());
-
-      } else {
+      if (!that.hasClass('active')) {
         that.addClass("active").siblings().removeClass("active");
       }
+
+      let name = that.find("span").html();
+      let data = null;
+      $("#suggestId")[0].value = name;
+      if (name == "娱乐") {
+        data = getMapData.recreationjt
+      } else if (name == "住宿") {
+        data = getMapData.hotel
+      } else if (name == "交通") {
+        data = getMapData.traffic
+      } else if (name == "美食") {
+        data = getMapData.food
+      } else if (name == "超市") {
+        data = getMapData.shop
+      } else if (name == "攻略") {
+        data = getMapData.psp
+      }
+      baiduMap.addMarker(data, 2);
+      $(".tool-bar").removeClass("default-bar");
+      $(".right-bar").removeClass("default-bar");
+      $(".r-content").removeClass("default-bar");
     });
   },
   //判断当前的位置-params
@@ -167,35 +185,43 @@ var baiduMap = {
   //数据监听
   //添加marker 覆盖物
   addMarker: function (array, type) {
-    let backData = []
+    let backData = [];
+
     $(array).each(function (index, item) {
-      let itemData = null
-      var myIcon = new BMap.Icon(
-        'http://127.0.0.1:8020/webHtml/linzesenWeb/naozhouren/src/icon/jw.png',
-        new BMap.Size(23, 35)
-      )
-      let marker = new BMap.Marker(new BMap.Point('110.562173', '20.902287'), {
-        icon: myIcon
-      }) // 创建点
-      var label = new BMap.Label('2', {
-        offset: new BMap.Size(5, 4)
-      })
-      label.setStyle({
-        background: 'none',
-        color: 'red',
-        border: 'none' //只要对label样式进行设置就可达到在标注图标上显示数字的效果
-      })
-      marker.setLabel(label) //显示地理名称 a
-      map.addControl(
-        new BMap.ScaleControl({
-          anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+      let itemData = null;
+
+      var point2 = new BMap.Point(item.latitude, item.longitude);
+
+      if (type == 1) {
+        var myIcon = new BMap.Icon(
+          '../src/icon/jw.png',
+          new BMap.Size(23, 35)
+        )
+        let marker = new BMap.Marker(point2, {
+          icon: myIcon
+        }) // 创建点
+        var label = new BMap.Label('2', {
+          offset: new BMap.Size(5, 4)
         })
-      )
-      //设置第二个地点
-      map.addOverlay(marker)
-      //标注点的点击事件
-      marker.addEventListener('click', baiduMap.markerListen)
-      // /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
+        label.setStyle({
+          background: 'none',
+          color: 'red',
+          border: 'none' //只要对label样式进行设置就可达到在标注图标上显示数字的效果
+        })
+        marker.setLabel(label) //显示地理名称 a
+        map.addControl(
+          new BMap.ScaleControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+          })
+        )
+        //设置第二个地点
+        map.addOverlay(marker)
+        //标注点的点击事件
+        marker.addEventListener('click', baiduMap.markerListen)
+        // /     marker.setAnimation(BMAP_ANIMATION_BOUNCE) //跳动的动画
+        return;
+      }
+
       // 圆形覆盖物
       function customOverlay(point) {
         this.point = point
@@ -204,11 +230,14 @@ var baiduMap = {
       // 初始化，设置覆盖物形状
       customOverlay.prototype.initialize = function () {
         var div = (this.div = document.createElement('div'))
-        var childDiv = document.createElement('img')
-        childDiv.src =
-          '../src/hua.png'
-        childDiv.className = 'circle-marker-child'
-        div.appendChild(childDiv)
+        var childDiv = document.createElement('i');
+        var childDiv2 = document.createElement('div')
+        // childDiv.src =
+        //   '../src/hua.png'
+        childDiv.className = 'iconfont icon-zuobiaofill  circle-marker-child'
+        childDiv2.className = 'triangle'
+        div.appendChild(childDiv);
+        div.appendChild(childDiv2)
         div.className = 'circle-marker'
         map.getPanes().labelPane.appendChild(div)
       }
@@ -218,10 +247,10 @@ var baiduMap = {
       // 覆盖物的位置
       customOverlay.prototype.draw = function () {
         var p = map.pointToOverlayPixel(this.point)
-        this.div.style.left = p.x - 35 + 'px'
-        this.div.style.top = p.y - 35 + 'px'
+        this.div.style.left = p.x + 'px'
+        this.div.style.top = p.y + 'px'
       }
-      var point2 = new BMap.Point(item.longitude, item.latitude)
+
       var marker2 = new customOverlay(point2)
       map.addOverlay(marker2)
       //   map.addOverlay(marker); 
@@ -348,6 +377,7 @@ var baiduMap = {
     $("#suggestId").focus(function () {
       $(".tool-bar").removeClass("default-bar");
       $(".right-bar").removeClass("default-bar");
+      $(".r-content").removeClass("default-bar");
     });
     //搜索框获取焦点功能
     $("#suggestId").blur(function () {
@@ -355,6 +385,16 @@ var baiduMap = {
       if ($("#suggestId")[0].value == "") {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
+        $(".r-content").addClass("default-bar");
+      }
+    });
+    //搜索框获取焦点功能
+    $("#suggestId").click(function () {
+
+      if ($("#suggestId")[0].value == "") {
+        $(".tool-bar").removeClass("default-bar");
+        $(".right-bar").removeClass("default-bar");
+        $(".r-content").removeClass("default-bar");
       }
     });
     //搜索框获取焦点功能
@@ -362,6 +402,7 @@ var baiduMap = {
       if ($("#suggestId")[0].value == "") {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
+        $(".r-content").addClass("default-bar");
       }
     });
 
@@ -383,8 +424,8 @@ const ajaxUrl = {
 var ajaxData = {
   //获取地图的数据
   getMapData: function () {
-    $.getJSON(ajaxUrl.mapDataUrl, function (data) {
 
+    $.getJSON(ajaxUrl.mapDataUrl, function (data) {
       getMapData = data.data.typelist;
     })
   },
