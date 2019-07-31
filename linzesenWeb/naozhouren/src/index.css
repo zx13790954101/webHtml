@@ -180,9 +180,13 @@
   display: block;
   box-shadow: 0 2px 7px rgba(0, 0, 0, .15);
   border-radius: 5px;
-  padding: 10px 0px;
+  padding: 15px 0px;
   height: auto;
   right: 1vw;
+  background-color: white;
+  border-radius: 0px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+  right: 10vw;
 }
 
 .right-bar li {
@@ -268,6 +272,7 @@
   bottom: 0px;
   max-height: 60vh;
   z-index: 1;
+  background-image: linear-gradient(90deg, #184bc1, #184dc8, #1f4fbe, #184dc9);
 }
 
 .message-ul {}
@@ -371,6 +376,8 @@
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
+  background-image: linear-gradient(90deg, #ffcd54, #fecc53, #fec551, #fabe4c);
+  overflow: hidden;
 }
 
 .r-content.default-bar {
