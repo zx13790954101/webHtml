@@ -3,36 +3,46 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1297612_narvmcqstbg.css">
   <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
-  <link rel="stylesheet" href="//linkben.com/assets/plugin/linzesen/linzesen.css">
+  <link rel="stylesheet" href="../../../plugin/linzesen/linzesen.css">
   <link rel="stylesheet" href="../src/index.css" />
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=	15df44e41411723025c46d40030ebea7"></script>
   <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
   </script>
   <title>首页,硇洲岛指南</title>
+  <style>
+  	input{
+  		    border: 0px;
+  	}
+  </style>
 </head>
 
 <body>
-  <section class="main-container  ">
-    <!-- 搜索框 -->
-    <form class="tool-bar head-form col-xs-12">
-      <article class="form-item flex-c">
-        <input type="text" class="init-address" max="">
-        <button class="search-btn">搜索</button>
+	
+	    <!-- 搜索框 -->
+    <form class="tool-bar head-form default-bar ">
+      <article class="form-item flex-c search-box">
+        <div class="img-c head-img">
+          <img src="../src/hua.png">
+        </div>
+        <input type="text" class="init-address" max="" size="25" id="suggestId">
+        <i class="back-btn iconfont icon-guanbi2"></i>
+        <i class="search-btn iconfont icon-sousuo"></i>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
       </article>
       <!-- 搜索框的详情的内容 -->
       <article class="flex-item poidetail flex-c">
-        <span class="flex-item">
-          <h3 class="poi-name">暂无姓名</h3>
-        </span>
-        <span class="poi-btn-array">
-          <button class="to-address">到这去</button>
-        </span>
-        <div class="more-content">
+        <div class="path-box">
 
+        </div>
+
+        <div class="more-content" id="r-result">
         </div>
       </article>
     </form>
+  <section class="main-container  ">
+
     <!-- 地图的div -->
     <div id="allmap"></div>
   </section>

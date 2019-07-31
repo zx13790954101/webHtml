@@ -39,6 +39,14 @@ var baiduMap = {
       minZoom: zindex,
       maxZoom: 22
     })
+    //自定义样式
+    $.getJSON('../src/custom_map_config.json', function (data) {
+    	var styleJson=data.styleJson
+	    map.setMapStyleV2({     
+			  styleId: 'b6a68d7c8710647f8d35806a55a4b41b',
+			  styleJson:styleJson
+			});
+		})
     window.BMap = BMap
     // map.addTileLayer(tileLayer);
     //map.addControl(new BMap.NavigationControl());
