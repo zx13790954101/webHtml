@@ -39,6 +39,7 @@ var baiduMap = {
       minZoom: zindex,
       maxZoom: 22
     })
+
     //自定义样式
     $.getJSON('../src/custom_map_config.json', function (data) {
     	var styleJson=data.styleJson
@@ -51,7 +52,14 @@ var baiduMap = {
     // map.addTileLayer(tileLayer);
     //map.addControl(new BMap.NavigationControl());
     map.centerAndZoom(new BMap.Point(110.597205, 20.902689), zindex)
-    map.enableScrollWheelZoom()
+    map.enableScrollWheelZoom();
+
+
+    $.getJSON('../src/custom_map_config.json', function (data) {
+      map.setMapStyleV2({
+        styleJson: data
+      });
+    })
     //设置可以显示的范围
     // var b = new BMap.Bounds(new BMap.Point(110.597205, 20.902689), new BMap.Point(110.597205, 20.902689));
     // try {
