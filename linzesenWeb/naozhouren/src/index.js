@@ -41,19 +41,22 @@ var baiduMap = {
     })
 
     //自定义样式
-  
+
     window.BMap = BMap
     // map.addTileLayer(tileLayer);
     //map.addControl(new BMap.NavigationControl());
     map.centerAndZoom(new BMap.Point(110.597205, 20.902689), zindex)
     map.enableScrollWheelZoom();
 
+    //设置首页的样式为黑夜
+    // $.getJSON('../src/custom_map_config.json', function (data) {
+    //   map.setMapStyleV2({
+    //     styleJson: data
+    //   });
+    // })
 
-    $.getJSON('../src/custom_map_config.json', function (data) {
-      map.setMapStyleV2({
-        styleJson: data
-      });
-    })
+
+
     //设置可以显示的范围
     // var b = new BMap.Bounds(new BMap.Point(110.597205, 20.902689), new BMap.Point(110.597205, 20.902689));
     // try {
@@ -117,6 +120,7 @@ var baiduMap = {
       $(".tool-bar").removeClass("default-bar");
       $(".right-bar").removeClass("default-bar");
       $(".r-content").removeClass("default-bar");
+      $("#app").removeClass("default");
     });
   },
   //判断当前的位置-params
@@ -388,7 +392,7 @@ var baiduMap = {
       $(".tool-bar").removeClass("default-bar");
       $(".right-bar").removeClass("default-bar");
       $(".r-content").removeClass("default-bar");
-      $("#app").addClass("default");
+      $("#app").removeClass("default");
     });
     //搜索框获取焦点功能
     $("#suggestId").blur(function () {
@@ -397,7 +401,7 @@ var baiduMap = {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
         $(".r-content").addClass("default-bar");
-         $("#app").addClass("default");
+        $("#app").addClass("default");
       }
     });
     //搜索框获取焦点功能
@@ -407,7 +411,7 @@ var baiduMap = {
         $(".tool-bar").removeClass("default-bar");
         $(".right-bar").removeClass("default-bar");
         $(".r-content").removeClass("default-bar");
-           $("#app").addClass("default");
+        $("#app").removeClass("default");
       }
     });
     //搜索框获取焦点功能
@@ -416,7 +420,7 @@ var baiduMap = {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
         $(".r-content").addClass("default-bar");
-         $("#app").addClass("default");
+        $("#app").addClass("default");
       }
     });
 
