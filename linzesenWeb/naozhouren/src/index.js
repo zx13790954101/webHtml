@@ -41,13 +41,7 @@ var baiduMap = {
     })
 
     //自定义样式
-    $.getJSON('../src/custom_map_config.json', function (data) {
-    	var styleJson=data.styleJson
-	    map.setMapStyleV2({     
-			  styleId: 'b6a68d7c8710647f8d35806a55a4b41b',
-			  styleJson:styleJson
-			});
-		})
+  
     window.BMap = BMap
     // map.addTileLayer(tileLayer);
     //map.addControl(new BMap.NavigationControl());
@@ -394,6 +388,7 @@ var baiduMap = {
       $(".tool-bar").removeClass("default-bar");
       $(".right-bar").removeClass("default-bar");
       $(".r-content").removeClass("default-bar");
+      $("#app").addClass("default");
     });
     //搜索框获取焦点功能
     $("#suggestId").blur(function () {
@@ -402,6 +397,7 @@ var baiduMap = {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
         $(".r-content").addClass("default-bar");
+         $("#app").addClass("default");
       }
     });
     //搜索框获取焦点功能
@@ -411,6 +407,7 @@ var baiduMap = {
         $(".tool-bar").removeClass("default-bar");
         $(".right-bar").removeClass("default-bar");
         $(".r-content").removeClass("default-bar");
+           $("#app").addClass("default");
       }
     });
     //搜索框获取焦点功能
@@ -419,6 +416,7 @@ var baiduMap = {
         $(".tool-bar").addClass("default-bar");
         $(".right-bar").addClass("default-bar");
         $(".r-content").addClass("default-bar");
+         $("#app").addClass("default");
       }
     });
 

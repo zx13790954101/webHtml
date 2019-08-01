@@ -30,7 +30,7 @@
   background-color: white;
   width: 350px;
   left: 20px;
-  top: 40px;
+  top: 60px;
   position: absolute;
   box-sizing: border-box;
   /* box-shadow: 1px 2px 1px rgba(0, 0, 0, .15); */
@@ -139,16 +139,19 @@
 }
 
 .notice-box {
-  background: #3d93fd;
+  /*background: #3d93fd;*/
+ background-color: white;;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
-  color: #E1F1FF;
+  /*color: #E1F1FF;*/
+ color: #3333;
+ 
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   padding: 0px 15px;
   z-index: 9;
-  height: 24px;
+  height: 40px;
   line-height: 1.2rem;
   font-size: 1rem;
   justify-content: center;
@@ -157,44 +160,54 @@
 .notice-box .title {
   margin: 0px 15px 0px 5px;
 }
-
+.default .notice-box{
+	background: #3d93fd;
+	height: 20px;
+	color: white;
+}
+.default .right-bar i{
+	    font-size: 1.8rem;
+    padding-top: 5px;
+	}
+	
+	.default .default-bar li{
+		margin-top: 0px;
+	}
 .right-bar {
-  color: #fff;
-  background: hsla(0, 0%, 100%, .6);
-  position: absolute;
-  right: 20px;
-  margin: 0px;
-  top: 40px;
-  z-index: 1;
-  height: 44px;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
-  font-family: Arial, sans-serif;
-  font-size: 1.17rem;
-  padding: 0px 0px;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-
-  width: 23vw;
-  display: block;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, .15);
-  border-radius: 5px;
-  padding: 15px 0px;
-  height: auto;
-  right: 1vw;
-  background-color: white;
-  border-radius: 0px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
-  right: 10vw;
+    color: #fff;
+    background: hsla(0, 0%, 100%, .6);
+    position: absolute;
+    right: 20px;
+    margin: 0px;
+    top: 60px;
+    z-index: 1;
+    height: 44px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    font-family: Arial, sans-serif;
+    font-size: 1.17rem;
+    padding: 0px 0px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    width: 30vw;
+    display: block;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .15);
+    border-radius: 5px;
+    padding: 18px 0px;
+    height: auto;
+    background-color: white;
+    border-radius: 0px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    right: 5vw;
 }
 
 .right-bar li {
   flex: 1;
   border: 0px;
-  margin-bottom: 8px;
+  margin-top:10px;
   text-align: center;
-  padding: 1px 15px;
+  padding: 0px 15px;
   opacity: 0.6;
   /* border-left: 1px #dbdee2 dashed; */
   display: flex;
@@ -202,12 +215,12 @@
   justify-content: center;
   align-items: center;
   float: left;
-  width: 33%;
+  width: 33.3%;
   display: inline-block;
 }
 
 .right-bar li:nth-child(1) {
-  border-left: 0px #dbdee2 dashed;
+ /* border-left: 0px #dbdee2 dashed;*/
 }
 
 .right-bar span {
@@ -228,15 +241,14 @@
 }
 
 .right-bar i {
-  font-size: 1.5rem;
-  font-weight: 500;
-  padding-right: 5px;
-  color: #5f6477;
-  height: auto;
-  padding-top: 5px;
-  vertical-align: middle;
-  padding-right: 0px;
-  display: none;
+     font-size: 2.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+    padding-right: 5px;
+    color: #5f6477;
+    height: auto;
+    vertical-align: middle;
+    padding: 0px;
 }
 
 
@@ -247,7 +259,7 @@
 .right-bar img {
   height: 2.9rem;
   width: auto;
-  display: inline-block;
+  display: none;
 }
 
 .right-bar li.active {
@@ -268,11 +280,14 @@
 
 .message-box {
   position: absolute;
-  left: 0px;
   bottom: 0px;
   max-height: 60vh;
   z-index: 1;
   background-image: linear-gradient(90deg, #184bc1, #184dc8, #1f4fbe, #184dc9);
+  height: 40vh;
+  right: 0px;
+  width: 30vw;
+  padding: 10px 15px;
 }
 
 .message-ul {}
@@ -294,36 +309,48 @@
   height: 25px;
   display: none
 }
-
+.message-ul .center{
+	display: flex;
+}
 .message-img {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: auto;
+  height: 6rem;
   margin-right: 0px;
   margin: 0 auto;
 }
 
 .message-ul li {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.59);
-  background: hsla(0, 0%, 0%, 0.4);
-  border-radius: 0px;
-  padding: 8px 8px;
-  margin: 10px 2px;
-  font-weight: 400;
-  color: #000000;
-  font-family: Tahoma, Arial, Helvetica, sans-serif;
-  display: inline-block;
-  width: 180px;
-  float: left;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+ position: relative;
+    /* background-color: rgba(255, 255, 255, 0.59); */
+    /* background: hsla(0, 0%, 0%, 0.4); */
+    border-radius: 0px;
+    background-color: white;
+    padding: 0px;
+    margin: 10px 0px;
+    font-weight: 400;
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 100%;
+    float: left;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
 }
 
 .message-ul .frist {
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 86px;
-  color: white;
+ background-color: rgba(0,0,0,0);
+    display: flex;
+    color: white;
+    margin: 10px -10px;
+    margin-top: -10px;
 }
-
+.message-ul .frist .strong{
+background-color: white;
+    padding-top: 25px;
+    padding: 15px 5px;
+    padding-top: 25px;
+    color: #3333;
+	
+}
 .message-box .content {
   font-weight: 400;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
@@ -369,7 +396,7 @@
   position: absolute;
   height: 100vh;
   top: 0px;
-  width: 25%;
+  width: 30%;
   background: hsla(0, 0%, 100%, 1);
   right: 0vw;
   border-radius: 5px;
@@ -379,7 +406,37 @@
   background-image: linear-gradient(90deg, #ffcd54, #fecc53, #fec551, #fabe4c);
   overflow: hidden;
 }
-
+.r-content-bg{
+	height: 100vh;
+	width: 30vw;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-image: repeating-linear-gradient(60deg,hsla(0,0%,100%,0.5),hsla(0,0%,100%,0.5) 15px,transparent 0,transparent 30px);
+}
+.message-bg{
+	position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row-reverse;
+        flex-flow: row-reverse wrap;
+}
+.message-bg li{
+	  border-left: 1px  double  white;
+        width: 1px;
+        height: 100%;
+        flex: 1;
+        border-left: 1px dotted white;
+        width: 1px;
+        height: 100%;
+        flex: 1;
+        border-left: 1px dashed #ffffff94;
+        height: 100%;
+}
 .r-content.default-bar {
   height: 40vh;
   top: 26vh;
@@ -446,7 +503,7 @@
   top: 80px;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 0px 0px 0px;
-  top: 25px;
+  top: 20px;
   width: 100%;
   padding: 0% 20%;
   text-align: center;
