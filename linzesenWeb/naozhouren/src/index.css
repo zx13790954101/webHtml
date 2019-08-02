@@ -82,26 +82,29 @@
 
 
 .triangle {
-  width: 150px;
-  height: 35px;
-  position: relative;
-  margin: 30px auto 0;
-  background-color: #faf8f3;
-  border: 2px solid #fbe2a0;
-  border-radius: 5px;
+width: 100px;
+    height: 22px;
+    position: relative;
+    margin: 0px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    z-index: 4;
+    top: -5px;
 }
 
 .triangle::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  bottom: -4px;
-  left: 8px;
-  transform: rotate(135deg);
-  background-color: #faf8f3;
-  border: 2px #fbe2a0;
-  border-style: solid solid none none;
+    content: '';
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    bottom: -9px;
+    left: 10px;
+    transform: rotate(172deg) skew(-30deg, -35deg);
+    background-color: #ffffff;
+    border: 2px #000000;
+    border-style: solid solid none none;
+    z-index: -1;
 }
 
 .circle-marker-child {
@@ -291,12 +294,12 @@
   -moz-transition: all 2s ease-in-out;
   transition: all 2s ease-in-out;
   display: block;
-width: 80vw;
+width: 60vw;
 background-color: #ffef43;
 background-image: linear-gradient(90deg, #f5cd41, #efc329, #fec917, #f9c615);
 left: 10vw;
-top: 55vh;
-max-height: 29vh;
+top: 30vh;
+max-height: 35vh;
 padding-bottom: 0px;
 }
 
@@ -383,14 +386,15 @@ padding-bottom: 0px;
   margin-bottom: 30px;
   box-shadow: 0px 0px 0px;
 }
-.default .message-ul .frist{
+.default .message-box .message-ul .frist{
     color: black;
+    margin: 5px 0px;
     margin-bottom: 10px;
     width: 100%;
 	  border-bottom: 1px solid black;
     padding: 10px 0px;
 }
-.default .message-ul li{
+.default .message-box .message-ul li{
     margin: 0px 2%;
     width: 20%;
 }
@@ -527,7 +531,9 @@ padding-bottom: 0px;
 .message-bg li:last-child {
   border-left: 0px dashed #ffffff5c;
 }
-
+.default .message-bg li{
+	    border-left: 2px dashed #ffffffd6;
+}
 .default  .r-content {
   height: 40vh;
   top: 26vh;
@@ -560,7 +566,7 @@ padding-bottom: 0px;
 
 }
 .default .new-swiper{
-	    display: block;
+	    display: none;
     position: absolute;
     width: 80%;
     top: 28%;
@@ -667,7 +673,14 @@ footer {
 }
 
 .new-swiper {
-  display: none;
+    display: block;
+    width: 30vw;
+    position: absolute;
+    right: 0px;
+    top: 35vh;
+}
+.default .new-swiper{
+	display: none;
 }
 
 .swiper-wrapper {
@@ -747,12 +760,16 @@ footer {
 }
 
 .new-swiper .tip {
-  position: absolute;
-  width: 100%;
-  top: -25px;
-  padding: 0px 10px;
-  left: 0px;
-  z-index: 2;
+  position: relative;
+    left: 0px;
+    z-index: 2;
+    color: #525252;
+    background: hsla(0, 0%, 100%, 0.3);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: 90%;
+    padding: 10px;
+    background-image: linear-gradient(45deg, #ffffffa1, #fdfdfd2b,#ffffff12,transparent);
 }
 
 .new-swiper .tip .small {
