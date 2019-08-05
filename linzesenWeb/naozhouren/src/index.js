@@ -250,7 +250,8 @@ var baiduMap = {
         //   '../src/hua.png'
         childDiv.className = 'iconfont icon-zuobiaofill  circle-marker-child'
         childDiv2.className = 'triangle'
-        div.appendChild(childDiv);
+        
+     //   div.appendChild(childDiv);//关闭标注点
         div.appendChild(childDiv2)
         div.className = 'circle-marker'
         map.getPanes().labelPane.appendChild(div)
