@@ -310,9 +310,9 @@ input {
   width: 100vw;
   height: 80vh;
   overflow: hidden;
-  box-shadow: -1px -3px 14px 2px #c6c6c659;
+  /* box-shadow: -1px -3px 14px 2px #c6c6c659; */
   background-color: white;
-  padding-top: 10px;
+  padding-top: 0px;
   bottom: -60vh;
 }
 
@@ -327,7 +327,7 @@ input {
 
 .bottom_slidebar ul li:nth-of-type(1) {
   width: 20%;
-  background-color: #f2f2f2;
+  background-color: #acc8d5;
   display: flex;
   align-items: flex-end;
 }
