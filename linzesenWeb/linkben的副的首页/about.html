@@ -129,15 +129,11 @@
             </div>
 
             <!-- <div class="swiper-slide  flex-c ">
-
               <div class="slide-item-img2"></div>
-
             </div> -->
 
             <!--  <div class="swiper-slide  flex-c ">
-
               <div class="slide-item-img3"></div>
-
             </div>-->
 
             <div class="swiper-slide  flex-c">
@@ -756,16 +752,13 @@
       },
       //鍒濆鍖栫殑linzesen 鐨刯s鏂囦欢
       lzeInit: function () {
-
         $(".nav-btn").click(function (e) {
           if ($(".nav-pc").is(":hidden")) {
             $(".nav-pc").show();
           } else {
             $(".nav-pc").hide();
           }
-
         });
-
         $(".sidebar-box li").click(function (e) {
           let name = $(this).attr("title");
           if (name == "鑱旂郴鎴戜滑") {
@@ -806,11 +799,9 @@
             console.log("msg", res);
           });
         });
-
       }
     }
     active.init();
-
     scaleW = window.innerWidth / 320;
     scaleH = window.innerHeight / 480;
     var resizes = document.querySelectorAll('.resize');
@@ -820,7 +811,6 @@
       resizes[j].style.top = parseInt(resizes[j].style.top) * scaleH + 'px';
       resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
     }
-
     var mySwiper = new Swiper('.mainSwiper', {
       direction: 'vertical',
       lazyLoading: true, //鍚姩寤惰繜鍔犺浇
@@ -837,9 +827,7 @@
       onTransitionEnd: function (swiper) {
         swiperAnimate(swiper);
       },
-
       watchSlidesProgress: true,
-
       onProgress: function (swiper) {
         for (var i = 0; i < swiper.slides.length; i++) {
           var slide = swiper.slides[i];
@@ -850,10 +838,8 @@
           slide.style.opacity = opacity;
           es = slide.style;
           //es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + translate + 'px,-' + translate + 'px) scaleY(' + scale + ')';
-
         }
       },
-
       onSetTransition: function (swiper, speed) {
         for (var i = 0; i < swiper.slides.length; i++) {
           es = swiper.slides[i].style;
@@ -861,10 +847,8 @@
             .MozTransitionDuration =
             es.OTransitionDuration =
             es.transitionDuration = speed + 'ms';
-
         }
       },
-
     })
     setTimeout(function () {
       var caseSwiper = new Swiper('.caseSwiper', {
@@ -892,8 +876,6 @@
           prevEl: '.about-swiper .swiper-button-prev',
         },
       });
-
-
       var headSwiper = new Swiper('#head-swiper', {
         slidesPerView: 1,
         autoplay: 5000,
@@ -915,7 +897,6 @@
           });
         }
       });
-
     }, 100);
   </script>
 </body>
