@@ -40,5 +40,8 @@
   "stylusSupremacy.insertBraces": false, // 是否插入大括号
   "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
   "stylusSupremacy.insertNewLineAroundBlocks": false, // 两个选择器中是否换行
-  "vetur.validation.template": false //关闭vetur标签闭合检查（用于解决iview标签报错）
+  "vetur.validation.template": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  } //关闭vetur标签闭合检查（用于解决iview标签报错）
 }
